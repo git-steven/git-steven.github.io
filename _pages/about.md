@@ -3,6 +3,6 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+As an innovative technology leader, I offer more than 20 years of unique experience that blends software engineering, technical leadership, and team coaching. Because I have worked for enterprise-level companies, startups, and nonprofits, I am also skilled at adapting quickly to changing organizational and market demands.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+My passion lies in identifying and capturing emerging technology opportunities that can transform businesses – enabling teams to focus on higher-level functions and positioning companies at the forefront of their industries. Excited about what AI, software engineering, data engineering, can do for businesses and the world, I enjoy collaborating across both technical and nontechnical teams to guide the integration of technology to ensure it supports business demands.
