@@ -61,7 +61,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Steven Miers"
   avatar : "/assets/images/miers-headshot.png"
   bio    : "An innovative technology leader with more than 20 years of experience."
   links:
