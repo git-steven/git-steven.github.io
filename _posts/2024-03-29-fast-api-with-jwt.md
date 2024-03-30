@@ -10,7 +10,7 @@ categories:
 author: steven
 ---
 
-Build a FASTAPI service using a JWT to securely authenticate an API Key.
+Build a [FastAPI](https://fastapi.tiangolo.com/) service using a JWT to securely authenticate an API Key.
 
 ![](</assets/images/fast_api_jwt_sm.png>)
 
@@ -21,7 +21,7 @@ _This is appropriate for a service meant to be used by application(s) also under
 For this example we use [poetry](https://python-poetry.org/) as the dependency and package management.  If you don't like poetry, feel free to use your favorite (pyenv, conda, etc.).  To install poetry, see [here](https://python-poetry.org/docs/#installation).
 
 ### OSX Installation
-Poetry requires [pipx](https://pipx.pypa.io/stable/installation/).  It can be installed on OSX via [homebrew](https://brew.sh/)
+Poetry requires [pipx](https://pipx.pypa.io/stable/installation/).  It can be installed on OSX via [homebrew](https://brew.sh/).  Both pipx and poetry can be installed via the following:
 ```bash
 brew install pipx
 pipx install poetry
@@ -112,7 +112,7 @@ ERR_MISSING_API_TOKEN = "Missing API token"
 async def verify_jwt(authorization: Annotated[str | None, Header()] = None) -> None:
     """
     Verify the JWT in the authorization header.  A 401 status code is sent back if
-    it is not present, malformed, or does not contain the corrrect apiKey.
+    it is not present, malformed, or does not contain the correct apiKey.
     :param authorization: The authorization header
     :return: None
     :raises HTTPException: Results in a 404 with error message if something goes wrong
@@ -132,10 +132,10 @@ async def verify_jwt(authorization: Annotated[str | None, Header()] = None) -> N
         raise HTTPException(status_code=401, detail=ERR_INCORRECT_API_TOKEN)
 ```
 
-As you can see, the `verify_jwt` function accepts the authorization header, which should contain a JWT with an `apiKey`.  We will get into how that is sent when we write tests.  Any client application(s) will do something similar.  For development, the necessary keys are used via a [dotenv](https://pypi.org/project/python-dotenv/) file.  For production, these environment variables should be set in your production environment.  For convenience, the `.env` is included in the [git repository](https://github.com/tangledpath/fast-api-jwt).  Normally, this should not be committed to source control, and a `.env.template` with all secret information removed is added instead.
+As you can see, the `verify_jwt` function accepts the authorization header, which should contain a JWT with an `apiKey`.  We will get into how that is sent when we write tests.  Any client application(s) will do something similar.  For development, the necessary keys are used via a [dotenv](https://pypi.org/project/python-dotenv/) file.  For production, these environment variables should be set in your production environment.  For convenience, the dotenv file (`.env`) is included in the [git repository](https://github.com/tangledpath/fast-api-jwt).  Normally, this should not be committed to source control, and a template file (`.env.template`) with all secret information removed should instead be used.
 
 ### JWT Util
-You may have noticed the usage of [JWUtil](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/utils/jw_util.py):
+You may have noticed the usage of [JWTUtil](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/utils/jwt_util.py):
 ```python
 jot = JWTUtil.decode_jwt(authorization)
 ```
@@ -216,7 +216,8 @@ Now, we will make use of our verification function.  We will also add some other
   self.include_router(account_router.router, dependencies=[Depends(verify_jwt)])
   self.include_router(storyspace_router.router, dependencies=[Depends(verify_jwt)])
   ```
-* Note the dependency injection syntax: `dependencies=[Depends(verify_jwt)]`.  Note, we left the root (`/`) endpoint unsecured, so we can still visit it as a sanity check.
+* Note the dependency injection syntax: `dependencies=[Depends(verify_jwt)]`.
+* Also note, we left the root (`/`) endpoint unsecured, so we can still visit it as a sanity check.
 * `fast_api_jwt/service/main.py` should now look like the [main.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/main.py) in the git repository.
 
 ## Testing
@@ -225,7 +226,7 @@ Our tests should verify that the absence of a JWT or API Key causes a 401 respon
 ### Testing a FastAPI service
 Firstly, we are using [pytest](https://docs.pytest.org/) for testing.  To test a FastAPI service, create a test file, e.g., `fast_api_jwt/tests/test_router_account.py`
 
-FastAPI provides a `TestClient` that accepts an app.  You can then use that `TestClient` to invoke endpoints on your service.  To set it up, add the following to your test:
+[FastAPI](https://fastapi.tiangolo.com/) provides a `TestClient` that accepts an app.  You can then use that `TestClient` to invoke endpoints on your service.  To set it up, add the following to your test:
 ```python
 # fast_api_jwt/tests/test_router_account.py
 from fastapi.testclient import TestClient
@@ -297,5 +298,7 @@ def test_by_account_id_no_jwt():
 ```
 
 ## Summary
-There we have it; a FastAPI service that uses a JWT to verify the API Key.
+There we have it; a [FastAPI](https://fastapi.tiangolo.com/) service that uses a JWT to verify the API Key.
 This project can be found in its entirety at https://github.com/tangledpath/fast-api-jwt.  In our next article we'll explore the use of a messaging system as part of a [CQRS](https://martinfowler.com/bliki/CQRS.html) System. We will also get this ready for deployment using [Docker](https://www.docker.com/) and [AWS](https://aws.amazon.com/).
+
+This article is published on LinkedIn [here](https://www.linkedin.com/pulse/fastapi-jwt-api-key-authentication-steven-miers-kfvdc).
