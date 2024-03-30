@@ -298,6 +298,6 @@ def test_by_account_id_no_jwt():
 
 ## Summary
 There we have it; a [FastAPI](https://fastapi.tiangolo.com/) service that uses a JWT to verify the API Key.
-This project can be found in its entirety at https://github.com/tangledpath/fast-api-jwt.  In our next article we'll explore the use of a messaging system as part of a [CQRS](https://martinfowler.com/bliki/CQRS.html) System. We will also get this ready for deployment using [Docker](https://www.docker.com/) and [AWS](https://aws.amazon.com/).
+This project can be found in its entirety [here](https://github.com/tangledpath/fast-api-jwt/tree/article1).  In our next article we'll explore the use of a messaging system as part of a [CQRS](https://martinfowler.com/bliki/CQRS.html) System. We will also get this ready for deployment using [Docker](https://www.docker.com/) and [AWS](https://aws.amazon.com/).
 
 This article is published on LinkedIn [here](https://www.linkedin.com/pulse/fastapi-jwt-api-key-authentication-steven-miers-kfvdc).
