@@ -10,13 +10,12 @@ categories:
 author: steven
 ---
 
-# FastAPI with JWT and API key
 Build a FASTAPI service using a JWT to securely authenticate an API Key.
 
 ![](</assets/images/fast_api_jwt_sm.png>)
 
 ## Use Case
-_This is appropriate for a service meant to be used application(s) also under your control.  If it is generally available to multiple clients, you should probably have an API Key per client.  If that is the case, this is still a good way to understand the basic principle of how to do this in FastAPI._
+_This is appropriate for a service meant to be used by application(s) also under your control.  If it is generally available to multiple clients, you should probably have an API Key per client.  If that is the case, this is still a good way to understand the basic principle of how to do this in FastAPI._
 
 ## Getting started
 For this example we use [poetry](https://python-poetry.org/) as the dependency and package management.  If you don't like poetry, feel free to use your favorite (pyenv, conda, etc.).  To install poetry, see [here](https://python-poetry.org/docs/#installation).
