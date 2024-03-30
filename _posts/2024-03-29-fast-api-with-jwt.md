@@ -201,7 +201,7 @@ Note that the `API_KEY` is a random `UUID`, and can be changed to anything else.
 
 ## Injecting the dependencies
 Now, we will make use of our verification function.  We will also add some other routes to our `fast_api_jwt/service/main.py`.
-* Add [account_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/account_router.py) and [storyspace_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/storyspace_router.py) to `fast_api_jwt/service/routers`.  They can be found at https://github.com/tangledpath/fast-api-jwt/tree/master/fast_api_jwt/service/routers.
+* Add [account_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/account_router.py) and [storyspace_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/storyspace_router.py) to `fast_api_jwt/service/routers`.  They can be found [here](https://github.com/tangledpath/fast-api-jwt/tree/master/fast_api_jwt/service/routers).
 * Add these imports to `fast_api_jwt/service/main.py`
   ```python
   from .dependencies import verify_jwt
@@ -294,7 +294,6 @@ def test_by_account_id_no_jwt():
     response = client.get("/service/account/?account_id=2112")
     assert response.status_code == 401
     assert response.json() == {"detail": ERR_AUTH_HEADER_MISSING}
-
 ```
 
 ## Summary
