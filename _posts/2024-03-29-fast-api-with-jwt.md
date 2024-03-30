@@ -245,7 +245,7 @@ from fast_api_jwt.service.dependencies import ERR_AUTH_HEADER_MISSING, ERR_INCOR
 from fast_api_jwt.utils.jwt_util import JWTUtil
 ```
 
-Here are a few of the tests that can be found within [test_router_account.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/tests/test_router_account.py).  The make sure that results are returned if the JWT and API Key are correct, and that we fail gracefully if something isn't correct.
+Here are a few of the tests that can be found within [test_router_account.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/tests/test_router_account.py).  They make sure that results are returned if the JWT and API Key are correct, and that we fail gracefully if something isn't correct.
 
 ```python
 # fast_api_jwt/tests/test_router_account.py
