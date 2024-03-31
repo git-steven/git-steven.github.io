@@ -35,7 +35,7 @@ cd fast-api-jwt
 ```
 
 ### Project setup
-* Edit pyproject.toml and ensure it looks like [this](https://raw.githubusercontent.com/tangledpath/fast-api-jwt/master/pyproject.toml).
+* Edit pyproject.toml and ensure it looks like [this](https://github.com/tangledpath/fast-api-jwt/blob/article1/pyproject.toml).
   * Dependencies are python (3.12), fastapi, httpx, python-jose, uvicorn, python-dotenv, and loguru.
   * We also need pytest and pytest-mock configured as test dependencies.
 
@@ -201,7 +201,7 @@ Note that the `API_KEY` is a random `UUID`, and can be changed to anything else.
 
 ## Injecting the dependencies
 Now, we will make use of our verification function.  We will also add some other routes to our `fast_api_jwt/service/main.py`.
-* Add [account_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/account_router.py) and [storyspace_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/storyspace_router.py) to `fast_api_jwt/service/routers`.  They can be found [here](https://github.com/tangledpath/fast-api-jwt/tree/master/fast_api_jwt/service/routers).
+* Add [account_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/account_router.py) and [storyspace_router.py](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers/storyspace_router.py) to `fast_api_jwt/service/routers`.  They can be found [here](https://github.com/tangledpath/fast-api-jwt/blob/article1/fast_api_jwt/service/routers).
 * Add these imports to `fast_api_jwt/service/main.py`
   ```python
   from .dependencies import verify_jwt
