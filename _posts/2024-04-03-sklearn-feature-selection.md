@@ -20,15 +20,16 @@ _Identifying the Most Important Features in a Dataset Using [scikit-learn](https
 In the field of medical research and machine learning, [feature selection](https://en.wikipedia.org/wiki/Feature_selection) is a crucial step in building accurate and efficient models. By identifying the most important attributes or features in a dataset, we can improve model performance, reduce overfitting, and gain insights into the underlying relationships between inputs and outputs.  In this article, we will explore how to use [scikit-learn](https://scikit-learn.org/)., a popular Python library for machine learning, to find the most important attributes in a dataset containing inputs and outputs.
 
 ## Correlation-based Feature Selection
-One approach to identifying the most important attributes is by measuring their correlation with the output variable.  Correlation measures the strength and direction of the linear relationship between two variables. In scikit-learn, we can use the [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression) function from the [feature_selection](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection) module to compute the correlation between each input feature and the output variable.  We will also use the powerful [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE) (Recursive Feature Elimination) method.
+One approach to identifying the most important attributes is by measuring their correlation with the output variable.  Correlation measures the strength and direction of the linear relationship between two variables. In [scikit-learn]([scikit-learn](https://scikit-learn.org/), we can use the [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression) function from the [feature_selection](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection) module to compute the correlation between each input feature and the output variable.  We will also use the powerful [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE) (Recursive Feature Elimination) method.
 
 
 ## The Breast Cancer Dataset
-The Breast Cancer [dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) is a built-in dataset in scikit-learn. It contains information about breast cancer tumors, including various measurements and characteristics of the cell nuclei. The dataset consists of 30 input features and a target variable indicating whether the tumor is malignant (cancerous) or benign (non-cancerous). Our goal is to identify the features that have the most significant impact on predicting the tumor type.
+The Breast Cancer [dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) is a built-in dataset in [scikit-learn]([scikit-learn](https://scikit-learn.org/). It contains information about breast cancer tumors, including various measurements and characteristics of the cell nuclei. The dataset consists of 30 input features and a target variable indicating whether the tumor is malignant (cancerous) or benign (non-cancerous). Our goal is to identify the features that have the most significant impact on predicting the tumor type.
 
-### Feature Selection using f_regression:
+### Feature Selection using f_regression
 The [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression) function from scikit-learn's [feature_selection](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.feature_selection) module is commonly used for feature selection in regression problems. Although the Breast Cancer dataset is a classification problem, we can still use `f_regression` to compute the correlation between each feature and the target variable. Higher F-values indicate stronger correlations.
 
+#### `f_regression` example
 ```python
 from sklearn.datasets import load_breast_cancer
 from sklearn.feature_selection import f_regression
@@ -74,8 +75,8 @@ Imagine you're trying to figure out which factors are most important in determin
 
 #### F-values
 F-values are like a "loudness meter" for each factor. They measure how much each factor stands out from the rest in terms of its impact on the outcome (getting an A).
-A high F-value means that the factor has a strong influence on the outcome, like a loud voice in a quiet room.
-For example, if study time has a high F-value, it suggests that the amount of time a student spends studying plays a significant role in whether they get an A.
+A high f-value means that the factor has a strong influence on the outcome, like a loud voice in a quiet room.
+For example, if study time has a high f-value, it suggests that the amount of time a student spends studying plays a significant role in whether they get an A.
 
 #### P-values
 P-values are like a "confidence meter" for each factor. They indicate how confident we can be that a factor's influence on the outcome is real and not just due to chance.
@@ -83,7 +84,7 @@ A low p-value means that we can be very confident that the factor's impact is ge
 For example, if the p-value for attendance is low (e.g., 0.01), it means there's only a 1% chance that the relationship between attendance and getting an A is due to random chance. In other words, we can be 99% confident that attendance really matters.
 In simple terms, F-values tell us which factors are the loudest or most important in affecting the outcome, while p-values tell us how confident we can be that those factors are truly important and not just random noise.
 
-Keep in mind that while F-values and p-values are helpful in identifying important factors, they don't tell the whole story. It's like looking at a map and seeing the biggest cities – they're important, but there might be other smaller towns worth visiting too. It's always a good idea to consider the context and use your own judgment when making decisions based on these values.
+Keep in mind that while f-values and p-values are helpful in identifying important factors, they don't tell the whole story. It's like looking at a map and seeing the biggest cities – they're important, but there might be other smaller towns worth visiting too. It's always a good idea to consider the context and use your own judgment when making decisions based on these values.
 
 ### RFE Feature Selection
 [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE) (Recursive Feature Elimination) is another powerful technique for feature selection. It recursively selects a subset of features by fitting a model, ranking the features based on their importance, and then removing the least important features. RFE can be used with various estimators, such as logistic regression or support vector machines.
@@ -121,4 +122,4 @@ Selected features: ['mean radius', 'mean compactness', 'mean concavity', 'textur
 ```
 
 ## Conclusion
-Scikit-learn provides powerful feature selection techniques, such as `f_regression` and `RFE` (Recursive Feature Elimination), to identify the most important features in a dataset. By using these techniques on the Breast Cancer dataset, we can determine which features have the strongest correlation with the tumor type and are most informative for building diagnostic models. The `f_regression` function computes the correlation between each feature and the target variable, while RFE recursively selects a subset of features based on their importance. By focusing on the most relevant features, we can enhance the accuracy and interpretability of our models while gaining valuable insights into the underlying relationships in the data.
+[Scikit-learn]([scikit-learn](https://scikit-learn.org/) provides powerful feature selection techniques, such as `f_regression` and `RFE` (Recursive Feature Elimination), to identify the most important features in a dataset. By using these techniques on the Breast Cancer dataset, we can determine which features have the strongest correlation with the tumor type and are most informative for building diagnostic models. The `f_regression` function computes the correlation between each feature and the target variable, while RFE recursively selects a subset of features based on their importance. By focusing on the most relevant features, we can enhance the accuracy and interpretability of our models while gaining valuable insights into the underlying relationships in the data.
