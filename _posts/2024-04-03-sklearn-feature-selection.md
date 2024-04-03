@@ -1,5 +1,5 @@
 ---
-title:  "Feature Engineering with scikit-learn"
+title:  "Feature Selection with scikit-learn"
 date:   2024-03-29 13:18:25 -0500
 categories:
 - scikit-learn
@@ -51,7 +51,7 @@ for i in sorted_indices[:10]:
     print(f"{data.feature_names[i]}: {feature_importance[i]:.2f}")
 ```
 
-In this example, we load the Breast Cancer dataset and use [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression) to compute the F-values and p-values between each feature and the target variable. We then sort the features by their importance scores in descending order and print the top 10 features along with their importance scores. 
+In this example, we load the Breast Cancer dataset and use [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression) to compute the F-values and p-values between each feature and the target variable. We then sort the features by their importance scores in descending order and print the top 10 features along with their importance scores. You can see and run this example in the jupyter [notebook](/notebook/sklearn-feature-engineering.ipynb).
 
 The output looks like this:
 ```text
@@ -81,7 +81,7 @@ data = load_breast_cancer()
 X, y = data.data, data.target
 
 # Create a logistic regression estimator
-estimator = LogisticRegression()
+estimator = LogisticRegression(max_iter=2000)
 
 # Perform feature selection using RFE
 selector = RFE(estimator, n_features_to_select=10, step=1)
@@ -95,7 +95,7 @@ selected_feature_names = [data.feature_names[i] for i in range(len(data.feature_
 print("Selected features:", selected_feature_names)
 ```
 
-In this example, we load the Breast Cancer dataset and create a logistic regression estimator. We then use RFE with the estimator to select the top 10 features. The `support_` attribute of the RFE object indicates the selected features. Finally, we print the names of the selected features.
+In this example, we load the Breast Cancer dataset and create a logistic regression estimator. We then use RFE with the estimator to select the top 10 features. The `support_` attribute of the RFE object indicates the selected features. Finally, we print the names of the selected features.  You can see and run this example in the jupyter [notebook](/notebook/sklearn-feature-engineering.ipynb).
 
 The output looks like this:
 ```text
@@ -103,4 +103,4 @@ Selected features: ['mean radius', 'mean compactness', 'mean concavity', 'textur
 ```
 
 Conclusion:
-Scikit-learn provides powerful feature selection techniques, such as `f_regression` and Recursive Feature Elimination (RFE), to identify the most important features in a dataset. By using these techniques on the Breast Cancer dataset, we can determine which features have the strongest correlation with the tumor type and are most informative for building diagnostic models. The `f_regression` function computes the correlation between each feature and the target variable, while RFE recursively selects a subset of features based on their importance. By focusing on the most relevant features, we can enhance the accuracy and interpretability of our models while gaining valuable insights into the underlying relationships in the data.
+Scikit-learn provides powerful feature selection techniques, such as `f_regression` and `RFE` (Recursive Feature Elimination), to identify the most important features in a dataset. By using these techniques on the Breast Cancer dataset, we can determine which features have the strongest correlation with the tumor type and are most informative for building diagnostic models. The `f_regression` function computes the correlation between each feature and the target variable, while RFE recursively selects a subset of features based on their importance. By focusing on the most relevant features, we can enhance the accuracy and interpretability of our models while gaining valuable insights into the underlying relationships in the data.
