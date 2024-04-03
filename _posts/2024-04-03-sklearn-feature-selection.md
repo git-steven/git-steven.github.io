@@ -102,5 +102,5 @@ The output looks like this:
 Selected features: ['mean radius', 'mean compactness', 'mean concavity', 'texture error', 'worst radius', 'worst smoothness', 'worst compactness', 'worst concavity', 'worst concave points', 'worst symmetry']
 ```
 
-Conclusion:
+## Conclusion
 Scikit-learn provides powerful feature selection techniques, such as `f_regression` and `RFE` (Recursive Feature Elimination), to identify the most important features in a dataset. By using these techniques on the Breast Cancer dataset, we can determine which features have the strongest correlation with the tumor type and are most informative for building diagnostic models. The `f_regression` function computes the correlation between each feature and the target variable, while RFE recursively selects a subset of features based on their importance. By focusing on the most relevant features, we can enhance the accuracy and interpretability of our models while gaining valuable insights into the underlying relationships in the data.
