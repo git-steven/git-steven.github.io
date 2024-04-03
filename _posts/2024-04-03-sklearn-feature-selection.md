@@ -11,7 +11,7 @@ categories:
 author: steven
 ---
 
-Identifying the Most Important Features in a Dataset Using [scikit-learn](https://scikit-learn.org/).
+_Identifying the Most Important Features in a Dataset Using [scikit-learn](https://scikit-learn.org/)._
 
 ![](</assets/images/sklearn-features.png>)
 
@@ -68,7 +68,8 @@ worst concavity: 436.69
 ```
 
 ### F-Values and P-Values
-A brief discussion of F-Values and P-Values
+_A brief discussion of F-Values and P-Values_
+
 Imagine you're trying to figure out which factors are most important in determining whether a student will get an A in a class. You have data on various factors like study time, attendance, and previous grades.
 
 #### F-values
