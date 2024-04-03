@@ -67,6 +67,23 @@ mean concavity: 533.79
 worst concavity: 436.69
 ```
 
+### F-Values and P-Values
+A brief discussion of F-Values and P-Values
+Imagine you're trying to figure out which factors are most important in determining whether a student will get an A in a class. You have data on various factors like study time, attendance, and previous grades.
+
+#### F-values
+F-values are like a "loudness meter" for each factor. They measure how much each factor stands out from the rest in terms of its impact on the outcome (getting an A).
+A high F-value means that the factor has a strong influence on the outcome, like a loud voice in a quiet room.
+For example, if study time has a high F-value, it suggests that the amount of time a student spends studying plays a significant role in whether they get an A.
+
+#### P-values
+P-values are like a "confidence meter" for each factor. They indicate how confident we can be that a factor's influence on the outcome is real and not just due to chance.
+A low p-value means that we can be very confident that the factor's impact is genuine, like being sure that a coin flip resulted in heads because you've seen it with your own eyes.
+For example, if the p-value for attendance is low (e.g., 0.01), it means there's only a 1% chance that the relationship between attendance and getting an A is due to random chance. In other words, we can be 99% confident that attendance really matters.
+In simple terms, F-values tell us which factors are the loudest or most important in affecting the outcome, while p-values tell us how confident we can be that those factors are truly important and not just random noise.
+
+Keep in mind that while F-values and p-values are helpful in identifying important factors, they don't tell the whole story. It's like looking at a map and seeing the biggest cities – they're important, but there might be other smaller towns worth visiting too. It's always a good idea to consider the context and use your own judgment when making decisions based on these values.
+
 ### RFE Feature Selection
 [RFE](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html#sklearn.feature_selection.RFE) (Recursive Feature Elimination) is another powerful technique for feature selection. It recursively selects a subset of features by fitting a model, ranking the features based on their importance, and then removing the least important features. RFE can be used with various estimators, such as logistic regression or support vector machines.
 
