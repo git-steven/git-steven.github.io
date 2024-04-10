@@ -12,7 +12,7 @@ author: steven
 
 Build a [FastAPI](https://fastapi.tiangolo.com/) service using a JWT to securely authenticate an API Key.
 
-![](</assets/images/fast_api_jwt_sm.png>)
+![](https://raw.githubusercontent.com/tangledpath/fast-api-jwt/master/fast_api_jwt_sm.png)
 
 ## Use Case
 _This is appropriate for a service meant to be used by application(s) also under your control.  If it is generally available to multiple clients, you should probably have an API Key per client.  If that is the case, this is still a good way to understand the basic principle of how to do this in FastAPI._
