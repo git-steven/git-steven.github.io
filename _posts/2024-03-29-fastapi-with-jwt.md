@@ -1,5 +1,5 @@
 ---
-title:  "FastAPI with JWT and API key authentication"
+title:  "FastAPI: part 1 with JWT and API key authentication"
 date:   2024-03-29 13:18:25 -0500
 categories:
 - fastapi
@@ -76,20 +76,20 @@ app.create()
 
 # Start the service:
 if __name__ == "__main__":
-    uvicorn.run("fast_api_jwt.service.main:app", port=9000, reload=True)
+    uvicorn.run("fast_api_jwt.service.main:app", port=8000, reload=True)
 
 ```
 
 This provides a single endpoint at `/`, as well as the built-in `/docs`.  You can run the service using:
 ```bash
-uvicorn fast_api_jwt.service.main:app --port 9000 --reload
+uvicorn fast_api_jwt.service.main:app --port 8000 --reload
 # OR:
 python -m fast_api_jwt.service.main
 ```
 
 If there weren't any problems, you should be able to visit the server:
-* http://localhost:9000
-* http://localhost:9000/docs
+* http://localhost:8000
+* http://localhost:8000/docs
 
 ### Dependency Injection
 FastAPI provides a [dependency](https://fastapi.tiangolo.com/tutorial/dependencies/) injection mechanism.  We will use that to verify the JWT and API Key:

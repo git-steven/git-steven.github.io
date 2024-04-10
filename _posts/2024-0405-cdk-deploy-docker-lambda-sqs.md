@@ -14,7 +14,7 @@ author: steven
 
 # Deploying a Dockerized Python Lambda Function with AWS CDK
 
-In this tutorial, we'll walk through the steps to deploy a dockerized Python Lambda function using AWS CDK (Cloud Development Kit). The Lambda function will be triggered by an SQS (Simple Queue Service) message.
+In this tutorial, we'll take a a look at the steps to deploy a dockerized Python Lambda function using AWS CDK (Cloud Development Kit). The Lambda function will be triggered by an SQS (Simple Queue Service) message.
 
 ## Prerequisites
 

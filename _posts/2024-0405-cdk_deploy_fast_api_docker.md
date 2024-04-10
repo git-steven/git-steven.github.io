@@ -1,6 +1,32 @@
-# Deploying a Dockerized FastAPI App to Fargate with AWS CDK
+# FastAPI: Deploying a Dockerized FastAPI App to Fargate with AWS CDK
 
-In this tutorial, we'll walk through the steps to deploy a dockerized Python FastAPI app using AWS CDK (Cloud Development Kit). We'll use AWS Fargate to run the dockerized FastAPI app as a serverless container.
+In this tutorial, we'll build on the Fast API application we created in [Part 1](https://git-steven.github.io/fastapi/python/jwt/authentication/security/fast-api-with-jwt/) of our FastAPI series.
+
+We'll walk through the steps to deploy a dockerized Python FastAPI app using AWS CDK (Cloud Development Kit). We'll use AWS Fargate to run the dockerized FastAPI app as a serverless container.
+
+Next we'll take a a look at the steps to deploy a dockerized Python Lambda function using AWS CDK (Cloud Development Kit). The Lambda function will be triggered by an SQS (Simple Queue Service) message.
+
+We hinted at the end of the last tutorial that this is not a normal CRUD API.  We are following the [CQRS](https://martinfowler.com/bliki/CQRS.html) methodology; our writes will be physically separated from our reads and happen asynchronously.  The reads, however, will happen synchronously, right in our FastAPI application.
+
+## Reads
+Reads will occur synchronously in our FastAPI application.  They are implemented as one might expect.  The read logic (probably from the DB) is implemented and/or invoked from the appropriate endpoint.
+
+## Writes
+When an action occurs that requires changing state (e.g., writing to DB) are invoked via an asynchronous event.
+
+### Production
+Invocations to write in production will send an asynchronous SQS message.  That is picked up by a lambda function, that performs the the write based on the event type and the information in the message.
+
+### Development
+For simplicity (development, debugging, testing), there is no dependency on SQS.  Instead, we will [inject a dependency](https://en.wikipedia.org/wiki/Dependency_injection) to use a lightweight, no-dependency, intra-process, multithreaded, home-grown message queuing system called [Python Bunny MQ](https://github.com/tangledpath/python-bunny-mq)
+
+![](https://raw.githubusercontent.com/tangledpath/python-bunny-mq/master/bunny-sm.png)
+
+## Messaging system injection
+Based on the value of `FAST_API_ENV`, we will inject either a façade that provides our message-queue functionality. Possible values and effects are:
+    * development: Inject PythonBunnyMQ façade (for dev env)
+* test: Inject PythonBunnyMQ façade (for test env)
+* production: Inject AWS SQS MQ façade
 
 ## Prerequisites
 
@@ -12,9 +38,23 @@ Before we begin, make sure you have the following:
 - AWS CDK installed (`npm install -g aws-cdk`)
 - Docker installed
 
+## Step 1: Install [python-bunny-mq](https://github.com/tangledpath/python-bunny-mq)
+
+```bash
+poetry add python-bunny-mq --group dev
+```
+
+## Step 2: Install [boto3](https://boto3.amazonaws.com/)
+Boto3 allows us to interactive with Amazon services from Python.  Very cool!
+```bash
+poetry add boto3
+```
+
 ## Step 1: Create a new CDK project
 
-First, create a new directory for your CDK project and initialize it:
+First, go to the root of the application (for example if you store your application repository in source.)
+```bash
+cd ~/src/
 
 ```bash
 mkdir fastapi-cdk-project
