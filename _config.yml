@@ -72,7 +72,7 @@ author:
       url: "https://github.com/git-steven"
     - label: "Linked In"
       icon: "fas fa-fw fa-link"
-      url: "http://www.linkedin.com/en/stevenmiers"
+      url: "http://www.linkedin.com/in/stevenmiers"
 
 footer:
   links:
@@ -84,7 +84,7 @@ footer:
       url: "https://github.com/git-steven"
     - label: "Linked In"
       icon: "fas fa-fw fa-link"
-      url: "http://www.linkedin.com/en/stevenmiers"
+      url: "http://www.linkedin.com/in/stevenmiers"
 
 defaults:
   # _posts
