@@ -1,4 +1,5 @@
 # Exploring PySpark MLlib with the "mediumsearchdataset" from Kaggle
+![](</assets/images/pyspark-mlib-sm.png>)
 
 ## Introduction
 In this article, we'll explore the capabilities of PySpark MLlib using the "mediumsearchdataset" from Kaggle. We'll dive into various machine learning tasks, including natural language processing and graph analysis using GraphX. PySpark MLlib provides a powerful set of tools for handling large-scale datasets and building scalable machine learning models. So, let's get started!
