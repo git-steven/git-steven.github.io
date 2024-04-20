@@ -24,7 +24,7 @@ data = spark.read.csv("medium_search_dataset.csv", header=True, inferSchema=True
 With just a few lines of code, our dataset is ready for analysis.
 
 ## Text Processing with PySpark MLlib
-Text preprocessing is a crucial step in natural language processing. PySpark MLlib offers various tools for tokenization, stop word removal, and feature extraction. Let's preprocess the article titles
+Text preprocessing is a crucial step in natural language processing. PySpark MLlib offers various tools for tokenization, [stop word](https://en.wikipedia.org/wiki/Stop_word) removal, and [feature extraction](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.CountVectorizer.html#pyspark.ml.feature.CountVectorizer). Let's preprocess the article titles
 
 ```python
 from pyspark.ml.feature import Tokenizer, StopWordsRemover, CountVectorizer
@@ -40,10 +40,27 @@ cv_model = cv.fit(data)
 data = cv_model.transform(data)
 ```
 
-The article titles are now tokenized, cleaned of stop words, and converted into numerical feature vectors, ready for further analysis.
+The article titles are now tokenized, cleaned of [stop words](https://en.wikipedia.org/wiki/Stop_word), and converted into [numerical feature vectors](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.CountVectorizer.html#pyspark.ml.feature.CountVectorizer), ready for further analysis.
 
-## Topic Modeling with LDA
-Topic modeling helps discover latent topics in a collection of documents. PySpark MLlib provides the Latent Dirichlet Allocation (LDA) algorithm for this purpose. Let's apply LDA to the preprocessed article titles
+## LDA (Latent Dirichlet Allocation)
+
+### A word about Latent Dirichlet Allocation
+Hey there! Let me give you a quick rundown of Latent Dirichlet Allocation, or LDA for short.
+
+Imagine you have a bunch of documents, like articles or blog posts, and you want to figure out the main topics they cover without having to read through each one. That's where LDA comes in handy!
+
+LDA is like a super smart algorithm that scans through all the documents and identifies patterns in the words used. It's kind of like finding the secret ingredients that make up different topics.
+
+Here's how it works: LDA looks at how often certain words appear together in the documents. It then groups these words into topics based on their probability of belonging together. The cool part is that LDA can figure out these topics on its own, without any human input!
+
+So, let's say you have a bunch of news articles. LDA might discover that there are three main topics: politics, sports, and entertainment. It assigns each word to one of these topics based on how frequently it appears with other related words.
+
+Once LDA has worked its magic, you can use the discovered topics to gain insights into your document collection, classify new documents, or even use them as features for other machine learning tasks.
+
+In a nutshell, LDA is like a topic detective that uncovers the hidden themes in your documents, making it easier to analyze and understand large amounts of text data without the need for manual review.
+
+### Topic Modeling with LDA
+Topic modeling helps discover latent topics in a collection of documents. [PySpark MLlib](https://spark.apache.org/docs/latest/ml-guide.html) provides the Latent Dirichlet Allocation ([LDA](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html)) algorithm for this purpose. Let's apply [LDA](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html) to the preprocessed article titles
 
 ```python
 from pyspark.ml.clustering import LDA
@@ -55,7 +72,7 @@ topics = lda_model.describeTopics(3)
 topics.show(truncate=False)
 ```
 
-The LDA model identifies 5 topics and retrieves the top 3 words for each topic, providing insights into the themes present in the articles.
+The [LDA](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.clustering.LDA.html) model identifies 5 topics and retrieves the top 3 words for each topic, providing insights into the themes present in the articles.
 
 ## Graph Analysis with GraphX
 PySpark MLlib integrates with GraphX, enabling graph processing capabilities. Let's construct a graph based on the article tags and perform some analysis
