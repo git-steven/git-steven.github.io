@@ -13,10 +13,8 @@ categories:
 author: steven
 ---
 
-# Feature Selection and Visualization with scikit-learn and NetworkX
-
 _Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas_
-
+  
 ![](</assets/images/pyspark-mlib-sm.png>)
 
 As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the "sklearn.datasets.load_breast_cancer" dataset and [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
