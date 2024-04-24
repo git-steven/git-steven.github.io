@@ -13,17 +13,18 @@ categories:
 author: steven
 ---
 
-## Visualizing Feature Selection in Breast Cancer Diagnosis using NetworkX and Pandas
+_Using [pandas](https://pandas.pydata.org/), [scikit-learn](https://scikit-learn.org/), and [NetworkX](https://networkx.org/) to explore data, extract features, and visualize data._ 
+
 ![](</assets/images/networkx-md.png>)
 
-### Note:
-This builds upon my [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the breast cancer [dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
+## Introduction:
+This builds upon a [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
 
-We also explore the dataset a bit using pandas, and show an example of graphing feature values with a scatterplot.
+We also explore the dataset a bit using [pandas](https://pandas.pydata.org/), and show an example of graphing feature values with a [matplotlib](https://matplotlib.org/) scatterplot.
 
 Finally, we create a [NetworkX](https://networkx.org/) graph that shows the features and their influence on a positive diagnosis.  Each edge between a feature and the Diagnosis node has a weighted line thickness, as well a color palette to denote their relative importance.   
 
-As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the "sklearn.datasets.load_breast_cancer" dataset and [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
+As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) dataset and visualizing it using the [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
 
 ## Prerequisites
 * You'll need the following packages installed in your environment:
