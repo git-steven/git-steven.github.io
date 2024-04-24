@@ -24,7 +24,10 @@ We also explore the dataset a bit using [pandas](https://pandas.pydata.org/), an
 
 Finally, we create a [NetworkX](https://networkx.org/) graph that shows the features and their influence on a positive diagnosis.  Each edge between a feature and the Diagnosis node has a weighted line thickness, as well a color palette to denote their relative importance.   
 
-As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) dataset and visualizing it using the [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
+![](</assets/images/networkx_bc_md.png>)
+
+### Breast Cancer Dataset
+As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) dataset and visualizing it using the [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.  This dataset has 30 feature columns, so it it is perfect for feature selection -- determining which features might be contributing to a positive diagnosis. 
 
 ## Prerequisites
 * You'll need the following packages installed in your environment:
@@ -44,19 +47,23 @@ import pandas as pd
 from IPython.display import display, HTML
 from sklearn.datasets import load_breast_cancer
 from typing import Dict, Any, Sequence, Tuple
+from itables import init_notebook_mode
+init_notebook_mode(all_interactive=True)
 
-def display_df(df:pd.Dataframe, rows:int=1):
+def display_df(df:pd.DataFrame, rows:int=1):
     """ Pretty displays a dataframe with specified rows """
     display(HTML(df.head(rows).to_html()))
     
-def concentric_cirle_point_generator(
+def concentric_cirle_points(
         coordinate_count:int, 
         r1:float=1.0, 
         r2:float=1.0
-    ):
+):
     """ 
-    Generates points on two concentric circles, given by the radii.  
-    The points generated will alternate between the two circles 
+        Generates points on two concentric circles, defined by r1 
+        and r2.  The points generated will alternate between the two 
+        circles. Point order is clockwise, irrespective of which 
+        circle they are on.  
     """
     section_degrees = 360.0/coordinate_count
     for c in range(coordinate_count):
@@ -64,8 +71,8 @@ def concentric_cirle_point_generator(
         radians = angle / 180.0 * math.pi
         # sin(ō) = opp/hyp, cos(ō) = adc/hyp
         hypotenus = r1 if c % 2 == 0 else r2
-        x = math.sin(radians) * hypotenus + translate_vector[0]
-        y = math.cos(radians) * hypotenus + translate_vector[1]
+        x = math.sin(radians) * hypotenus
+        y = math.cos(radians) * hypotenus
         yield(round(x, 4), round(y, 4))
 
 # Load the Breast Cancer dataset
@@ -90,13 +97,40 @@ Breast cancer wisconsin (diagnostic) dataset
 ...
 ```
 
+## Feature Extraction 
+The `load_breast_cancer` function from [scikit-learn](https://scikit-learn.org/) gives us a convenient way to access the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer), which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
+
+### Random Forest Classifier
+[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
+
+Now, create a https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html and train it on the dataset:
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+# Create Random Forest Classifier to extract feature importance:
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf.fit(X, y)
+importance = clf.feature_importances_
+
+# Setup feature importance dict; ordered by highest importance: 
+sorted_indices = importance.argsort()[::-1]
+feature_importance = { 
+    all_feature_names[i]: importance[i] for i in sorted_indices 
+}
+
+for k, v in feature_importance.items():
+    print(f"Feature: {k}, Importance: {v:.4f}")
+```
+
+The above code creates the `RandomForestClassifier`, then grabs the importances from `rand_forest_classifier.feature_importances_`.  Then, we create a dictionary of `feature_name` to `importance`.  This is useful information in its own right; we will also use it to create our [NetworkX](https://networkx.org/) graph.  
+
 ## Exploring the dataset
 Let's explore the dataset with pandas
 ```python
 bc_df = load_breast_cancer(as_frame=True)
 df = bc_df.frame
 df['target'] = bc_data.target
-
 
 # Explore the dataset
 print("Dataset shape:", df.shape)
@@ -133,9 +167,10 @@ Target distribution:
 target
 1    357
 0    212
+...
 ```
 
-There is even more information about the dataset contained below.
+There is even more information about the dataset contained below this output, including a [Statistical Summary](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) and a [Correlation Matrix](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html).
 
 ### Show a scatter plot
 This shows a scatter plat using some of our more indicative features (found below in [Random Forest Classifier](#random-forest-classifier)).
@@ -150,31 +185,8 @@ plt.colorbar(label='Target')
 plt.show()
 ```
 
-## Feature Extraction 
-The `load_breast_cancer` function from [scikit-learn](https://scikit-learn.org/) gives us a convenient way to access the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer), which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
-
-### Random Forest Classifier
-[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
-
-Now, create a https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html and train it on the dataset:
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-
-# Create Random Forest Classifier to extract feature importance:
-clf = RandomForestClassifier(n_estimators=100, random_state=42)
-clf.fit(X, y)
-importance = clf.feature_importances_
-
-# Setup feature importance hash: 
-sorted_indices = importance.argsort()[::-1]
-feature_importance = { all_feature_names[i]: importance[i] for i in sorted_indices }
-for k, v in feature_importance.items():
-    print(f"Feature: {k}, Importance: {v:.4f}")
-```
-
 ## Building the graph
-Now, here comes the fun part! Let's create a graph using NetworkX to visualize the relationship between the input features and the diagnosis, highlighting the features that contribute most to a positive (malignant) diagnosis:
+Now, here comes the fun part! Let's create a graph using [NetworkX](https://networkx.org/) to visualize the relationship between the input features and the diagnosis, highlighting the features that contribute most to a positive diagnosis:
 
 ### Graph Structure
 ```python
@@ -197,22 +209,24 @@ DIAGNOSIS_LABEL = "PositiveDiagnosis"
 G.add_node(DIAGNOSIS_LABEL, type="diagnosis")
 
 # Add nodes/edges for features
-for feature in all_feature_names:
-    G.add_node(feature, type="feature", importance=feature_importance[feature])
-    G.add_edge(feature, DIAGNOSIS_LABEL, weight=norm_importance[feature], label=f"{feature_importance[feature]:.2f}")
+for f in all_feature_names:
+    importance = feature_importance[feature]
+    weight = norm_importance[feature]
+    edge_label = f"{importance[feature]:.2f}")
+    G.add_node(f, type="feature", importance=importance)
+    G.add_edge(f, DIAGNOSIS_LABEL, weight=weight, label=edge_label)```
 ```
-
-In this code snippet, we create a graph `G` and add nodes for each feature, as well as a Diagnosis node.  We also add edges between each feature node and the `Diagnosis` node. 
+In this code snippet, we create a graph [G](https://networkx.org/documentation/stable/reference/classes/digraph.html) and add **nodes** for each feature, as well as a Diagnosis **node**.  We also add **edges** between each feature **node** and the `Diagnosis` **node**. 
 
 ### Graph visualization
+#### Node positions
+Now, how to get node (and label) positions?
 
-#### Get node and label positions
-For this graph, we don't want one of the default layouts (`nx.spring_layout(G)` is usually nice). In this case, we want the feature nodes laid out in two concentric circles, in order of highest importance, which each node alternating between the circles.
+[NetworkX](https://networkx.org/) has several great [layout utilities](https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout).  These use your Graph structure and calculate node positions based on their underlying algorithm.  The [spring_layout](https://networkx.org/documentation/stable/reference/generated/networkx.drawing.layout.spring_layout.html) is commonly used.  However, after playing around with default layouts, I noticed a simple "circle of nodes" was too crowded, especially with labels.  However, if we offset every other node to an outer circle, things fit much more nicely.  
 
-We want the labels laid out in the same fashion, with slightly bigger radii, so they don't display right on top of the nodes/lines.
+Therefore, we want the feature nodes laid out in two concentric circles, in order of highest importance, which each node alternating between the inner and outer circle.
 
 The Diagnosis Node lies directly at the center of the graph.
-
 ```python
 # Constants to control concentric circle generation:
 RADIUS=1000
