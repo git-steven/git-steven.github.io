@@ -13,9 +13,13 @@ categories:
 author: steven
 ---
 
-_Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas_
-  
+# Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas_
 ![](</assets/images/pyspark-mlib-sm.png>)
+
+## Note:
+This builds upon my [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the breast cancer [dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
+
+We also explore the dataset a bit using pandas, and show an example of graphing feature values with a scatterplot.
 
 As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the "sklearn.datasets.load_breast_cancer" dataset and [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
 
@@ -138,9 +142,9 @@ plt.show()
 # Extract features 
 The `load_breast_cancer` function from scikit-learn gives us a convenient way to access the breast cancer dataset, which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
 
-Random Forest is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
+[Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
 
-Now, create a Random Forest classifier and train it on the dataset:
+Now, create a https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html and train it on the dataset:
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
