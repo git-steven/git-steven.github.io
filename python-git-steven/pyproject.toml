@@ -8,16 +8,19 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pyspark = {extras = ["connect"], version = "^3.5.1"}
+pyspark = {extras = ["connect", "sql", "pandas_on_spark"], version = "~3.5.1"}
 numpy = "^1.26.4"
 scikit-learn = "^1.4.2"
 setuptools = "^69.5.1"
 pandas = "^2.2.2"
-pyarrow = "^15.0.2"
 grpcio = "^1.62.2"
 google-api-python-client = "^2.126.0"
 grpcio-status = "^1.62.2"
 nltk = "^3.8.1"
+sparknlp = "^1.0.0"
+spark-nlp-display = "^5.0"
+networkx = "^3.3"
+matplotlib = "^3.8.4"
 
 [tool.poetry.group.dev.dependencies]
 jupyterlab = "^4.1.6"
