@@ -138,7 +138,7 @@ target
 There is even more information about the dataset contained below.
 
 ### Show a scatter plot
-This shows a scatter plat using some of our more indicative features (found below in [Random Forest Classifier](#random-forest-classifier).
+This shows a scatter plat using some of our more indicative features (found below in [Random Forest Classifier](#random-forest-classifier)).
 ```python
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
@@ -150,8 +150,8 @@ plt.colorbar(label='Target')
 plt.show()
 ```
 
-## Extract features 
-The `load_breast_cancer` function from scikit-learn gives us a convenient way to access the breast cancer dataset, which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
+## Feature Extraction 
+The `load_breast_cancer` function from scikit-learn gives us a convenient way to access the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer), which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
 
 ### Random Forest Classifier
 [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
