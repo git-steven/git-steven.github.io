@@ -13,10 +13,10 @@ categories:
 author: steven
 ---
 
-# Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas_
-![](</assets/images/pyspark-mlib-sm.png>)
+## Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas
+![](</assets/images/networkx-md.png>)
 
-## Note:
+### Note:
 This builds upon my [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the breast cancer [dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
 
 We also explore the dataset a bit using pandas, and show an example of graphing feature values with a scatterplot.
