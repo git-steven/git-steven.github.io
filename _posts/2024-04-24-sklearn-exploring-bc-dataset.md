@@ -123,13 +123,14 @@ for k, v in feature_importance.items():
     print(f"Feature: {k}, Importance: {v:.4f}")
 ```
 
-The above code creates the `RandomForestClassifier`, then grabs the importances from `rand_forest_classifier.feature_importances_`.  Then, we create a dictionary of `feature_name` to `importance`.  This is useful information in its own right; we will also use it to create our [NetworkX](https://networkx.org/) graph.  
+The above code creates the [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html), then grabs the importances from [rand_forest_classifier.feature_importances_](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.feature_importances_).  It finishes by creating a dictionary of `feature_name:importance`.  This is useful information in its own right; we will also use it to create our [NetworkX](https://networkx.org/) graph.  
+
 
 ## Exploring the dataset
-Let's explore the dataset with pandas
+Let’s explore the dataset with [Pandas](https://pandas.pydata.org/)...
 ```python
-bc_df = load_breast_cancer(as_frame=True)
-df = bc_df.frame
+bc_dataset = load_breast_cancer(as_frame=True)
+df = bc_dataset.frame
 df['target'] = bc_data.target
 
 # Explore the dataset
@@ -167,13 +168,15 @@ Target distribution:
 target
 1    357
 0    212
-...
+....
 ```
 
-There is even more information about the dataset contained below this output, including a [Statistical Summary](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) and a [Correlation Matrix](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html).
+There is even more information about the dataset contained below this output, which is truncated here, including a [Statistical Summary](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) and a [Correlation Matrix](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html).
 
 ### Show a scatter plot
-This shows a scatter plat using some of our more indicative features (found below in [Random Forest Classifier](#random-forest-classifier)).
+You can create graphs with [matplotlib](https://matplotlib.org/) that use [DataFrames](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) and display in a [Jupyter](https://jupyter.org/) Notebook.   This shows a scatter plot using some of our more "important" features as detected by [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html). 
+
+
 ```python
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
@@ -184,6 +187,8 @@ plt.title('Scatter Plot: Worst Concave Points vs Worst Perimiter')
 plt.colorbar(label='Target')
 plt.show()
 ```
+<img width="550" alt="image" src="https://github.com/git-steven/git-steven.github.io/assets/6759449/ebf6eee4-820d-4229-9d9f-31011703e509">
+
 
 ## Building the graph
 Now, here comes the fun part! Let's create a graph using [NetworkX](https://networkx.org/) to visualize the relationship between the input features and the diagnosis, highlighting the features that contribute most to a positive diagnosis:
