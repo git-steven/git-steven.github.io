@@ -262,12 +262,13 @@ label_positions = { feature_name: label_coords[i] for i, feature_name in enumera
 label_positions[DIAGNOSIS_LABEL] = (0.0, 0.0)
 ```
 
+You may have we noticed that we calculate the positions for node labels as well.  Normally, they are displayed inside the node, however, some of our feature names are quite long, which would make for big nodes, so we elected to place them in boxes even further out from our nodes.  So essentially, Nodes are laid out in two concentric circles, and their labels occupy two more, slightly bigger concentric circles.  
 
 ## Graph rendering
-Finally, we visualize the graph using NetworkX's drawing functions. The resulting graph is a powerful visual representation of the relationship between the input features and the diagnosis. The larger the node size and the thicker the edge, the more important that feature is in contributing to a positive (malignant) diagnosis.
+Finally, we visualize the graph using [NetworkX](https://networkx.org/)'s drawing functions. The resulting graph is a powerful visual representation of the relationship between the input features and the diagnosis. The larger the node size and the thicker the edge, the more important that feature is in contributing to a positive diagnosis.
 
-* [NetworkX](https://networkx.org/) works with matplotlib to render our graph
-* The edge weights and colors represent the importance scores determined by the Random Forest classifier.
+* [NetworkX](https://networkx.org/) works with [matplotlib](https://matplotlib.org/) to render our graph
+* The edge weights and colors represent the importance scores determined by the [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
  
 ```python
 # Constants needed to control NODE & EDGE sizes:
@@ -368,4 +369,4 @@ I encourage you to explore the breast cancer dataset further and experiment with
 
 Remember, while this example focuses on breast cancer diagnosis, the principles and techniques demonstrated here can be applied to various other domains and datasets. The power of data visualization lies in its ability to communicate complex relationships and insights in a clear and intuitive manner.
 
-So, go ahead and give it a try! Load up your favorite dataset, fire up a Jupyter Notebook, and start visualizing those important features like a pro. Happy exploring!
+So, go ahead and give it a try! Load up your favorite dataset, fire up a [Jupyter](https://jupyter.org/) Notebook, and start visualizing those important features like a pro. Happy exploring!
