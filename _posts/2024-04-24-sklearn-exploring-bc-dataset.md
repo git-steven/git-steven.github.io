@@ -17,7 +17,7 @@ _Using [pandas](https://pandas.pydata.org/), [scikit-learn](https://scikit-learn
 
 ![](</assets/images/networkx-md.png>)
 
-## Introduction:
+## Introduction
 This builds upon a [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
 
 We also explore the dataset a bit using [pandas](https://pandas.pydata.org/), and show an example of graphing feature values with a [matplotlib](https://matplotlib.org/) scatterplot.
@@ -49,8 +49,15 @@ def display_df(df:pd.Dataframe, rows:int=1):
     """ Pretty displays a dataframe with specified rows """
     display(HTML(df.head(rows).to_html()))
     
-def concentric_cirle_point_generator(coordinate_count:int, r1:float=1.0, r2:float=1.0, translate_vector:Tuple[float, float]=(0.0, 0.0)):
-    """ Generates points on two concentric circles, given by the radii.  The points generated will alternate between the two given radii """
+def concentric_cirle_point_generator(
+        coordinate_count:int, 
+        r1:float=1.0, 
+        r2:float=1.0
+    ):
+    """ 
+    Generates points on two concentric circles, given by the radii.  
+    The points generated will alternate between the two circles 
+    """
     section_degrees = 360.0/coordinate_count
     for c in range(coordinate_count):
         angle = c * section_degrees
@@ -110,17 +117,18 @@ display_df(corr_matrix, 30)
 Running the above cell shows some cool information about the dataset.  It starts like this:
 ```bash
 Dataset shape: (569, 31)
-Dataset columns: Index(['mean radius', 'mean texture', 'mean perimeter', 'mean area',
-       'mean smoothness', 'mean compactness', 'mean concavity',
-       'mean concave points', 'mean symmetry', 'mean fractal dimension',
-       'radius error', 'texture error', 'perimeter error', 'area error',
-       'smoothness error', 'compactness error', 'concavity error',
-       'concave points error', 'symmetry error', 'fractal dimension error',
-       'worst radius', 'worst texture', 'worst perimeter', 'worst area',
-       'worst smoothness', 'worst compactness', 'worst concavity',
-       'worst concave points', 'worst symmetry', 'worst fractal dimension',
-       'target'],
-      dtype='object')
+Dataset columns: Index([
+  'mean radius', 'mean texture', 'mean perimeter', 'mean area',
+  'mean smoothness', 'mean compactness', 'mean concavity',
+  'mean concave points', 'mean symmetry', 'mean fractal dimension',
+  'radius error', 'texture error', 'perimeter error', 'area error',
+  'smoothness error', 'compactness error', 'concavity error',
+  'concave points error', 'symmetry error', 
+  'fractal dimension error', 'worst radius', 'worst texture', 
+  'worst perimeter', 'worst area','worst smoothness', 
+  'worst compactness', 'worst concavity', 'worst concave points',
+  'worst symmetry', 'worst fractal dimension',
+  'target'], dtype='object')
 Target distribution:
 target
 1    357
@@ -130,7 +138,7 @@ target
 There is even more information about the dataset contained below.
 
 ### Show a scatter plot
-This shows a scatter plat using some of our more indicative features:
+This shows a scatter plat using some of our more indicative features (found below in [Random Forest Classifier](#random-forest-classifier).
 ```python
 import matplotlib.pyplot as plt
 plt.figure(figsize=(8, 6))
@@ -142,9 +150,10 @@ plt.colorbar(label='Target')
 plt.show()
 ```
 
-# Extract features 
+## Extract features 
 The `load_breast_cancer` function from scikit-learn gives us a convenient way to access the breast cancer dataset, which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
 
+### Random Forest Classifier
 [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
 
 Now, create a https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html and train it on the dataset:
