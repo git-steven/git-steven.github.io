@@ -151,7 +151,7 @@ plt.show()
 ```
 
 ## Feature Extraction 
-The `load_breast_cancer` function from scikit-learn gives us a convenient way to access the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer), which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
+The `load_breast_cancer` function from [scikit-learn](https://scikit-learn.org/) gives us a convenient way to access the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer), which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).
 
 ### Random Forest Classifier
 [Random Forest](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) is an ensemble learning method that combines multiple decision trees to make predictions. It's known for its ability to handle high-dimensional data and provide feature importance scores.
@@ -207,7 +207,7 @@ In this code snippet, we create a graph `G` and add nodes for each feature, as w
 ### Graph visualization
 
 #### Get node and label positions
-For this graph, we don't want one of the default layouts (`nx.spring_layout(G)` is nice). In this case, we want the feature nodes laid out in two concentric circles, in order of highest importance, which each node alternating between the circles.
+For this graph, we don't want one of the default layouts (`nx.spring_layout(G)` is usually nice). In this case, we want the feature nodes laid out in two concentric circles, in order of highest importance, which each node alternating between the circles.
 
 We want the labels laid out in the same fashion, with slightly bigger radii, so they don't display right on top of the nodes/lines.
 
@@ -221,13 +221,23 @@ LABEL_INCR = 200
 
 # Get concentric circles coordinates for nodes:
 feature_cnt = len(feature_importance)
-node_pts = concentric_cirle_point_generator(feature_cnt, r1=RADIUS, r2=RADIUS+RADIUS_INCR)
+node_pts = concentric_cirle_point_generator(
+  feature_cnt, 
+  r1=RADIUS, 
+  r2=RADIUS+RADIUS_INCR
+)
+
 coords = list(node_pts)
 node_positions = { feature_name: coords[i] for i, feature_name in enumerate(feature_importance.keys()) }
-node_positions[DIAGNOSIS_LABEL] = TRANSLATE_VECTOR
+node_positions[DIAGNOSIS_LABEL] = (0.0, 0.0)
 
-# Get concentric circles coordinates for labels (slightly further out than the nodes):
-lbl_pts = concentric_cirle_point_generator(feature_cnt, r1=RADIUS+LABEL_INCR, r2=RADIUS+RADIUS_INCR+LABEL_INCR)
+# Get concentric circles coordinates for labels, 
+# just (slightly further out than the nodes):
+lbl_pts = concentric_cirle_point_generator(
+  feature_cnt, 
+  r1=RADIUS+LABEL_INCR, 
+  r2=RADIUS+RADIUS_INCR+LABEL_INCR
+)
 label_coords = list(lbl_pts)                                    
 label_positions = { feature_name: label_coords[i] for i, feature_name in enumerate(feature_importance.keys()) }
 label_positions[DIAGNOSIS_LABEL] = (0.0, 0.0)
@@ -247,28 +257,49 @@ BOSS_NODE_SIZE = 10000
 EDGE_SCALE = 10.0
 EDGE_MIN = 4.0
 
-
-
 # Clreate matplotlib plot on which to draw our graph:
 plt.figure(figsize=(16, 16))
-# matplotlib.pyplot.margins(x=0.0, y=400.0)
 
-
-# Edge colors are a factor of normalized importance, and use interpolated colors from colormap:
+# Edge colors are a factor of normalized importance, 
+# and use interpolated colors from colormap:
 edge_colors = [norm_importance[e[0]] for e in G.edges]
-edge_widths = [EDGE_MIN + G.edges[e]["weight"] * EDGE_SCALE for e in G.edges]
-node_colors = ["lightgreen" if ("type" in G.nodes[n] and G.nodes[n]["type"] == "feature") else "lightblue" for n in G.nodes]
-node_sizes  = [NODE_SIZE if G.nodes[n]["type"] == "feature" else BOSS_NODE_SIZE for n in G.nodes]
-edge_labels = {e: round(feature_importance[e[0]], 4) for e in G.edges}
-colormap = ListedColormap(['gold', 'goldenrod', 'darkorange', 'red', 'firebrick']).resampled(1024)
+edge_widths = [
+   EDGE_MIN + G.edges[e]["weight"] * EDGE_SCALE for e in G.edges
+]
+
+# Node colors are lightgreen or lightblue:
+node_colors = ["lightgreen" \
+    if ("type" in G.nodes[n] and G.nodes[n]["type"] == "feature") \     
+    else "lightblue" for n in G.nodes
+]
+
+# Node sizes are NODE_SIZE or BOSS_NODE_SIZE:
+node_sizes  = [NODE_SIZE \
+    if G.nodes[n]["type"] == "feature" \
+    else BOSS_NODE_SIZE for n in G.nodes
+]
+
+# Create edge labels based on feature importance:
+edge_labels = {e: round(feature_importance[e[0]], 4) \
+    for e in G.edges
+}
+
+# Create colormap for edges:
+edge_colormap = ListedColormap([
+    'gold', 
+    'goldenrod', 
+    'darkorange', 
+    'red', 
+    'firebrick']).resampled(1024)
+
+# Draw network without labels:
 nx.draw_networkx(
     G, 
     node_positions, 
     alpha=1.0, 
     arrows=False, 
-    # arrowsize=12, 
     edge_color=edge_colors, 
-    edge_cmap = colormap,
+    edge_cmap=edge_colormap,
     edge_vmax=1.0, 
     edge_vmin=0.0, 
     label="Features most relevant to positive diagnosis",     
@@ -279,8 +310,23 @@ nx.draw_networkx(
     width=edge_widths,     
 )
 
-nx.draw_networkx_labels(G, label_positions, font_size=9, bbox=dict(boxstyle="round", alpha=0.8, facecolor="white"),)
-nx.draw_networkx_edge_labels(G, node_positions, edge_labels=edge_labels, font_size=8, alpha=1.0)
+# Draw labels at offset positions:
+nx.draw_networkx_labels(
+    G, 
+    label_positions, 
+    font_size=9, 
+    bbox=dict(boxstyle="round", alpha=0.8, facecolor="white"),
+)
+
+# Draw edge labels:
+nx.draw_networkx_edge_labels(
+    G, 
+    node_positions, 
+    edge_labels=edge_labels, 
+    font_size=8
+)
+
+# Render with matplotlib:
 plt.margins(x=0.1, y=0.1)
 plt.axis("off")
 plt.title("Feature Importance Graph")
