@@ -21,6 +21,8 @@ This builds upon my [previous article](https://git-steven.github.io/scikit-learn
 
 We also explore the dataset a bit using pandas, and show an example of graphing feature values with a scatterplot.
 
+Finally, we create a [NetworkX](https://networkx.org/) graph that shows the features and their influence on a positive diagnosis.  Each edge between a feature and the Diagnosis node has a weighted line thickness, as well a color palette to denote their relative importance.   
+
 As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the "sklearn.datasets.load_breast_cancer" dataset and [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.
 
 ## Prerequisites
