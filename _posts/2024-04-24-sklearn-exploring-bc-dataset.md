@@ -13,9 +13,9 @@ categories:
 author: steven
 ---
 
-_Using [pandas](https://pandas.pydata.org/), [scikit-learn](https://scikit-learn.org/), and [NetworkX](https://networkx.org/) to explore data, extract features, and visualize data._ 
+_Using [pandas](https://pandas.pydata.org/), [scikit-learn](https://scikit-learn.org/), and [NetworkX](https://networkx.org/) to explore data, extract features, and visualize data._
 
-![](</assets/images/networkx-md.png>)
+![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx-md.png)
 
 ## Introduction
 This builds upon a [previous article](https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/), which showed us how to extract features from the [breast cancer dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) instead of [f_regression](https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression).
@@ -24,7 +24,7 @@ We also explore the dataset a bit using [pandas](https://pandas.pydata.org/), an
 
 Finally, we create a [NetworkX](https://networkx.org/) graph that shows the features and their influence on a positive diagnosis.  Each edge between a feature and the Diagnosis node has a weighted line thickness, as well a color palette to denote their relative importance.   
 
-![](</assets/images/networkx_bc_md.png>)
+![NetworkX teaser](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx_bc_md.png)
 
 ### Breast Cancer Dataset
 As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the [sklearn.datasets.load_breast_cancer](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer) dataset and visualizing it using the [NetworkX](https://networkx.org/) library in a [Jupyter](https://jupyter.org/) Notebook.  This dataset has 30 feature columns, so it it is perfect for feature selection -- determining which features might be contributing to a positive diagnosis. 
@@ -187,6 +187,9 @@ plt.title('Scatter Plot: Worst Concave Points vs Worst Perimiter')
 plt.colorbar(label='Target')
 plt.show()
 ```
+
+![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scatter-plot.png)
+
 <img width="550" alt="image" src="https://github.com/git-steven/git-steven.github.io/assets/6759449/ebf6eee4-820d-4229-9d9f-31011703e509">
 
 
@@ -357,8 +360,8 @@ for k, v in feature_importance.items():
     print(f"Feature: {k}, Importance: {v:.4f}")
 ```
 
-When running the above cell, your output will should look like this:
-![](/assets/images/networkx_bc.png)
+![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx_bc.png)
+
 
 ## Conclusion
 In my experience, visualizing feature importance in this way can be incredibly insightful. It allows us to quickly identify the key factors that influence the diagnosis and helps guide further analysis and decision-making.
