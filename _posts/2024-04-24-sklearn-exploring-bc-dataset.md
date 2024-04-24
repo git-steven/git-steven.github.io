@@ -1,6 +1,6 @@
 ---
-title:  "Feature Selection and Visualization with scikit-learn and NetworkX"
-date:   2024-03-29 13:18:25 -0500
+title:  "Visualizing Feature Selection in Breast Cancer Diagnosis using NetworkX and Pandas"
+date:   2024-04-24 03:18:25 -0500
 categories:
 - scikit-learn
 - feature-engineering
@@ -13,7 +13,7 @@ categories:
 author: steven
 ---
 
-## Visualizing Feature Importance in Breast Cancer Diagnosis using NetworkX and Pandas
+## Visualizing Feature Selection in Breast Cancer Diagnosis using NetworkX and Pandas
 ![](</assets/images/networkx-md.png>)
 
 ### Note:
