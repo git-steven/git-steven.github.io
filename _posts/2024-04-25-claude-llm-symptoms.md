@@ -49,7 +49,7 @@ import anthropic
 from ipywidgets import widgets
 from IPython.display import display
 
-client = anthropic.Client(api_key=os.getenv('CLAUDE_API_SECRET'))
+client = anthropic.Client(api_key=os.getenv('CLAUDE_API_KEY'))
 
 PROMPT = """
 Given the following symptoms: "{}", what are the possible diagnoses?
