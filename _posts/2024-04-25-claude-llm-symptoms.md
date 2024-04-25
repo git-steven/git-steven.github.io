@@ -127,22 +127,7 @@ To run the interactive diagnostic tool, execute the following cell, which simply
 ```python
 symptom_checker_widget()
 ```
-
-```bash
-    HTML(value='<h3>Diagnostics via Claude</h3>')
-
-
-
-    Textarea(value='', description='Symptoms', layout=Layout(height='80px', width='80%'), placeholder='Describe yo…
-
-
-
-    Button(description='Diagnose', style=ButtonStyle())
-
-
-
-    Output(layout=Layout(border_bottom='1px solid black', border_left='1px solid black', border_right='1px solid b…
-```
+![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/claude-diag-ui.png)
 
 ## Conclusion
 In this article, we explored how to build an interactive diagnostic tool using Claude's LLM [API](https://docs.anthropic.com/claude/reference/client-sdks), the Python [Anthropic](https://pypi.org/project/anthropic/) package, and [Jupyter Widgets](https://ipywidgets.readthedocs.io/). By leveraging the power of AI and NLP, we created a simple interface that accepts symptoms and provides possible diagnoses.
