@@ -7,7 +7,6 @@ categories:
 - llm
 - python
 - claude
-- sklearn
 author: steven
 ---
 
@@ -120,7 +119,7 @@ def symptom_checker_widget():
     display(caption, symptom_input, diagnose_button, output)
 ```
 
-# Running the tool
+## Running the tool
 To run the interactive diagnostic tool, execute the following cell, which simply calls the `symptom_checker_widget` function defined above. The user interface will appear, allowing users to enter their symptoms and click the "Diagnose" button to receive possible diagnoses based on the symptoms provided.
 
 
