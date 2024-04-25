@@ -11,7 +11,6 @@ categories:
 author: steven
 ---
 
-# Symptom Diagnosis with Claude LLM
 _Building an Interactive Diagnostic Tool with Claude's LLM API and Jupyter Widgets_
 
 ![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/claude-diagnose-md.png)
