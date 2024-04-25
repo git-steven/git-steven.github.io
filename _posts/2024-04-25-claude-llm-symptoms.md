@@ -16,7 +16,7 @@ _Building an Interactive Diagnostic Tool with Claude's LLM API and Jupyter Widge
 ![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/claude-diagnose-md.png)
 
 ## Introduction
-In the field of healthcare, early and accurate diagnosis plays a crucial role in providing effective treatment to patients. With the advancements in artificial intelligence (AI) and natural language processing (NLP), it is now possible to create intelligent diagnostic tools that can assist medical professionals and empower patients. In this article, we will explore how to build a _basic_ interactive diagnostic tool using Claude's LLM API, the Python Anthropic package, and Jupyter Widgets.
+In the field of healthcare, early and accurate diagnosis plays a crucial role in providing effective treatment to patients. With the advancements in artificial intelligence (AI) and natural language processing (NLP), it is now possible to create intelligent diagnostic tools that can assist medical professionals and empower patients. In this article, we will explore how to build a _basic_ interactive diagnostic tool using Claude's LLM [API](https://docs.anthropic.com/claude/reference/client-sdks), the Python [Anthropic](https://pypi.org/project/anthropic/) package, and [Jupyter Widgets](https://ipywidgets.readthedocs.io/).
 
 ## Prerequisites
 
