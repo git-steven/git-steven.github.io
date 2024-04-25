@@ -362,7 +362,6 @@ for k, v in feature_importance.items():
 
 ![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx_bc.png)
 
-
 ## Conclusion
 In my experience, visualizing feature importance in this way can be incredibly insightful. It allows us to quickly identify the key factors that influence the diagnosis and helps guide further analysis and decision-making.
 
