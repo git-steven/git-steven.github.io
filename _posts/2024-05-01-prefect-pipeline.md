@@ -21,7 +21,7 @@ _What is Prefect?_
 [Prefect](https://www.prefect.io/) is an open-source Python library designed to simplify the process of building, scheduling, and monitoring data workflows. It provides a clean and expressive API that allows data engineers to define complex workflows using Python code, making it easy to create, test, and maintain data pipelines.
 
 Prefect vs. Airflow: Similarities and Advantages
-[Prefect](https://www.prefect.io/) shares some similarities with [Airflow](https://airflow.apache.org/), as both tools aim to orchestrate and manage data workflows. However, Prefect offers several advantages over [Airflow](https://airflow.apache.org/):
+[Prefect](https://www.prefect.io/) shares some similarities with [Airflow](https://airflow.apache.org/), as both tools aim to orchestrate and manage data workflows. However, [Prefect](https://www.prefect.io/) offers several advantages over [Airflow](https://airflow.apache.org/):
 
 1. **Python-native:** [Prefect](https://www.prefect.io/) is built around the concept of using pure Python code to define workflows, making it more intuitive and accessible to Python developers.
 2. **Task-based approach:** [Prefect](https://www.prefect.io/) introduces the concept of tasks, which are the building blocks of a workflow. Tasks encapsulate a single unit of work and can be easily composed to create complex workflows.
