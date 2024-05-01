@@ -56,8 +56,8 @@ create user prefect with encrypted password 'pr3f3ct';
 grant all privileges on database prefect_test to prefect;
 ```
 
-## About
-Understanding Tasks and Flows in Prefect
+## About Tasks and Flows
+_Understanding Tasks and Flows in Prefect_
 In [Prefect](https://www.prefect.io/), a "task" is a Python function decorated with the `@task` decorator. Tasks encapsulate a single unit of work and can take inputs, perform computations, and produce outputs. Tasks are the fundamental building blocks of a Prefect workflow.
 
 A flow, on the other hand, is a collection of tasks arranged in a specific order to accomplish a larger goal. Flows define the dependencies between tasks and specify the order in which they should be executed. Flows are created using the `@flow` decorator in Prefect.
@@ -66,7 +66,7 @@ A flow, on the other hand, is a collection of tasks arranged in a specific order
 Let's take a closer look at the provided example code and understand how it leverages Prefect for an ETL pipeline.
 
 ### Extract
-In the `extract_data` task, we use the `connection_context_manager` to establish a connection to the source database. We then execute a SQL query to extract all data from the `source_data` table and return it as a pandas DataFrame.
+In the `extract_data` task, we use the `connection_context_manager` to establish a connection to the source database. We then execute a SQL query to extract all data from the `source_data` table and return it as a pandas [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html).
 
 ```python
 @task
@@ -87,7 +87,7 @@ def extract_data() -> DataFrame:
 
 
 ### Transform
-The `transform_data` task takes the extracted DataFrame as input and performs various data transformations. It applies data cleaning by removing any missing values using `df.dropna(inplace=True)`. It then performs data normalization using `MinMaxScaler`, standardization using `StandardScaler`, and Gaussian transformation using `QuantileTransformer` from the [scikit-learn](https://scikit-learn.org/stable/) library.
+The `transform_data` task takes the extracted [DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) as input and performs various data transformations. It applies data cleaning by removing any missing values using `df.dropna(inplace=True)`. It then performs data normalization using [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler), standardization using [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler), and Gaussian transformation using [QuantileTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html#sklearn.preprocessing.QuantileTransformer) from the [scikit-learn](https://scikit-learn.org/stable/) library.
 
 ```python
 @task
