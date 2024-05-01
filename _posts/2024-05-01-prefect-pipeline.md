@@ -76,7 +76,7 @@ def extract_data() -> DataFrame:
 
 
 ### Transform
-The `transform_data` task takes the extracted DataFrame as input and performs various data transformations. It applies data cleaning by removing any missing values using `df.dropna(inplace=True)`. It then performs data normalization using `MinMaxScaler`, standardization using `StandardScaler`, and Gaussian transformation using `QuantileTransformer` from the scikit-learn library.
+The `transform_data` task takes the extracted DataFrame as input and performs various data transformations. It applies data cleaning by removing any missing values using `df.dropna(inplace=True)`. It then performs data normalization using `MinMaxScaler`, standardization using `StandardScaler`, and Gaussian transformation using `QuantileTransformer` from the [scikit-learn](https://scikit-learn.org/stable/) library.
 
 ```python
 @task
