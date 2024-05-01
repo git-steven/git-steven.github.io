@@ -14,24 +14,23 @@ _Streamlining Data Workflows with Prefect: A Powerful Alternative to Airflow_
 ![](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/prefect-md.png)
 
 ## Introduction
-In the world of data engineering, efficient and reliable data workflows are crucial for managing complex data pipelines. [Prefect](https://www.prefect.io/), a modern workflow management system, has emerged as a powerful alternative to Apache Airflow, offering a more flexible and intuitive approach to building and executing data workflows.
+In the world of data engineering, efficient and reliable data workflows are crucial for managing complex data pipelines. [Prefect](https://www.prefect.io/), a modern workflow management system, has emerged as a powerful alternative to [Apache Airflow](https://airflow.apache.org/), offering a more flexible and intuitive approach to building and executing data workflows.
 
 _What is Prefect?_
 
 [Prefect](https://www.prefect.io/) is an open-source Python library designed to simplify the process of building, scheduling, and monitoring data workflows. It provides a clean and expressive API that allows data engineers to define complex workflows using Python code, making it easy to create, test, and maintain data pipelines.
 
 Prefect vs. Airflow: Similarities and Advantages
-[Prefect](https://www.prefect.io/) shares some similarities with Airflow, as both tools aim to orchestrate and manage data workflows. However, Prefect offers several advantages over Airflow:
+[Prefect](https://www.prefect.io/) shares some similarities with [Airflow](https://airflow.apache.org/), as both tools aim to orchestrate and manage data workflows. However, Prefect offers several advantages over [Airflow](https://airflow.apache.org/):
 
-1. Python-native: Prefect is built around the concept of using pure Python code to define workflows, making it more intuitive and accessible to Python developers.
-2. Task-based approach: Prefect introduces the concept of tasks, which are the building blocks of a workflow. Tasks encapsulate a single unit of work and can be easily composed to create complex workflows.
-3. Dynamic flow control: Prefect allows for dynamic flow control, enabling tasks to be added, removed, or modified during runtime based on the results of previous tasks.
-4. Concurrency and parallelism: Prefect supports concurrent execution of tasks, allowing for efficient utilization of resources and faster execution of workflows.
-5. Advanced error handling: Prefect provides a robust error handling mechanism, allowing for automatic retries, failure notifications, and the ability to define custom error handling strategies.
+1. **Python-native:** [Prefect](https://www.prefect.io/) is built around the concept of using pure Python code to define workflows, making it more intuitive and accessible to Python developers.
+2. **Task-based approach:** [Prefect](https://www.prefect.io/) introduces the concept of tasks, which are the building blocks of a workflow. Tasks encapsulate a single unit of work and can be easily composed to create complex workflows.
+3. **Dynamic flow control:** [Prefect](https://www.prefect.io/) allows for dynamic flow control, enabling tasks to be added, removed, or modified during runtime based on the results of previous tasks.
+4. **Concurrency and parallelism:** [Prefect](https://www.prefect.io/) supports concurrent execution of tasks, allowing for efficient utilization of resources and faster execution of workflows.
+5. **Advanced error handling:** [Prefect](https://www.prefect.io/) provides a robust error handling mechanism, allowing for automatic retries, failure notifications, and the ability to define custom error handling strategies.
 
 ## Dependencies
 Before diving into the example code, let's ensure we have the necessary dependencies installed. Here's a list of the required libraries:
-
 - prefect
 - prefect-sqlalchemy
 - pandas
@@ -110,7 +109,8 @@ def transform_data(df: DataFrame) -> DataFrame:
     # ...
 ```
 
-The transformed data is stored in separate DataFrames (`df_normalized`, `df_standardized`, `df_gaussian`) with appropriate column names. These DataFrames are then merged into a single DataFrame `df_xform` before being returned.
+The transformed data is temporarily stored in separate DataFrames (`df_normalized`, `df_standardized`, `df_gaussian`) 
+with appropriate column names. These DataFrames are then merged into a single DataFrame `df_xform` before being returned.
 
 ## Load
 The load task simply stores the transformed data into the `destination_data` table.
@@ -149,22 +149,22 @@ def etl_pipeline():
 ## Details 
 
 ### MinMaxScaler
-MinMaxScaler is a scaling technique that transforms features to a specific range, typically between 0 and 1. It is useful when features have different scales, and you want to bring them to a common scale for comparison or visualization. MinMaxScaler is also beneficial when working with algorithms sensitive to feature scales, such as neural networks or support vector machines. However, it is sensitive to outliers, which can significantly impact the scaling of the features.
+[MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler) is a scaling technique that transforms features to a specific range, typically between 0 and 1. It is useful when features have different scales, and you want to bring them to a common scale for comparison or visualization. MinMaxScaler is also beneficial when working with algorithms sensitive to feature scales, such as neural networks or support vector machines. However, it is sensitive to outliers, which can significantly impact the scaling of the features.
 
 ### StandardScaler
-StandardScaler is a scaling technique that standardizes features by removing the mean and scaling to unit variance. It is useful when features have different units or scales, and you want to bring them to a common scale with zero mean and unit variance. StandardScaler is particularly helpful when working with algorithms that assume normally distributed input features, such as linear regression or logistic regression. It gives equal importance to all features, regardless of their original scale. StandardScaler is less sensitive to outliers compared to MinMaxScaler, but extreme outliers can still affect the mean and standard deviation calculations.
+[StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html#sklearn.preprocessing.StandardScaler) is a scaling technique that standardizes features by removing the mean and scaling to unit variance. It is useful when features have different units or scales, and you want to bring them to a common scale with zero mean and unit variance. StandardScaler is particularly helpful when working with algorithms that assume normally distributed input features, such as linear regression or logistic regression. It gives equal importance to all features, regardless of their original scale. StandardScaler is less sensitive to outliers compared to [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler), but extreme outliers can still affect the mean and standard deviation calculations.
 
 ### Gaussian distribution
 _Leveraging Gaussian Transformation with QuantileTransformer_
 
-In the example code, the `transform_data` task utilizes the `QuantileTransformer` from scikit-learn to perform Gaussian transformation on the input data. The Gaussian transformation aims to transform the data to follow a normal (Gaussian) distribution.
+In the example code, the `transform_data` task utilizes the [QuantileTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html#sklearn.preprocessing.QuantileTransformer) from scikit-learn to perform Gaussian transformation on the input data. The Gaussian transformation aims to transform the data to follow a normal (Gaussian) distribution.
 
-By setting `output_distribution='normal'` in the `QuantileTransformer`, the transformed data will have a distribution that approximates a Gaussian distribution. This can be beneficial when working with algorithms that assume normally distributed input data or when you want to reduce the impact of outliers.
+By setting `output_distribution='normal'` in the [QuantileTransformer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.QuantileTransformer.html#sklearn.preprocessing.QuantileTransformer), the transformed data will have a distribution that approximates a Gaussian distribution. This can be beneficial when working with algorithms that assume normally distributed input data or when you want to reduce the impact of outliers.
 
 
 ## Conclusion
-Prefect offers a powerful and flexible alternative to Airflow for building and managing data workflows. With its Python-native approach, task-based composition, dynamic flow control, and advanced error handling capabilities, Prefect simplifies the process of creating and maintaining complex data pipelines.
+[Prefect](https://www.prefect.io/) offers a powerful and flexible alternative to [Airflow](https://airflow.apache.org/) for building and managing data workflows. With its Python-native approach, task-based composition, dynamic flow control, and advanced error handling capabilities, [Prefect](https://www.prefect.io/) simplifies the process of creating and maintaining complex data pipelines.
 
 By leveraging Prefect's tasks and flows, data engineers can easily define and orchestrate data workflows, incorporating essential data preprocessing techniques like normalization, standardization, and Gaussian transformation using scikit-learn's `QuantileTransformer`. These techniques enhance the quality and compatibility of data, enabling more effective and efficient downstream data processing and analysis tasks.
 
-As data workflows continue to grow in complexity, tools like Prefect empower data engineers to streamline their workflows, improve data quality, and focus on delivering valuable insights from their data pipelines.
+As data workflows continue to grow in complexity, tools like [Prefect](https://www.prefect.io/) empower data engineers to streamline their workflows, improve data quality, and focus on delivering valuable insights from their data pipelines.
