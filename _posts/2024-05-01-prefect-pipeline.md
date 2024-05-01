@@ -44,8 +44,19 @@ pip install prefect prefect-sqlalchemy pandas numpy scikit-learn typer
 ```
 
 Or, you can follow along using the full working project on [github](https://github.com/terracoil/terracoil-prefect).  
-It uses [poetry](https://python-poetry.org/) as a package manager, so you'll need to install that. 
+It uses [poetry](https://python-poetry.org/) as a package manager, so you'll need to install that.
 
+### Postgres DB
+* Install postgres for your platform if you haven't already. I recommend [homebrew](https://brew.sh/) if you are on OSX.     
+* Start up psql and run the following commands
+
+```postgresql
+create database prefect_test;
+create user prefect with encrypted password 'pr3f3ct';
+grant all privileges on database prefect_test to prefect;
+```
+
+## About
 Understanding Tasks and Flows in Prefect
 In [Prefect](https://www.prefect.io/), a "task" is a Python function decorated with the `@task` decorator. Tasks encapsulate a single unit of work and can take inputs, perform computations, and produce outputs. Tasks are the fundamental building blocks of a Prefect workflow.
 
