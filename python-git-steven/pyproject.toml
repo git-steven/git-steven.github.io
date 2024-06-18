@@ -10,7 +10,7 @@ readme = "README.md"
 python = "^3.12"
 pyspark = {extras = ["connect", "sql", "pandas_on_spark"], version = "~3.5.1"}
 numpy = "^1.26.4"
-scikit-learn = "^1.4.2"
+scikit-learn = "^1.5.0"
 setuptools = "^69.5.1"
 pandas = "^2.2.2"
 grpcio = "^1.62.2"
