@@ -11,7 +11,7 @@ python = "^3.12"
 pyspark = {extras = ["connect", "sql", "pandas_on_spark"], version = "~3.5.1"}
 numpy = "^1.26.4"
 scikit-learn = "^1.4.2"
-setuptools = "^69.5.1"
+setuptools = "^70.0.0"
 pandas = "^2.2.2"
 grpcio = "^1.62.2"
 google-api-python-client = "^2.126.0"
