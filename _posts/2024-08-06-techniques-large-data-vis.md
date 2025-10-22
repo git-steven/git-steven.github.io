@@ -1,6 +1,6 @@
----
+﻿---
 title:  "Taming the Data Beast: A Guide to Visualizing Massive Datasets"
-date:   2024-08-06 09:45:00 -0500
+date:   2024-08-06 0:45:00 -0500
 categories:
 - data-engineering
 - data-visualization
@@ -19,7 +19,7 @@ Remember the good old days when a "large dataset" meant a few thousand rows in E
 
 But fear not, dear reader! We're about to embark on a journey through the wild world of big data preprocessing. Buckle up, because things are about to get... mildly exciting.
 
-## The Art of Data Reduction
+## The Art and Science of Data Reduction
 
 ### Sampling: Less is More (Sometimes)
 
@@ -33,6 +33,8 @@ This is like organizing a really diverse party. You make sure every group is rep
 
 Aggregation is the art of smooshing data together until it fits into a manageable size. It's like making a smoothie out of your fruit salad – you lose some detail, but at least it fits in the cup.
 
+Aggregations include `sum`, `count`, `average`, `median`, as well as [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) and [Variance](https://en.wikipedia.org/wiki/Variance).
+
 ### Binning: Put a Lid on It
 
 Continuous data is like that friend who never stops talking. Binning can be particularly useful when you're dealing with things like age ranges or income brackets.
@@ -43,10 +45,17 @@ Continuous data is like that friend who never stops talking. Binning can be part
 Dimensionality reduction is a technique used to reduce the number of features (or dimensions) in a dataset while preserving as much of the important information as possible. It's like taking a complex, multi-faceted object and creating a simpler representation that still captures its essence.  It is used a lot in data science, data engineering and machine learning where the data has high-dimensionality.
 
 ### PCA (Principal Component Analysis)
-Imagine you're trying to describe your eccentric aunt to a friend. Instead of listing all her quirks, you focus on the top three that really capture her essence. That's PCA in a nutshell.
+Imagine you're trying to describe your eccentric aunt to a friend. Instead of listing all her quirks, you focus on the top three that really capture her essence. That's [PCA](https://en.wikipedia.org/wiki/Principal_component_analysis) in a nutshell.
 
-### t-SNE and UMAP
+### [t-SNE](https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding) and [UMAP](https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection)
 These are the cool kids of dimension reduction. They're great at preserving local structures in your data, kind of like how a good caricature exaggerates your most distinctive features.
+
+* **t-SNE** (t-Distributed Stochastic Neighbor Embedding): A nonlinear dimensionality reduction technique that excels at preserving local structures in high-dimensional data by modeling similar data points as nearby points in a lower-dimensional space, making it particularly effective for visualizing clusters or patterns in complex datasets.
+
+
+* **UMAP:** (Uniform Manifold Approximation and Projection):
+
+A dimensionality reduction algorithm that aims to preserve both local and global structures of high-dimensional data in lower dimensions, offering faster computation times than t-SNE and often providing a better balance between maintaining local relationships and capturing the overall data topology.
 
 ## The "Let's Not Crash Our Computer" Techniques
 
@@ -55,6 +64,7 @@ This is the data equivalent of eating an elephant one bite at a time. It's not f
 
 ### Data Sketching
 Think of this as the CliffsNotes of your data. It gives you the gist without all the details. Data sketching is a set of techniques used to process and analyze very large datasets efficiently, often with a single pass through the data. These methods provide approximate answers to queries about the data, trading off some accuracy for significant gains in speed and memory usage.
+
 
 #### Key aspects of data sketching:
 * **Single-pass algorithms:** They typically only need to see each data item once.
@@ -68,6 +78,9 @@ Common data sketching techniques include:
 * **Bloom Filters:** Tests set membership.
 * **T-Digest:** Estimates quantiles and histograms.
 * **Reservoir** Sampling: Maintains a random sample of a stream.
+
+[Data Sketching](#data-sketching) probably deserves its own article and will probably be my next one.
+
 
 ## Applying These Techniques
 
