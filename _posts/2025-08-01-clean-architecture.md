@@ -21,7 +21,7 @@ author: steven
 
 Let’s unpack the layers from the inside out, using the updated, real-world diagram below.
 
-![Clean Architecture Diagram Placeholder](diagrams/clean-architecure.jpg)
+![Clean Architecture Diagram Placeholder](/assets/images/clean-architecure.jpg)
 
 > **Diagram Caption:**  
 > The concentric rings show dependency direction — all arrows point inward.  
