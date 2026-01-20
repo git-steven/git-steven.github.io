@@ -4,70 +4,56 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Jekyll-based blog/portfolio site using the Minimal Mistakes remote theme. The site showcases technical articles on data engineering, machine learning, software architecture, and related topics.
+Jekyll-based portfolio/blog site using Minimal Mistakes remote theme. Hosted on GitHub Pages.
 
-## Site Architecture
+## Common Commands
 
-* **Static Site Generator**: Jekyll with GitHub Pages
-* **Theme**: Minimal Mistakes (remote theme)
-* **Content Structure**:
-  * `_posts/` - Blog posts in markdown format with YAML front matter
-  * `_pages/` - Static pages (About, Projects, Archives, etc.)
-  * `_data/` - Site configuration data (navigation, etc.)
-  * `_includes/` - Template partials and custom HTML
-  * `assets/` - Images, CSS, and other static assets
-  * `_site/` - Generated site output (ignored in git)
-
-## Post Format
-
-Blog posts follow Jekyll conventions:
-* File naming: `YYYY-MM-DD-title-slug.md`
-* YAML front matter includes: `title`, `date`, `categories`, `author`
-* Content uses GitHub-flavored markdown with kramdown
-* Posts may include draw.io diagrams (`.drawio` files) and exported images (`.drawio.png`)
-
-## Common Development Commands
-
-### Local Development
 ```bash
-# Install dependencies
+# Install Ruby dependencies
 bundle install
 
-# Serve site locally with live reload
-bundle exec jekyll serve
+# Local development with live reload
+bundle exec jekyll serve --livereload
+# Or use the convenience script:
+./bin/start.sh
 
-# Serve with drafts visible
-bundle exec jekyll serve --drafts
-
-# Build site without serving
+# Build site (output to _site/)
 bundle exec jekyll build
+
+# Preview draft posts
+bundle exec jekyll serve --drafts
 ```
 
-### Working with Diagrams
+### Python Environment (for Jupyter notebooks)
 
-The site uses draw.io diagrams embedded in posts. When creating or updating diagrams:
-* Store `.drawio` source files in `_posts/` directory alongside related posts
-* Export to PNG using `draw.io.export <diagram>.drawio` (creates `.drawio.png`)
-* Reference exported images in markdown: `![](/path/to/diagram.drawio.png)`
-* Follow diagram styling from `~/.claude/CLAUDE.md` (rounded boxes, Sketch style, gradients)
+The `python-git-steven/` directory contains example notebooks referenced in blog posts.
 
-### Content Guidelines
+```bash
+# Install Python dependencies (Poetry required)
+cd python-git-steven && poetry install
 
-* Technical posts should be informative and approachable (see existing posts for tone)
-* Include relevant images and diagrams to support explanations
-* Use proper categorization for posts (data-engineering, machine learning, architecture, etc.)
-* Posts cover topics: Python, scikit-learn, PySpark, FastAPI, AWS CDK, architecture patterns
+# Run Jupyter
+poetry run jupyter lab
+```
 
-## Site Configuration
+## Site Structure
 
-* Main config: `_config.yml`
-* Navigation: `_data/navigation.yml`
-* Author info, social links, and site metadata in `_config.yml:62-107`
-* Default post layout includes: author profile, read time, comments, sharing, related posts
+- `_posts/` - Blog posts (markdown with YAML front matter)
+- `_pages/` - Static pages (About, Projects, Archives)
+- `_data/navigation.yml` - Site navigation menu
+- `_config.yml` - Jekyll configuration and author metadata
+- `assets/` - Images and static files
+- `python-git-steven/` - Jupyter notebooks for blog post examples (PySpark, scikit-learn)
 
-## Theme Customization
+## Post Conventions
 
-* Skin: "dirt" (defined in `_config.yml:30`)
-* Custom includes in `_includes/head/` for additional head elements
-* Site uses pagination (5 posts per page)
-* Archive pages generated via liquid templates (by year, category, tag)
+- Filename format: `YYYY-MM-DD-title-slug.md`
+- Required front matter: `title`, `date`, `categories`
+- Markdown processor: kramdown (GitHub-flavored markdown)
+- Diagrams: Store `.drawio` files with posts; export using `draw.io.export <file>.drawio`
+
+## Configuration Notes
+
+- Theme skin: "dirt" (`_config.yml:30`)
+- Pagination: 5 posts per page
+- Default post layout includes: author profile, read time, comments, share buttons, related posts
