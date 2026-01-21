@@ -30,7 +30,7 @@ author: steven
 ## 🧭 The Enduring Idea
 
 If you’ve ever built an application — microservice, monolith, or hobby script — you’ve probably already used **Layered Architecture**.
-It’s the *grandparent* of nearly every pattern that followed: Clean, Hexagonal, Onion, and even the emerging **Layered Ports Architecture (LPA)**.
+It’s the *grandparent* of nearly every pattern that followed: Clean, Hexagonal, Onion, and even the emerging **Emergent Layer Architecture (ELA)**.
 
 Despite its age, the model keeps showing up because it delivers exactly what teams need most at the start of any project:
 
@@ -81,7 +81,7 @@ Our updated diagram shows them as a **vertical wedge (▶)** slicing through all
 
 ---
 
-## 🧭 Why It Still Works (Even in 2025)
+## 🧭 Why It Still Works (Even in 2026)
 
 Technologies change. Business rules don’t.
 Layered Architecture protects those rules while letting teams build at the speed of understanding.
