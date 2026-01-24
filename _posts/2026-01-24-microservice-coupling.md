@@ -59,7 +59,7 @@ def calculate_coupling(module):
 
 ### The Instability Index
 
-From Ca and Ce, one ratio tells you everything:
+From Ca and Ce, one ratio tells you everything.  A common distribution is:
 ```
 I = Ce / (Ce + Ca)
 ```
@@ -250,7 +250,7 @@ java -jar code-maat.jar -l gitlog.txt -c git2 -a coupling
 | Step  | Action                        | Tool                      |
 |-------|-------------------------------|---------------------------|
 | 1     | Find most-changed service     | `git log --stat`          |
-| 2     | Visualize internal deps       | pydeps / manual graph     |
+| 2     | Visualize internal deps       | [pydeps](https://pypi.org/project/pydeps/) / manual graph     |
 | 3     | Calculate I for 3-5 modules   | Spreadsheet: `Ce/(Ce+Ca)` |
 | 4     | Check change coupling         | Code Maat                 |
 | 5     | Ask: "Can this deploy alone?" | Honest conversation       |
