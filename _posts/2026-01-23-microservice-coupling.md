@@ -50,7 +50,7 @@ Here's the revelation: **simple mathematical ratios can predict these disasters 
 
 ## Part I: Package-Level Metrics (Inside Your Service)
 
-### The Primitives: Ca and Ce
+### The Primitives: `Ca` and `Ce`
 
 Every coupling metric builds from two counts:
 
@@ -58,6 +58,7 @@ Every coupling metric builds from two counts:
 |-------------------|--------------------------------------------|-------------------------------------------|
 | **Ca** (Afferent) | External modules that import *this* module | Your creditors—they depend on your health |
 | **Ce** (Efferent) | External modules *this* module imports     | Your debts—their problems become yours    |
+
 ```python
 def calculate_coupling(module):
     ca = count_modules_that_import(module)   # Who depends on me?
