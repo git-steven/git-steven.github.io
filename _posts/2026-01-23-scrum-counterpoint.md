@@ -10,13 +10,13 @@ categories:
 author: steven
 ---
 
-## Table of Contents
+## **🌀 Table of Contents**
 - [Introduction](#introduction)
 - [🎯 When Velocity Becomes the Target](#-when-velocity-becomes-the-target)
   - [🏚️ The Ever-Lowering Bar](#-the-ever-lowering-bar)
   - [🧭 The Ticket Selection Dance](#-the-ticket-selection-dance)
 - [🧬 When Complexity Compounds](#-when-complexity-compounds)
-  - [The Entropy Tax](#-the-entropy-tax)
+  - [🔥 The Entropy Tax](#-the-entropy-tax)
   - [🔄 Backlog Purgatory](#-backlog-purgatory)
 - [🏗️ When the Framework Doesn't Fit](#-when-the-framework-doesnt-fit)
   - [🚦 The CI/CD Paradox](#-the-cicd-paradox)
