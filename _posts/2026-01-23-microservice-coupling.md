@@ -66,14 +66,14 @@ def calculate_coupling(module):
     return ca, ce
 ```
 
-### The Instability Index
+### The Instability Index (`I`)
 
 From Ca and Ce, one ratio tells you everything.  A common distribution is:
 ```
 I = Ce / (Ce + Ca)
 ```
 
-| I Value | Stability | Meaning                                   | Change Strategy         |
+| `I` Value | Stability | Meaning                                   | Change Strategy         |
 |---------|-----------|-------------------------------------------|-------------------------|
 | 0.0     | Maximum   | Many depend on you; you depend on nothing | Change *very* carefully |
 | 0.3–0.5 | Balanced  | Goldilocks zone                           | Normal development      |
