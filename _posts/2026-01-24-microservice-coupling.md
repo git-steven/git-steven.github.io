@@ -71,7 +71,33 @@ I = Ce / (Ce + Ca)
 | 0.7–0.9 | Low       | You depend on many; few depend on you     | Change freely           |
 | 1.0     | Minimum   | Leaf node—pure consumer                   | Refactor at will        |
 
+```python
+def calculate_instability(module):
+    """I=0 means stable (many depend on you), I=1 means volatile (leaf node)."""
+    ca = count_afferent_coupling(module)   # incoming dependencies
+    ce = count_efferent_coupling(module)   # outgoing dependencies
+    return ce / (ce + ca) if (ce + ca) > 0 else 0.0
+```
+
 *Why it works*: Like financial leverage. High Ca (many creditors) + low Ce (few debts) = fundamentally stable. The **Stable Dependencies Principle** says: *dependencies should flow toward stability*. When stable modules depend on unstable ones, you've created a time bomb.
+
+Detecting SDP violations programmatically:
+
+```python
+def check_stable_dependencies_principle(modules: list) -> list[str]:
+    """SDP: dependencies should flow toward stability (lower I values)."""
+    violations = []
+    for module in modules:
+        my_instability = calculate_instability(module)
+        for dependency in module.dependencies:
+            dep_instability = calculate_instability(dependency)
+            if dep_instability > my_instability:
+                violations.append(
+                    f"{module.name} (I={my_instability:.2f}) depends on "
+                    f"more unstable {dependency.name} (I={dep_instability:.2f})"
+                )
+    return violations
+```
 
 ### Abstractness and the Main Sequence
 
@@ -80,9 +106,25 @@ I = Ce / (Ce + Ca)
 A = Na / Nc    (abstract classes / total classes)
 ```
 
+```python
+def calculate_abstractness(module):
+    """A=1 means all abstract, A=0 means all concrete."""
+    abstract_count = count_abstract_types(module)  # interfaces, ABCs
+    total_count = count_all_types(module)          # classes + interfaces
+    return abstract_count / total_count if total_count > 0 else 0.0
+```
+
 Well-designed modules cluster along the **Main Sequence** where `A + I = 1`. The **Distance** metric measures deviation:
 ```
 D = |A + I - 1|
+```
+
+```python
+def calculate_distance(module):
+    """D=0 is ideal (on main sequence), D>0.7 warrants investigation."""
+    a = calculate_abstractness(module)
+    i = calculate_instability(module)
+    return abs(a + i - 1)
 ```
 
 #### The Danger Zones
@@ -125,7 +167,20 @@ System Availability = Availability(A) × Availability(B)
 | 3                 | 99.9%                   | 99.7%                 |
 | 5                 | 99.9%                   | 99.5%                 |
 
-Netflix invented circuit breakers (Hystrix) because this math demanded it.
+```python
+def calculate_chain_availability(service_availabilities: list[float]) -> float:
+    """Synchronous chain: availability multiplies (gets worse with length)."""
+    result = 1.0
+    for availability in service_availabilities:
+        result *= availability
+    return result
+
+# Example: 3 services at 99.9% each
+chain_availability = calculate_chain_availability([0.999, 0.999, 0.999])
+# Result: 0.997 (99.7%) - lost 0.2% just from chain length
+```
+
+Netflix invented circuit breakers (Hystrix) because this math demanded it. *Note: Hystrix is now in maintenance mode; [resilience4j][4] is the recommended alternative for new projects.*
 
 ### Data Coupling in CQRS Architectures
 
@@ -137,6 +192,17 @@ In event-sourced CQRS, data coupling *should* be eliminated: commands write even
 - Cross-service foreign key references
 
 *Litmus test*: If two services have write access to the same table, you have data coupling. Full stop.
+
+```python
+def detect_data_coupling(services: list) -> list[tuple]:
+    """Find services that share write access to the same tables."""
+    violations = []
+    for table in get_all_tables():
+        writers = [s for s in services if s.can_write_to(table)]
+        if len(writers) > 1:
+            violations.append((table, writers))
+    return violations
+```
 
 ### Keeping Read Models Fresh
 
@@ -153,6 +219,14 @@ In event-sourced CQRS, data coupling *should* be eliminated: commands write even
 **Change coupling** identifies files that frequently change together in commits, revealing dependencies invisible to static analysis.
 ```
 Change Coupling(A,B) = co_commits(A,B) / total_commits(A)
+```
+
+```python
+def calculate_change_coupling(file_a: str, file_b: str, commits: list) -> float:
+    """Higher value = files change together more often (hidden coupling)."""
+    commits_with_a = [c for c in commits if file_a in c.files]
+    commits_with_both = [c for c in commits_with_a if file_b in c.files]
+    return len(commits_with_both) / len(commits_with_a) if commits_with_a else 0.0
 ```
 
 If `order_service/validators.py` and `notification_service/templates.py` changed together in 47/50 commits, they're coupled—regardless of imports.
@@ -173,7 +247,7 @@ If `order_service/validators.py` and `notification_service/templates.py` changed
 | **Too coarse** | "Microservice" is a monolith with K8s       | High intra-service coupling, deployment coupling |
 | **Just right** | Independent deploy, bounded context aligned | Coupling contained within domain boundaries      |
 
-Uber's **DOMA** organizes 2,200 services into 70 domains across 5 layers, with explicit rules about which layers can depend on which. Coupling metrics enforce those rules.
+Uber's **DOMA** organizes 2,200 services into 75 domains across 5 layers, with explicit rules about which layers can depend on which. Coupling metrics enforce those rules.
 
 ---
 
@@ -270,3 +344,29 @@ The teams that sleep soundly—Netflix, Uber, Spotify—aren't guessing about ar
 **Your homework**: Pick **one** metric. Calculate it for **one** service. This week.
 
 *Entropy is measurable. Start measuring.*
+
+---
+
+## References
+
+1. Martin, R.C. (1994). "[OO Design Quality Metrics: An Analysis of Dependencies][1]."
+
+2. Martin, R.C. (2017). *Clean Architecture: A Craftsman's Guide to Software Structure and Design*. Prentice Hall.
+
+3. Uber Engineering. (2020). "[Introducing Domain-Oriented Microservice Architecture][2]." Uber Engineering Blog.
+
+4. Netflix. "[Hystrix: Latency and Fault Tolerance Library][3]." GitHub Repository. *(Now in maintenance mode; see [resilience4j][4])*
+
+5. Tornhill, A. (2015). *Your Code as a Crime Scene*. Pragmatic Bookshelf. Tool: [Code Maat][5].
+
+6. Richardson, C. "[Microservice Architecture Essentials: Loose Coupling][6]." microservices.io.
+
+7. Pact Foundation. "[Consumer-Driven Contract Testing][7]." Pact Documentation.
+
+[1]: https://linux.ime.usp.br/~joaomm/mac499/arquivos/referencias/oodmetrics.pdf
+[2]: https://www.uber.com/blog/microservice-architecture/
+[3]: https://github.com/Netflix/Hystrix
+[4]: https://github.com/resilience4j/resilience4j
+[5]: https://github.com/adamtornhill/code-maat
+[6]: https://microservices.io/post/architecture/2023/03/28/microservice-architecture-essentials-loose-coupling.html
+[7]: https://docs.pact.io/
