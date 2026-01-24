@@ -16,7 +16,7 @@ author: steven
   - [🏚️ The Ever-Lowering Bar](#-the-ever-lowering-bar)
   - [🧭 The Ticket Selection Dance](#-the-ticket-selection-dance)
 - [🧬 When Complexity Compounds](#-when-complexity-compounds)
-  - [The Entropy Tax](#the-entropy-tax)
+  - [The Entropy Tax](#-the-entropy-tax)
   - [🔄 Backlog Purgatory](#-backlog-purgatory)
 - [🏗️ When the Framework Doesn't Fit](#-when-the-framework-doesnt-fit)
   - [🚦 The CI/CD Paradox](#-the-cicd-paradox)
@@ -57,7 +57,7 @@ Lean practitioners call this *local optimization*—optimizing for the sprint me
 
 ## 🧬 When Complexity Compounds
 
-### The Entropy Tax
+### 🔥 The Entropy Tax
 
 Here's a pattern I've observed repeatedly: a significant portion of sprint work traces back to fixing bugs from *earlier* tickets. Feature A ships in Sprint 3. Sprint 5 brings "Fix edge case in Feature A." Sprint 7 delivers "Refactor Feature A for performance." Sprint 9? "Address security vulnerability introduced by Feature A refactor."
 
