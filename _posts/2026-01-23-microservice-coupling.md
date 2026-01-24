@@ -96,15 +96,11 @@ Detecting SDP violations programmatically:
 def check_stable_dependencies_principle(modules: list) -> list[str]:
     """SDP: dependencies should flow toward stability (lower I values)."""
     violations = []
-    for module in modules:
-        my_instability = calculate_instability(module)
-        for dependency in module.dependencies:
-            dep_instability = calculate_instability(dependency)
-            if dep_instability > my_instability:
-                violations.append(
-                    f"{module.name} (I={my_instability:.2f}) depends on "
-                    f"more unstable {dependency.name} (I={dep_instability:.2f})"
-                )
+    for m in modules:
+        m_i = calc_instability(m)
+        for d in m.dependencies:
+            if (d_i := calc_instability(d)) > m_i:
+                violations.append(format_violation(m, m_i, d, d_i))
     return violations
 ```
 
