@@ -1,14 +1,19 @@
 ---
 title: "🔬The Hidden Science That Saves Microservices"
-date: 2026-01-24 15:37:00 -0500
+date: 2026-01-24 00:11:00 -0500
 categories:
   - sdlc
   - architecture
   - coupling
+  - metrics
+  - microservices
 author: steven
 ---
 
 **_Coupling Metrics You've Never Heard Of (But Desperately Need)_**
+
+![🔬The Hidden Science That Saves Microservices](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-coupling.png)
+
 
 > *"There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies. The first method is far more difficult."*
 > — **Tony Hoare**, Turing Award Lecture (1980)
