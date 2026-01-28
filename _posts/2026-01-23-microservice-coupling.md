@@ -26,7 +26,7 @@ You rename a field in your Order service. Twelve minutes later, Inventory is thr
   <p>One field. Three services down. Your "microservices" are a distributed monolith wearing a trench coat.</p>
   <img alt="Microservice to Monolith" src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png" width="400">
 </div>
-
+<br/>
 Here's what nobody told you: **simple mathematical ratios can predict these disasters before they happen**. Not machine learning. Just division and occasionally an absolute value. Netflix uses these metrics. Uber built an architectural framework around them. The formulas have been hiding in plain sight since the 1990s.
 
 *Architecture entropy is measurable. Let me show you how.*
