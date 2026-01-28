@@ -22,8 +22,10 @@ author: steven
 
 You rename a field in your Order service. Twelve minutes later, Inventory is throwing exceptions, Notifications won't send, and Finance is asking why their dashboard shows infinite spinners.
 
-One field. Three services down. Your "microservices" are a distributed monolith wearing a trench coat.
-<img alt="Microservice to Monolith" src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png" width="400">
+<div>
+  <p>One field. Three services down. Your "microservices" are a distributed monolith wearing a trench coat.</p>
+  <img alt="Microservice to Monolith" src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png" width="400">
+</div>
 
 Here's what nobody told you: **simple mathematical ratios can predict these disasters before they happen**. Not machine learning. Just division and occasionally an absolute value. Netflix uses these metrics. Uber built an architectural framework around them. The formulas have been hiding in plain sight since the 1990s.
 
