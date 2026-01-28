@@ -20,13 +20,15 @@ author: steven
 
 ---
 
-## The 3 AM Wake-Up Call Nobody Wants
+## The Change That Broke Everything
 
-Picture this: Tuesday afternoon, you deploy a "simple" change to your Order service—a minor field rename—and suddenly your Inventory service is throwing errors, Notifications is dead, and Finance wants to know why the reports dashboard shows spinning wheels.
+You rename a field in your Order service. Twelve minutes later, Inventory is throwing exceptions, Notifications won't send, and Finance is asking why their dashboard shows infinite spinners.
 
-Your "microservices" became a distributed monolith wearing a trench coat.
+One field. Three services down. Your "microservices" are a distributed monolith wearing a trench coat.
 
-Here's the revelation: **simple mathematical ratios can predict these disasters before they happen**. Not machine learning. Just division and occasionally an absolute value. Netflix uses these metrics. Uber built an architectural framework around them. The formulas have been hiding in plain sight since the 1990s.
+![🔬The Hidden Science That Saves Microservices](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png)
+
+Here's what nobody told you: **simple mathematical ratios can predict these disasters before they happen**. Not machine learning. Just division and occasionally an absolute value. Netflix uses these metrics. Uber built an architectural framework around them. The formulas have been hiding in plain sight since the 1990s.
 
 *Architecture entropy is measurable. Let me show you how.*
 
