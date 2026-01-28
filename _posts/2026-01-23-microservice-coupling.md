@@ -12,9 +12,7 @@ author: steven
 
 **_Microservice Coupling Metrics You've Never Heard Of (But Desperately Need)_**
 
-![🔬The Hidden Science That Saves Microservices](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-coupling-metrics.png)
-
-
+![🔬The Hidden Science That Saves Microservices](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png width="300")
 > *"There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies and the other way is to make it so complicated that there are no obvious deficiencies. The first method is far more difficult."*
 > — **Tony Hoare**, Turing Award Lecture (1980)
 
@@ -25,8 +23,7 @@ author: steven
 You rename a field in your Order service. Twelve minutes later, Inventory is throwing exceptions, Notifications won't send, and Finance is asking why their dashboard shows infinite spinners.
 
 One field. Three services down. Your "microservices" are a distributed monolith wearing a trench coat.
-
-![🔬The Hidden Science That Saves Microservices](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png)
+<img alt="Microservice to Monolith" src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-monolith.png" width="400">
 
 Here's what nobody told you: **simple mathematical ratios can predict these disasters before they happen**. Not machine learning. Just division and occasionally an absolute value. Netflix uses these metrics. Uber built an architectural framework around them. The formulas have been hiding in plain sight since the 1990s.
 
@@ -52,7 +49,11 @@ Here's what nobody told you: **simple mathematical ratios can predict these disa
 
 ## Part I: Package-Level Metrics (Inside Your Service)
 
-### The Primitives: `Ca` and `Ce`
+## Instability
+<img alt="Microservice to Monolith" src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/microservice-metrics-coupling-instability.png" width="400">
+
+
+#### The Primitives: `Ca` and `Ce`
 
 Every coupling metric builds from two counts:
 
@@ -68,19 +69,19 @@ def calculate_coupling(module):
     return ca, ce
 ```
 
-### The Instability Index (`I`)
+#### The Instability Index (`I`)
 
 From Ca and Ce, one ratio tells you everything.  A common distribution is:
 ```
 I = Ce / (Ce + Ca)
 ```
 
-| `I` Value | Stability | Meaning                                   | Change Strategy         |
-|---------|-----------|-------------------------------------------|-------------------------|
-| 0.0     | Maximum   | Many depend on you; you depend on nothing | Change *very* carefully |
-| 0.3–0.5 | Balanced  | Goldilocks zone                           | Normal development      |
-| 0.7–0.9 | Low       | You depend on many; few depend on you     | Change freely           |
-| 1.0     | Minimum   | Leaf node—pure consumer                   | Refactor at will        |
+| `I` Range     | Stability      | Meaning                              | Change Strategy                           |
+|---------------|----------------|--------------------------------------|-------------------------------------------|
+| I < 0.3       | **Stable**     | Many dependents, few dependencies    | Change with care                          |
+| 0.3 ≤ I < 0.5 | **Balanced**   | Goldilocks zone                      | Normal dev pace                           |
+| 0.5 ≤ I < 0.7 | **Borderline** | Caution zone                         | Monitor closely; prepare for refactoring  |
+| I ≥ 0.7       | **Volatile**   | Few dependents, many dependencies    | Refactor freely                           |
 
 ```python
 def calculate_instability(module):
