@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(test:*)",
+      "Read(//Users/windfox/plans/**)",
+      "Read(//Users/windfox/.claude/templates/**)",
+      "Bash(draw.io.export:*)",
+      "Read(//Applications/**)",
+      "Bash(/Applications/draw.io.app/Contents/MacOS/draw.io:*)",
+      "Read(//Users/windfox/.claude/**)",
+      "Bash(openssl version:*)",
+      "Bash(ruby -ropenssl -e:*)",
+      "Bash(ruby:*)",
+      "Bash(SSL_CERT_FILE=/etc/ssl/cert.pem bundle exec jekyll build:*)",
+      "Bash(OPENSSL_CONF=/dev/null SSL_CERT_FILE=/etc/ssl/cert.pem bundle exec jekyll build:*)",
+      "Bash(rvm install:*)",
+      "Bash(source ~/.rvm/scripts/rvm)",
+      "Bash(bash -l -c:*)",
+      "WebSearch",
+      "Bash(bundle exec jekyll build:*)",
+      "WebFetch(domain:pypi.org)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,13 +1,15 @@
-[tool.poetry]
-name = "git-steven.github.io"
+[project]
+name = "git-steven-homepage"
 version = "0.1.0"
 description = "Python setup for git-steven.github.io"
-authors = ["Steven Miers <steven.miers@gmail.com>"]
-license = "Whatever"
+authors = [{ name = "steven.miers@gmail.com" }]
+license = { text = "MIT" }
 readme = "README.md"
+requires-python = ">=3.13.7"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13.7"
+freyja = "^1.1"
 pyspark = {extras = ["connect", "sql", "pandas_on_spark"], version = "~3.5.1"}
 numpy = "^1.26.4"
 scikit-learn = "^1.4.2"

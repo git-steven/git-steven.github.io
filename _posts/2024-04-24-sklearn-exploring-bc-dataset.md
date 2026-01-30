@@ -93,7 +93,7 @@ Breast cancer wisconsin (diagnostic) dataset
 
 :Number of Instances: 569
 
-:Number of Attributes: 30 numeric, predictive attributes and the class
+:Number of Attributes: 30 SimpleNum, predictive attributes and the class
 ...
 ```
 
