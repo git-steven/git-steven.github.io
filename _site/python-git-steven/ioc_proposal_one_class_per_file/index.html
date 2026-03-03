@@ -1,0 +1,888 @@
+<h1 id="opinionated-python-ioc-proposal-python-314-idioms-">Opinionated Python IoC Proposal (Python 3.14 idioms) 🧩</h1>
+
+<p>Generated: <code class="language-plaintext highlighter-rouge">2026-01-29 10:23:29Z</code></p>
+
+<p>This rewrite follows your rules:</p>
+
+<ul>
+  <li><strong>One class per file</strong>, except <code class="language-plaintext highlighter-rouge">errors.py</code> and <code class="language-plaintext highlighter-rouge">types.py</code></li>
+  <li><code class="language-plaintext highlighter-rouge">types.py</code> contains only <strong>type aliases</strong> and <strong>immutable dataclasses</strong></li>
+  <li>Empty implementations use <code class="language-plaintext highlighter-rouge">pass</code> (no <code class="language-plaintext highlighter-rouge">NotImplementedError</code>)</li>
+  <li>Docstrings follow <strong>PEP 257</strong> style and use <strong>reStructuredText</strong> conventions</li>
+  <li>Uses <strong>Python 3.14-friendly idioms</strong> (e.g., <code class="language-plaintext highlighter-rouge">type</code> aliases, <code class="language-plaintext highlighter-rouge">typing.override</code>)</li>
+</ul>
+
+<hr />
+
+<h2 id="package-layout">Package layout</h2>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ioc/
+  __init__.py
+  errors.py
+  types.py
+  scope.py
+
+  env/
+    __init__.py
+    environment_provider.py
+    os_environ_provider.py
+
+  registry/
+    __init__.py
+    adapter_registration.py
+    keyed_entry.py
+    adapter_registry.py
+
+  container/
+    __init__.py
+    container_scope_policy.py
+    container_config.py
+    container.py
+
+  decorators/
+    __init__.py
+    container_provider.py
+    invert_key_map.py
+    adapter.py
+    invert.py
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="mermaid-module--class-dependency-diagram">Mermaid module + class dependency diagram</h2>
+
+<pre><code class="language-mermaid">flowchart LR
+
+  subgraph ERR[ioc.errors]
+    E1[IoCError]
+    E2[RegistrationError]
+    E3[ResolutionError]
+    E4[DuplicateDefaultAdapterError]
+    E5[AmbiguousAdapterError]
+    E6[MissingAdapterError]
+    E7[KeyRequiredError]
+    E8[InvalidAdapterError]
+  end
+
+  subgraph TYP[ioc.types]
+    T1[ResolutionRequest]
+    T2[type PortType / AdapterType / KeyType]
+    T3[type AdapterFactory]
+  end
+
+  subgraph SCP[ioc.scope]
+    S1[ScopeEnum]
+  end
+
+  subgraph ENV[ioc.env.*]
+    V1[EnvironmentProvider]
+    V2[OsEnvironProvider]
+  end
+
+  subgraph REG[ioc.registry.*]
+    R1[AdapterRegistration]
+    R2[KeyedEntry]
+    R3[AdapterRegistry]
+  end
+
+  subgraph CON[ioc.container.*]
+    C1[ContainerScopePolicy]
+    C2[ContainerConfig]
+    C3[Container]
+  end
+
+  subgraph DEC[ioc.decorators.*]
+    D1[ContainerProvider]
+    D2[InvertKeyMap]
+    D3[Adapter]
+    D4[Invert]
+  end
+
+  %% Dependencies (A --&gt; B means A depends on B)
+  REG --&gt; ERR
+  REG --&gt; SCP
+  REG --&gt; TYP
+
+  CON --&gt; ENV
+  CON --&gt; REG
+  CON --&gt; ERR
+  CON --&gt; SCP
+  CON --&gt; TYP
+
+  DEC --&gt; CON
+  DEC --&gt; REG
+  DEC --&gt; ERR
+  DEC --&gt; SCP
+  DEC --&gt; TYP
+</code></pre>
+
+<hr />
+
+<h1 id="source-skeletons-one-class-per-file">Source skeletons (one class per file)</h1>
+
+<h2 id="ioc__init__py"><code class="language-plaintext highlighter-rouge">ioc/__init__.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Top-level package for the opinionated IoC library.</span><span class="se">\"\"\"</span><span class="s">
+
+from .errors import IoCError
+from .scope import ScopeEnum
+from .types import ResolutionRequest
+
+__all__ = [
+    "</span><span class="n">IoCError</span><span class="s">",
+    "</span><span class="n">ScopeEnum</span><span class="s">",
+    "</span><span class="n">ResolutionRequest</span><span class="s">",
+]
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="iocerrorspy"><code class="language-plaintext highlighter-rouge">ioc/errors.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Exception types for the IoC library.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+
+class IoCError(Exception):
+    </span><span class="se">\"\"\"</span><span class="s">Base class for all IoC-related errors.</span><span class="se">\"\"\"</span><span class="s">
+
+    pass
+
+
+class RegistrationError(IoCError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when adapter registration fails.</span><span class="se">\"\"\"</span><span class="s">
+
+    pass
+
+
+class ResolutionError(IoCError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when dependency resolution fails.</span><span class="se">\"\"\"</span><span class="s">
+
+    pass
+
+
+class DuplicateDefaultAdapterError(RegistrationError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when more than one default Adapter is registered for a Port.</span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, port: type[object]) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the error.
+
+        :param port: The Port type for which duplicates were detected.
+        </span><span class="se">\"\"\"</span><span class="s">
+        super().__init__(f"</span><span class="n">Multiple</span> <span class="n">default</span> <span class="n">adapters</span> <span class="n">registered</span> <span class="k">for</span> <span class="n">port</span><span class="p">:</span> <span class="p">{</span><span class="n">port</span><span class="err">!</span><span class="n">r</span><span class="p">}</span><span class="s">")
+
+
+class AmbiguousAdapterError(ResolutionError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when adapter selection cannot produce a unique winner.</span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, port: type[object], env: str | None) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the error.
+
+        :param port: The Port being resolved.
+        :param env: The current environment name, if any.
+        </span><span class="se">\"\"\"</span><span class="s">
+        super().__init__(f"</span><span class="n">Ambiguous</span> <span class="n">adapters</span> <span class="k">for</span> <span class="n">port</span> <span class="p">{</span><span class="n">port</span><span class="err">!</span><span class="n">r</span><span class="p">}</span> <span class="p">(</span><span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="n">env</span><span class="err">!</span><span class="n">r</span><span class="p">}).</span><span class="s">")
+
+
+class MissingAdapterError(ResolutionError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when no Adapter is registered for a required Port.</span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, port: type[object], env: str | None) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the error.
+
+        :param port: The Port being resolved.
+        :param env: The current environment name, if any.
+        </span><span class="se">\"\"\"</span><span class="s">
+        super().__init__(f"</span><span class="n">No</span> <span class="n">adapter</span> <span class="n">registered</span> <span class="k">for</span> <span class="n">port</span> <span class="p">{</span><span class="n">port</span><span class="err">!</span><span class="n">r</span><span class="p">}</span> <span class="p">(</span><span class="n">env</span><span class="o">=</span><span class="p">{</span><span class="n">env</span><span class="err">!</span><span class="n">r</span><span class="p">}).</span><span class="s">")
+
+
+class KeyRequiredError(ResolutionError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when resolving a keyed adapter without providing a key.</span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, port: type[object]) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the error.
+
+        :param port: The Port being resolved.
+        </span><span class="se">\"\"\"</span><span class="s">
+        super().__init__(f"</span><span class="n">Key</span> <span class="n">required</span> <span class="n">to</span> <span class="n">resolve</span> <span class="n">keyed</span> <span class="n">adapter</span> <span class="k">for</span> <span class="n">port</span> <span class="p">{</span><span class="n">port</span><span class="err">!</span><span class="n">r</span><span class="p">}.</span><span class="s">")
+
+
+class InvalidAdapterError(RegistrationError):
+    </span><span class="se">\"\"\"</span><span class="s">Raised when an Adapter class is invalid for a Port.</span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, port: type[object], adapter: type[object], reason: str) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the error.
+
+        :param port: The Port type.
+        :param adapter: The Adapter type.
+        :param reason: Human-readable reason.
+        </span><span class="se">\"\"\"</span><span class="s">
+        super().__init__(f"</span><span class="n">Invalid</span> <span class="n">adapter</span> <span class="p">{</span><span class="n">adapter</span><span class="err">!</span><span class="n">r</span><span class="p">}</span> <span class="k">for</span> <span class="n">port</span> <span class="p">{</span><span class="n">port</span><span class="err">!</span><span class="n">r</span><span class="p">}:</span> <span class="p">{</span><span class="n">reason</span><span class="p">}</span><span class="s">")
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="ioctypespy"><code class="language-plaintext highlighter-rouge">ioc/types.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Core type definitions for the IoC library.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any, Callable
+
+type PortType = type[object]
+type AdapterType = type[object]
+type KeyType = str
+
+
+@dataclass(frozen=True, slots=True)
+class ResolutionRequest:
+    </span><span class="se">\"\"\"</span><span class="s">Normalized request for resolving a Port.
+
+    :param port: The Port type to resolve.
+    :param env: The environment name in effect, if any.
+    :param key: Optional key for keyed resolution.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    port: PortType
+    env: str | None
+    key: KeyType | None
+
+
+type AdapterFactory = Callable[[</span><span class="se">\"</span><span class="s">Container</span><span class="se">\"</span><span class="s">], Any]
+
+
+class Container:
+    </span><span class="se">\"\"\"</span><span class="s">Forward declaration for type checkers.
+
+    The concrete container lives in :mod:`ioc.container.container`.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    pass
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="iocscopepy"><code class="language-plaintext highlighter-rouge">ioc/scope.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Scope definitions for adapters.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from enum import Enum
+
+
+class ScopeEnum(str, Enum):
+    </span><span class="se">\"\"\"</span><span class="s">Lifecycle scopes for Adapters.
+
+    - ``SINGLETON``: One instance reused.
+    - ``UNIQUE``: A new instance per resolution.
+    - ``KEYED``: One instance per ``(Port, key)``.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    SINGLETON = "</span><span class="n">Singleton</span><span class="s">"
+    UNIQUE = "</span><span class="n">Unique</span><span class="s">"
+    KEYED = "</span><span class="n">Keyed</span><span class="s">"
+</span></code></pre></div></div>
+
+<hr />
+
+<h1 id="env-package">env package</h1>
+
+<h2 id="iocenv__init__py"><code class="language-plaintext highlighter-rouge">ioc/env/__init__.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Environment resolution abstractions.</span><span class="se">\"\"\"</span><span class="s">
+
+from .environment_provider import EnvironmentProvider
+from .os_environ_provider import OsEnvironProvider
+
+__all__ = ["</span><span class="n">EnvironmentProvider</span><span class="s">", "</span><span class="n">OsEnvironProvider</span><span class="s">"]
+</span></code></pre></div></div>
+
+<h2 id="iocenvenvironment_providerpy"><code class="language-plaintext highlighter-rouge">ioc/env/environment_provider.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Environment provider abstraction.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+
+
+class EnvironmentProvider(ABC):
+    </span><span class="se">\"\"\"</span><span class="s">Abstraction for retrieving the active environment name.</span><span class="se">\"\"\"</span><span class="s">
+
+    @abstractmethod
+    def get_env(self) -&gt; str | None:
+        </span><span class="se">\"\"\"</span><span class="s">Return the current environment name.
+
+        :returns: Environment name such as ``"</span><span class="n">dev</span><span class="s">"`` or ``"</span><span class="n">prod</span><span class="s">"``, or ``None``.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<h2 id="iocenvos_environ_providerpy"><code class="language-plaintext highlighter-rouge">ioc/env/os_environ_provider.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">OS environment-backed environment provider.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True, slots=True)
+class OsEnvironProvider:
+    </span><span class="se">\"\"\"</span><span class="s">Reads environment from an OS env var.
+
+    :param env_var: The OS environment variable name to read.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    env_var: str = "</span><span class="n">PYTHON_ENV</span><span class="s">"
+
+    def get_env(self) -&gt; str | None:
+        </span><span class="se">\"\"\"</span><span class="s">Return environment name from the configured OS env var.
+
+        :returns: Environment string or ``None``.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<hr />
+
+<h1 id="registry-package">registry package</h1>
+
+<h2 id="iocregistry__init__py"><code class="language-plaintext highlighter-rouge">ioc/registry/__init__.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Adapter registration and lookup.</span><span class="se">\"\"\"</span><span class="s">
+
+from .adapter_registration import AdapterRegistration
+from .keyed_entry import KeyedEntry
+from .adapter_registry import AdapterRegistry
+
+__all__ = ["</span><span class="n">AdapterRegistration</span><span class="s">", "</span><span class="n">KeyedEntry</span><span class="s">", "</span><span class="n">AdapterRegistry</span><span class="s">"]
+</span></code></pre></div></div>
+
+<h2 id="iocregistryadapter_registrationpy"><code class="language-plaintext highlighter-rouge">ioc/registry/adapter_registration.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Registration metadata for a Port/Adapter pairing.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from ..scope import ScopeEnum
+from ..types import AdapterType, KeyType, PortType
+
+
+@dataclass(frozen=True, slots=True)
+class AdapterRegistration:
+    </span><span class="se">\"\"\"</span><span class="s">Metadata describing a registered Adapter implementation for a Port.
+
+    :param port: The Port this Adapter satisfies.
+    :param adapter: The Adapter concrete class.
+    :param scope: Lifecycle scope for the Adapter.
+    :param default: Whether this Adapter is the default choice for the Port.
+    :param env: Optional environment name. If it matches, it wins selection.
+    :param env_var: Name of env var consulted to determine current environment.
+    :param key: Required if scope is keyed; identifies keyed instance bucket.
+    :param invalidate: If True, keyed instances may expire after inactivity timeout.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    port: PortType
+    adapter: AdapterType
+    scope: ScopeEnum
+    default: bool
+    env: str | None
+    env_var: str
+    key: KeyType | None
+    invalidate: bool
+</span></code></pre></div></div>
+
+<h2 id="iocregistrykeyed_entrypy"><code class="language-plaintext highlighter-rouge">ioc/registry/keyed_entry.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Keyed instance cache entry.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Any
+
+
+@dataclass(slots=True)
+class KeyedEntry:
+    </span><span class="se">\"\"\"</span><span class="s">An entry in the keyed instance cache.
+
+    :param instance: The cached Adapter instance.
+    :param last_used_epoch: Seconds since epoch when instance was last accessed.
+    :param invalidate: Whether this entry can expire.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    instance: Any
+    last_used_epoch: float
+    invalidate: bool
+
+    def touch(self) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Update the last-used timestamp to now.</span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<h2 id="iocregistryadapter_registrypy"><code class="language-plaintext highlighter-rouge">ioc/registry/adapter_registry.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Central registry of Port -&gt; Adapter registrations and keyed instance cache.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from threading import RLock
+
+from ..errors import (
+    AmbiguousAdapterError,
+    DuplicateDefaultAdapterError,
+    InvalidAdapterError,
+    MissingAdapterError,
+)
+from ..types import KeyType, PortType, ResolutionRequest
+from .adapter_registration import AdapterRegistration
+from .keyed_entry import KeyedEntry
+
+
+class AdapterRegistry:
+    </span><span class="se">\"\"\"</span><span class="s">Stores registrations and keyed instances.
+
+    Responsibilities:
+    - Accept registrations declared by :class:`ioc.decorators.adapter.Adapter`
+    - Enforce uniqueness of default per Port
+    - Select the best adapter by env/default rules
+    - Cache keyed instances and optionally prune expired entries
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, keyed_idle_ttl_seconds: int = 600) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the registry.
+
+        :param keyed_idle_ttl_seconds: Default idle timeout for invalidatable keyed entries.
+        </span><span class="se">\"\"\"</span><span class="s">
+        self._lock: RLock = RLock()
+        self._keyed_idle_ttl_seconds: int = keyed_idle_ttl_seconds
+        self._registrations: dict[PortType, list[AdapterRegistration]] = {}
+        self._keyed_instances: dict[tuple[PortType, KeyType], KeyedEntry] = {}
+
+    def register(self, reg: AdapterRegistration) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Register an Adapter for a Port.
+
+        :param reg: Registration metadata to add.
+        :raises DuplicateDefaultAdapterError: If a second default is registered for the Port.
+        :raises InvalidAdapterError: If the Adapter is invalid for the Port.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def list_ports(self) -&gt; list[PortType]:
+        </span><span class="se">\"\"\"</span><span class="s">Return all Ports with registrations.
+
+        :returns: List of Port types.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def get_registrations(self, port: PortType) -&gt; list[AdapterRegistration]:
+        </span><span class="se">\"\"\"</span><span class="s">Return registrations for a Port.
+
+        :param port: The Port type.
+        :returns: Registrations for the Port (possibly empty).
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def select(self, request: ResolutionRequest) -&gt; AdapterRegistration:
+        </span><span class="se">\"\"\"</span><span class="s">Select the best AdapterRegistration for the resolution request.
+
+        Selection rules:
+        1. env match wins
+        2. default wins
+        3. single candidate wins
+        else ambiguous
+
+        :param request: Normalized request.
+        :returns: Selected registration.
+        :raises MissingAdapterError: If no candidates exist.
+        :raises AmbiguousAdapterError: If no unique winner exists.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def get_keyed_entry(self, port: PortType, key: KeyType) -&gt; KeyedEntry | None:
+        </span><span class="se">\"\"\"</span><span class="s">Retrieve a keyed cache entry if present.
+
+        :param port: The Port type.
+        :param key: The instance key.
+        :returns: The cache entry or ``None``.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def set_keyed_entry(self, port: PortType, key: KeyType, entry: KeyedEntry) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Store a keyed cache entry.
+
+        :param port: The Port type.
+        :param key: The instance key.
+        :param entry: The cache entry.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def prune_keyed(self, now_epoch: float | None = None) -&gt; int:
+        </span><span class="se">\"\"\"</span><span class="s">Remove expired keyed entries.
+
+        An entry is expired if:
+        - ``entry.invalidate`` is True
+        - and ``(now - entry.last_used_epoch) &gt;= ttl``
+
+        :param now_epoch: Override current time for deterministic tests.
+        :returns: Number of entries removed.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def keyed_idle_ttl_seconds(self) -&gt; int:
+        </span><span class="se">\"\"\"</span><span class="s">Return the current TTL for invalidatable keyed entries.
+
+        :returns: TTL in seconds.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<hr />
+
+<h1 id="container-package">container package</h1>
+
+<h2 id="ioccontainer__init__py"><code class="language-plaintext highlighter-rouge">ioc/container/__init__.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Container and resolution policy.</span><span class="se">\"\"\"</span><span class="s">
+
+from .container_scope_policy import ContainerScopePolicy
+from .container_config import ContainerConfig
+from .container import Container
+
+__all__ = ["</span><span class="n">ContainerScopePolicy</span><span class="s">", "</span><span class="n">ContainerConfig</span><span class="s">", "</span><span class="n">Container</span><span class="s">"]
+</span></code></pre></div></div>
+
+<h2 id="ioccontainercontainer_scope_policypy"><code class="language-plaintext highlighter-rouge">ioc/container/container_scope_policy.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Singleton scoping policy.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from enum import Enum
+
+
+class ContainerScopePolicy(str, Enum):
+    </span><span class="se">\"\"\"</span><span class="s">Controls where singleton instances live.
+
+    - ``PER_CONTAINER``: Singleton cache is per Container instance.
+    - ``GLOBAL``: Singleton cache is shared (less test-friendly).
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    PER_CONTAINER = "</span><span class="n">PerContainer</span><span class="s">"
+    GLOBAL = "</span><span class="n">Global</span><span class="s">"
+</span></code></pre></div></div>
+
+<h2 id="ioccontainercontainer_configpy"><code class="language-plaintext highlighter-rouge">ioc/container/container_config.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Container configuration.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from ..env.environment_provider import EnvironmentProvider
+from ..env.os_environ_provider import OsEnvironProvider
+from ..registry.adapter_registry import AdapterRegistry
+from .container_scope_policy import ContainerScopePolicy
+
+
+@dataclass(slots=True)
+class ContainerConfig:
+    </span><span class="se">\"\"\"</span><span class="s">Configuration for the Container.
+
+    :param registry: Adapter registry holding registrations and caches.
+    :param env_provider: Provider for current environment string.
+    :param scope_policy: Policy controlling singleton cache behavior.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    registry: AdapterRegistry
+    env_provider: EnvironmentProvider = OsEnvironProvider()  # type: ignore[assignment]
+    scope_policy: ContainerScopePolicy = ContainerScopePolicy.PER_CONTAINER
+</span></code></pre></div></div>
+
+<h2 id="ioccontainercontainerpy"><code class="language-plaintext highlighter-rouge">ioc/container/container.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Constructor-only dependency resolver.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from typing import Any, TypeVar
+
+from ..errors import AmbiguousAdapterError, KeyRequiredError, MissingAdapterError
+from ..types import KeyType, PortType
+from .container_config import ContainerConfig
+
+T = TypeVar("</span><span class="n">T</span><span class="s">")
+
+
+class Container:
+    </span><span class="se">\"\"\"</span><span class="s">Resolver that builds object graphs using constructor injection.
+
+    Rules:
+    - Constructor-only injection (via :class:`ioc.decorators.invert.Invert`)
+    - Port types are determined from ``__init__`` annotations
+    - Adapter selection uses env/default rules from :class:`ioc.registry.adapter_registry.AdapterRegistry`
+    - Adapter lifecycle is enforced via :class:`ioc.scope.ScopeEnum`
+
+    This is intentionally opinionated:
+    - Un-annotated parameters are not injected.
+    - Explicit caller-provided args always win over injection.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, config: ContainerConfig) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the container.
+
+        :param config: Container configuration.
+        </span><span class="se">\"\"\"</span><span class="s">
+        self._config: ContainerConfig = config
+        self._singletons: dict[PortType, Any] = {}
+
+    def env(self) -&gt; str | None:
+        </span><span class="se">\"\"\"</span><span class="s">Return the current environment name.
+
+        :returns: Environment name or ``None``.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def resolve(self, port: PortType, *, key: KeyType | None = None) -&gt; Any:
+        </span><span class="se">\"\"\"</span><span class="s">Resolve an instance for a Port.
+
+        :param port: The Port type to resolve.
+        :param key: Optional key for keyed scope.
+        :returns: Instance implementing the Port.
+        :raises MissingAdapterError: If no adapter exists.
+        :raises AmbiguousAdapterError: If multiple candidates exist with no winner.
+        :raises KeyRequiredError: If the chosen scope is keyed but no key was provided.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+
+    def create(self, cls: type[T], **overrides: Any) -&gt; T:
+        </span><span class="se">\"\"\"</span><span class="s">Create an instance of ``cls``, injecting constructor dependencies.
+
+        Overrides:
+        - Any keyword args in ``overrides`` are used as-is and are not injected.
+
+        :param cls: Concrete class to instantiate.
+        :param overrides: Explicit constructor arguments.
+        :returns: New instance of ``cls``.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<hr />
+
+<h1 id="decorators-package">decorators package</h1>
+
+<h2 id="iocdecorators__init__py"><code class="language-plaintext highlighter-rouge">ioc/decorators/__init__.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Decorators that power registration and constructor injection.</span><span class="se">\"\"\"</span><span class="s">
+
+from .container_provider import ContainerProvider
+from .invert_key_map import InvertKeyMap
+from .adapter import Adapter
+from .invert import Invert
+
+__all__ = ["</span><span class="n">ContainerProvider</span><span class="s">", "</span><span class="n">InvertKeyMap</span><span class="s">", "</span><span class="n">Adapter</span><span class="s">", "</span><span class="n">Invert</span><span class="s">"]
+</span></code></pre></div></div>
+
+<h2 id="iocdecoratorscontainer_providerpy"><code class="language-plaintext highlighter-rouge">ioc/decorators/container_provider.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Default container storage for decorator-driven injection.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from ..container.container import Container
+
+
+class ContainerProvider:
+    </span><span class="se">\"\"\"</span><span class="s">Stores and exposes a default Container for :class:`ioc.decorators.invert.Invert`.</span><span class="se">\"\"\"</span><span class="s">
+
+    _container: Container | None = None
+
+    @classmethod
+    def set_default(cls, container: Container) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Set the default container.
+
+        :param container: Container to set.
+        </span><span class="se">\"\"\"</span><span class="s">
+        cls._container = container
+
+    @classmethod
+    def get_default(cls) -&gt; Container:
+        </span><span class="se">\"\"\"</span><span class="s">Return the default container.
+
+        :returns: Default container.
+        :raises RuntimeError: If no default container has been set.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<h2 id="iocdecoratorsinvert_key_mappy"><code class="language-plaintext highlighter-rouge">ioc/decorators/invert_key_map.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Key mapping for keyed constructor injection.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from ..types import KeyType
+
+
+@dataclass(frozen=True, slots=True)
+class InvertKeyMap:
+    </span><span class="se">\"\"\"</span><span class="s">Maps constructor parameter names to keys for keyed resolution.
+
+    Example::
+
+        InvertKeyMap({"</span><span class="n">tenant_db</span><span class="s">": "</span><span class="n">tenant</span><span class="o">-</span><span class="mi">123</span><span class="s">"})
+
+    :param keys: Map from parameter name to key string.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    keys: dict[str, KeyType]
+</span></code></pre></div></div>
+
+<h2 id="iocdecoratorsadapterpy"><code class="language-plaintext highlighter-rouge">ioc/decorators/adapter.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Class-based decorator used on Adapter classes to register them.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from typing import TypeVar, override
+
+from ..registry.adapter_registry import AdapterRegistry
+from ..scope import ScopeEnum
+
+T = TypeVar("</span><span class="n">T</span><span class="s">")
+
+
+class Adapter:
+    </span><span class="se">\"\"\"</span><span class="s">Decorator that registers an Adapter implementation.
+
+    Intended usage::
+
+        @Adapter(scope=ScopeEnum.SINGLETON, default=True, env=None,
+                env_var="</span><span class="n">PYTHON_ENV</span><span class="s">", key=None, invalidate=True)
+        class SomeAdapter(SomePort):
+            ...
+
+    Port inference:
+    - Prefer ``__ports__`` tuple on the Adapter class, if present.
+    - Else infer from base classes that are ``typing.Protocol`` or named ``*Port``.
+
+    Registration target:
+    - Uses the configured :class:`~ioc.registry.adapter_registry.AdapterRegistry`.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    _registry: AdapterRegistry | None = None
+
+    @classmethod
+    def configure_registry(cls, registry: AdapterRegistry) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Set the registry used by this decorator.
+
+        :param registry: Registry to use for registration.
+        </span><span class="se">\"\"\"</span><span class="s">
+        cls._registry = registry
+
+    def __init__(
+        self,
+        scope: ScopeEnum,
+        *,
+        default: bool = True,
+        env: str | None = None,
+        env_var: str = "</span><span class="n">PYTHON_ENV</span><span class="s">",
+        key: str | None = None,
+        invalidate: bool = True,
+    ) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the decorator.
+
+        :param scope: Adapter scope (Singleton, Unique, Keyed).
+        :param default: Whether this adapter is the default for its Port(s).
+        :param env: Environment name that overrides default selection when matched.
+        :param env_var: Environment variable used to determine current env.
+        :param key: Key required if scope is Keyed.
+        :param invalidate: If True, keyed entries may expire after inactivity timeout.
+        </span><span class="se">\"\"\"</span><span class="s">
+        self._scope = scope
+        self._default = default
+        self._env = env
+        self._env_var = env_var
+        self._key = key
+        self._invalidate = invalidate
+
+    def __call__(self, adapter_cls: type[T]) -&gt; type[T]:
+        </span><span class="se">\"\"\"</span><span class="s">Register the decorated Adapter class.
+
+        :param adapter_cls: The concrete Adapter class.
+        :returns: The same class, unmodified.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<h2 id="iocdecoratorsinvertpy"><code class="language-plaintext highlighter-rouge">ioc/decorators/invert.py</code></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\<span class="s">"</span><span class="se">\"\"</span><span class="s">Class-based decorator enabling constructor injection.</span><span class="se">\"\"\"</span><span class="s">
+
+from __future__ import annotations
+
+from typing import Any, Callable
+
+from .container_provider import ContainerProvider
+from .invert_key_map import InvertKeyMap
+
+
+class Invert:
+    </span><span class="se">\"\"\"</span><span class="s">Decorator for constructor-only dependency injection.
+
+    Typical usage::
+
+        class Service:
+            @Invert()
+            def __init__(self, repo: RepoPort, clock: ClockPort) -&gt; None:
+                ...
+
+    Keyed injection::
+
+        class MultiTenantThing:
+            @Invert(keys=InvertKeyMap({"</span><span class="n">db</span><span class="s">": "</span><span class="n">tenant</span><span class="o">-</span><span class="mi">123</span><span class="s">"}))
+            def __init__(self, db: DatabasePort) -&gt; None:
+                ...
+
+    Behavior:
+    - Explicit caller-provided args win.
+    - Missing annotated parameters are resolved from the default container.
+    </span><span class="se">\"\"\"</span><span class="s">
+
+    def __init__(self, *, keys: InvertKeyMap | None = None) -&gt; None:
+        </span><span class="se">\"\"\"</span><span class="s">Initialize the decorator.
+
+        :param keys: Optional mapping to provide keyed resolution keys.
+        </span><span class="se">\"\"\"</span><span class="s">
+        self._keys = keys
+
+    def __call__(self, init: Callable[..., Any]) -&gt; Callable[..., Any]:
+        </span><span class="se">\"\"\"</span><span class="s">Wrap ``__init__`` to inject missing annotated parameters.
+
+        :param init: The original ``__init__`` method.
+        :returns: Wrapped ``__init__`` method.
+        </span><span class="se">\"\"\"</span><span class="s">
+        pass
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="notes-on-python-314-idioms-used">Notes on Python 3.14 idioms used</h2>
+
+<ul>
+  <li>Type aliases use the <code class="language-plaintext highlighter-rouge">type Name = ...</code> syntax.</li>
+  <li>Immutable dataclasses use <code class="language-plaintext highlighter-rouge">frozen=True</code> and <code class="language-plaintext highlighter-rouge">slots=True</code> where appropriate.</li>
+  <li>Return types use modern unions (<code class="language-plaintext highlighter-rouge">str | None</code>) and keyword-only parameters (<code class="language-plaintext highlighter-rouge">*, key=...</code>) where useful.</li>
+</ul>
+

@@ -91,13 +91,13 @@ I = Ce / (Ce + Ca)
   <tbody>
     <tr>
       <td>0.0 ≤ I &lt; 0.25</td> 
-      <td style="background-color: #C3AFDA;color: black;"><strong>Stable</strong></td>
+      <td style="background-color: #507E9F;color: white;"><strong>Stable</strong></td>
       <td>Many dependents, few dependencies</td>
       <td>Change with care</td>
     </tr>
     <tr>
       <td>0.25 ≤ I &lt; 0.50</td>
-      <td style="background-color: #ACD56E;color: black;"><strong>Balanced</strong></td>
+      <td style="background-color: #1C3B52;color: black;"><strong>Balanced</strong></td>
       <td>Goldilocks zone</td>
       <td>Normal dev pace</td>
     </tr>
@@ -109,7 +109,7 @@ I = Ce / (Ce + Ca)
     </tr>
     <tr>
       <td>0.75 ≤ I ≤ 1.0</td>
-      <td style="background-color: #CB9BA2;color: black;"><strong>Volatile</strong></td>
+      <td style="background-color: #CB9BA2;color: black;"><strong>Unstable</strong></td>
       <td>Few dependents, many dependencies</td>
       <td>Refactor freely</td>
     </tr>

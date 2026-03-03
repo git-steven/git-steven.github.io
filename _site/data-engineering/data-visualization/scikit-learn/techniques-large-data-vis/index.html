@@ -1,0 +1,108 @@
+<p><img src="/assets/images/big-data-md.png" alt="" /></p>
+
+<p><em>Techniques for Processing and Visualizing Big Data</em></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Remember the good old days when a “large dataset” meant a few thousand rows in Excel? Well, welcome to the big leagues, where we’re dealing with hundreds of millions of rows. It’s like trying to find a needle in a haystack, except the haystack is the size of Texas and the needle is… well, still a needle.</p>
+
+<p>But fear not, dear reader! We’re about to embark on a journey through the wild world of big data preprocessing. Buckle up, because things are about to get… mildly exciting.</p>
+
+<h2 id="the-art-and-science-of-data-reduction">The Art and Science of Data Reduction</h2>
+
+<h3 id="sampling-less-is-more-sometimes">Sampling: Less is More (Sometimes)</h3>
+
+<h4 id="random-sampling">Random Sampling</h4>
+<p>Think of this as a data lottery. Every row gets a ticket, but only the lucky few make it to the visualization party. It’s fast, it’s simple, and it’s about as fair as life gets.</p>
+
+<h4 id="stratified-sampling">Stratified Sampling</h4>
+<p>This is like organizing a really diverse party. You make sure every group is represented, just in case the vegetarians and the carnivores have something important to say to each other.</p>
+
+<h3 id="aggregation-strength-in-numbers">Aggregation: Strength in Numbers</h3>
+
+<p>Aggregation is the art of smooshing data together until it fits into a manageable size. It’s like making a smoothie out of your fruit salad – you lose some detail, but at least it fits in the cup.</p>
+
+<p>Aggregations include <code class="language-plaintext highlighter-rouge">sum</code>, <code class="language-plaintext highlighter-rouge">count</code>, <code class="language-plaintext highlighter-rouge">average</code>, <code class="language-plaintext highlighter-rouge">median</code>, as well as <a href="https://en.wikipedia.org/wiki/Standard_deviation">Standard Deviation</a> and <a href="https://en.wikipedia.org/wiki/Variance">Variance</a>.</p>
+
+<h3 id="binning-put-a-lid-on-it">Binning: Put a Lid on It</h3>
+
+<p>Continuous data is like that friend who never stops talking. Binning can be particularly useful when you’re dealing with things like age ranges or income brackets.</p>
+<ul>
+  <li>Divide continuous data into discrete bins.</li>
+  <li>Create histograms or <a href="https://en.wikipedia.org/wiki/Heat_map">heatmaps</a> from binned data.</li>
+</ul>
+
+<h2 id="the-magic-of-dimensionality-reduction">The Magic of Dimensionality Reduction</h2>
+<p>Dimensionality reduction is a technique used to reduce the number of features (or dimensions) in a dataset while preserving as much of the important information as possible. It’s like taking a complex, multi-faceted object and creating a simpler representation that still captures its essence.  It is used a lot in data science, data engineering and machine learning where the data has high-dimensionality.</p>
+
+<h3 id="pca-principal-component-analysis">PCA (Principal Component Analysis)</h3>
+<p>Imagine you’re trying to describe your eccentric aunt to a friend. Instead of listing all her quirks, you focus on the top three that really capture her essence. That’s <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a> in a nutshell.</p>
+
+<h3 id="t-sne-and-umap"><a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding">t-SNE</a> and <a href="https://en.wikipedia.org/wiki/Nonlinear_dimensionality_reduction#Uniform_manifold_approximation_and_projection">UMAP</a></h3>
+<p>These are the cool kids of dimension reduction. They’re great at preserving local structures in your data, kind of like how a good caricature exaggerates your most distinctive features.</p>
+
+<ul>
+  <li>
+    <p><strong>t-SNE</strong> (t-Distributed Stochastic Neighbor Embedding): A nonlinear dimensionality reduction technique that excels at preserving local structures in high-dimensional data by modeling similar data points as nearby points in a lower-dimensional space, making it particularly effective for visualizing clusters or patterns in complex datasets.</p>
+  </li>
+  <li>
+    <p><strong>UMAP:</strong> (Uniform Manifold Approximation and Projection):</p>
+  </li>
+</ul>
+
+<p>A dimensionality reduction algorithm that aims to preserve both local and global structures of high-dimensional data in lower dimensions, offering faster computation times than t-SNE and often providing a better balance between maintaining local relationships and capturing the overall data topology.</p>
+
+<h2 id="the-lets-not-crash-our-computer-techniques">The “Let’s Not Crash Our Computer” Techniques</h2>
+
+<h3 id="incremental-processing">Incremental Processing</h3>
+<p>This is the data equivalent of eating an elephant one bite at a time. It’s not fast, it’s not glamorous, but it gets the job done without giving your poor computer indigestion.</p>
+
+<h3 id="data-sketching">Data Sketching</h3>
+<p>Think of this as the CliffsNotes of your data. It gives you the gist without all the details. Data sketching is a set of techniques used to process and analyze very large datasets efficiently, often with a single pass through the data. These methods provide approximate answers to queries about the data, trading off some accuracy for significant gains in speed and memory usage.</p>
+
+<h4 id="key-aspects-of-data-sketching">Key aspects of data sketching:</h4>
+<ul>
+  <li><strong>Single-pass algorithms:</strong> They typically only need to see each data item once.</li>
+  <li><strong>Sub-linear space usage:</strong> They use memory much less than the size of the input.</li>
+  <li><strong>Approximate results:</strong> They provide estimates, often with provable error bounds.</li>
+</ul>
+
+<p>Common data sketching techniques include:</p>
+
+<ul>
+  <li><strong>Count-Min Sketch:</strong> Estimates frequency of items in a stream.</li>
+  <li><strong>HyperLogLog:</strong> Estimates cardinality (number of unique elements).</li>
+  <li><strong>Bloom Filters:</strong> Tests set membership.</li>
+  <li><strong>T-Digest:</strong> Estimates quantiles and histograms.</li>
+  <li><strong>Reservoir</strong> Sampling: Maintains a random sample of a stream.</li>
+</ul>
+
+<p><a href="#data-sketching">Data Sketching</a> probably deserves its own article and will probably be my next one.</p>
+
+<h2 id="applying-these-techniques">Applying These Techniques</h2>
+
+<p>Let’s say you’re a data engineer at GigantoCorp, and you’ve just been handed a dataset with 500 million customer transactions. Your boss wants a “quick visual summary” by tomorrow morning. (Because apparently, that’s a reasonable request.)</p>
+
+<p>Here’s how you might approach it:</p>
+
+<ol>
+  <li>
+    <p>Start with some aggressive sampling. Maybe grab 1% of the data randomly. That’s still 5 million rows, which is… well, it’s a start.</p>
+  </li>
+  <li>
+    <p>Use aggregation to group transactions by day, customer segment, or product category. This will give you some high-level trends without drowning in details.</p>
+  </li>
+  <li>
+    <p>For continuous variables like transaction amounts, use binning to create meaningful categories. “Under $10,” “$10-$50,” “$50-$100,” and “Why are they spending so much?” could be your bins.</p>
+  </li>
+  <li>
+    <p>If you’re feeling adventurous, try a dimension reduction technique like PCA to see if there are any interesting patterns across multiple variables.</p>
+  </li>
+  <li>
+    <p>Finally, use incremental processing and data sketching techniques to handle the full dataset in the background. This way, you can refine your visualizations over time without making your computer throw a tantrum.</p>
+  </li>
+</ol>
+
+<p>Remember, the goal is to create visualizations that tell a story, not to reproduce every single data point. Your CEO doesn’t need to see all 500 million transactions (despite what they might think). They need insights, trends, and patterns.</p>
+
+<p>And there you have it! You’re now armed with the knowledge to tackle big data visualization. Just remember: when in doubt, sample it out. Happy data wrangling!</p>

@@ -23,7 +23,7 @@ author: steven
 ![Layered Architecture Diagram](https://github.com/git-steven/git-steven.github.io/raw/master/assets/images/layered-architecture.png)
 
 > **Diagram Caption:**
-> Five horizontal layers stacked top-to-bottom, with a dark vertical **Cross-Cutting Concerns wedge (▶)** slicing through them — showing utilities like logging, validation, and config that touch every layer but depend on none.
+> Five horizontal layers stacked top-to-bottom, with a dark vertical **Cross-Cutting Concerns wedge (▼)** slicing through them — showing utilities like logging, validation, and config that touch every layer but depend on none.
 
 ---
 
@@ -75,9 +75,9 @@ Reality meets code: databases, queues, APIs, filesystems.
 This layer implements the contracts defined above — persistence, gateways, integrations.
 It’s where technology decisions live.
 
-### ▶ Cross-Cutting Concerns
+### ▼ Cross-Cutting Concerns
 Logging, configuration, crypto, validation — the things *every* layer needs but none should depend on.
-Our updated diagram shows them as a **vertical wedge (▶)** slicing through all layers, making their ubiquity explicit instead of an afterthought.
+Our updated diagram shows them as a **vertical wedge (▼) (in black on left of diagram)** slicing through all layers, making their ubiquity explicit instead of an afterthought.
 
 ---
 
@@ -182,7 +182,7 @@ Layered is the **Swiss-Army knife**: not the fanciest tool, but the one you actu
 
 ---
 
-## ▶ Cross-Cutting Concerns Revisited
+## ▼ Cross-Cutting Concerns Revisited
 
 Our visual wedge deserves a little spotlight.
 Traditional diagrams leave “utilities” floating around with no home.

@@ -1,0 +1,361 @@
+<p><em>Using <a href="https://pandas.pydata.org/">pandas</a>, <a href="https://scikit-learn.org/">scikit-learn</a>, and <a href="https://networkx.org/">NetworkX</a> to explore data, extract features, and visualize data.</em></p>
+
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx-md.png" alt="" /></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>This builds upon a <a href="https://git-steven.github.io/scikit-learn/feature-engineering/python/sklearn/ai/ml/sklearn-feature-selection/">previous article</a>, which showed us how to extract features from the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer">breast cancer dataset</a> using scikit-learn.  This article shows an alternative for obtaining the most relevant features using a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest Classifier</a> instead of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.f_regression.html#sklearn.feature_selection.f_regression">f_regression</a>.</p>
+
+<p>We also explore the dataset a bit using <a href="https://pandas.pydata.org/">pandas</a>, and show an example of graphing feature values with a <a href="https://matplotlib.org/">matplotlib</a> scatterplot.</p>
+
+<p>Finally, we create a <a href="https://networkx.org/">NetworkX</a> graph that shows the features and their influence on a positive diagnosis.  Each edge between a feature and the Diagnosis node has a weighted line thickness, as well a color palette to denote their relative importance.</p>
+
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx_bc_md.png" alt="NetworkX teaser" /></p>
+
+<h3 id="breast-cancer-dataset">Breast Cancer Dataset</h3>
+<p>As a data engineer/scientist interested in the healthcare domain, I often find myself exploring datasets to gain insights and understand the relationships between various factors and disease outcomes. Today, I want to share with you a cool way to visualize the importance of different features in predicting breast cancer diagnosis using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer">sklearn.datasets.load_breast_cancer</a> dataset and visualizing it using the <a href="https://networkx.org/">NetworkX</a> library in a <a href="https://jupyter.org/">Jupyter</a> Notebook.  This dataset has 30 feature columns, so it it is perfect for feature selection – determining which features might be contributing to a positive diagnosis.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+  <li>You’ll need the following packages installed in your environment:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>matplotlib networkx numpy pandas jupyterlab
+</code></pre></div>    </div>
+  </li>
+  <li>Then you can run <code class="language-plaintext highlighter-rouge">jupyter lab</code> and create a new python notebook:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jupyter lab
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="creating-your-notebook">Creating your notebook</h2>
+<p>First, let’s load the necessary libraries and the dataset, as well as defining a few functions we will need:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">itables</span> <span class="kn">import</span> <span class="n">init_notebook_mode</span>
+<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">all_interactive</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">display_df</span><span class="p">(</span><span class="n">df</span><span class="p">:</span><span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">rows</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="s">""" Pretty displays a dataframe with specified rows """</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">(</span><span class="n">rows</span><span class="p">).</span><span class="n">to_html</span><span class="p">()))</span>
+    
+<span class="k">def</span> <span class="nf">concentric_cirle_points</span><span class="p">(</span>
+        <span class="n">coordinate_count</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> 
+        <span class="n">r1</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+        <span class="n">r2</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="p">):</span>
+    <span class="s">""" 
+        Generates points on two concentric circles, defined by r1 
+        and r2.  The points generated will alternate between the two 
+        circles. Point order is clockwise, irrespective of which 
+        circle they are on.  
+    """</span>
+    <span class="n">section_degrees</span> <span class="o">=</span> <span class="mf">360.0</span><span class="o">/</span><span class="n">coordinate_count</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">coordinate_count</span><span class="p">):</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="n">section_degrees</span>
+        <span class="n">radians</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">/</span> <span class="mf">180.0</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span>
+        <span class="c1"># sin(ō) = opp/hyp, cos(ō) = adc/hyp
+</span>        <span class="n">hypotenus</span> <span class="o">=</span> <span class="n">r1</span> <span class="k">if</span> <span class="n">c</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">r2</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenus</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">)</span> <span class="o">*</span> <span class="n">hypotenus</span>
+        <span class="k">yield</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Load the Breast Cancer dataset
+</span><span class="n">bc_data</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">()</span>
+
+<span class="c1"># Setup vars for values to be used throughout
+</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">bc_data</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bc_data</span><span class="p">.</span><span class="n">target</span>
+<span class="n">all_feature_names</span> <span class="o">=</span> <span class="n">bc_data</span><span class="p">.</span><span class="n">feature_names</span>
+<span class="k">print</span><span class="p">(</span><span class="n">bc_data</span><span class="p">.</span><span class="n">DESCR</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>When running the above cell, you should see something like this:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Breast cancer wisconsin <span class="o">(</span>diagnostic<span class="o">)</span> dataset
+<span class="nt">--------------------------------------------</span>
+
+<span class="k">**</span>Data Set Characteristics:<span class="k">**</span>
+
+:Number of Instances: 569
+
+:Number of Attributes: 30 SimpleNum, predictive attributes and the class
+...
+</code></pre></div></div>
+
+<h2 id="feature-extraction">Feature Extraction</h2>
+<p>The <code class="language-plaintext highlighter-rouge">load_breast_cancer</code> function from <a href="https://scikit-learn.org/">scikit-learn</a> gives us a convenient way to access the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer">breast cancer dataset</a>, which contains various features of breast cancer tumors and the corresponding diagnosis (malignant or benign).</p>
+
+<h3 id="random-forest-classifier">Random Forest Classifier</h3>
+<p><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest</a> is an ensemble learning method that combines multiple decision trees to make predictions. It’s known for its ability to handle high-dimensional data and provide feature importance scores.</p>
+
+<p>Now, create a https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html and train it on the dataset:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># Create Random Forest Classifier to extract feature importance:
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># Setup feature importance dict; ordered by highest importance: 
+</span><span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">importance</span><span class="p">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">feature_importance</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="n">all_feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">importance</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sorted_indices</span> 
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">feature_importance</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Feature: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s">, Importance: </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The above code creates the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">RandomForestClassifier</a>, then grabs the importances from <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.feature_importances_">rand_forest_classifier.feature_importances_</a>.  It finishes by creating a dictionary of <code class="language-plaintext highlighter-rouge">feature_name:importance</code>.  This is useful information in its own right; we will also use it to create our <a href="https://networkx.org/">NetworkX</a> graph.</p>
+
+<h2 id="exploring-the-dataset">Exploring the dataset</h2>
+<p>Let’s explore the dataset with <a href="https://pandas.pydata.org/">Pandas</a>…</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bc_dataset</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">bc_dataset</span><span class="p">.</span><span class="n">frame</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'target'</span><span class="p">]</span> <span class="o">=</span> <span class="n">bc_data</span><span class="p">.</span><span class="n">target</span>
+
+<span class="c1"># Explore the dataset
+</span><span class="k">print</span><span class="p">(</span><span class="s">"Dataset shape:"</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Dataset columns:"</span><span class="p">,</span> <span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Target distribution:"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'target'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># Statistical summary
+</span><span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Statistical summary:"</span><span class="p">)</span>
+<span class="n">display_df</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">describe</span><span class="p">(),</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Correlation analysis
+</span><span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Correlation matrix:"</span><span class="p">)</span>
+<span class="n">corr_matrix</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">display_df</span><span class="p">(</span><span class="n">corr_matrix</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Running the above cell shows some cool information about the dataset.  It starts like this:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Dataset shape: <span class="o">(</span>569, 31<span class="o">)</span>
+Dataset columns: Index<span class="o">([</span>
+  <span class="s1">'mean radius'</span>, <span class="s1">'mean texture'</span>, <span class="s1">'mean perimeter'</span>, <span class="s1">'mean area'</span>,
+  <span class="s1">'mean smoothness'</span>, <span class="s1">'mean compactness'</span>, <span class="s1">'mean concavity'</span>,
+  <span class="s1">'mean concave points'</span>, <span class="s1">'mean symmetry'</span>, <span class="s1">'mean fractal dimension'</span>,
+  <span class="s1">'radius error'</span>, <span class="s1">'texture error'</span>, <span class="s1">'perimeter error'</span>, <span class="s1">'area error'</span>,
+  <span class="s1">'smoothness error'</span>, <span class="s1">'compactness error'</span>, <span class="s1">'concavity error'</span>,
+  <span class="s1">'concave points error'</span>, <span class="s1">'symmetry error'</span>, 
+  <span class="s1">'fractal dimension error'</span>, <span class="s1">'worst radius'</span>, <span class="s1">'worst texture'</span>, 
+  <span class="s1">'worst perimeter'</span>, <span class="s1">'worst area'</span>,<span class="s1">'worst smoothness'</span>, 
+  <span class="s1">'worst compactness'</span>, <span class="s1">'worst concavity'</span>, <span class="s1">'worst concave points'</span>,
+  <span class="s1">'worst symmetry'</span>, <span class="s1">'worst fractal dimension'</span>,
+  <span class="s1">'target'</span><span class="o">]</span>, <span class="nv">dtype</span><span class="o">=</span><span class="s1">'object'</span><span class="o">)</span>
+Target distribution:
+target
+1    357
+0    212
+....
+</code></pre></div></div>
+
+<p>There is even more information about the dataset contained below this output, which is truncated here, including a <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">Statistical Summary</a> and a <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html">Correlation Matrix</a>.</p>
+
+<h3 id="show-a-scatter-plot">Show a scatter plot</h3>
+<p>You can create graphs with <a href="https://matplotlib.org/">matplotlib</a> that use <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html">DataFrames</a> and display in a <a href="https://jupyter.org/">Jupyter</a> Notebook.   This shows a scatter plot using some of our more “important” features as detected by <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest Classifier</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'worst concave points'</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s">'worst perimeter'</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s">'target'</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'viridis'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Worst Concave Points'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Worst Perimeter'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Scatter Plot: Worst Concave Points vs Worst Perimiter'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s">'Target'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scatter-plot.png" alt="" /></p>
+
+<p><img width="550" alt="image" src="https://github.com/git-steven/git-steven.github.io/assets/6759449/ebf6eee4-820d-4229-9d9f-31011703e509" /></p>
+
+<h2 id="building-the-graph">Building the graph</h2>
+<p>Now, here comes the fun part! Let’s create a graph using <a href="https://networkx.org/">NetworkX</a> to visualize the relationship between the input features and the diagnosis, highlighting the features that contribute most to a positive diagnosis:</p>
+
+<h3 id="graph-structure">Graph Structure</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="n">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colormaps</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
+
+<span class="c1"># Create a graph
+</span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="p">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Normalize importances from 0.0-1.0
+</span><span class="n">max_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">norm_importance</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:(</span><span class="n">f</span><span class="o">/</span><span class="n">max_val</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">feature_importance</span><span class="p">.</span><span class="n">items</span><span class="p">()}</span>
+
+<span class="c1"># Add node for diagnosis:
+</span><span class="n">DIAGNOSIS_LABEL</span> <span class="o">=</span> <span class="s">"PositiveDiagnosis"</span>
+<span class="n">G</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">DIAGNOSIS_LABEL</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">"diagnosis"</span><span class="p">)</span>
+
+<span class="c1"># Add nodes/edges for features
+</span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">all_feature_names</span><span class="p">:</span>
+    <span class="n">importance</span> <span class="o">=</span> <span class="n">feature_importance</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="n">norm_importance</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
+    <span class="n">edge_label</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">importance</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">G</span><span class="p">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">"feature"</span><span class="p">,</span> <span class="n">importance</span><span class="o">=</span><span class="n">importance</span><span class="p">)</span>
+    <span class="n">G</span><span class="p">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">DIAGNOSIS_LABEL</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">edge_label</span><span class="p">)</span><span class="sb">``</span><span class="err">`</span>
+</code></pre></div></div>
+<p>In this code snippet, we create a graph <a href="https://networkx.org/documentation/stable/reference/classes/digraph.html">G</a> and add <strong>nodes</strong> for each feature, as well as a Diagnosis <strong>node</strong>.  We also add <strong>edges</strong> between each feature <strong>node</strong> and the <code class="language-plaintext highlighter-rouge">Diagnosis</code> <strong>node</strong>.</p>
+
+<h3 id="graph-visualization">Graph visualization</h3>
+<h4 id="node-positions">Node positions</h4>
+<p>Now, how to get node (and label) positions?</p>
+
+<p><a href="https://networkx.org/">NetworkX</a> has several great <a href="https://networkx.org/documentation/stable/reference/drawing.html#module-networkx.drawing.layout">layout utilities</a>.  These use your Graph structure and calculate node positions based on their underlying algorithm.  The <a href="https://networkx.org/documentation/stable/reference/generated/networkx.drawing.layout.spring_layout.html">spring_layout</a> is commonly used.  However, after playing around with default layouts, I noticed a simple “circle of nodes” was too crowded, especially with labels.  However, if we offset every other node to an outer circle, things fit much more nicely.</p>
+
+<p>Therefore, we want the feature nodes laid out in two concentric circles, in order of highest importance, which each node alternating between the inner and outer circle.</p>
+
+<p>The Diagnosis Node lies directly at the center of the graph.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Constants to control concentric circle generation:
+</span><span class="n">RADIUS</span><span class="o">=</span><span class="mi">1000</span>
+<span class="n">RADIUS_INCR</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">LABEL_INCR</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c1"># Get concentric circles coordinates for nodes:
+</span><span class="n">feature_cnt</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">)</span>
+<span class="n">node_pts</span> <span class="o">=</span> <span class="n">concentric_cirle_point_generator</span><span class="p">(</span>
+  <span class="n">feature_cnt</span><span class="p">,</span> 
+  <span class="n">r1</span><span class="o">=</span><span class="n">RADIUS</span><span class="p">,</span> 
+  <span class="n">r2</span><span class="o">=</span><span class="n">RADIUS</span><span class="o">+</span><span class="n">RADIUS_INCR</span>
+<span class="p">)</span>
+
+<span class="n">coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">node_pts</span><span class="p">)</span>
+<span class="n">node_positions</span> <span class="o">=</span> <span class="p">{</span> <span class="n">feature_name</span><span class="p">:</span> <span class="n">coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span> <span class="p">}</span>
+<span class="n">node_positions</span><span class="p">[</span><span class="n">DIAGNOSIS_LABEL</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="c1"># Get concentric circles coordinates for labels, 
+# just (slightly further out than the nodes):
+</span><span class="n">lbl_pts</span> <span class="o">=</span> <span class="n">concentric_cirle_point_generator</span><span class="p">(</span>
+  <span class="n">feature_cnt</span><span class="p">,</span> 
+  <span class="n">r1</span><span class="o">=</span><span class="n">RADIUS</span><span class="o">+</span><span class="n">LABEL_INCR</span><span class="p">,</span> 
+  <span class="n">r2</span><span class="o">=</span><span class="n">RADIUS</span><span class="o">+</span><span class="n">RADIUS_INCR</span><span class="o">+</span><span class="n">LABEL_INCR</span>
+<span class="p">)</span>
+<span class="n">label_coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">lbl_pts</span><span class="p">)</span>                                    
+<span class="n">label_positions</span> <span class="o">=</span> <span class="p">{</span> <span class="n">feature_name</span><span class="p">:</span> <span class="n">label_coords</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span> <span class="p">}</span>
+<span class="n">label_positions</span><span class="p">[</span><span class="n">DIAGNOSIS_LABEL</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>You may have we noticed that we calculate the positions for node labels as well.  Normally, they are displayed inside the node, however, some of our feature names are quite long, which would make for big nodes, so we elected to place them in boxes even further out from our nodes.  So essentially, Nodes are laid out in two concentric circles, and their labels occupy two more, slightly bigger concentric circles.</p>
+
+<h2 id="graph-rendering">Graph rendering</h2>
+<p>Finally, we visualize the graph using <a href="https://networkx.org/">NetworkX</a>’s drawing functions. The resulting graph is a powerful visual representation of the relationship between the input features and the diagnosis. The larger the node size and the thicker the edge, the more important that feature is in contributing to a positive diagnosis.</p>
+
+<ul>
+  <li><a href="https://networkx.org/">NetworkX</a> works with <a href="https://matplotlib.org/">matplotlib</a> to render our graph</li>
+  <li>The edge weights and colors represent the importance scores determined by the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Random Forest Classifier</a>.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Constants needed to control NODE &amp; EDGE sizes:
+</span><span class="n">NODE_SIZE</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">BOSS_NODE_SIZE</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">EDGE_SCALE</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">EDGE_MIN</span> <span class="o">=</span> <span class="mf">4.0</span>
+
+<span class="c1"># Clreate matplotlib plot on which to draw our graph:
+</span><span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="c1"># Edge colors are a factor of normalized importance, 
+# and use interpolated colors from colormap:
+</span><span class="n">edge_colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm_importance</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">edges</span><span class="p">]</span>
+<span class="n">edge_widths</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="n">EDGE_MIN</span> <span class="o">+</span> <span class="n">G</span><span class="p">.</span><span class="n">edges</span><span class="p">[</span><span class="n">e</span><span class="p">][</span><span class="s">"weight"</span><span class="p">]</span> <span class="o">*</span> <span class="n">EDGE_SCALE</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">edges</span>
+<span class="p">]</span>
+
+<span class="c1"># Node colors are lightgreen or lightblue:
+</span><span class="n">node_colors</span> <span class="o">=</span> <span class="p">[</span><span class="s">"lightgreen"</span> \
+    <span class="k">if</span> <span class="p">(</span><span class="s">"type"</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="ow">and</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"feature"</span><span class="p">)</span> \     
+    <span class="k">else</span> <span class="s">"lightblue"</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span>
+<span class="p">]</span>
+
+<span class="c1"># Node sizes are NODE_SIZE or BOSS_NODE_SIZE:
+</span><span class="n">node_sizes</span>  <span class="o">=</span> <span class="p">[</span><span class="n">NODE_SIZE</span> \
+    <span class="k">if</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s">"type"</span><span class="p">]</span> <span class="o">==</span> <span class="s">"feature"</span> \
+    <span class="k">else</span> <span class="n">BOSS_NODE_SIZE</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">nodes</span>
+<span class="p">]</span>
+
+<span class="c1"># Create edge labels based on feature importance:
+</span><span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="mi">4</span><span class="p">)</span> \
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">G</span><span class="p">.</span><span class="n">edges</span>
+<span class="p">}</span>
+
+<span class="c1"># Create colormap for edges:
+</span><span class="n">edge_colormap</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span>
+    <span class="s">'gold'</span><span class="p">,</span> 
+    <span class="s">'goldenrod'</span><span class="p">,</span> 
+    <span class="s">'darkorange'</span><span class="p">,</span> 
+    <span class="s">'red'</span><span class="p">,</span> 
+    <span class="s">'firebrick'</span><span class="p">]).</span><span class="n">resampled</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+
+<span class="c1"># Draw network without labels:
+</span><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> 
+    <span class="n">node_positions</span><span class="p">,</span> 
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">arrows</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+    <span class="n">edge_color</span><span class="o">=</span><span class="n">edge_colors</span><span class="p">,</span> 
+    <span class="n">edge_cmap</span><span class="o">=</span><span class="n">edge_colormap</span><span class="p">,</span>
+    <span class="n">edge_vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">edge_vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+    <span class="n">label</span><span class="o">=</span><span class="s">"Features most relevant to positive diagnosis"</span><span class="p">,</span>     
+    <span class="n">margins</span><span class="o">=</span><span class="mf">0.002</span><span class="p">,</span> 
+    <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span> 
+    <span class="n">node_size</span><span class="o">=</span><span class="n">node_sizes</span><span class="p">,</span>     
+    <span class="n">with_labels</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> 
+    <span class="n">width</span><span class="o">=</span><span class="n">edge_widths</span><span class="p">,</span>     
+<span class="p">)</span>
+
+<span class="c1"># Draw labels at offset positions:
+</span><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> 
+    <span class="n">label_positions</span><span class="p">,</span> 
+    <span class="n">font_size</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> 
+    <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s">"round"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">"white"</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># Draw edge labels:
+</span><span class="n">nx</span><span class="p">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span>
+    <span class="n">G</span><span class="p">,</span> 
+    <span class="n">node_positions</span><span class="p">,</span> 
+    <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span> 
+    <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span>
+<span class="p">)</span>
+
+<span class="c1"># Render with matplotlib:
+</span><span class="n">plt</span><span class="p">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Feature Importance Graph"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Print feature importances
+</span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">feature_importance</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Feature: </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s">, Importance: </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/networkx_bc.png" alt="" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In my experience, visualizing feature importance in this way can be incredibly insightful. It allows us to quickly identify the key factors that influence the diagnosis and helps guide further analysis and decision-making.</p>
+
+<p>Of course, this is just one example of how NetworkX can be used to visualize relationships in data. You can customize the graph properties, layouts, and styles to suit your specific needs and preferences.</p>
+
+<p>I encourage you to explore the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html#sklearn.datasets.load_breast_cancer">this</a> and other datasets further and experiment with different machine learning algorithms and visualization techniques. Who knows what other interesting insights you might uncover!  More datasets can be found at scikit-learn <a href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.datasets">here</a>.  You can also find event more datasets at <a href="https://www.kaggle.com/datasets">kaggle</a>.</p>
+
+<p>Remember, while this example focuses on breast cancer diagnosis, the principles and techniques demonstrated here can be applied to various other domains and datasets. The power of data visualization lies in its ability to communicate complex relationships and insights in a clear and intuitive manner.</p>
+
+<p>So, go ahead and give it a try! Load up your favorite dataset, fire up a <a href="https://jupyter.org/">Jupyter</a> Notebook, and start visualizing those important features like a pro. Happy exploring!</p>
+
+<p>In my experience, visualizing feature importance in this way can be incredibly insightful. It allows us to quickly identify the key factors that influence the diagnosis and helps guide further analysis and decision-making.</p>
+
+<p>Of course, this is just one example of how NetworkX can be used to visualize relationships in data. You can customize the graph properties, layouts, and styles to suit your specific needs and preferences.</p>
+
+<p>I encourage you to explore the breast cancer dataset further and experiment with different machine learning algorithms and visualization techniques. Who knows what other interesting insights you might uncover!</p>
+
+<p>Remember, while this example focuses on breast cancer diagnosis, the principles and techniques demonstrated here can be applied to various other domains and datasets. The power of data visualization lies in its ability to communicate complex relationships and insights in a clear and intuitive manner.</p>
+
+<p>So, go ahead and give it a try! Load up your favorite dataset, fire up a <a href="https://jupyter.org/">Jupyter</a> Notebook, and start visualizing those important features like a pro. Happy exploring!</p>

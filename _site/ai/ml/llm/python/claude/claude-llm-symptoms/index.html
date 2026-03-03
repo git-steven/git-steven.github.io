@@ -1,0 +1,124 @@
+<p><em>Building an Interactive Diagnostic Tool with Claude’s LLM API and Jupyter Widgets</em></p>
+
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/claude-diagnose-md.png" alt="" /></p>
+
+<h2 id="introduction">Introduction</h2>
+<p>In the field of healthcare, early and accurate diagnosis plays a crucial role in providing effective treatment to patients. With the advancements in artificial intelligence (AI) and natural language processing (NLP), it is now possible to create intelligent diagnostic tools that can assist medical professionals and empower patients. In this article, we will explore how to build a <em>basic</em> interactive diagnostic tool using Claude’s LLM <a href="https://docs.anthropic.com/claude/reference/client-sdks">API</a>, the Python <a href="https://pypi.org/project/anthropic/">Anthropic</a> package, and <a href="https://ipywidgets.readthedocs.io/">Jupyter Widgets</a>.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<h3 id="claude-account-and-api-key">Claude account and API key</h3>
+<p>Go to the <a href="https://console.anthropic.com/settings/keys">Anthropic Console</a> to create your key.  If you haven’t created a <a href="https://claude.ai/">Claude</a> account yet, do it when prompted to; it’s easy!</p>
+
+<h3 id="python-packages">Python Packages</h3>
+<p>To get started, make sure you have Python and Jupyter Notebook installed on your machine. You will also need the Anthropic package, which provides a convenient way to interact with Claude’s LLM API.  We’ll also need jupyter widgets.  They can all be installed via:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>anthropic jupyterlab jupyterlab-widgets ipywidgets
+</code></pre></div></div>
+
+<h2 id="jupyter-notebook">Jupyter notebook</h2>
+<p>Start jupyter lab and create a new Jupyter Notebook:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  jupyter lab
+</code></pre></div></div>
+
+<p>Create a new cell (as below) to:</p>
+<ul>
+  <li>Import necessary code from modules</li>
+  <li>Create the <a href="https://pypi.org/project/anthropic/">anthropic</a> <code class="language-plaintext highlighter-rouge">Client</code> with your <code class="language-plaintext highlighter-rouge">API_KEY</code>.  In this example, it is stored in an environment variable so it is not published with this example.</li>
+  <li>Create the basic <code class="language-plaintext highlighter-rouge">diagnose</code> function, which accepts a string of symptoms, which can be separated by commas.  This function uses the <a href="https://pypi.org/project/anthropic/">anthropic</a> <code class="language-plaintext highlighter-rouge">Client</code> to communicate with the Claude API to obtain a basic diagnosis.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">import</span> <span class="nn">anthropic</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="p">.</span><span class="n">Client</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="p">.</span><span class="n">getenv</span><span class="p">(</span><span class="s">'CLAUDE_API_KEY'</span><span class="p">))</span>
+
+<span class="n">PROMPT</span> <span class="o">=</span> <span class="s">"""
+Given the following symptoms: "{}", what are the possible diagnoses?
+"""</span>
+<span class="k">def</span> <span class="nf">diagnose</span><span class="p">(</span><span class="n">symptoms</span><span class="p">):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="n">PROMPT</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">symptoms</span><span class="p">)</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">messages</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s">"claude-3-opus-20240229"</span><span class="p">,</span>
+        <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">message</span><span class="p">.</span><span class="n">content</span>
+</code></pre></div></div>
+
+<h2 id="user-interface">User Interface</h2>
+<p><em>Creating the User Interface with Jupyter Widgets</em>
+Now, let’s create an interactive user interface using Jupyter Widgets to accept symptoms from the user and display the possible diagnoses.</p>
+
+<p>In the cell below, we create a simple UI with 3 components:</p>
+<ul>
+  <li>a text area widget for entering symptoms</li>
+  <li>a submit widget for triggering the diagnosis via the local <code class="language-plaintext highlighter-rouge">on_submit_click</code> function.</li>
+  <li>an output widget for displaying the results</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DISCLAIMER_MSG</span> <span class="o">=</span> <span class="s">"Please note that this is not a definitive"</span>
+<span class="n">DISCLAIMER_MSG</span> <span class="o">+=</span> <span class="s">" diagnosis. Always consult a healthcare"</span>
+<span class="n">DISCLAIMER_MSG</span> <span class="o">+=</span> <span class="s">" a healthcare professional for proper evaluation"</span>
+<span class="n">DISCLAIMER_MSG</span> <span class="o">+=</span> <span class="s">" and treatment."</span>
+<span class="n">SYMPTOM_LBL</span> <span class="o">=</span> <span class="s">"Describe your symptoms, separated by commas..."</span>
+
+<span class="k">def</span> <span class="nf">symptom_checker_widget</span><span class="p">():</span>
+    <span class="s">"""
+    An interactive interface, created with Jupyter widgets
+    """</span>
+
+    <span class="n">caption</span> <span class="o">=</span> <span class="n">widgets</span><span class="p">.</span><span class="n">HTML</span><span class="p">(</span><span class="s">"&lt;h3&gt;Diagnostics via Claude&lt;/h3&gt;"</span><span class="p">)</span>
+    
+    <span class="n">symptom_input</span> <span class="o">=</span> <span class="n">widgets</span><span class="p">.</span><span class="n">Textarea</span><span class="p">(</span>
+        <span class="n">description</span><span class="o">=</span><span class="s">'Symptoms'</span><span class="p">,</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="n">SYMPTOM_LBL</span><span class="p">,</span>
+        <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s">'width'</span><span class="p">:</span><span class="s">'80%'</span><span class="p">,</span> <span class="s">'height'</span><span class="p">:</span><span class="s">'80px'</span><span class="p">}</span>
+    <span class="p">)</span>
+    
+    <span class="n">diagnose_button</span> <span class="o">=</span> <span class="n">widgets</span><span class="p">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s">"Diagnose"</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">widgets</span><span class="p">.</span><span class="n">Output</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'border'</span><span class="p">:</span> <span class="s">'1px solid black'</span><span class="p">,</span>
+        <span class="s">'min_height'</span><span class="p">:</span><span class="s">'80px'</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">append_stdout</span><span class="p">(</span><span class="s">'Diagnosis will appear here.'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_submit_click</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">output</span><span class="p">:</span>
+            <span class="n">output</span><span class="p">.</span><span class="n">clear_output</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">'Diagnosing...'</span><span class="p">)</span>
+            <span class="n">symptoms</span> <span class="o">=</span> <span class="n">symptom_input</span><span class="p">.</span><span class="n">value</span>
+            <span class="n">diagnosis</span> <span class="o">=</span> <span class="n">diagnose</span><span class="p">(</span><span class="n">symptoms</span><span class="p">)</span>
+            <span class="n">possible_conditions</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">diagnosis</span><span class="p">]</span>            
+            <span class="k">for</span> <span class="n">condition</span> <span class="ow">in</span> <span class="n">possible_conditions</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"- </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\n\n</span><span class="s">DISCLAIMER_MSG"</span><span class="p">)</span>
+            
+
+    <span class="n">diagnose_button</span><span class="p">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_submit_click</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">caption</span><span class="p">,</span> <span class="n">symptom_input</span><span class="p">,</span> <span class="n">diagnose_button</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="running-the-tool">Running the tool</h2>
+<p>To run the interactive diagnostic tool, execute the following cell, which simply calls the <code class="language-plaintext highlighter-rouge">symptom_checker_widget</code> function defined above. The user interface will appear, allowing users to enter their symptoms and click the “Diagnose” button to receive possible diagnoses based on the symptoms provided.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">symptom_checker_widget</span><span class="p">()</span>
+</code></pre></div></div>
+<p><img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/claude-diag-ui.png" alt="" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this article, we explored how to build an interactive diagnostic tool using Claude’s LLM <a href="https://docs.anthropic.com/claude/reference/client-sdks">API</a>, the Python <a href="https://pypi.org/project/anthropic/">Anthropic</a> package, and <a href="https://ipywidgets.readthedocs.io/">Jupyter Widgets</a>. By leveraging the power of AI and NLP, we created a simple interface that accepts symptoms and provides possible diagnoses.</p>
+
+<p>This diagnostic tool can serve as a valuable resource for both medical professionals and patients, aiding in the early identification of potential health issues. However, it is essential to note that this tool is not a substitute for professional medical advice and should be used in conjunction with proper medical evaluation and treatment.</p>
+
+<p>It is also by no means a complete diagnostics tool.  As you continue to develop and refine the diagnostic tool, consider incorporating additional features such as symptom validation, medical terminology recognition, and integration with medical knowledge bases to enhance its accuracy and usability.  You might also consider tracking the diagnostic session, so it can be conversational and used to refine a diagnosis.  Another feature that might be useful is suggesting other symptoms that might appear along with the submitted ones.  This is useful for a patient who doesn’t remember all the symptoms, or might think they aren’t worth mentioning.</p>
+
+<p>Remember to handle user input securely, ensure the privacy of sensitive health information, and provide appropriate disclaimers regarding the limitations and intended use of the diagnostic tool.</p>
+
+<p>By combining the power of Claude’s LLM API, Python, and Jupyter Widgets, you can create innovative healthcare applications that have the potential to revolutionize patient care and empower individuals to take a more active role in managing their health.</p>

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Start JupyterLab in the python-git-steven project
+set -e
+cd "$(dirname "$0")/.."
+poetry run jupyter lab

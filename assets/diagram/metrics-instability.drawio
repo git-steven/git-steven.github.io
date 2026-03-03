@@ -1,13 +1,13 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0" pages="3">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6" pages="3">
   <diagram name="Overview" id="coupling-metrics-overview">
-    <mxGraphModel dx="1018" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0" adaptiveColors="none">
+    <mxGraphModel dx="1018" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0" adaptiveColors="none">
       <root>
         <mxCell id="0" />
         <mxCell id="xymMRL26LLiXq3ZRDPoq-1" parent="0" style="locked=0;" value="bg" />
-        <mxCell id="xymMRL26LLiXq3ZRDPoq-2" parent="xymMRL26LLiXq3ZRDPoq-1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=light-dark(#D0C9BD,#CCCCCC);fillColor=light-dark(#DAD5C8,#DAD5C8);gradientDirection=radial;movable=0;resizable=0;rotatable=0;deletable=0;editable=1;locked=0;connectable=1;arcSize=2;strokeColor=#605D5588;opacity=20;glass=0;sketchStyle=comic;shadow=0;collapsible=1;dropTarget=1;autosize=0;fixedWidth=1;cloneable=0;labelBorderColor=none;fontColor=#605D55;" value="" vertex="1">
+        <mxCell id="xymMRL26LLiXq3ZRDPoq-2" parent="xymMRL26LLiXq3ZRDPoq-1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=light-dark(#D0C9BD,#CCCCCC);fillColor=light-dark(#DAD5C8,#DAD5C8);gradientDirection=radial;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;arcSize=2;strokeColor=#605D5588;opacity=20;glass=0;sketchStyle=comic;shadow=0;collapsible=1;dropTarget=1;autosize=0;fixedWidth=1;cloneable=0;labelBorderColor=none;fontColor=#605D55;" value="" vertex="1">
           <mxGeometry height="850" width="1100" as="geometry" />
         </mxCell>
-        <mxCell id="1" parent="0" style="locked=0;" value="labels" />
+        <mxCell id="1" parent="0" style="locked=1;" value="labels" />
         <mxCell id="cm_title" parent="1" style="text;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=1;sketch=1;curveFitting=1;jiggle=2;shadow=1;sketchStyle=comic;glass=1;fillColor=#f5f5f5;gradientColor=#AFA99A;strokeColor=#666666;opacity=10;arcSize=38;fontFamily=Architects Daughter;fontSize=22;fontColor=#504D47;html=1;" value="&lt;div style=&quot;line-height: 100%;&quot;&gt;&lt;font style=&quot;font-size: 32px;&quot;&gt;&lt;b style=&quot;line-height: 110%;&quot;&gt;Coupling Metrics&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Instability&amp;nbsp;— Overview&lt;/div&gt;" vertex="1">
           <mxGeometry height="80" width="440" x="360" y="10" as="geometry" />
         </mxCell>
@@ -30,7 +30,7 @@
             <mxGeometry height="40" width="100" x="820" y="140" as="geometry" />
           </mxCell>
         </object>
-        <mxCell id="Nv1ozr4fbvRzdkEia-fP-2" parent="0" style="locked=0;" value="Diagram" />
+        <mxCell id="Nv1ozr4fbvRzdkEia-fP-2" parent="0" style="locked=1;" value="Diagram" />
         <mxCell id="cm_arrow1" edge="1" parent="Nv1ozr4fbvRzdkEia-fP-2" source="r5uOMSRaPuGDiy-okqf7-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;strokeColor=#666666;strokeWidth=2;sketch=1;curveFitting=1;jiggle=2;sketchStyle=comic;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=-0.008;exitY=0.087;exitDx=0;exitDy=0;shadow=1;fontColor=#4D4D4D;exitPerimeter=0;" target="r5uOMSRaPuGDiy-okqf7-5" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">

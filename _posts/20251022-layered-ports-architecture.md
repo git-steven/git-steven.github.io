@@ -2,7 +2,7 @@
 
 **TL;DR:** While building a microservice generator, I discovered that the popular architectures—Clean, Hexagonal, and traditional Layered—all had fatal flaws for generated code. I ended up creating a hybrid: **Layered Ports Architecture**—familiar layered structure with strategic interface boundaries. It's been battle-tested across 200+ generated microservices.
 
------
+----- 
 
 ## The Problem: Building a Microservice Generator
 
@@ -870,4 +870,3 @@ That's it.
 -----
 
 *Written by a developer who spent way too much time generating microservices and finally found something that works.*
-

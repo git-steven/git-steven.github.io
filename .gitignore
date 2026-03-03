@@ -1,9 +1,49 @@
-_site
-.sass-cache
-.jekyll-metadata
-Gemfile.lock
+# Compiled python modules.
+*.pyc
 .DS_Store
-**/.ipynb_checkpoints/*
-.idea
+*/.DS_Store
+
+.idea/
+
+# Pytest
+__pycache__
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.egg*
+
+# Poetry
+.venv/
+poetry.lock
+
+# Coverage
+.coverage
+htmlcov/
+
+# Testing
+reports/
+
+# Temporary files and caches (structure tracked via tmp/.gitkeep)
+tmp/*
+!tmp/.gitkeep
+
+# Pre-commit
+.pre-commit-cache/
+
+# Logs
+logs
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Python version
+.python-version
+
+junk.txt
+
+# Temporarily ignored
+#docs/architecture/
 *.bkp
 *.dtmp
