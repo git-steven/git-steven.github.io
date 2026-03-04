@@ -47,3 +47,5 @@ junk.txt
 #docs/architecture/
 *.bkp
 *.dtmp
+
+_site/
