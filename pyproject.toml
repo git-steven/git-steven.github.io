@@ -5,16 +5,16 @@ description = "Python setup for git-steven.github.io"
 authors = [{ name = "steven.miers@gmail.com" }]
 license = { text = "MIT" }
 readme = "README.md"
-requires-python = ">=3.13.7"
+requires-python = ">=3.13.7,<4.0.0"
 
 [tool.poetry.dependencies]
 python = "^3.13.7"
 freyja = "^1.1"
 matplotlib = "^3.8.4"
 nltk = "^3.8.1"
-numpy = "^1.26.4"
+numpy = "^2.3.4"
 networkx = "^3.3"
-pandas = "^2.2.2"
+pandas = "^3.0.1"
 plotly = "^6.6.0"
 scikit-learn = "^1.4.2"
 setuptools = "^69.5.1"

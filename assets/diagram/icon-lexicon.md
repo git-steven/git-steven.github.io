@@ -135,6 +135,22 @@ Use for: change, churn, “winds of requirements”, variable traffic
 
 ---
 
+### 🌪 Weather ☔
+**Use for:** Weather or weather metaphors 
+- **Bad Weather / Danger: 🌪 ⛈ 🌧 ☔ 🌩 ⛈ ☁** 
+- **Suns / Various: ☼ ☉ ☀ 🌡 🌤 🌥 🌦**  
+- **Fog: 🌫**
+- **Comet: ☄**
+
+### ☢ Miscellaneous Symbols
+- **Radioactive: ☢**
+- **Biohazard: ☣**
+- 
+#### ⭐ Stars
+- **Normal: ⭐ 🌟 ⭑ ★ ★ ✹ ✸ ✴**
+- **Alternative: ✪ ⍟ ✦ ✧ ☆ ✫ ✯ ✰ ❂**
+- **Math:  ⋆  ≛ ⍣**
+
 ## 🌐 World & Worldbuilding (Scope, Terrain, Externalities)
 **Use for:** environments, regions, external deps, geography metaphors, “the world outside the system”
 
@@ -143,7 +159,8 @@ Use for: change, churn, “winds of requirements”, variable traffic
 - **Mountains / Hard constraints:** 🏔️ ⛰️ 🗻 🪨  
 - **Settlements / Habitats:** 🏕️ 🏘️  
 - **Biomes / Regions:** 🏞️ 🏜️ 🏝️ 🏖️ 🌋  
-- **Exploration / Frontier:** 🧭 🗺️ 🔭  
+- **Exploration / Frontier:** 🧭 🗺️ 🔭
+- **Time / Waiting**: ⏳🕰
 
 **Suggested meanings (optional):**
 - 🛰️ = external system / third-party / remote dependency  
@@ -200,3 +217,4 @@ If you want a small set that’s **always consistent**:
 - 🔥 = Hotspot / Incident / Risk  
 - 💧 = Stabilization / Hardening  
 - 🌱 = Growth / Evolution  
+- 🕰 = Time / Waiting
