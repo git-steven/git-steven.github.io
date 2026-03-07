@@ -10,35 +10,9 @@ categories:
   - scrum  
 author: steven
 ---
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counter-counter-points.png" width=400/>
 
-
-## 🌀 Introduction
-
-_Welcome, fellow practitioners. 🤓_
-
-What follows is a modest examination of Scrum -- that beloved framework which has achieved near-liturgical status in parts of our industry.
-
-Scrum promises predictable delivery through disciplined iteration.  
-In practice, it often measures something else entirely:
-
-**motion rather than progress.**
-
-Burndown charts fall.  
-Velocity charts rise.  
-Sprint boards clear.
-
-Meanwhile, the architecture quietly accumulates complexity.
-
-This essay explores several common failure modes—not because Scrum is uniquely flawed, but because **its incentives frequently reward the wrong behaviors.**
-
-And incentives, as every systems engineer eventually learns, shape outcomes more reliably than intentions.
-
-![Scrum: The Agile Trap That Keeps on Sprinting](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-sprint-trap-sm.png)
-
-But let's establish scope first: **no development process—Scrum, Kanban, or otherwise—is a substitute for sound engineering practice.**
-
-___
-
+# Scrum: Points and Counterpoint
 ## **🌀 Table of Contents**
 - [📍 When Velocity Becomes the Target](#-when-velocity-becomes-the-target)
 - [🧬 When Complexity Compounds](#-when-complexity-compounds)
@@ -48,6 +22,29 @@ ___
 - [📚 References & Further Reading](#-references--further-reading)
 
 ---
+## 🌀 Introduction
+
+_Welcome, fellow practitioners of software engineering. 🤓_
+
+What follows is a modest examination of Scrum -- that beloved framework which has achieved near-liturgical status in parts of our industry.
+
+Scrum promises predictable delivery through disciplined iteration.  
+In practice, it often measures something else entirely:
+
+### 💨 Motion rather than progress.
+* Burndown charts fall  
+* Velocity charts rise  
+* Sprint boards clear 
+* _**Meanwhile**, the architecture quietly accumulates complexity_
+
+This essay explores several common failure modes—not because Scrum is uniquely flawed, but because **its incentives frequently reward the wrong behaviors.**
+
+And incentives, as every systems engineer eventually learns, shape outcomes more reliably than intentions.
+
+
+But let's establish scope first: **no development process—Scrum, Kanban, or otherwise—is a substitute for sound engineering practice.**
+
+___
 
 ## 📍 When Velocity Becomes the Target
 > 🤓 **Nerdy Aside:** These dysfunction patterns have a name: **_Goodhart's Law_**.
