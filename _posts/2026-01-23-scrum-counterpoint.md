@@ -10,10 +10,10 @@ categories:
   - scrum  
 author: steven
 ---
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counter-counter-points.png" width=400/>
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counterpoints.png" width=600/>
 
 # Scrum: Points and Counterpoint
-## **🌀 Table of Contents**
+## **📖 Table of Contents**
 - [📍 When Velocity Becomes the Target](#-when-velocity-becomes-the-target)
 - [🧬 When Complexity Compounds](#-when-complexity-compounds)
 - [📐️ When the Framework Doesn't Fit](#-when-the-framework-doesnt-fit)
@@ -130,7 +130,7 @@ The problem isn't bad Scrum Masters—it's a role definition that conflates faci
 
 ## 🤔 Expectation vs. Reality
 
-|                    | Expectation                       | Reality                               |
+| _Item_             | Expectation                       | Reality                               |
 |--------------------|-----------------------------------|---------------------------------------|
 | **Delivery**       | 📦 Predictable releases           | 📋 Predictable meetings               |
 | **Priority**       | 📍 Focus on highest-value work    | 🧹 Focus on what fits in the sprint   |
