@@ -2,8 +2,8 @@
 title: "🔬The Hidden Science That Saves Microservices"
 date: 2026-03-07 00:11:50 -0500
 categories:
-  - sdlc
   - architecture
+  - sdlc
   - coupling
   - metrics
   - microservices
