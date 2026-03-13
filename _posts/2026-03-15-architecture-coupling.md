@@ -1,6 +1,6 @@
 ---
 title: "🔬The Hidden Science That Saves Microservices"
-date: 2026-03-07 00:11:50 -0500
+date: 2026-03-15 00:11:50 -0500
 categories:
   - architecture
   - sdlc
