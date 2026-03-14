@@ -1,10 +1,10 @@
 ---
 title: "Scrum: Points and Counterpoint"
-date: 2026-01-23 11:37:00 -0500
+date: 2026-03-7 11:37:00 -0500
 categories:
   - architecture
   - sdlc
-  - software engineering
+  - softwareengineering
   - agile
   - kanban
   - scrum  

@@ -3,7 +3,6 @@ title: "🔬The Hidden Science That Saves Microservices"
 date: 2026-03-15 00:11:50 -0500
 categories:
   - architecture
-  - sdlc
   - coupling
   - metrics
   - microservices
@@ -90,14 +89,14 @@ I = Ce / (Ce + Ca)
   </thead>
   <tbody>
     <tr>
-      <td>0.0 ≤ I &lt; 0.25</td> 
+      <td>0.0 ≤ I &lt; 0.25</td>
       <td style="background-color: #507E9F;color: white;"><strong>Stable</strong></td>
       <td>Many dependents, few dependencies</td>
       <td>Change with care</td>
     </tr>
     <tr>
       <td>0.25 ≤ I &lt; 0.50</td>
-      <td style="background-color: #1C3B52;color: black;"><strong>Balanced</strong></td>
+      <td style="background-color: #1C3B52;color: black;"><strong>Mostly Stable</strong></td>
       <td>Goldilocks zone</td>
       <td>Normal dev pace</td>
     </tr>

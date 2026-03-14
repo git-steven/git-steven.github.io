@@ -1,9 +1,9 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0" pages="3">
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1" pages="3">
   <diagram name="Overview" id="coupling-metrics-overview">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0">
+    <mxGraphModel dx="1018" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0">
       <root>
         <mxCell id="0" />
-        <mxCell id="xymMRL26LLiXq3ZRDPoq-1" parent="0" style="locked=0;" value="bg" visible="0" />
+        <mxCell id="xymMRL26LLiXq3ZRDPoq-1" parent="0" style="locked=0;" value="bg" />
         <mxCell id="xymMRL26LLiXq3ZRDPoq-2" parent="xymMRL26LLiXq3ZRDPoq-1" style="rounded=0;whiteSpace=wrap;html=1;gradientColor=light-dark(#CCCCCC80,#CCCCCC80);fillColor=light-dark(#80808080,#80808080);gradientDirection=radial;movable=0;resizable=0;rotatable=0;deletable=0;editable=0;locked=1;connectable=0;arcSize=2;strokeColor=none;opacity=20;glass=0;sketchStyle=comic;shadow=0;" value="" vertex="1">
           <mxGeometry height="850" width="1100" as="geometry" />
         </mxCell>
@@ -15,7 +15,7 @@
           <mxGeometry height="60" width="800" x="160" y="90" as="geometry" />
         </mxCell>
         <mxCell id="ZtSfq6QEuiKFQxS1qjQW-1" connectable="0" parent="1" style="group" value="" vertex="1">
-          <mxGeometry height="310" width="280" x="410" y="400" as="geometry" />
+          <mxGeometry height="310" width="280" x="408" y="400" as="geometry" />
         </mxCell>
         <mxCell id="r5uOMSRaPuGDiy-okqf7-23" parent="1" style="rounded=1;whiteSpace=wrap;shadow=0;sketch=1;jiggle=2;curveFitting=1;sketchStyle=comic;strokeColor=#666666;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Architects Daughter;fontSize=24;fillColor=#FFFFFF;gradientColor=#E4E4E4;glass=0;fontStyle=1;opacity=40;gradientDirection=east;" value="Ca" vertex="1">
           <mxGeometry height="30" width="40" x="190" y="160" as="geometry" />
@@ -42,7 +42,7 @@
         <mxCell id="balUn9x8di-7hSbxtKkD-112" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Architects Daughter;fontSize=14;fontColor=#4D4D4D;labelBackgroundColor=none;shadow=0;glass=0;sketch=1;jiggle=2;curveFitting=1;sketchStyle=comic;opacity=30;strokeWidth=2;align=center;verticalAlign=middle;arcSize=36;fontStyle=1;resizable=1;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=east;strokeColor=none;" value="&lt;font face=&quot;Courier New&quot;&gt;Coupling metrics Overview diagram&lt;/font&gt;&lt;br&gt;&lt;span style=&quot;font-weight: normal;&quot;&gt;&lt;font face=&quot;Tahoma&quot;&gt;by:&lt;/font&gt;&amp;nbsp;&lt;/span&gt;&lt;i style=&quot;font-weight: normal;&quot;&gt;Steven Miers&lt;/i&gt;" vertex="1">
           <mxGeometry height="60" width="160" x="10" y="20" as="geometry" />
         </mxCell>
-        <mxCell id="Nv1ozr4fbvRzdkEia-fP-2" parent="0" style="locked=1;" value="Diagram" />
+        <mxCell id="Nv1ozr4fbvRzdkEia-fP-2" parent="0" style="locked=0;" value="Diagram" />
         <mxCell id="cm_arrow1" edge="1" parent="Nv1ozr4fbvRzdkEia-fP-2" source="r5uOMSRaPuGDiy-okqf7-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;curved=1;strokeColor=#666666;strokeWidth=2;sketch=1;curveFitting=1;jiggle=2;sketchStyle=comic;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=-0.008;exitY=0.087;exitDx=0;exitDy=0;shadow=1;fontColor=#4D4D4D;exitPerimeter=0;" target="r5uOMSRaPuGDiy-okqf7-5" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
@@ -308,18 +308,15 @@
         <mxCell id="balUn9x8di-7hSbxtKkD-101" parent="Nv1ozr4fbvRzdkEia-fP-2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#999999;gradientColor=#b3b3b3;strokeColor=#666666;shadow=1;sketch=1;jiggle=2;curveFitting=1;sketchStyle=comic;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Architects Daughter;fontSize=28;aspect=fixed;gradientDirection=west;" value="" vertex="1">
           <mxGeometry height="25" width="25" x="830" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="Nv1ozr4fbvRzdkEia-fP-1" parent="0" style="locked=1;" value="more stuff" />
-        <mxCell id="cm_footer" parent="Nv1ozr4fbvRzdkEia-fP-1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Architects Daughter;fontSize=12;fontColor=#999999;" value="&lt;i&gt;See Figure 2 (Instability Curves) and Figure 3 (Heat Map) for quantitative analysis&lt;/i&gt;" vertex="1">
-          <mxGeometry height="20" width="500" x="300" y="650" as="geometry" />
+        <mxCell id="LuvupAVNmaY-5DV_JYh3-1" parent="Nv1ozr4fbvRzdkEia-fP-2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Architects Daughter;fontSize=14;fontColor=#666666;" value="&lt;b&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;&quot;&gt;&lt;i style=&quot;&quot;&gt;Figure 1&amp;nbsp;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;i&gt;Afferent &lt;/i&gt;&lt;b style=&quot;&quot;&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;(Ca)&lt;/font&gt;&lt;/b&gt;&lt;i&gt; and Efferent &lt;/i&gt;&lt;b style=&quot;&quot;&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;(&lt;font style=&quot;font-size: 15px;&quot;&gt;Ce&lt;/font&gt;)&lt;/font&gt; &lt;/b&gt;&lt;i&gt;Coupling and Instability &lt;/i&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;(&lt;/span&gt;&lt;font style=&quot;font-weight: bold; font-size: 15px;&quot;&gt;I&lt;/font&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;)&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="480" x="40" y="820" as="geometry" />
         </mxCell>
-        <mxCell id="cm_subtitle" parent="Nv1ozr4fbvRzdkEia-fP-1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Architects Daughter;fontSize=14;fontColor=#666666;" value="&lt;i&gt;Figure 1: Understanding Afferent (Ca) and Efferent (Ce) Coupling&lt;/i&gt;" vertex="1">
-          <mxGeometry height="20" width="460" x="310" y="620" as="geometry" />
-        </mxCell>
+        <mxCell id="Nv1ozr4fbvRzdkEia-fP-1" parent="0" style="locked=0;" value="more stuff" />
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Instability Curves" id="instability-curves">
-    <mxGraphModel dx="1018" dy="689" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0">
+    <mxGraphModel dx="1018" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="#FCF5E5" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -371,7 +368,7 @@
         <mxCell id="refLabel07" parent="1" style="text;html=1;strokeColor=none;fillColor=#FCF5E5;align=left;verticalAlign=middle;fontSize=11;fontColor=#991B1B;fontFamily=Architects Daughter;fontStyle=3;" value="I=0.7" vertex="1">
           <mxGeometry height="16" width="45" x="805" y="228" as="geometry" />
         </mxCell>
-        <mxCell id="yAxis" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;sketch=1;curveFitting=1;jiggle=1;sketchStyle=comic;" value="">
+        <mxCell id="yAxis" edge="1" parent="1" style="endArrow=classic;html=1;strokeColor=#666666;strokeWidth=2;sketch=1;curveFitting=1;jiggle=1;sketchStyle=comic;fontFamily=Lucida Console;fontSize=18;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="100" y="530" as="sourcePoint" />
             <mxPoint x="100" y="110" as="targetPoint" />
@@ -383,28 +380,28 @@
             <mxPoint x="800" y="530" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="yLabel0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0.0" vertex="1">
+        <mxCell id="yLabel0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0.0" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="522" as="geometry" />
         </mxCell>
-        <mxCell id="yLabel02" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0.2" vertex="1">
+        <mxCell id="yLabel02" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0.2" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="438" as="geometry" />
         </mxCell>
-        <mxCell id="yLabel04" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0.4" vertex="1">
+        <mxCell id="yLabel04" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0.4" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="354" as="geometry" />
         </mxCell>
-        <mxCell id="yLabel06" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0.6" vertex="1">
+        <mxCell id="yLabel06" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0.6" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="270" as="geometry" />
         </mxCell>
-        <mxCell id="yLabel08" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0.8" vertex="1">
+        <mxCell id="yLabel08" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0..75" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="186" as="geometry" />
         </mxCell>
-        <mxCell id="yLabel1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="1.0" vertex="1">
+        <mxCell id="yLabel1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="1.0" vertex="1">
           <mxGeometry height="16" width="30" x="65" y="102" as="geometry" />
         </mxCell>
-        <mxCell id="yAxisTitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=14;fontColor=#32465D;fontFamily=Architects Daughter;fontStyle=1;rotation=-90;" value="Instability (I)" vertex="1">
+        <mxCell id="yAxisTitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontColor=#32465D;fontFamily=Lucida Console;fontStyle=1;rotation=-90;" value="Instability (I)" vertex="1">
           <mxGeometry height="20" width="80" x="15" y="300" as="geometry" />
         </mxCell>
-        <mxCell id="xLabel0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="0" vertex="1">
+        <mxCell id="xLabel0" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=18;fontColor=#666666;fontFamily=Lucida Console;" value="0" vertex="1">
           <mxGeometry height="16" width="20" x="90" y="535" as="geometry" />
         </mxCell>
         <mxCell id="xLabel5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;fontSize=12;fontColor=#666666;fontFamily=Architects Daughter;" value="5" vertex="1">
@@ -596,19 +593,19 @@
           <mxGeometry height="18" width="550" x="200" y="637" as="geometry" />
         </mxCell>
         <mxCell id="zoneLabelStable" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#166534;fontFamily=Architects Daughter;fontStyle=3;rotation=-90;" value="STABLE" vertex="1">
-          <mxGeometry height="20" width="60" x="855" y="445" as="geometry" />
+          <mxGeometry height="20" width="100" x="855" y="445" as="geometry" />
         </mxCell>
         <mxCell id="zoneLabelBalanced" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#65A30D;fontFamily=Architects Daughter;fontStyle=3;rotation=-90;" value="BALANCED" vertex="1">
-          <mxGeometry height="20" width="70" x="855" y="340" as="geometry" />
+          <mxGeometry height="20" width="100" x="855" y="348" as="geometry" />
         </mxCell>
         <mxCell id="zoneLabelBorderline" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#B58900;fontFamily=Architects Daughter;fontStyle=3;rotation=-90;" value="BORDERLINE" vertex="1">
-          <mxGeometry height="20" width="75" x="855" y="255" as="geometry" />
+          <mxGeometry height="20" width="100" x="855" y="252" as="geometry" />
         </mxCell>
         <mxCell id="zoneLabelVolatile" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontColor=#991B1B;fontFamily=Architects Daughter;fontStyle=3;rotation=-90;" value="VOLATILE" vertex="1">
-          <mxGeometry height="20" width="60" x="855" y="155" as="geometry" />
+          <mxGeometry height="20" width="100" x="855" y="155" as="geometry" />
         </mxCell>
         <mxCell id="zoneCardStable" parent="1" style="rounded=1;whiteSpace=wrap;html=1;sketch=1;curveFitting=1;jiggle=2;sketchStyle=comic;shadow=1;fillColor=#D5E8D4;gradientColor=#97D077;strokeColor=#166534;strokeWidth=2;opacity=60;" value="" vertex="1">
-          <mxGeometry height="80" width="210" x="100" y="670" as="geometry" />
+          <mxGeometry height="100" width="210" x="100" y="670" as="geometry" />
         </mxCell>
         <mxCell id="zoneStableTitle" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=18;fontColor=#166534;fontFamily=Architects Daughter;fontStyle=1;" value="&lt;b&gt;Stable&lt;/b&gt; (I &amp;lt; 0.3)" vertex="1">
           <mxGeometry height="26" width="150" x="115" y="678" as="geometry" />
@@ -642,6 +639,10 @@
         </mxCell>
         <mxCell id="zoneVolatileDesc" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=12;fontColor=#991B1B;fontFamily=Architects Daughter;whiteSpace=wrap;" value="Few dependents, many deps.&lt;br&gt;&lt;i&gt;Refactor freely.&lt;/i&gt;" vertex="1">
           <mxGeometry height="40" width="145" x="750" y="706" as="geometry" />
+        </mxCell>
+        <mxCell id="VnQtwBkGMapYUuq9u_uu-1" parent="0" value="Front" />
+        <mxCell id="VnQtwBkGMapYUuq9u_uu-2" parent="VnQtwBkGMapYUuq9u_uu-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Architects Daughter;fontSize=14;fontColor=#666666;" value="&lt;b&gt;&lt;font face=&quot;Comic Sans MS&quot; style=&quot;&quot;&gt;&lt;i style=&quot;&quot;&gt;Figure 1&amp;nbsp;&lt;/i&gt;&lt;/font&gt;&lt;/b&gt;&lt;i&gt;Afferent &lt;/i&gt;&lt;b style=&quot;&quot;&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;(Ca)&lt;/font&gt;&lt;/b&gt;&lt;i&gt; and Efferent &lt;/i&gt;&lt;b style=&quot;&quot;&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;(&lt;font style=&quot;font-size: 15px;&quot;&gt;Ce&lt;/font&gt;)&lt;/font&gt; &lt;/b&gt;&lt;i&gt;Coupling and Instability &lt;/i&gt;&lt;font face=&quot;Lucida Console&quot; style=&quot;&quot;&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;(&lt;/span&gt;&lt;font style=&quot;font-weight: bold; font-size: 15px;&quot;&gt;I&lt;/font&gt;&lt;span style=&quot;font-size: 15px;&quot;&gt;)&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="20" width="480" x="40" y="820" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
