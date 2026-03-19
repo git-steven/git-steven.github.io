@@ -74,7 +74,7 @@ The application had quietly evolved into something **infamous**:
 * They were **measurable** and **preventable**
 
 ## Coupling Metrics
-![Coupling Metrics](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/metrics-sm.png)
+![Coupling Metrics](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-sm.png)
 
 ### 📐 The Two Numbers That Explain Most Architecture
 
@@ -193,7 +193,7 @@ The same number of outgoing dependencies means something different depending on 
 Said another way: instability is not merely about *how much you depend on* — it is about that dependency load **relative to who depends on you**.
 
     
-![png](output_8_0.png)
+![png](../assets/images/coupling-article-part1-instability-curves.png)
     
 
 ### Description (Instability Curves)
@@ -244,7 +244,7 @@ The conceptual graph below shows the terrain first:
 The key idea is simple: modules do not have to sit exactly on the main sequence, but the farther they drift from it, the more likely they are to be structurally imbalanced.
 
     
-![png](output_12_0.png)
+![Main Sequence](../assets/images/coupling-article-part1-main-seq.png)
     
 
 ## 🪨 Architectural Danger Zones
@@ -310,7 +310,7 @@ The detailed graph below shows:
 - the **main sequence**
 - the two architectural danger zones
 - example modules in and out of those zones
-- a dotted guide line from each module to its nearest point on the main sequence
+- a dotted guideline from each module to its nearest point on the main sequence
 - the **distance value** (`D`) for the more interesting examples
 
 That lets us see not just *where* a module sits, but *how far off-balance* it is.
@@ -318,8 +318,13 @@ That lets us see not just *where* a module sits, but *how far off-balance* it is
 Some modules live outside the danger zones and are still worth watching. A service layer, API gateway, or shared utility package may not be pathological, but a non-zero distance still suggests the design is drifting away from the ideal balance.
 
     
-![png](output_14_0.png)
+![png](../assets/images/coupling-article-part1-distance-main.png)
     
+
+    ✅ Markdown exported to coupling-article-part1.md
+    ✅ Exported 3 output asset(s)
+
+    PosixPath('coupling-article-part1.md')
 
 ## 🗺️ Where These Metrics Apply
 
@@ -362,9 +367,3 @@ But you cannot escape it.
 - Martin, R. C. (2017). *Clean Architecture.*
 - Lakos, J. (1996). *Large-Scale C++ Software Design.*
 - Ford, N., Parsons, R., & Kua, P. (2017). *Building Evolutionary Architectures.*
-
-    ✅ Markdown exported to coupling-part1.md
-    ✅ Exported 3 output asset(s)
-
-    PosixPath('coupling-part1.md')
-
