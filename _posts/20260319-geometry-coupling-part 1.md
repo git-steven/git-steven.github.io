@@ -78,45 +78,40 @@ The application had quietly evolved into something **infamous**:
 
 ### 📐 The Two Numbers That Explain Most Architecture
 
-Nearly every structural coupling metric derives from two simple counts.
-
 ```text
-        Who depends on me?
-                ↑
-               Ca
-                │
-                ● GIVEN MODULE/PACKAGE
-                │
-               Ce
-                ↓
-        Upon whom do I depend?
+           𝐶ₐ (# of dependents)
+           ▲                
+           ║
+           📦 GIVEN MODULE/PACKAGE
+           ║
+           ▼
+           𝐶ₑ (# of dependencies)                
 ```
 
-### Afferent Coupling (Ca)
+Nearly every structural coupling metric derives from two simple counts:
+* `𝐶ₐ` (**Afferent** coupling): Count of modules dependent on a given one 
+* `𝐶ₑ` (**Efferent** coupling): Count of modules a given one depends on   
+
+
+### Afferent Coupling (𝐶ₐ )
 
 ```text
-Ca = number of external modules that depend on this one
+𝐶ₐ = number of external modules/packages dependent on a given one.
 ```
+* Afferent coupling measures **responsibility**
+* If many modules depend on a given module, its stability matters 💧
+* Break this module, and others break too ⛓️ 
+* Modules with high `𝐶ₐ` become **structural anchors ⚓** 
 
-Afferent coupling measures **responsibility**.
-
-If many modules depend on you, your stability matters.
-
-Break this module, and others break too.
-
-Modules with high Ca become **structural anchors**.
-
-### Efferent Coupling (Ce)
+### Efferent Coupling (𝐶ₑ )
 
 ```text
-Ce = number of external modules this module depends on
+𝐶ₑ = number of external modules/packages upon which a given one depends
 ```
 
-Efferent coupling measures **vulnerability**.
-
-The more dependencies you have, the more ways your code can break.
-
-Every dependency introduces:
+* Efferent coupling measures **vulnerability**.
+* The more dependencies you have (𝐶ₑ), the more ways your code can break.
+* Every dependency introduces:
 
 - version risk
 - semantic assumptions
@@ -132,8 +127,8 @@ These metrics behave like a financial balance sheet.
 
 | Metric                     | Analogy                        |
 |----------------------------|--------------------------------|
-| `Ca` *(Afferent Coupling)* | Creditors (who depends on you) |
-| `Ce` *(Efferent Coupling)* | Debts (who you depend on)      |
+| `𝐶ₐ` *(Afferent Coupling)* | Creditors (who depends on you) |
+| `𝐶ₑ` *(Efferent Coupling)* | Debts (who you depend on)      |
 
 * Modules with many creditors must be **_stable_**.
 * Modules with many debts are inherently **_fragile_**.
@@ -142,8 +137,7 @@ These metrics behave like a financial balance sheet.
 ## 🧭 The Instability Index (I)
 ![🛰 Instability (fig. 1)](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/metrics-instability-fig1-overview.png)
 
-From Ca and Ce we derive a powerful ratio.
-
+From 𝐶ₐ and 𝐶ₑ we derive a powerful ratio:
 ```
 𝐼 = 𝐶ₑ / (𝐶ₑ + 𝐶ₐ)
 ```
@@ -157,10 +151,10 @@ Instability ranges from **0 to 1**.
 | 0.50 ≤ I < 0.75 | Borderline | Dependency heavy | Monitor closely |
 | 0.75 ≤ I ≤ 1.0 | Unstable | Few dependents, many dependencies | Refactor freely |
 
-The graph below shows how instability changes as **Ce** grows for different fixed values of **Ca**.
+The graph below shows how instability changes as **𝐶ₑ** grows for different fixed values of **𝐶ₐ**.
 
-Low **Ca** produces curves that rise very quickly toward volatility.
-Higher **Ca** dampens that rise, making the same increase in **Ce** less destabilizing.
+Low **𝐶ₐ** produces curves that rise very quickly toward volatility.
+Higher **𝐶ₐ** dampens that rise, making the same increase in **𝐶ₑ** less destabilizing.
 
 This leads to one of the most important architectural principles.
 
@@ -176,24 +170,23 @@ When stable modules depend on unstable ones, architectural fragility appears qui
 
 ## Instability Curves
 
-The chart above shows how **Instability** changes as **Ce** grows for several fixed values of **Ca**.
+![png](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-instability-curves.png)
+
+The chart above shows how **Instability** changes as **𝐶ₑ** grows for several fixed values of **𝐶ₐ**.
 
 A few patterns jump out immediately:
 
-- When **Ca is low**, instability rises very quickly.
+- When **𝐶ₐ is low**, instability rises very quickly.
   Modules with few dependents become volatile with even a modest increase in outgoing dependencies.
-- When **Ca is higher**, the curve climbs more slowly.
+- When **𝐶ₐ is higher**, the curve climbs more slowly.
   A module with many dependents can absorb some additional dependencies before drifting into the more unstable bands.
-- The `Ca = 0` line is the extreme case.
+- The `𝐶ₐ = 0` line is the extreme case.
   A module with no dependents is structurally free to become maximally unstable.
 
-This is why **Ce** is not the whole story by itself.
+This is why **𝐶ₑ** is not the whole story by itself.
 The same number of outgoing dependencies means something different depending on how much responsibility the module already carries.
 
 Said another way: instability is not merely about *how much you depend on* — it is about that dependency load **relative to who depends on you**.
-
-    
-![png](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-instability-curves.png)
     
 
 ### Description (Instability Curves)
@@ -209,12 +202,13 @@ A = Na / Nc
 
 ### Where
 
-* ``Na`` = number of abstract types
-* ``Nc`` =`total number of types
+* `Na` = number of abstract types
+* `Nc` = total number of types
 
 ### Interpretation
-* ``A = 1`` → completely abstract
-* ``A = 0`` → completely concrete
+* `A = 0` → completely concrete; no abstraction
+* `0 < A < 1` → completely abstract
+* `A = 1` → completely abstract
 
 ### Conclusion
 * Abstraction provides flexibility
@@ -256,23 +250,16 @@ low A
 low I
 ```
 
-Meaning:
-
-```text
-concrete AND stable
-```
+Meaning: **concrete AND stable**
 
 These modules are depended on by many other modules but contain little abstraction.
 
 Examples often include:
-
 - database schemas
 - configuration systems
 - foundational libraries
 
-Changing them causes cascading impact.
-
-Hence the name.
+Changing them causes cascading impact, hence the name.
 
 ### Zone of Uselessness
 
@@ -281,25 +268,18 @@ high A
 high I
 ```
 
-Meaning:
-
-```text
-abstract AND unstable
-```
+Meaning: **abstract AND unstable**
 
 These modules contain abstractions nobody uses.
 
-Example:
-
+**Example:**
 ```text
 12 interfaces
 1 implementation
 0 dependents
 ```
-
-Beautiful architecture.
-
-No real purpose.
+* Beautiful architecture.
+* No real purpose.
 
 ## 🧪 Distance From the Main Sequence
 
@@ -322,7 +302,6 @@ Some modules live outside the danger zones and are still worth watching. A servi
 ## 🗺️ Where These Metrics Apply
 
 **These metrics apply to almost any software system:**
-
 - microservices
 - modular applications
 - large monoliths (UI and/or service)
@@ -341,18 +320,10 @@ A tightly coupled monolith
 ## 🧱 The Takeaway
 
 Architecture is often treated as an art.
-
 But beneath the diagrams lies something more mechanical.
-
 Software systems obey structural forces.
 
-Coupling is one of them.
-
-And like gravity…
-
-you can ignore it.
-
-But you cannot escape it.
+⛓️ **Coupling** is one of them, and like gravity, it can be ignored for a time, but it cannot be escaped.
 
 ## 📚 References
 
