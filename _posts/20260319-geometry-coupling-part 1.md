@@ -193,7 +193,7 @@ The same number of outgoing dependencies means something different depending on 
 Said another way: instability is not merely about *how much you depend on* — it is about that dependency load **relative to who depends on you**.
 
     
-![png](../assets/images/coupling-article-part1-instability-curves.png)
+![png](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-instability-curves.png)
     
 
 ### Description (Instability Curves)
@@ -244,7 +244,7 @@ The conceptual graph below shows the terrain first:
 The key idea is simple: modules do not have to sit exactly on the main sequence, but the farther they drift from it, the more likely they are to be structurally imbalanced.
 
     
-![Main Sequence](../assets/images/coupling-article-part1-main-seq.png)
+![Main Sequence](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-main-seq.png)
     
 
 ## 🪨 Architectural Danger Zones
@@ -316,15 +316,8 @@ The detailed graph below shows:
 That lets us see not just *where* a module sits, but *how far off-balance* it is.
 
 Some modules live outside the danger zones and are still worth watching. A service layer, API gateway, or shared utility package may not be pathological, but a non-zero distance still suggests the design is drifting away from the ideal balance.
-
-    
-![png](../assets/images/coupling-article-part1-distance-main.png)
-    
-
-    ✅ Markdown exported to coupling-article-part1.md
-    ✅ Exported 3 output asset(s)
-
-    PosixPath('coupling-article-part1.md')
+ 
+![Distance From Main](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-distance-main.png)
 
 ## 🗺️ Where These Metrics Apply
 
