@@ -13,6 +13,20 @@ Designed for:
 - Technical blog posts
 
 ---
+## CLAUDE: TODO
+Add and categorize:
+🦠 🌌 🖼 📡 🧫 
+Degrees ( ° )
+Milky Way ( 🌌 )
+Rocket ( 🚀 )
+Satellite ( 🛰️ )
+Alien ( 👽 )
+Flying Saucer ( 🛸 )
+Shooting Star ( 🌠 )
+Sun ( ☀️ )
+Full Moon ( 🌕 )
+New Moon ( 🌑 )
+Ringed Planet ( 🪐 ) 
 
 ## All Icons
 
@@ -111,13 +125,13 @@ Designed for:
 
 # 🌀 Flow & Lifecycle
 
-| Category | Icons |
-|---|---|
-| **Flow** | 🌀 cyclone · 🌊 wave · ➡️ right arrow · 🔄 cycle |
-| **Orchestration** | 🎛️ control knobs · 🧭 compass · 🧵 thread |
-| **Async / Events** | 📣 megaphone · 📨 envelope · 🛰️ satellite |
-| **Status** | 🟢 green · 🟡 yellow · 🔴 red · ✅ check · ⚠️ warning · ☯ yin yang |
-| **Time** | ⏱️ stopwatch · ⏳ hourglass · 🕒 clock · 🕰 mantel clock |
+| Category | Icons                                                                   |
+|---|-------------------------------------------------------------------------|
+| **Flow** | 🌀 cyclone · 🌊 wave · ➡️ right arrow · 🔄 cycle · 💦 afferent coupling |
+| **Orchestration** | 🎛️ control knobs · 🧭 compass · 🧵 thread                              |
+| **Async / Events** | 📣 megaphone · 📨 envelope · 🛰️ satellite                              |
+| **Status** | 🟢 green · 🟡 yellow · 🔴 red · ✅ check · ⚠️ warning · ☯ yin yang       |
+| **Time** | ⏱️ stopwatch · ⏳ hourglass · 🕒 clock · 🕰 mantel clock                 |
 
 ---
 
@@ -242,7 +256,6 @@ Designed for:
 
 # ➡️ Arrows & Direction
 
-| Category | Icons |
 |---|---|
 | **Cardinal** | ➡️ right · ⬅️ left · ⬆️ up · ⬇️ down |
 | **Diagonal** | ↗️ up-right · ↘️ down-right · ↙️ down-left · ↖️ up-left |
@@ -252,34 +265,34 @@ Designed for:
 
 ### Unicode Arrows (for diagrams)
 
-| Style | Arrows |
-|---|---|
-| **Single** | → right · ← left · ↑ up · ↓ down |
-| **Diagonal** | ↗ up-right · ↘ down-right · ↙ down-left · ↖ up-left |
-| **Double** | ⇒ right · ⇐ left · ⇑ up · ⇓ down |
-| **Long** | ⟶ long right · ⟵ long left · ⟹ long double right · ⟸ long double left |
+| Style        | Arrows                                                                |
+|--------------|-----------------------------------------------------------------------|
+| **Single**   | → right · ← left · ↑ up · ↓ down                                      |
+| **Diagonal** | ↗ up-right · ↘ down-right · ↙ down-left · ↖ up-left                   |
+| **Double**   | ⇒ right · ⇐ left · ⇑ up · ⇓ down                                      |
+| **Long**     | ⟶ long right · ⟵ long left · ⟹ long double right · ⟸ long double left |
 
 ---
 
 # ⭐ Stars & Decorative
 
-| Category | Icons |
-|---|---|
-| **Emoji Stars** | ⭐ star · 🌟 glowing star · ✨ sparkles |
-| **Filled** | ★ black star · ⭑ small black star · ✦ four-point filled · ✴ eight-point star |
-| **Outlined** | ☆ white star · ✧ four-point outline · ✰ shadowed star |
-| **Ornate** | ✪ circled star · ⍟ circled star alt · ✫ open star · ✯ pinwheel star · ❂ circled open star |
-| **Asterisk** | ✹ heavy asterisk · ✸ rectilinear star |
-| **Math** | ⋆ star operator · ≛ star equals · ⍣ star diaeresis |
+| Category        | Icons                                                                                     |
+|-----------------|-------------------------------------------------------------------------------------------|
+| **Emoji Stars** | ⭐ star · 🌟 glowing star · ✨ sparkles                                                     |
+| **Filled**      | ★ black star · ⭑ small black star · ✦ four-point filled · ✴ eight-point star              |
+| **Outlined**    | ☆ white star · ✧ four-point outline · ✰ shadowed star                                     |
+| **Ornate**      | ✪ circled star · ⍟ circled star alt · ✫ open star · ✯ pinwheel star · ❂ circled open star |
+| **Asterisk**    | ✹ heavy asterisk · ✸ rectilinear star                                                     |
+| **Math**        | ⋆ star operator · ≛ star equals · ⍣ star diaeresis                                        |
 
 ---
 
 # ☢️ Hazard Symbols
 
-| Category | Icons |
-|---|---|
-| **Hazard** | ☢️ radioactive · ☣️ biohazard |
-| **Alert** | 🚨 siren · ⚠️ warning · 🚧 construction |
+| Category   | Icons                                   |
+|------------|-----------------------------------------|
+| **Hazard** | ☢️ radioactive · ☣️ biohazard           |
+| **Alert**  | 🚨 siren · ⚠️ warning · 🚧 construction |
 
 ---
 
@@ -289,7 +302,7 @@ Designed for:
 |:----:|--------------|-----------------------|
 |  🧩  | puzzle piece | Service               |
 |  🔌  | plug         | API / Port            |
-|  🗄️  | file cabinet | Database              |
+| 🗄️  | file cabinet | Database              |
 |  📣  | megaphone    | Event                 |
 |  🔗  | link         | Dependency            |
 |  🧵  | thread       | Stream                |
@@ -302,20 +315,20 @@ Designed for:
 | Icon  | Name             | Meaning                    |
 |:-----:|------------------|----------------------------|
 |  🤖   | robot            | AI                         |
-|  ✨   | sparkles         | solution/idea/intelligence |
+|   ✨   | sparkles         | solution/idea/intelligence |
 |  🧠   | brain            | Neural Network/Thinking    |
 |  🏛   | classical blding | Architecture               |
 |  🏢   | office           | Architecture/Module        |
 |  🏰   | castle           | Goal/Win/something         |
 |  🧩   | puzzle piece     | Component                  |
 |  ♻️   | recycle          | Recycle                    |
-|  ✅   | check mark       | Check/Finished             | 
+|   ✅   | check mark       | Check/Finished             | 
 |  ⛓️   | chains           | Coupling                   |
 |  🔗   | link             | Linked                     |
 |  🧱   | brick            | Foundation                 |
 |  🐞   | bug              | Bug/Flaw                   |
 |  📚   | books            | Documentation/TOC          |
-|  🗂️   | dividers         | Folder                     |
+|  🗂️  | dividers         | Folder                     |
 |  📜   | scroll           | Table of Contents          |
 |  📊   | bar chart        | Chart/Report               |
 |  📏   | ruler            | Measure                    |
@@ -323,12 +336,12 @@ Designed for:
 |  🧮   | abacus           | Math/tally                 |
 |  🔎   | magnifying glass | Search                     |
 |  🔭   | telescope        | Examine/Outside            |
-|  🔬️   | microscope       | Examine/Inside             |
+|  🔬️  | microscope       | Examine/Inside             |
 |  ⚙️   | gear             | Inner workings             |
 |  🏗   | crane            | Construct/Build            |
 |  🧲   | magnet           | Attraction                 |
 |  🧰   | toolbox          | Tool, work                 |
-|  🛠️   | hammer wrench    | Tool, work                 |
+|  🛠️  | hammer wrench    | Tool, work                 |
 |  🔧   | wrench           | Tool, work                 |
 |  🚧   | construction     | Under construction         |
 |  🚪   | door             | Door/destination           |
@@ -338,13 +351,13 @@ Designed for:
 |  🔌   | plug             | Port                       |
 |  🌀   | cyclone          | Workflow                   |
 |  🌊   | wave             | Flow                       |
-|  🛰️   | satellite        | External dependency        |
+|  🛰️  | satellite        | External dependency        |
 |  🔥   | fire             | Risk                       |
 |  💧   | droplet          | Stabilization              |
 |  🌱   | seedling         | Evolution                  |
-|  ⏳   | hourglass        | Waiting                    |
+|   ⏳   | hourglass        | Waiting                    |
 |  🕰   | mantel clock     | Time/old                   |
-|  🧑‍💻   | technologist     | Tech/Programmer            |
+| 🧑‍💻 | technologist     | Tech/Programmer            |
 |  💻   | laptop           | Programming/Computer       |
 |  🧟   | zombie           | Zombie ticket/process/idea |
                                                  
@@ -352,25 +365,26 @@ Designed for:
 ## Final
 **_Quick-reference: all icons by category_**
 
-| Category | Icons |
-|:------------------|:--------------------------------------------------------------------------------------------------------------|
-| **AI & Thinking** | 🤖 robot:`AI` · 🧠 brain:`ML/thinking` · ✨ sparkles:`idea/AI` · 🎓 graduation cap:`learning` |
-| **Architecture** | 🏛️ classical building:`architecture` · 🏢 office:`module` · 🏦 bank:`institution` · 🏰 castle:`goal/stronghold` · 🏚️ derelict house:`legacy` · 🧱 brick:`foundation` · 🗿 moai:`monument` · 🪨 rock:`bedrock` |
-| **Construction & Tools** | 🏗️ crane:`build` · 🧰 toolbox:`tools` · 🛠️ hammer wrench:`tool` · 🔧 wrench:`tool` · ⚙️ gear:`inner workings` · 🧲 magnet:`attraction` · 🚧 construction:`WIP` · 🚪 door:`entry/exit` · 🪜 ladder:`elevate` |
-| **Navigation & Routing** | 🗺️ world map:`landscape` · 🌐 globe:`global` · 🧭 compass:`direction` · 📍 pushpin:`location` · 🛣️ motorway:`path` · 🛤️ railway:`track` · 🚦 traffic light:`gate` · 🌉 bridge:`crossing` · 🔎 magnifying glass:`search` · 🔭 telescope:`explore outside` |
-| **Documentation** | 📚 books:`docs/TOC` · 📖 open book:`reference` · 📙 orange book · 📗 green book · 📘 blue book · 🗒️ notepad:`notes` · 📝 memo:`draft` · 📄 page:`document` · 📑 bookmark tabs:`sections` · 📜 scroll:`contract/TOC` · 📃 page with curl:`terms` |
-| **Storage & Organization** | 🗃️ card file box:`archive` · 🗄️ file cabinet:`database` · 🗂️ dividers:`folder` · 📋 clipboard:`work items` · 🏷️ label:`tag` · 🔖 bookmark:`version` · 📌 pushpin:`pinned` |
-| **Contracts & Validation** | 🧾 receipt:`receipt/log` · 🔌 plug:`API/port` · 🧬 dna:`schema/signature` · 📐 triangle ruler:`blueprint` · 📏 ruler:`measure` · ✅ check mark:`done` · ☑️ ballot box:`validated` · ✔️ check:`verified` · 🧪 test tube:`test` |
-| **Components & Connectors** | 🧩 puzzle piece:`component` · 📦 package:`artifact` · ➕ plus:`compose` · 🔗 link:`dependency` · ⛓️ chains:`coupling` · 🧷 safety pin:`adapter` · 👥 people:`team` · 🤝 handshake:`agreement` · ♻️ recycle:`pattern/reuse` |
-| **Flow & Orchestration** | 🌀 cyclone:`workflow` · 🌊 wave:`flow` · 🔄 cycle:`iteration` · 🎛️ control knobs:`orchestration` · 🧵 thread:`stream` · 📣 megaphone:`event` · 📨 envelope:`message` · 🛰️ satellite:`external dep` |
-| **Status & Time** | 🟢 green:`healthy` · 🟡 yellow:`caution` · 🔴 red:`critical` · ☯ yin yang:`balance` · ⏱️ stopwatch:`timing` · ⏳ hourglass:`waiting` · 🕒 clock:`schedule` · 🕰 mantel clock:`legacy/time` |
-| **Metrics & Analysis** | 📊 bar chart:`metrics` · 📈 chart up:`trending` · 🧮 abacus:`calculation` · ⚖️ balance scale:`tradeoff` · 🎯 bullseye:`objective` · 🔍 magnifying glass:`investigate` · 🔬 microscope:`examine inside` |
-| **Security & Threats** | 🛡️ shield:`protection` · 🔐 locked with key:`secure` · 🔒 locked:`restricted` · 🗝️ old key:`secret` · 🪪 id card:`identity` · 🐞 bug:`defect` · 🧨 firecracker:`explosive risk` · 🚨 siren:`alert` · ⚠️ warning:`caution` |
-| **Delivery & Runtime** | 🚀 rocket:`deploy` · 🏁 checkered flag:`milestone` · 🖥️ desktop:`server` · ☁️ cloud:`cloud infra` · 🧑‍💻 technologist:`developer` · 💻 laptop:`programming` · 🚰 potable water:`bottleneck` |
-| **Backlog & Dead Work** | 🧟 zombie:`zombie work` · 🪦 headstone:`dead work` · 🧊 ice:`frozen work` |
-| **Growth & Dynamics** | 🌱 seedling:`evolution` · 🌿 herb:`growing` · 🌳 tree:`mature` · 💧 droplet:`stability` · 🫧 bubbles:`froth` · 🔥 fire:`risk/hotspot` · ⚡ high voltage:`urgency` · 💥 collision:`breaking change` · 🌬️ wind face:`variability` · 💨 dash:`volatility` · 🪁 kite:`agility` |
-| **Visibility & Cycles** | ☀️ sun:`visible/clear` · 🌙 crescent moon:`hidden/dark` · 🌥️ sun behind cloud:`partial` · 🌤️ sun small cloud:`mostly clear` · 🌦️ sun rain cloud:`mixed` |
-| **Weather & Storms** | 🌪️ tornado:`chaos` · ⛈️ thunderstorm:`crisis` · 🌧️ rain cloud:`downturn` · 🌩️ lightning cloud:`disruption` · ☔ umbrella rain:`protection` · 🌡️ thermometer:`temperature` · 🌫️ fog:`obscurity` · ☄️ comet:`impact` |
-| **External Environment** | 🌍 globe europe · 🌎 globe americas · 🌏 globe asia · 🪐 planet:`external` · 🏔️ snow mountain:`constraint` · ⛰️ mountain:`obstacle` · 🗻 mount fuji:`landmark` · 🌋 volcano:`eruption` · 🏕️ camping:`temporary` · 🏘️ houses:`settlement` · 🏞️ national park:`landscape` · 🏜️ desert:`barren` · 🏝️ island:`isolated` · 🏖️ beach:`edge` |
-| **Arrows & Direction** | ➡️ right · ⬅️ left · ⬆️ up · ⬇️ down · ↗️ up-right · ↘️ down-right · ↙️ down-left · ↖️ up-left · ↔️ left-right · ↕️ up-down · ⤴️ curve up · ⤵️ curve down · ↩️ curve left · ↪️ curve right · 🔃 clockwise · 🔁 repeat · 🔂 repeat once |
-| **Stars & Symbols** | ⭐ star · 🌟 glowing star · ★ black star · ☆ white star · ✦ four-point filled · ✧ four-point outline · ✴ eight-point · ✪ circled star · ⍟ circled alt · ✫ open star · ✯ pinwheel · ✰ shadowed · ❂ circled open · ✹ heavy asterisk · ✸ rectilinear · ⋆ star operator · ☢️ radioactive · ☣️ biohazard |
+| Category                    | Icons                                                                                                                                                                                                                                                                                                                                        |
+|:----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **AI & Thinking**           | 🤖 robot:`AI` · 🧠 brain:`ML/thinking` · ✨ sparkles:`idea/AI` · 🎓 graduation cap:`learning`                                                                                                                                                                                                                                                 |
+| **Architecture**            | 🏛️ classical building:`architecture` · 🏢 office:`module` · 🏦 bank:`institution` · 🏰 castle:`goal/stronghold` · 🏚️ derelict house:`legacy` · 🧱 brick:`foundation` · 🗿 moai:`monument` · 🪨 rock:`bedrock`                                                                                                                              |
+| **Construction & Tools**    | 🏗️ crane:`build` · 🧰 toolbox:`tools` · 🛠️ hammer wrench:`tool` · 🔧 wrench:`tool` · ⚙️ gear:`inner workings` · 🧲 magnet:`attraction` · 🚧 construction:`WIP` · 🚪 door:`entry/exit` · 🪜 ladder:`elevate`                                                                                                                                |
+| **Navigation & Routing**    | 🗺️ world map:`landscape` · 🌐 globe:`global` · 🧭 compass:`direction` · 📍 pushpin:`location` · 🛣️ motorway:`path` · 🛤️ railway:`track` · 🚦 traffic light:`gate` · 🌉 bridge:`crossing` · 🔎 magnifying glass:`search` · 🔭 telescope:`explore outside`                                                                                  |
+| **Documentation**           | 📚 books:`docs/TOC` · 📖 open book:`reference` · 📙 orange book · 📗 green book · 📘 blue book · 🗒️ notepad:`notes` · 📝 memo:`draft` · 📄 page:`document` · 📑 bookmark tabs:`sections` · 📜 scroll:`contract/TOC` · 📃 page with curl:`terms`                                                                                             |
+| **Storage & Organization**  | 🗃️ card file box:`archive` · 🗄️ file cabinet:`database` · 🗂️ dividers:`folder` · 📋 clipboard:`work items` · 🏷️ label:`tag` · 🔖 bookmark:`version` · 📌 pushpin:`pinned`                                                                                                                                                                |
+| **Contracts & Validation**  | 🧾 receipt:`receipt/log` · 🔌 plug:`API/port` · 🧬 dna:`schema/signature` · 📐 triangle ruler:`blueprint` · 📏 ruler:`measure` · ✅ check mark:`done` · ☑️ ballot box:`validated` · ✔️ check:`verified` · 🧪 test tube:`test`                                                                                                                 |
+| **Components & Connectors** | 🧩 puzzle piece:`component` · 📦 package:`artifact` · ➕ plus:`compose` · 🔗 link:`dependency` · ⛓️ chains:`coupling` · ⛓️‍💥 broken chain · safety pin:`adapter` · 👥 people:`team` · 🤝 handshake:`agreement` · ♻️ recycle:`pattern/reuse`                                                                                                  |
+| **Flow & Orchestration**    | 🌀 cyclone:`workflow` · 🌊 wave:`flow:afference` · 🔄 cycle:`iteration` · 🎛️ control knobs:`orchestration` · 🧵 thread:`stream` · 📣 megaphone:`event` · 📨 envelope:`message` · 🛰️ satellite:`external dep`                                                                                                                               |
+| **Status & Time**           | 🟢 green:`healthy` · 🟡 yellow:`caution` · 🔴 red:`critical` · ☯ yin yang:`balance` · ⏱️ stopwatch:`timing` · ⏳ hourglass:`waiting` · 🕒 clock:`schedule` · 🕰 mantel clock:`legacy/time`                                                                                                                                                    |
+| **Metrics & Analysis**      | 📊 bar chart:`metrics` · 📈 chart up:`trending` · 📉 chart down · 🧮 abacus:`calculation` · ⚖️ balance scale:`tradeoff` · 🎯 bullseye:`objective` · 🔍 magnifying glass:`investigate` · 🔬 microscope:`examine inside`                                                                                                                       |
+| **Security & Threats**      | 🛡️ shield:`protection` · 🔐 locked with key:`secure` · 🔒 locked:`restricted` · 🗝️ old key:`secret` · 🪪 id card:`identity` · 🐞 bug:`defect` · 🧨 firecracker:`explosive risk` · 🚨 siren:`alert` · ⚠️ warning:`caution`                                                                                                                  |
+| **Delivery & Runtime**      | 🚀 rocket:`deploy` · 🏁 checkered flag:`milestone` · 🖥️ desktop:`server` · ☁️ cloud:`cloud infra` · 🧑‍💻 technologist:`developer` · 💻 laptop:`programming` · 🚰 potable water:`bottleneck`                                                                                                                                                |
+| **Backlog & Dead Work**     | 🧟 zombie:`zombie work` · 🪦 headstone:`dead work` · 🧊 ice:`frozen work`                                                                                                                                                                                                                                                                    |
+| **Growth & Dynamics**       | 🌱 seedling:`evolution` · 🌿 herb:`growing` · 🌳 tree:`mature` · 💧 droplet:`stability` · 💦sweat_droplets · 🫧 bubbles:`froth` · 🔥 fire:`risk/hotspot` · ⚡ high voltage:`urgency` · 💥 collision:`breaking change` · 🌬️ wind face:`variability` · 💨 dash:`volatility` · 🪁 kite:`agility`                                                |
+| **Visibility & Cycles**     | ☀️ sun:`visible/clear` · 🌙 crescent moon:`hidden/dark` · 🌥️ sun behind cloud:`partial` · 🌤️ sun small cloud:`mostly clear` · 🌦️ sun rain cloud:`mixed`                                                                                                                                                                                   |
+| **Weather & Storms**        | 🌪️ tornado:`chaos` · ⛈️ thunderstorm:`crisis` · 🌧️ rain cloud:`downturn` · 🌩️ lightning cloud:`disruption` · ☔ umbrella rain:`protection` · 🌡️ thermometer:`temperature` · 🌫️ fog:`obscurity` · ☄️ comet:`impact`                                                                                                                       |
+| **External Environment**    | 🌍 globe europe · 🌎 globe americas · 🌏 globe asia · 🪐 planet:`external` · 🏔️ snow mountain:`constraint` · ⛰️ mountain:`obstacle` · 🗻 mount fuji:`landmark` · 🌋 volcano:`eruption` · 🏕️ camping:`temporary` · 🏘️ houses:`settlement` · 🏞️ national park:`landscape` · 🏜️ desert:`barren` · 🏝️ island:`isolated` · 🏖️ beach:`edge` |
+| **Arrows & Direction**      | ➡️ right · ⬅️ left · ⬆️ up · ⬇️ down · ↗️ up-right · ↘️ down-right · ↙️ down-left · ↖️ up-left · ↔️ left-right · ↕️ up-down · ⤴️ curve up · ⤵️ curve down · ↩️ curve left · ↪️ curve right · 🔃 clockwise · 🔁 repeat · 🔂 repeat once                                                                                                       |
+| **Stars & Symbols**         | ⭐ star · 🌟 glowing star · ★ black star · ☆ white star · ✦ four-point filled · ✧ four-point outline · ✴ eight-point · ✪ circled star · ⍟ circled alt · ✫ open star · ✯ pinwheel · ✰ shadowed · ❂ circled open · ✹ heavy asterisk · ✸ rectilinear · ⋆ star operator · ☢️ radioactive · ☣️ biohazard                                           |
+                                                                                                   🌊 
