@@ -26,7 +26,32 @@ Shooting Star ( 🌠 )
 Sun ( ☀️ )
 Full Moon ( 🌕 )
 New Moon ( 🌑 )
-Ringed Planet ( 🪐 ) 
+Ringed Planet ( 🪐 )
+
+SOFTWARE:
+📦 (Package/Module)
+🏢 (Classes)
+🏷 (Interface)
+🧱 (Objects)
+🧩 (Component)
+⚙️ (System/Function)
+🔢 (Number/Integer)
+🔤 (String/Text)
+🔒 (Constant)
+📝 (Documentation/Note)
+➡️ (Assignment/Input)
+😎 (Emojicode/Logic) 
+🏛️ architecture
+🏦 monolith
+⛓️ coupling
+
+
+# Misc other Buildings:
+🏠 House: Alt + 127968
+🏡 House with Garden: Alt + 127969
+🏘️ Houses: Alt + 127960
+🏚️ Derelict House: Alt + 127962
+🏤 European Post Office: Alt + 127972
 
 ## All Icons
 
@@ -368,7 +393,7 @@ Ringed Planet ( 🪐 )
 | Category                    | Icons                                                                                                                                                                                                                                                                                                                                        |
 |:----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **AI & Thinking**           | 🤖 robot:`AI` · 🧠 brain:`ML/thinking` · ✨ sparkles:`idea/AI` · 🎓 graduation cap:`learning`                                                                                                                                                                                                                                                 |
-| **Architecture**            | 🏛️ classical building:`architecture` · 🏢 office:`module` · 🏦 bank:`institution` · 🏰 castle:`goal/stronghold` · 🏚️ derelict house:`legacy` · 🧱 brick:`foundation` · 🗿 moai:`monument` · 🪨 rock:`bedrock`                                                                                                                              |
+| **Architecture**            | 🏛️ classical building:`architecture` · 🏢 office:`module` · 🏦 bank:`institution` · 🏰 castle:`goal/stronghold` · 🏚️ derelict house:`legacy` · 🧱 brick:`object` · 🗿 moai:`monument` · 🪨 rock:`bedrock`                                                                                                                                  |
 | **Construction & Tools**    | 🏗️ crane:`build` · 🧰 toolbox:`tools` · 🛠️ hammer wrench:`tool` · 🔧 wrench:`tool` · ⚙️ gear:`inner workings` · 🧲 magnet:`attraction` · 🚧 construction:`WIP` · 🚪 door:`entry/exit` · 🪜 ladder:`elevate`                                                                                                                                |
 | **Navigation & Routing**    | 🗺️ world map:`landscape` · 🌐 globe:`global` · 🧭 compass:`direction` · 📍 pushpin:`location` · 🛣️ motorway:`path` · 🛤️ railway:`track` · 🚦 traffic light:`gate` · 🌉 bridge:`crossing` · 🔎 magnifying glass:`search` · 🔭 telescope:`explore outside`                                                                                  |
 | **Documentation**           | 📚 books:`docs/TOC` · 📖 open book:`reference` · 📙 orange book · 📗 green book · 📘 blue book · 🗒️ notepad:`notes` · 📝 memo:`draft` · 📄 page:`document` · 📑 bookmark tabs:`sections` · 📜 scroll:`contract/TOC` · 📃 page with curl:`terms`                                                                                             |

@@ -88,8 +88,7 @@ Nearly every structural coupling metric derives from two simple counts:
 * `𝐶ₐ` (**Afferent** coupling): Count of modules dependent on a given one
 * `𝐶ₑ` (**Efferent** coupling): Count of modules a given one depends on
 
-### `𝐶ₐ` (Afferent Coupling) 
-
+### 💨 `𝐶ₐ` (Afferent Coupling) 
 ```text
 𝐶ₐ = number of external modules/packages dependent on a given one
 ```
@@ -98,7 +97,7 @@ Nearly every structural coupling metric derives from two simple counts:
 * Break this module, and others break too ⛓️
 * Modules with high `𝐶ₐ` become **structural anchors ⚓**
 
-### `𝐶ₑ` (Efferent Coupling)
+### 🌬 `𝐶ₑ` (Efferent Coupling)
 
 ```text
 𝐶ₑ = number of external modules/packages upon which a given one depends
@@ -165,9 +164,9 @@ Said another way: `Instability` is not merely about *how much you depend on* —
 
 This leads to one of the most important architectural principles.
 
-### ⚖️ Stable Dependencies Principle
+### Stable Dependencies Principle
 
-Dependencies should flow **toward stability**.
+Dependencies should flow **toward stability 💧**.
 
 ```text
 unstable modules  →  stable modules
@@ -176,7 +175,7 @@ unstable modules  →  stable modules
 When stable modules depend on unstable ones, architectural fragility appears quickly.
 
 
-## 🧬 Abstractness (A)
+## 🌐 `A` (The Abstractness Index)
 
 This metric differentiates types as **concrete** or **abstract** (`interface`/`protocol`/`port`).
 
@@ -185,23 +184,23 @@ A = Na / Nc
 ```
 
 ### 📏 Variables
-
 * `Na` = number of abstract types
 * `Nc` = total number of types
+* `A` = Abstractness Index
 
 ### 🔬 Interpretation
 * `A = 0` → completely concrete; no abstraction
 * `0 < A < 1` → mix of abstract and concrete
 * `A = 1` → completely abstract
-
-### 🎯 Conclusion
+ 
+### 🗝 Key Takeaways (`A`)
 * Abstraction provides flexibility
 * Concrete code provides behavior
 * Good architecture balances both
 
-## 🧪 Main Sequence
+## 🧬 Main Sequence
 
-When plotting **Abstractness (A)** against **Instability (I)**, something interesting appears.
+When plotting **Abstractness (`A`)** against **Instability (`I`)**, something interesting appears.
 
 Healthy modules tend to cluster along a line defined by:
 
@@ -224,7 +223,7 @@ The key idea is simple: modules do not have to sit exactly on the main sequence,
 
 ## 🪨 Architectural Danger Zones
 
-### 🔥 Zone of Pain
+### 🏦 Zone of Pain
 
 ```text
 low A
@@ -242,7 +241,7 @@ Examples often include:
 
 Changing them causes cascading impact, hence the name.
 
-### 🧟 Zone of Uselessness
+### 🤷‍♂️ Zone of Uselessness
 
 ```text
 high A
@@ -298,7 +297,7 @@ Some modules live outside the danger zones and are still worth watching. A servi
 * Each dependency increases operational risk.
 * Understanding coupling helps prevent systems from drifting towards chaos and its high cost.
 
-## 🥼 The Takeaway
+## 🗝 Key Takeaways
 
 * Architecture is often treated as an art 🖼.
 * But beneath the diagrams lies an entire universe 🪐, with its own strange set of rules 🧬.
