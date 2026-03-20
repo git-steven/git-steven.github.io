@@ -323,7 +323,7 @@ Architecture is often treated as an art.
 But beneath the diagrams lies something more mechanical.
 Software systems obey structural forces.
 
-⛓️ **Coupling** is one of them, and like gravity, it can be ignored for a time, but it cannot be escaped.
+ ⛓️ **Coupling** is one of them, and like gravity, it can be ignored for a time but it cannot be escaped.
 
 ## 📚 References
 
