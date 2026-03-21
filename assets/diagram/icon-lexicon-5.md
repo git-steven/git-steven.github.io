@@ -15,35 +15,14 @@ Designed for:
 ---
 ## CLAUDE: TODO
 Add and categorize:
-🦠 🌌 🖼 📡 🧫 
+🦠 🌌 📡 🧫
 Degrees ( ° )
 Milky Way ( 🌌 )
-Rocket ( 🚀 )
-Satellite ( 🛰️ )
 Alien ( 👽 )
 Flying Saucer ( 🛸 )
 Shooting Star ( 🌠 )
-Sun ( ☀️ )
 Full Moon ( 🌕 )
 New Moon ( 🌑 )
-Ringed Planet ( 🪐 )
-
-SOFTWARE:
-📦 (Package/Module)
-🏢 (Classes)
-🏷 (Interface)
-🧱 (Objects)
-🧩 (Component)
-⚙️ (System/Function)
-🔢 (Number/Integer)
-🔤 (String/Text)
-🔒 (Constant)
-📝 (Documentation/Note)
-➡️ (Assignment/Input)
-😎 (Emojicode/Logic) 
-🏛️ architecture
-🏦 monolith
-⛓️ coupling
 
 
 # Misc other Buildings:
@@ -55,7 +34,7 @@ SOFTWARE:
 
 ## All Icons
 
-🏛️ 🧱 🪨 🗿 🧬 📐 📏 🧭 🧮 🏗️ 🧰 ⚙️ 🧲 🏢 🏦 🏰 🏚️ 🚧 🚪 🪜 ♻️ 🧩 🗺️ 🌐 📍 🏷️ 🛣️ 🛤️ 🚦 ➡️ 🔎 🔭 🧵 🌉 📚 📖 📙 📗 📘 🗒️ 📝 📄 📑 🗃️ 🗄️ 🗂️ 🧠 🎓 🔍 📌 ✅ ⚠️ 📜 📃 🧾 🔌 🔖 ☑️ 🧪 📦 ➕ 🔗 🧷 👥 🌀 🌊 🔄 🎛️ 📣 📨 🛰️ 🟢 🟡 🔴 ☯ ⏱️ ⏳ 🕒 🕰 🚰 📈 📊 📋 🧟 🪦 🧊 🧑‍💻 💻 🛠️ 🔧 ⚖️ 🎯 🛡️ 🔐 🔒 🪪 🗝️ 🐞 🧨 🚨 🔬 ✔️ 🚀 🏁 🖥️ ☁️ 💧 🫧 🔥 ⚡ 💥 🌱 🌿 🌳 ☀️ 🌙 ✨ 🌥️ 🌬️ 💨 🪁 🌪️ ⛈️ 🌧️ 🌩️ ☔ 🌤️ 🌦️ 🌡️ 🌫️ ☄️ 🌍 🌎 🌏 🪐 🏔️ ⛰️ 🗻 🏕️ 🏘️ 🏞️ 🏜️ 🏝️ 🏖️ 🌋 ⬅️ ⬆️ ⬇️ ↗️ ↘️ ↙️ ↖️ ↔️ ↕️ ⤴️ ⤵️ ↩️ ↪️ 🔃 🔁 🔂 ⭐ 🌟 ☢️ ☣️ ★ ☆ ✦ ✧ ✴ ✪ ⍟ ✫ ✯ ✰ ❂ ✹ ✸ ⋆
+🏛️ 🧱 🪨 🗿 🧬 📐 📏 🧭 🧮 🏗️ 🧰 ⚙️ 🧲 🏢 🏦 🏰 🏚️ 🚧 🚪 🪜 ♻️ 🧩 🗺️ 🌐 📍 🏷️ 🛣️ 🛤️ 🚦 ➡️ 🔎 🔭 🧵 🌉 📚 📖 📙 📗 📘 🗒️ 📝 📄 📑 🗃️ 🗄️ 🗂️ 🧠 🎓 🔍 📌 ✅ ⚠️ 📜 📃 🧾 🔌 🔖 ☑️ 🧪 📦 ➕ 🔗 🧷 👥 🌀 🌊 🔄 🎛️ 📣 📨 🛰️ 🟢 🟡 🔴 ☯ ⏱️ ⏳ 🕒 🕰 🚰 📈 📊 📋 🧟 🪦 🧊 🧑‍💻 💻 🛠️ 🔧 ⚖️ 🎯 🛡️ 🔐 🔒 🪪 🗝️ 🐞 🧨 🚨 🔬 ✔️ 🚀 🏁 🖥️ ☁️ 💧 🫧 🔥 ⚡ 💥 🌱 🌿 🌳 ☀️ 🌙 ✨ 🌥️ 🌬️ 💨 🪁 🌪️ ⛈️ 🌧️ 🌩️ ☔ 🌤️ 🌦️ 🌡️ 🌫️ ☄️ 🌍 🌎 🌏 🪐 🏔️ ⛰️ 🗻 🏕️ 🏘️ 🏞️ 🏜️ 🏝️ 🏖️ 🌋 ⬅️ ⬆️ ⬇️ ↗️ ↘️ ↙️ ↖️ ↔️ ↕️ ⤴️ ⤵️ ↩️ ↪️ 🔃 🔁 🔂 ⭐ 🌟 ☢️ ☣️ ★ ☆ ✦ ✧ ✴ ✪ ⍟ ✫ ✯ ✰ ❂ ✹ ✸ ⋆ 👹 ⚓ ⏲ 🤷‍♂️ 🖼️ ⛓️‍💥 🔢 🔤 😎
 
 ---
 
@@ -89,7 +68,7 @@ SOFTWARE:
 
 | Category | Icons |
 |---|---|
-| **Foundations** | 🧱 brick · 🪨 rock · 🗿 moai · 🧬 dna |
+| **Foundations** | 🧱 brick · 🪨 rock · 🗿 moai · 🧬 dna · ⚓ anchor |
 | **Design / Blueprint** | 📐 triangle ruler · 📏 ruler · 🧭 compass · 🧮 abacus |
 | **Construction** | 🏗️ crane · 🧰 toolbox · ⚙️ gear · 🧲 magnet |
 | **Institutions** | 🏛️ classical building · 🏢 office · 🏦 bank · 🏰 castle · 🏚️ derelict house |
@@ -116,7 +95,7 @@ SOFTWARE:
 |----------------------|-------------------------------------------------------------------------|
 | **References**       | 📚 books · 📖 open book · 📙 orange book · 📗 green book · 📘 blue book |
 | **Working Docs**     | 🗒️ notepad · 📝 memo · 📄 page · 📑 bookmark tabs                      |
-| **Knowledge Stores** | 🗃️ card file box · 🗄️ file cabinet · 🗂️ dividers                     |
+| **Knowledge Stores** | 🗃️ card file box · 🗄️ file cabinet · 🗂️ dividers · 🖼️ framed picture |
 | **Learning**         | 🧠 brain · 🎓 graduation cap · 🔍 magnifying glass                      |
 | **Guidance**         | 📌 pushpin · ✅ check mark · ⚠️ warning                                  |
 
@@ -143,7 +122,7 @@ SOFTWARE:
 | **Components / Services** | 🧩 puzzle piece                      |
 | **Packages / Artifacts**  | 📦 package · 🗂️ dividers            |
 | **Composition**           | 🧩 puzzle piece · ➕ plus · 🏗️ crane |
-| **Seams / Adapters**      | 🔌 plug · 🔗 link · 🧷 safety pin    |
+| **Seams / Adapters**      | 🔌 plug · 🔗 link · 🧷 safety pin · ⛓️‍💥 broken chain |
 | **Teams / Ownership**     | 👥 people · 🏷️ label                |
 
 ---
@@ -156,7 +135,7 @@ SOFTWARE:
 | **Orchestration** | 🎛️ control knobs · 🧭 compass · 🧵 thread                              |
 | **Async / Events** | 📣 megaphone · 📨 envelope · 🛰️ satellite                              |
 | **Status** | 🟢 green · 🟡 yellow · 🔴 red · ✅ check · ⚠️ warning · ☯ yin yang       |
-| **Time** | ⏱️ stopwatch · ⏳ hourglass · 🕒 clock · 🕰 mantel clock                 |
+| **Time** | ⏱️ stopwatch · ⏲ timer · ⏳ hourglass · 🕒 clock · 🕰 mantel clock      |
 
 ---
 
@@ -180,6 +159,7 @@ SOFTWARE:
 | **Zombie Work** | 🧟 zombie                     |
 | **Dead Work**   | 🪦 headstone                  |
 | **Frozen Work** | 🧊 ice                        |
+| **Pointless**   | 🤷‍♂️ shrug                     |
 
 ---
 
@@ -316,7 +296,7 @@ SOFTWARE:
 
 | Category   | Icons                                   |
 |------------|-----------------------------------------|
-| **Hazard** | ☢️ radioactive · ☣️ biohazard           |
+| **Hazard** | ☢️ radioactive · ☣️ biohazard · 👹 ogre  |
 | **Alert**  | 🚨 siren · ⚠️ warning · 🚧 construction |
 
 ---
@@ -350,14 +330,14 @@ SOFTWARE:
 |   ✅   | check mark       | Check/Finished             | 
 |  ⛓️   | chains           | Coupling                   |
 |  🔗   | link             | Linked                     |
-|  🧱   | brick            | Foundation                 |
+|  🧱   | brick            | Foundation/Object          |
 |  🐞   | bug              | Bug/Flaw                   |
 |  📚   | books            | Documentation/TOC          |
 |  🗂️  | dividers         | Folder                     |
 |  📜   | scroll           | Table of Contents          |
 |  📊   | bar chart        | Chart/Report               |
 |  📏   | ruler            | Measure                    |
-|  📐   | triangle ruler   | Search                     |
+|  📐   | triangle ruler   | Geometry/Blueprint         |
 |  🧮   | abacus           | Math/tally                 |
 |  🔎   | magnifying glass | Search                     |
 |  🔭   | telescope        | Examine/Outside            |
@@ -385,6 +365,16 @@ SOFTWARE:
 | 🧑‍💻 | technologist     | Tech/Programmer            |
 |  💻   | laptop           | Programming/Computer       |
 |  🧟   | zombie           | Zombie ticket/process/idea |
+|  ⚓   | anchor           | Structural anchor/stability|
+|  👹   | ogre             | Danger/horror              |
+|  🖼️  | framed picture   | Art/visual                 |
+|  🏦   | bank             | Monolith/Institution       |
+|  🤷‍♂️ | shrug            | Pointless/useless          |
+|  ⏲   | timer            | Timing (alias ⏱️)          |
+| ⛓️‍💥 | broken chain     | Decoupling/breaking dep    |
+|  🔢   | input numbers    | Number/Integer             |
+|  🔤   | input latin      | String/Text                |
+|  😎   | sunglasses face  | Emojicode/Logic            |
                                                  
 
 ## Final

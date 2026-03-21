@@ -1,5 +1,5 @@
 ---
-title: "📐 The Hidden Geometry of Software Coupling (Part 1)"
+title: "📐 The Hidden Geometry of Software Coupling"
 date: 2026-03-19 11:11:11 -0500
 categories:
   - sdlc
@@ -9,7 +9,6 @@ categories:
 author: steven
 ---
 
-## 📊 Part 1 — The Metrics That Predict Architectural Failure
 ![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-sm.png)
 
 ## 📃 Introduction
@@ -48,22 +47,19 @@ _Then the real symptoms appeared:_
 >  It's a simple complex system. Because it's simple, it's prone to cascades, and because it's complex, you can't predict what's going to fail. Or how. -- _"The Expanse"_
 
 ## ⛓️ Architecture and Coupling
-Eventually they hired an architect, who spent some time with the codebases and running various tools
 
-> Your problem isn't Rails. Your problem is **coupling**.
+We started digging. We ran static analysis tools against the codebase, traced dependency graphs, counted the connections between modules. The picture that emerged was not pretty, and studied up on _quantitative_ software metrics.  
 
-All the software engineers had heard of this, of course, but thought of it as a _qualitative_ measurement. It may have come up a few times since, but had never been _exactly quantified_. Now here it is in the real world.
+> Our problem wasn't Rails. Our problem was **coupling**; specifically; **_tight_ coupling**
 
-The application had quietly evolved into something **infamous**:
+Everyone on the team had _heard_ of coupling, of course. It was one of those concepts that came up in design discussions the way "tech debt" does -- acknowledged in the abstract, never exactly quantified. Now here it was, staring back at us from actual numbers.
 
-### 🏢 A Tightly Coupled Monolith
+The application had quietly evolved into a **tightly coupled monolith** -- but the monolith part was almost beside the point. The coupling was the disease; the monolith was just the host.
 
-**Note:** _Coupling can still be a huge problem even if the software in question is **not** a monolith_
-
-**When software is tightly coupled**
-* A change almost anywhere could trigger side effects somewhere else
-* Features that should have touched one module required edits across five
-* Bug fixes became archaeology
+**When software is tightly coupled:**
+* A change almost anywhere can trigger side effects somewhere else
+* Features that should touch one module require edits across five
+* Bug fixes become archaeology
 
 ### 📏 And the surprising part?
 * These structural problems weren't mysterious
@@ -285,17 +281,14 @@ Some modules live outside the danger zones and are still worth watching. A servi
 
 ## 🗺️ Where These Metrics Apply
 
-**These metrics apply to almost any software system:**
-- microservices
-- modular applications
-- large monoliths (UI and/or service)
-- plugin architectures
-- libraries
+Remember: tight coupling is a **software** problem, not a monolith problem. These metrics apply everywhere software components depend on each other:
 
-* Microservice systems especially benefit from coupling analysis because dependencies often hide behind **network calls rather than imports**.
-* A service with high efferent coupling may rely on many downstream services.
-* Each dependency increases operational risk.
-* Understanding coupling helps prevent systems from drifting towards chaos and its high cost.
+* **Microservices** -- dependencies hide behind network calls rather than imports, making coupling _harder_ to see but no less dangerous. A service with high efferent coupling may rely on many downstream services, and each one increases operational risk.
+* **Modular monoliths** -- internal module boundaries can erode silently when coupling goes unmeasured
+* **Plugin architectures** -- stability of the plugin API is exactly what `𝐶ₐ` and `I` quantify
+* **Libraries and SDKs** -- a library with high afferent coupling carries the weight of every consumer
+
+The shape of the system changes. The math does not.
 
 ## 🗝 Key Takeaways
 
