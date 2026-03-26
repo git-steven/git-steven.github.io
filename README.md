@@ -1,27 +1,52 @@
-# Minimal Mistakes remote theme starter
+# Steven Miers - Portfolio & Technical Blog
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+A Jekyll-based portfolio and blog covering software architecture, data engineering, machine learning, and technical leadership.
 
-Contains basic configuration to get you a site with:
+**Live site**: [git-steven.github.io](https://git-steven.github.io/)
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+## Topics
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+- Software Architecture (Clean Architecture, Layered Architecture, Coupling Metrics)
+- Data Engineering (PostgreSQL, PySpark, Prefect, Data Sketching)
+- Machine Learning (scikit-learn, Feature Engineering, Data Visualization)
+- Python (FastAPI, JWT Authentication, AWS CDK)
+- AI/LLM (Claude, Prompt Engineering)
+- SDLC & Agile (Scrum, Architecture in Agile)
 
----
+## Tech Stack
 
-## Troubleshooting
+- **Generator**: [Jekyll](https://jekyllrb.com/) via [GitHub Pages](https://pages.github.com/)
+- **Theme**: [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) (remote theme, "dirt" skin)
+- **Diagrams**: [draw.io](https://www.drawio.com/)
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+## Local Development
 
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+```bash
+# Install dependencies
+bundle install
+
+# Serve locally with live reload
+bundle exec jekyll serve
+
+# Serve with drafts
+bundle exec jekyll serve --drafts
+
+# Build only (no server)
+bundle exec jekyll build
+```
+
+## Project Structure
+
+```
+_posts/          Blog posts (YYYY-MM-DD-title.md)
+_pages/          Static pages (About, Projects, Archives)
+_data/           Navigation and site data
+_includes/       Template partials
+assets/          Images, diagrams, CSS
+_config.yml      Site configuration
+```
+
+## Links
+
+- [GitHub](https://github.com/git-steven)
+- [LinkedIn](https://www.linkedin.com/in/stevenmiers)
