@@ -1,0 +1,11 @@
+<mxLibrary>
+<entry title="Service">🧩 Service</entry>
+<entry title="API">🔌 API</entry>
+<entry title="Database">🗄️ Database</entry>
+<entry title="Event">📣 Event</entry>
+<entry title="Dependency">🔗 Dependency</entry>
+<entry title="Metric">📊 Metric</entry>
+<entry title="Incident">🔥 Incident</entry>
+<entry title="Artifact">📦 Artifact</entry>
+<entry title="Deploy">🚀 Deploy</entry>
+</mxLibrary>

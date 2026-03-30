@@ -1,5 +1,5 @@
 ---
-title: "Scrum: Points and Counterpoint"
+title: "🦠 Scrum: Points and Counterpoint"
 date: 2026-03-7 11:37:00 -0500
 categories:
   - architecture
@@ -12,7 +12,7 @@ author: steven
 ---
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counterpoints.png" width=600/>
 
-# Scrum: Points and Counterpoint
+# 🦠 Scrum: Points and Counterpoint
 ## **📖 Table of Contents**
 - [📍 When Velocity Becomes the Target](#-when-velocity-becomes-the-target)
 - [🧬 When Complexity Compounds](#-when-complexity-compounds)
