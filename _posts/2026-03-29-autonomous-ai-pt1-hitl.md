@@ -1,5 +1,5 @@
 ---
-title: "🧬 Autonomous and Semi-Autonomous AI Systems, Part 1: Human-in-the-Loop (HITL)"
+title: "🧬 Autonomous and Semi-Autonomous AI Systems, Part 1: HITL(Human-In-The-Loop)"
 date: 2026-03-29 03:33:33 -0500
 categories:
   - architecture
@@ -38,8 +38,8 @@ This isn't a criticism — it's a *classification*. Most production AI systems t
 
 Understanding *why* matters, because the architecture you choose determines what your system can and cannot learn, how fast it can learn it, and who's liable when it gets something wrong.
 
-And here's the first non-obvious thing: it's not the *presence of humans* that makes 
-these systems non-autonomous. It's the specific role those humans play. More on that 
+And here's the first non-obvious thing: it's not the *presence of humans* that makes
+these systems non-autonomous. It's the specific role those humans play. More on that
 after the diagram.
 
 ---
@@ -126,8 +126,8 @@ What breaks *our* loop is structural, not incidental. It's the two governance ga
 
 Remove those two gates and the rest of the system — expert users rating matches, session outcomes accumulating, the pipeline ingesting data — could, in principle, run continuously. Add them back, and you have two asynchronous, human-bandwidth-constrained chokepoints that batch and gate everything downstream.
 
->The "Human" in Human-in-the-Loop doesn't *just* mean _users_. 
->It also means **gatekeepers**. 
+>The "Human" in Human-in-the-Loop doesn't *just* mean _users_.
+>It also means **gatekeepers**.
 >And it's the _gatekeepers_ — not the _users_ — who keep this loop from closing.
 
 ---
