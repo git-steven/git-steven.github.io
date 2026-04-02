@@ -187,7 +187,9 @@ This is *exactly* the pattern described in Zhu & Goldberg's foundational work on
 
 **Many production AI systems are loop-shaped, but not closed-loop.** Human feedback, curation, and governance introduce delay, filtering, and control boundaries that prevent true autonomy.
 
-This is Part 1 of a series. In Part 2, we'll look at what happens when you start removing those human gates — **Autonomous AI Systems** — and the entirely different failure modes that emerge when the loop actually closes.
+_This is Part 1 of a series._ 
+
+In `Part 2`, we'll look at what happens when you start removing those human gates — **Autonomous AI Systems** — and the entirely different failure modes that emerge when the loop actually closes:
 * Will it cause the AI uprising?
 * Will it make everybody's lives better?
 

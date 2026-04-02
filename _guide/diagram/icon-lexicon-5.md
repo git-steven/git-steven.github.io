@@ -340,82 +340,109 @@ Designed for:
 ---
 
 # Canonical Icons
-| Icon  | Name             | Meaning                    |
-|:-----:|------------------|----------------------------|
-|  🤖   | robot            | AI                         |
-|   ✨   | sparkles         | solution/idea/intelligence |
-|  🧠   | brain            | Neural Network/Thinking    |
-|  🦾   | mechanical arm   | Robotics/Automation        |
-|  🦿   | mechanical leg   | Robotics/Prosthetics       |
-|  🏛   | classical blding | Architecture               |
-|  🏢   | office           | Architecture/Module        |
-|  🏰   | castle           | Goal/Win/something         |
-|  🧩   | puzzle piece     | Component                  |
-|  ♻️   | recycle          | Recycle                    |
-|   ✅   | check mark       | Check/Finished             |
-|  ⛓️   | chains           | Coupling                   |
-|  🔗   | link             | Linked                     |
-|  🧱   | brick            | Foundation/Object          |
-|  🐞   | bug              | Bug/Flaw                   |
-|  📚   | books            | Documentation/TOC          |
-|  🗂️  | dividers         | Folder                     |
-|  📜   | scroll           | Table of Contents          |
-|  📊   | bar chart        | Chart/Report               |
-|  📏   | ruler            | Measure                    |
-|  📐   | triangle ruler   | Geometry/Blueprint         |
-|  🧮   | abacus           | Math/tally                 |
-|  🔎   | magnifying glass | Search                     |
-|  🔭   | telescope        | Examine/Outside            |
-|  🔬️  | microscope       | Examine/Inside             |
-|  ⚙️   | gear             | Inner workings             |
-|  🏗   | crane            | Construct/Build            |
-|  🧲   | magnet           | Attraction                 |
-|  🧰   | toolbox          | Tool, work                 |
-|  🛠️  | hammer wrench    | Tool, work                 |
-|  🔧   | wrench           | Tool, work                 |
-|  🔩   | nut and bolt     | Fastener/Assembly          |
-|  🔨   | hammer           | Build/Forge                |
-|  💡   | light bulb       | Idea/Illumination          |
-|  📡   | satellite dish   | Signal/Broadcast           |
-|  🚧   | construction     | Under construction         |
-|  🚪   | door             | Door/destination           |
-|  🪜   | ladder           | Climb/elevate              |
-|  🧵   | thread           | Thread                     |
-|  🤝   | handshake        | Handshake/Agreement        |
-|  🔌   | plug             | Port                       |
-|  🌀   | cyclone          | Workflow                   |
-|  🌊   | wave             | Flow                       |
-|  🛰️  | satellite        | External dependency        |
-|  🔥   | fire             | Risk                       |
-|  💧   | droplet          | Stabilization              |
-|  🌱   | seedling         | Evolution                  |
-|   ⏳   | hourglass        | Waiting                    |
-|  🕰   | mantel clock     | Time/old                   |
-| 🧑‍💻 | technologist     | Tech/Programmer            |
-|  💻   | laptop           | Programming/Computer       |
-|  🧟   | zombie           | Zombie ticket/process/idea |
-|   ⚓   | anchor           | Structural anchor/stability|
-|  👹   | ogre             | Danger/horror              |
-|  🖼️  | framed picture   | Art/visual                 |
-|  🏦   | bank             | Monolith/Institution       |
-| 🤷‍♂️ | shrug            | Pointless/useless          |
-|   ⏲   | timer            | Timing (alias ⏱️)          |
-| ⛓️‍💥 | broken chain     | Decoupling/breaking dep    |
-|  🔢   | input numbers    | Number/Integer             |
-|  🔤   | input latin      | String/Text                |
-|  😎   | sunglasses face  | Emojicode/Logic            |
-|  👽   | alien            | Unknown/External           |
-|  🛸   | flying saucer    | UFO/Unidentified system    |
-|  🌌   | milky way        | Deep space/Vast scope      |
-|  🌠   | shooting star    | Aspiration/Transient       |
-|  🦠   | microbe          | Bug (biological)/Contagion |
-|  ⚗️   | alembic          | Distillation/Refinement    |
-|  ⚛️   | atom             | Atomic/Fundamental unit    |
-|  🧫   | petri dish       | Experiment/Culture         |
-| 🧑‍🔬 | scientist        | Research/Science           |
-| 🧑‍🚀 | astronaut        | Exploration/Space          |
-|  👷   | construction wkr | Builder/Implementation     |
-|  🕵️  | detective        | Investigation/Debugging    |
+| Icon  | Name             | Meaning                         | Alternates                              |
+|:-----:|------------------|---------------------------------|-----------------------------------------|
+|  🤖   | robot            | AI/Autonomous                   | AI/ML (geometry)                        |
+|   ✨   | sparkles         | solution/idea/intelligence      |                                         |
+|  🧠   | brain            | Semi-Supervised Learning        | Planning (scrum), Neural Network        |
+|  🦾   | mechanical arm   | Robotics/Automation             |                                         |
+|  🦿   | mechanical leg   | Robotics/Prosthetics            |                                         |
+|  🏛   | classical blding | Architecture                    |                                         |
+|  🏢   | office           | Architecture/Module             |                                         |
+|  🏰   | castle           | Goal/Win/something              |                                         |
+|  🧩   | puzzle piece     | Component                       | Self-organizing (scrum)                 |
+|  ♻️   | recycle          | Continuous improvement          | Recycle/Reuse                           |
+|   ✅   | check mark       | Done/Finished                   |                                         |
+|  ⛓️   | chains           | Coupling                        |                                         |
+|  🔗   | link             | Cross-cutting dependency        | Linked                                  |
+|  🧱   | brick            | Foundation/Object               |                                         |
+|  🐞   | bug              | Bug/Flaw                        |                                         |
+|  📚   | books            | References                      | Documentation/TOC                       |
+|  🗂️  | dividers         | Folder                          |                                         |
+|  📜   | scroll           | Table of Contents               |                                         |
+|  📊   | bar chart        | Metrics/Chart                   |                                         |
+|  📏   | ruler            | Measure                         |                                         |
+|  📐   | triangle ruler   | Precision                       | Geometry (geometry), Framework (scrum)  |
+|  🧮   | abacus           | Prediction/Calculation          | Counting (geometry)                     |
+|  🔎   | magnifying glass | Search                          |                                         |
+|  🔭   | telescope        | Examine/Outside                 |                                         |
+|  🔬️  | microscope       | Scrutiny                        | Examination (geometry)                  |
+|  ⚙️   | gear             | Inner workings                  |                                         |
+|  🏗   | crane            | Structure/Build                 |                                         |
+|  🧲   | magnet           | Force/Attraction                |                                         |
+|  🧰   | toolbox          | Tool, work                      |                                         |
+|  🛠️  | hammer wrench    | Tool, work                      |                                         |
+|  🔧   | wrench           | Tool, work                      |                                         |
+|  🔩   | nut and bolt     | Fastener/Assembly               |                                         |
+|  🔨   | hammer           | Build/Forge                     |                                         |
+|  💡   | light bulb       | Idea/Illumination               |                                         |
+|  📡   | satellite dish   | Signal/Broadcast                |                                         |
+|  🚧   | construction     | Under construction              |                                         |
+|  🚪   | door             | Door/destination                |                                         |
+|  🪜   | ladder           | Climb/elevate                   |                                         |
+|  🧵   | thread           | Thread                          |                                         |
+|  🤝   | handshake        | Handshake/Agreement             |                                         |
+|  🔌   | plug             | Port                            |                                         |
+|  🌀   | cyclone          | Pipeline/Process                | Workflow (scrum)                        |
+|  🌊   | wave             | Flow                            |                                         |
+|  🛰️  | satellite        | External dependency             |                                         |
+|  🔥   | fire             | Danger/Risk                     |                                         |
+|  💧   | droplet          | Stability                       |                                         |
+|  🌱   | seedling         | Growth/Evolution                |                                         |
+|   ⏳   | hourglass        | Delay/Waiting                   |                                         |
+|  🕰   | mantel clock     | Legacy/Historical               | Time/old                                |
+| 🧑‍💻 | technologist     | Developer/Engineer              |                                         |
+|  💻   | laptop           | Programming/Computer            |                                         |
+|  🧟   | zombie           | Zombie/Stagnation               | Zombie work/Rollover (scrum)            |
+|   ⚓   | anchor           | Structural anchor/stability     |                                         |
+|  👹   | ogre             | Danger/horror                   |                                         |
+|  🖼️  | framed picture   | UI/Presentation                 | Art/visual (geometry)                   |
+|  🏦   | bank             | Debt/Cost                       | Pain Zone (geometry), Entropy Tax (scrum) |
+| 🤷‍♂️ | shrug            | Pointless/useless               |                                         |
+|   ⏲   | timer            | Speed/Timing (alias ⏱️)         |                                         |
+| ⛓️‍💥 | broken chain     | Governance Break                | Side Effects/Decoupling (geometry)      |
+|  🔢   | input numbers    | Number/Integer                  |                                         |
+|  🔤   | input latin      | String/Text                     |                                         |
+|  😎   | sunglasses face  | Emojicode/Logic                 |                                         |
+|  👽   | alien            | Unknown/External                |                                         |
+|  🛸   | flying saucer    | UFO/Unidentified system         |                                         |
+|  🌌   | milky way        | Deep space/Vast scope           |                                         |
+|  🌠   | shooting star    | Aspiration/Transient            |                                         |
+|  🦠   | microbe          | Contagion/Spreading Problem     | Bug (biological)                        |
+|  ⚗️   | alembic          | Distillation/Refinement         |                                         |
+|  ⚛️   | atom             | Atomic/Fundamental unit         |                                         |
+|  🧫   | petri dish       | Experiment/Culture              |                                         |
+| 🧑‍🔬 | scientist        | Research/Science                |                                         |
+| 🧑‍🚀 | astronaut        | Exploration/Space               |                                         |
+|  👷   | construction wkr | Builder/Implementation          |                                         |
+|  🕵️  | detective        | Investigation/Debugging         |                                         |
+|  🧬   | dna              | Genetics/Training               | Complexity (scrum), Main Sequence (geometry) |
+|  🔃   | clockwise arrows | Closed Loop                     |                                         |
+|  👥   | silhouettes      | Team/Governance                 | Team/Group (geometry)                   |
+|  📑   | bookmark tabs    | Data/Outcome                    |                                         |
+|  🔍   | magnifying glass | Investigation                   |                                         |
+|  🧭   | compass          | Context/Direction               |                                         |
+|  📖   | open book        | References                      | Table of Contents (scrum)               |
+|  💨   | dash             | Afferent/Inward                 | Motion (scrum)                          |
+|  🌬   | wind face        | Efferent/Outward                | Agility (scrum)                         |
+|  📈   | chart up         | Trending/Curves                 |                                         |
+|  📉   | chart down       | Declining/Lowering              |                                         |
+|  🌐   | globe meridians  | Abstractness/Global             |                                         |
+|  🪨   | rock             | Danger Zone                     |                                         |
+|  📍   | pushpin          | Target/Focus                    |                                         |
+|  🗺️  | world map        | Landscape/Applicability         | Map/Territory (scrum)                   |
+|  🪐   | planet           | Universe/Vast scope             |                                         |
+|  📋   | clipboard        | Work Items/Meetings             |                                         |
+|  📦   | package          | Release/Delivery                |                                         |
+|  🧊   | ice              | Frozen/Batched                  |                                         |
+|  🌫️  | fog              | Illusion/Obscurity              |                                         |
+|  ⚖️   | balance scale    | Fairness/Warning                |                                         |
+|  🗿   | moai             | Legacy/Monument                 |                                         |
+|  ⛏️   | pick             | Archaeology/Digging             |                                         |
+|  🛤️  | railway          | Track/Rails/Path                |                                         |
+|  💦   | sweat droplets   | Afferent Coupling               |                                         |
+|  📃   | page with curl   | Introduction                    |                                         |
+|  🚰   | potable water    | Bottleneck                      |                                         |
 
 
 ## Final
