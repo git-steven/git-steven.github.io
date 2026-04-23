@@ -14,7 +14,7 @@ author: steven
 **_Your AI Looks Autonomous. It's probably not. Here's the Architecture Diagram to Prove It._**
 
 <a title="HITL Infographic" href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png" alt="🧬HITL Architecture Infographic" width="400px"/>
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic-anim.gif" alt="🧬HITL Architecture Infographic" width="400px"/>
 </a>
 
 
