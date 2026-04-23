@@ -169,23 +169,24 @@ unstable modules  →  stable modules
 When stable modules depend on unstable ones, architectural fragility appears quickly.
 
 
-## 🌐 `A` (The Abstractness Index)
+## 🌐 `A` (The Abstractedness Index)
 
-This metric differentiates types as **concrete** or **abstract** (`interface`/`protocol`/`port`).
+This metric differentiates types as **concrete** or **abstract** (`interface`/`protocol`/`port`/`type definition`).
 
 ```text
 A = Na / Nc
 ```
 
 ### 📏 Variables
-* `Na` = number of abstract types
-* `Nc` = total number of types
-* `A` = Abstractness Index
+* `Na` = number of abstract classes and other items like interfaces/protocols/ABCs, etc. 
+* `Nc` = Total number of classes and other items
+* `A` = Abstractedness Index
 
 ### 🔬 Interpretation
 * `A = 0` → completely concrete; no abstraction
 * `0 < A < 1` → mix of abstract and concrete
 * `A = 1` → completely abstract
+
 ### 🗝 Key Takeaways (`A`)
 * Abstraction provides flexibility
 * Concrete code provides behavior
@@ -193,7 +194,7 @@ A = Na / Nc
 
 ## 🧬 Main Sequence
 
-When plotting **Abstractness (`A`)** against **Instability (`I`)**, something interesting appears.
+When plotting **Abstractedness (`A`)** against **Instability (`I`)**, something interesting appears.
 
 Healthy modules tend to cluster along a line defined by:
 
@@ -294,7 +295,7 @@ The shape of the system changes. The math does not.
 * Software systems obey structural forces 🧲.
 
 ⛓️ **Coupling** is one of them, and like magnetism and gravity, it cannot be ignored.
-
+      
 ## 📚 References
 
 - Constantine, L. L. & Yourdon, E. (1979). *Structured Design: Fundamentals of a Discipline of Computer Program and Systems Design.* Prentice-Hall.
