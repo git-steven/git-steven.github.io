@@ -9,13 +9,9 @@ author: steven
 ---
 
 
-![HITL - A Semi-autonomous AI system](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-governance-li.png)
+![HITL - A Semi-autonomous AI system](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic-graph.png)
 
 **_Your AI Looks Autonomous. It's probably not. Here's the Architecture Diagram to Prove It._**
-
-<a title="HITL Infographic" href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic-anim.gif" alt="🧬HITL Architecture Infographic" width="400px"/>
-</a>
 
 
 > *"Many production AI systems are loop-shaped, but not closed-loop.  Human feedback, curation, and governance introduce delay, filtering, and control boundaries that prevent true autonomy."*
@@ -61,25 +57,23 @@ If your system has *any* of these, it's HITL. If it has *all four*, it's what I'
 
 ---
 
-## 🏛️ The Architecture: HITL Loop and Governance Overlays
+## 🏛️ The Architecture: HITL Loop and Human Gates
 
-The infographic below maps HITL architecture as an elliptical loop with governance overlays shown where the loop is "broken".
+The infographic below maps HITL architecture as an elliptical loop with two **HUMAN GATE** nodes (orange hexagons) where humans must approve before the loop can continue.
 
-<a title="HITL Infographic" href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
-</a>
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
 
 ### ⬭ The HITL System
 
 This is the main human-in-the-loop.  Predictions flow to users, users react, reactions get stored.
 
-It is NOT a closed loop in that there is a data curation team and a model governance team marked with  <span style="color: #BB7C4B"><em><strong>"GOVERNANCE"</strong></em></span>.
+It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: #BB7C4B"><em><strong>"HUMAN GATE"</strong></em></span> — `DATA CURATION SERVICE` and `MODEL RELEASE GATE` — sit inline on the loop and require human approval before downstream steps run.
 
 
 * **🧮 MODEL PREDICTION SERVICE:** _real-time results (classification/inference)_
-* **🖼️ PRODUCT UI:** _Automated predictions combined actual session info and expert user feedback_
+* **🖼️ PRODUCT UI / API:** _Automated predictions combined actual session info and expert user feedback_
 * **📑 DATA / OUTCOME:** _Storage of session outcome and expert user feedback_
-* <span style="color: #BB7C4B"><em><strong>👥 CURATION TEAM (GOVERNANCE):</strong></em></span>
+* <span style="color: #BB7C4B"><em><strong>👥 DATA CURATION SERVICE (HUMAN GATE):</strong></em></span>
   * Evaluates user session data and feedback from expert user
   * Select for inclusion or exclusion (or include with changes)
   * Sanity-check
@@ -97,15 +91,15 @@ It is NOT a closed loop in that there is a data curation team and a model govern
   * batch retraining
   * model tuning/ensembling
   * RL (reinforcement learning)
-* <span style="color: #BB7C4B"><em><strong>👥 MODEL VERIFICATION TEAM (GOVERNANCE):</strong></em></span>
+* <span style="color: #BB7C4B"><em><strong>👥 MODEL RELEASE GATE (HUMAN GATE):</strong></em></span>
   * QA of new model
   * Sanity check
 
-### ⛓️‍💥Governance Overlays: The Human Gatekeepers
-At the top-left and bottom-right are two governance boundaries (shown as dashed orange flows and orange boxes in the infographic):
+### 👥 Human Gates: The Architectural Control Surfaces
+At the top-left and bottom-right of the loop sit the two **HUMAN GATE** hexagons (orange) — they live *inside* the loop, but they break it semantically by requiring human sign-off:
 
-- **Store → Curation Team → Pipeline**: A curation team reviews session data and selects which signals are trustworthy enough for training. This prevents noisy or adversarial feedback from corrupting the model.
-- **Model Ensemble → Model Governance Team → Deployment**: A governance team validates model performance, checks for bias, and approves releases. No model reaches production without human sign-off.
+- **Data / Outcome → Data Curation Service → Data Pipeline**: A curation team reviews session data and selects which signals are trustworthy enough for training. This prevents noisy or adversarial feedback from corrupting the model.
+- **Model Training Service → Model Release Gate → Model Prediction Service**: A governance team validates model performance, checks for bias, and approves releases. No model reaches production without human sign-off.
 
 These aren't bureaucratic overhead. They're **architectural control surfaces**. Remove them, and your "AI-powered" system is one bad training batch away from recommending your worst matches for your best client.
 
@@ -121,13 +115,13 @@ Think about it: a fully autonomous AI — say, a large language model trained vi
 
 What breaks *our* loop is structural, not incidental. It's the two governance gates:
 
-- The **Curation Team**, which decides which feedback signals are trustworthy enough to enter the training pipeline
-- The **Model Governance Team**, which decides which trained models are ready to deploy
+- The **Data Curation Service** (a HUMAN GATE), which decides which feedback signals are trustworthy enough to enter the training pipeline
+- The **Model Release Gate** (a HUMAN GATE), which decides which trained models are ready to deploy
 
 Remove those two gates and the rest of the system — expert users rating matches, session outcomes accumulating, the pipeline ingesting data — could, in principle, run continuously. Add them back, and you have two asynchronous, human-bandwidth-constrained chokepoints that batch and gate everything downstream.
 
->The "Human" in Human-in-the-Loop doesn't *just* mean _users_.
->It also means **gatekeepers**.
+>The "Human" in Human-in-the-Loop doesn't mean *end* _users_.
+>It means **gatekeepers**.
 >And it's the _gatekeepers_ — not the _users_ — who keep this loop from closing.
 
 ---
@@ -179,7 +173,7 @@ The HITL architecture naturally implements a semi-supervised learning pattern. H
 
 The supervised signal is expensive (human-generated) and sparse. The unsupervised signal is cheap and abundant. The semi-supervised architecture lets you use the abundant signal to expand coverage while using the expensive signal to maintain quality.
 
-This is *exactly* the pattern described in Zhu & Goldberg's foundational work on semi-supervised learning — using a small amount of labeled data to guide learning from a large amount of unlabeled data. In a HITL system, the "labeling" happens through the operational loop, and the "guidance" happens through the governance overlay.
+This is *exactly* the pattern described in Zhu & Goldberg's foundational work on semi-supervised learning — using a small amount of labeled data to guide learning from a large amount of unlabeled data. In a HITL system, the "labeling" happens through the operational loop, and the "guidance" happens through the human gates.
 
 ---
 
