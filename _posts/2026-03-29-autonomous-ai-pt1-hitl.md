@@ -8,9 +8,9 @@ categories:
 author: steven
 ---
 
-
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" width=400>
-
+<div style="align-self: center">
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-governance-li.png" width=400>
+</div>
 **_Your AI Looks Autonomous. It's probably not. Here's the Architecture Diagram to Prove It._**
 
 
@@ -59,24 +59,26 @@ If your system has *any* of these, it's HITL. If it has *all four*, it's what I'
 
 ## 🏛️ The Architecture: HITL Loop and Human Gates
 
-The infographic below maps HITL architecture as an elliptical loop with two **HUMAN GATE** nodes (orange hexagons) where humans must approve before the loop can continue.
-
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
-
+_The **infographic** below maps **HITL** architecture as an elliptical loop with two **HUMAN GATE** nodes (orange hexagons) where humans must approve before the loop can continue:_
+<a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png">
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
+</a>
 ### ⬭ The HITL System
 
 This is the main human-in-the-loop.  Predictions flow to users, users react, reactions get stored.
 
-It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: #BB7C4B"><em><strong>"HUMAN GATE"</strong></em></span> — `DATA CURATION SERVICE` and `MODEL RELEASE GATE` — sit inline on the loop and require human approval before downstream steps run.
+It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: #BB7C4B"><strong>"HUMAN GATE"</strong></span> — `DATA CURATION SERVICE` and `MODEL RELEASE GATE` — sit inline on the loop and require human approval before downstream steps run.
+
+![Infographic Legend](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-legend.png)
 
 * **🧮 MODEL PREDICTION SERVICE:** _real-time results (classification/inference)_
 * **🖼️ PRODUCT UI / API:** _Automated predictions combined actual session info and expert user feedback_
-* **📑 DATA / OUTCOME:** _Storage of session outcome and expert user feedback_
-* <span style="color: #BB7C4B"><em><strong>👥 DATA CURATION SERVICE (HUMAN GATE):</strong></em></span>
-  * Evaluates user session data and feedback from expert user
-  * Select for inclusion or exclusion (or include with changes)
-  * Sanity-check
-* **🌀 _DATA PIPELINE_:** (_Data-Wrangling_)
+* **🌀 DATA SERVICE:** _Storage of session outcome and expert user feedback_
+  * **👥 DATA CURATION SERVICE** <span style="color: #BB7C4B; font-family: monospace;"><strong>(HUMAN GATE):</strong></span>
+    * Evaluates user session data and feedback from expert user
+    * Select for inclusion or exclusion (or include with changes)
+    * Sanity-check
+* **🌀 DATA PIPELINE:** (_Data-Wrangling_)
   * Discover
   * Validate
   * Clean
@@ -90,7 +92,7 @@ It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: 
   * batch retraining
   * model tuning/ensembling
   * RL (reinforcement learning)
-* <span style="color: #BB7C4B"><em><strong>👥 MODEL RELEASE GATE (HUMAN GATE):</strong></em></span>
+* **👥 MODEL RELEASE GATE** <span style="color: #BB7C4B"; font-family: monospace><strong>(HUMAN GATE):</strong></span>
   * QA of new model
   * Sanity check
 
