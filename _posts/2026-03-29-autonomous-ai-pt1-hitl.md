@@ -9,7 +9,7 @@ author: steven
 ---
 
 
-![HITL - A Semi-autonomous AI system](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic-graph.png)
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" width=400>
 
 **_Your AI Looks Autonomous. It's probably not. Here's the Architecture Diagram to Prove It._**
 
@@ -61,14 +61,13 @@ If your system has *any* of these, it's HITL. If it has *all four*, it's what I'
 
 The infographic below maps HITL architecture as an elliptical loop with two **HUMAN GATE** nodes (orange hexagons) where humans must approve before the loop can continue.
 
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
 
 ### ⬭ The HITL System
 
 This is the main human-in-the-loop.  Predictions flow to users, users react, reactions get stored.
 
 It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: #BB7C4B"><em><strong>"HUMAN GATE"</strong></em></span> — `DATA CURATION SERVICE` and `MODEL RELEASE GATE` — sit inline on the loop and require human approval before downstream steps run.
-
 
 * **🧮 MODEL PREDICTION SERVICE:** _real-time results (classification/inference)_
 * **🖼️ PRODUCT UI / API:** _Automated predictions combined actual session info and expert user feedback_
