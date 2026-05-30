@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="'Segoe Print','Bradley Hand','Comic Sans MS',cursive">
+  <defs>
+    <linearGradient id="lakeWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bfe3f7"/>
+      <stop offset="100%" stop-color="#7fc4ec"/>
+    </linearGradient>
+    <linearGradient id="swampWater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9cf9a"/>
+      <stop offset="100%" stop-color="#8a9b62"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ====================== LEFT: DATA LAKE ====================== -->
+  <text x="240" y="44" text-anchor="middle" font-size="26" fill="#1f4e6b" font-weight="bold">Data Lake</text>
+
+  <!-- basin banks -->
+  <path d="M 60 110 C 55 230, 75 330, 240 345 C 405 330, 425 230, 420 110"
+        fill="url(#lakeWater)" stroke="#2c6e91" stroke-width="4" stroke-linecap="round"/>
+  <!-- gentle surface ripples -->
+  <path d="M 100 140 q 20 -8 40 0 q 20 8 40 0" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+  <path d="M 290 165 q 20 -8 40 0 q 20 8 40 0" fill="none" stroke="#ffffff" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- tidy file stack inside the lake -->
+  <g stroke="#1f4e6b" stroke-width="2.5" fill="#ffffff">
+    <rect x="155" y="170" width="170" height="38" rx="6"/>
+    <rect x="155" y="218" width="170" height="38" rx="6"/>
+    <rect x="155" y="266" width="170" height="38" rx="6"/>
+  </g>
+  <g font-size="15" fill="#1f4e6b" text-anchor="middle">
+    <text x="240" y="195">orders/  · v12</text>
+    <text x="240" y="243">users/  · v7</text>
+    <text x="240" y="291">events/  · v31</text>
+  </g>
+
+  <!-- the "shape" bracket -->
+  <path d="M 445 110 C 470 130, 470 325, 445 345" fill="none" stroke="#d97b29" stroke-width="4" stroke-linecap="round"/>
+  <g font-size="16" fill="#d97b29">
+    <text x="450" y="62">the shape: a table format</text>
+    <text x="450" y="84" font-size="13" fill="#a05c1c">schema · snapshots · provenance · deletes</text>
+  </g>
+  <path d="M 462 92 C 460 102, 459 108, 458 116" fill="none" stroke="#d97b29" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 451 108 L 458 120 L 466 109" fill="none" stroke="#d97b29" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ====================== RIGHT: DATA SWAMP ====================== -->
+  <text x="760" y="44" text-anchor="middle" font-size="26" fill="#4a5530" font-weight="bold">Data Swamp</text>
+
+  <!-- amorphous swamp blob, no banks -->
+  <path d="M 600 150 C 575 120, 650 95, 700 120 C 740 90, 830 100, 850 135
+           C 920 130, 935 190, 905 225 C 945 265, 900 330, 845 330
+           C 830 365, 740 370, 705 340 C 645 370, 590 330, 605 285
+           C 560 260, 565 185, 600 150 Z"
+        fill="url(#swampWater)" stroke="#5d6b3a" stroke-width="4" stroke-dasharray="10 7" stroke-linecap="round"/>
+
+  <!-- reeds -->
+  <g stroke="#4a5530" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M 620 160 q -6 -28 2 -42"/>
+    <path d="M 633 165 q 4 -30 -3 -45"/>
+    <path d="M 870 300 q 8 -26 0 -42"/>
+    <path d="M 884 295 q -4 -28 4 -44"/>
+  </g>
+
+  <!-- scattered, tilted, half-sunk files -->
+  <g font-size="13" stroke-width="2">
+    <g transform="rotate(-9 690 175)">
+      <rect x="615" y="158" width="158" height="32" rx="5" fill="#fdfaf0" stroke="#5d6b3a"/>
+      <text x="694" y="179" text-anchor="middle" fill="#4a5530">events_final.csv</text>
+    </g>
+    <g transform="rotate(7 800 235)">
+      <rect x="715" y="218" width="178" height="32" rx="5" fill="#fdfaf0" stroke="#5d6b3a"/>
+      <text x="804" y="239" text-anchor="middle" fill="#4a5530">events_final_v2.csv</text>
+    </g>
+    <g transform="rotate(-14 705 295)">
+      <rect x="606" y="278" width="200" height="32" rx="5" fill="#efe9d2" stroke="#5d6b3a" opacity="0.9"/>
+      <text x="706" y="299" text-anchor="middle" fill="#4a5530">events_final_v2_REAL.csv</text>
+    </g>
+    <!-- one sinking, mostly submerged -->
+    <g transform="rotate(22 845 175)" opacity="0.55">
+      <rect x="800" y="162" width="92" height="28" rx="5" fill="#e7e2c8" stroke="#5d6b3a"/>
+      <text x="846" y="181" text-anchor="middle" fill="#4a5530">??.parquet</text>
+    </g>
+  </g>
+
+  <!-- floating question marks -->
+  <g font-size="24" fill="#5d6b3a" font-weight="bold">
+    <text x="660" y="240">?</text>
+    <text x="860" y="280">?</text>
+    <text x="745" y="135">?</text>
+  </g>
+
+  <!-- no-shape label -->
+  <text x="760" y="400" text-anchor="middle" font-size="15" fill="#5d6b3a">no metadata = no shape</text>
+
+  <!-- ====================== CAPTION ====================== -->
+  <text x="480" y="448" text-anchor="middle" font-size="19" fill="#333333" font-style="italic">Same water. The difference is the shape.</text>
+</svg>

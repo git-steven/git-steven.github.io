@@ -2,12 +2,11 @@ from __future__ import annotations
 
 from enum import IntEnum, StrEnum
 
-
+PHI:float = 1.6180339887
 # Type aliases
 HexColorType = str | list[float] | list[int]
 
-BLUE_LIGHT = "#B2CAD4"
-BLUE_LIGHT2 = 0xB2CAD4
+
 RED_LIGHT = '0xF2CAD4'
 
 class PalColor(StrEnum):
@@ -18,11 +17,17 @@ class PalColor(StrEnum):
   BLUE_NAVY = '0x264653'
   TEAL = '0x62C9C9'
 
+  BLUE_LIGHT = 0xB2CAD4
+  GREEN_MEDIUM2 = 0x2A9A31
+  GREEN_DARK = 0x388E3C
+  GREEN_DARKER = 0x17561B
+
 
 class PaletteColor(IntEnum):
   """Palette colors stored as integer hex values."""
 
   BLUE_LIGHT = 0xB2CAD4
+  BLUE_LIGHT2 = 0xB2CAD4
   BLUE_STEEL = 0x698894
   BLUE_NAVY = 0x264653
   TEAL = 0x62C9C9
@@ -93,7 +98,7 @@ class RGBA:
     """
     if color.name not in self.COLOR_NAMES:
       raise ValueError(
-        f"Specified color {color} is not in COLOR_NAMES; "
+        f"Specified cli {color} is not in COLOR_NAMES; "
         f"choose one of {sorted(self.COLOR_NAMES)}"
       )
 
@@ -102,19 +107,19 @@ class RGBA:
 
   @property
   def color_name(self) -> str:
-    """The enum member name of this color."""
+    """The enum member name of this cli."""
     return self._color.name
 
   @property
   def color_value(self) -> str:
-    """The hex string representation of this color (e.g. '0x264653')."""
+    """The hex string representation of this cli (e.g. '0x264653')."""
     return hex(self._color.value)
 
   def detect_color_format(self, value: str) -> ColorFormat:
     """
-    Detect the color format of a given string value.
+    Detect the cli format of a given string value.
 
-    :param value: A color string to inspect.
+    :param value: A cli string to inspect.
     :returns: The detected ColorFormat.
     """
     result: ColorFormat = ColorFormat.NONE
@@ -128,19 +133,19 @@ class RGBA:
 
   def hex_str(self, alt_prefix: str = '#') -> str:
     """
-    Return hex color string with an alternative prefix.
+    Return hex cli string with an alternative prefix.
 
     :param alt_prefix: Prefix to use instead of '0x' (default '#').
-    :returns: The color as a hex string with the given prefix.
+    :returns: The cli as a hex string with the given prefix.
     """
     return self.color_value.replace('0x', alt_prefix)
 
   def as_int_list(self) -> list[int]:
-    """Return the color as a list of [R, G, B, A] integer values (0-255)."""
+    """Return the cli as a list of [R, G, B, A] integer values (0-255)."""
     return RGBA._rgba_color(self.color_value, normalize=False)
 
   def as_float_list(self) -> list[float]:
-    """Return the color as a list of [R, G, B, A] float values (0.0-1.0)."""
+    """Return the cli as a list of [R, G, B, A] float values (0.0-1.0)."""
     return RGBA._rgba_color(self.color_value, normalize=True)
 
   def hex_color(self, color: PaletteColor, fmt: ColorFormat = ColorFormat.HASH,
@@ -168,9 +173,9 @@ class RGBA:
   @staticmethod
   def _rgba_color(hex_clr: str, normalize: bool = True) -> list[float] | list[int]:
     """
-    Parse a hex color string into RGBA components.
+    Parse a hex cli string into RGBA components.
 
-    :param hex_clr: An RGBA color as hex string prefixed with '0x'.
+    :param hex_clr: An RGBA cli as hex string prefixed with '0x'.
     :param normalize: If True, return floats (0.0-1.0); otherwise ints (0-255).
     :returns: List of [R, G, B] or [R, G, B, A] values.
     """
