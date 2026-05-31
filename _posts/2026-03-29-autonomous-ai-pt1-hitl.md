@@ -1,21 +1,29 @@
 ---
-title: "🧬 Autonomous and Semi-Autonomous AI Systems, Part 1: HITL(Human-In-The-Loop)"
+title: "🧬 Semi and Fully Autonomous AI Systems"
 date: 2026-03-29 03:33:33 -0500
 categories:
   - architecture
   - ai
   - ml
 author: steven
+description: >-
+Part 1 of a series on autonomous AI architecture. Most production AI that
+looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but
+not closed-loop system. Using an annotated architecture diagram, we show
+that it isn't the presence of humans that breaks the loop — it's the data
+curation and model governance gates. Covers HITL signatures, human gates as
+architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
 ---
 
+# Part 1: HITL (Human-In-The-Loop)
+
 <div style="align-self: center">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-governance-li.png" width=400>
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-sm.png" width=600>
 </div>
+
 **_Your AI Looks Autonomous. It's probably not. Here's the Architecture Diagram to Prove It._**
 
-
-> *"Many production AI systems are loop-shaped, but not closed-loop.  Human feedback, curation, and governance introduce delay, filtering, and control boundaries that prevent true autonomy."*
-> — Author
+_Most production AI deployments exhibit loop-like behavior, but they stop short of being true closed-loop systems. Human feedback, policy enforcement, and operational oversight introduce delays and control boundaries that shape system outputs and maintain accountability, limiting autonomous operation._
 
 ---
 
@@ -59,7 +67,7 @@ If your system has *any* of these, it's HITL. If it has *all four*, it's what I'
 
 ## 🏛️ The Architecture: HITL Loop and Human Gates
 
-_The **infographic** below maps **HITL** architecture as an elliptical loop with two **HUMAN GATE** nodes (orange hexagons) where humans must approve before the loop can continue:_
+_The **infographic** below maps **HITL** architecture as an elliptical loop. The two orange hexagons — `Data Curation` and `Model Governance` — are the **human gates**: humans must approve before the loop can continue past them._
 <a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png">
     <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
 </a>
@@ -67,40 +75,40 @@ _The **infographic** below maps **HITL** architecture as an elliptical loop with
 
 This is the main human-in-the-loop.  Predictions flow to users, users react, reactions get stored.
 
-It is NOT a closed loop: two orange hexagonal nodes labeled <span style="color: #BB7C4B"><strong>"HUMAN GATE"</strong></span> — `DATA CURATION SERVICE` and `MODEL RELEASE GATE` — sit inline on the loop and require human approval before downstream steps run.
+It is **NOT** a closed loop: two orange hexagonal nodes — <span style="color: #BB7C4B; font-family: monospace;"><strong>Data Curation</strong></span> and <span style="color: #BB7C4B; font-family: monospace;"><strong>Model Governance</strong></span> — sit inline on the loop and require human approval before downstream steps run.
 
 ![Infographic Legend](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-legend.png)
 
 * **🧮 MODEL PREDICTION SERVICE:** _real-time results (classification/inference)_
-* **🖼️ PRODUCT UI / API:** _Automated predictions combined actual session info and expert user feedback_
+* **🖼️ PRODUCT INTERFACE:** _Automated predictions combined with actual session info and expert user feedback_
 * **🌀 DATA SERVICE:** _Storage of session outcome and expert user feedback_
-  * **👥 DATA CURATION SERVICE** <span style="color: #BB7C4B; font-family: monospace;"><strong>(HUMAN GATE):</strong></span>
+  * **👥 DATA CURATION** <span style="color: #BB7C4B; font-family: monospace;"><strong>(HUMAN GATE):</strong></span>
     * Evaluates user session data and feedback from expert user
     * Select for inclusion or exclusion (or include with changes)
     * Sanity-check
-* **🌀 DATA PIPELINE:** (_Data-Wrangling_)
-  * Discover
-  * Validate
-  * Clean
-  * Normalize
-  * Enrich/Augment/Transform
-* **🧑‍💻 DEVELOPER TRAINING**
+  * **🌀 DATA PIPELINE:** (_Data-Wrangling_)
+    * Discover
+    * Validate
+    * Clean
+    * Normalize
+    * Enrich/Augment/Transform
+* **🧑‍💻 DEVELOPER**
   * Initial development of model
   * Bypassed in subsequent loops
   * Can be done again for manual intervention, to change wrangling parameters, for normalization, augmentation, etc.
-* **🧬 MODEL TRAINING SERVICE**
+* **🧬 MODEL TRAINING**
   * batch retraining
   * model tuning/ensembling
   * RL (reinforcement learning)
-* **👥 MODEL RELEASE GATE** <span style="color: #BB7C4B"; font-family: monospace><strong>(HUMAN GATE):</strong></span>
+* **👥 MODEL GOVERNANCE** <span style="color: #BB7C4B; font-family: monospace;"><strong>(HUMAN GATE):</strong></span>
   * QA of new model
   * Sanity check
 
 ### 👥 Human Gates: The Architectural Control Surfaces
-At the top-left and bottom-right of the loop sit the two **HUMAN GATE** hexagons (orange) — they live *inside* the loop, but they break it semantically by requiring human sign-off:
+At nearly opposite ends of the loop sit the two orange hexagons — `Data Curation` and `Model Governance`. They live *inside* the loop, but they break it semantically by requiring human sign-off:
 
-- **Data / Outcome → Data Curation Service → Data Pipeline**: A curation team reviews session data and selects which signals are trustworthy enough for training. This prevents noisy or adversarial feedback from corrupting the model.
-- **Model Training Service → Model Release Gate → Model Prediction Service**: A governance team validates model performance, checks for bias, and approves releases. No model reaches production without human sign-off.
+- **Data Service → Data Curation → Data Pipeline**: A curation team reviews session data and selects which signals are trustworthy enough for training. This prevents noisy or adversarial feedback from corrupting the model.
+- **Model Training → Model Governance → Model Prediction Service**: A governance team validates model performance, checks for bias, and approves releases. No model reaches production without human sign-off.
 
 These aren't bureaucratic overhead. They're **architectural control surfaces**. Remove them, and your "AI-powered" system is one bad training batch away from recommending your worst matches for your best client.
 
@@ -112,12 +120,12 @@ This is the part that tends to reframe the whole diagram:
 
 **The human users in this system don't make it non-autonomous. The curation and governance teams do.**
 
-Think about it: a fully autonomous AI — say, a large language model trained via reinforcement learning from human feedback — still has humans all over it. Millions of them. Users rating outputs, flagging errors, generating the signal the model learns from. Those humans are *in the loop*. And yet the system is autonomous, because that feedback flows directly back into training without a mandatory human checkpoint deciding what's trustworthy enough to keep.
+Think about it: a fully autonomous AI — say, a large language model trained via **Reinforcement Learning from Human Feedback** [3] — still has humans all over it. Millions of them. Users rating outputs, flagging errors, generating the signal the model learns from. Those humans are *in the loop*. And yet the system is autonomous, because that feedback flows directly back into training without a mandatory human checkpoint deciding what's trustworthy enough to keep.
 
-What breaks *our* loop is structural, not incidental. It's the two governance gates:
+What breaks *our* loop is structural, not incidental. For this example (see [Problem Domain](#the-problem-domain-matching) below for details), it's two governance gates:
 
-- The **Data Curation Service** (a HUMAN GATE), which decides which feedback signals are trustworthy enough to enter the training pipeline
-- The **Model Release Gate** (a HUMAN GATE), which decides which trained models are ready to deploy
+- The **Data Curation** gate, which decides which feedback signals are trustworthy enough to enter the training pipeline
+- The **Model Governance** gate, which decides which trained models are ready to deploy
 
 Remove those two gates and the rest of the system — expert users rating matches, session outcomes accumulating, the pipeline ingesting data — could, in principle, run continuously. Add them back, and you have two asynchronous, human-bandwidth-constrained chokepoints that batch and gate everything downstream.
 
@@ -152,10 +160,10 @@ Our **HITL** system does *none of these*. Every feedback signal passes through a
 ### 🏦 Autonomy Debt
 **And that's _often_ the right call.** Fully autonomous systems can fail fast and fail weird. **HITL** systems fail slow and fail in ways humans can understand and fix. In a domain where a single catastrophic match can lose a client relationship worth millions, a **HITL** system may be a better choice than a closed-loop system.
 
-The tradeoff is **"Autonomy Debt"**: the gap between what your system *could* learn if it were fully autonomous and what it *actually* learns given human bandwidth constraints.
+The tradeoff is what I'll call **"Autonomy Debt"** (with a nod to Sculley et al. [5]): the gap between what your system *could* learn if it were fully autonomous and what it *actually* learns given human bandwidth constraints.
 
 #### 🚰 Bottleneck
-As your network of matchable items scales from hundreds to tens of thousands, the curation team becomes the bottleneck . The governance review becomes the deployment blocker. The humans who make the system trustworthy also make it slow.
+As your network of matchable items scales from hundreds to tens of thousands, the curation team becomes the bottleneck. The governance review becomes the deployment blocker. The humans who make the system trustworthy also make it slow.
 
 Managing that debt — knowing when to automate a gate, when to keep a human in the loop, and when to add more humans — is the central architectural challenge of HITL systems.
 
@@ -180,15 +188,14 @@ This is *exactly* the pattern described in Zhu & Goldberg's foundational work on
 
 ## 🗝️ Key Takeaways
 
-**Many production AI systems are loop-shaped, but not closed-loop.** Human feedback, curation, and governance introduce delay, filtering, and control boundaries that prevent true autonomy.
+**Many production AI systems are loop-shaped, but not closed-loop.** Human feedback, curation, and governance introduce delay due to selecting/rejecting/cleaning, and control boundaries that prevent true autonomy.
 
-_This is Part 1 of a series._ 
-
-In `Part 2`, we'll look at what happens when you start removing those human gates — **Autonomous AI Systems** — and the entirely different failure modes that emerge when the loop actually closes:
+_This is **Part 1** of a series._ 
+In **Part 2**, we'll look at what happens when you start removing those human gates  and the entirely different failure modes that emerge when the loop actually closes.  
 * Will it cause the AI uprising?
 * Will it make everybody's lives better?
 
-_...Find out in part 2._
+_...Find out in **Part 2** (coming soon with enhanced infographic diagrams!)_
 
 ---
 
@@ -198,7 +205,7 @@ _...Find out in part 2._
 
 2. Monarch, Robert. *Human-in-the-Loop Machine Learning*. Manning Publications, 2021. — Comprehensive treatment of HITL patterns in production ML systems.
 
-3. Christiano, Paul, et al. "Deep Reinforcement Learning from Human Feedback." *NeurIPS*, 2017. — The RLHF paradigm that underpins modern HITL training loops.
+3. Christiano, Paul, et al. "Deep Reinforcement Learning from Human Preferences." *NeurIPS*, 2017. — The RLHF paradigm that underpins modern HITL training loops.
 
 4. Amershi, Saleema, et al. "Software Engineering for Machine Learning: A Case Study." *ICSE-SEIP*, 2019. — Microsoft's production ML lifecycle patterns, including human oversight gates.
 
