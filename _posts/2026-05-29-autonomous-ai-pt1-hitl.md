@@ -1,18 +1,13 @@
 ---
 title: "🧬 Semi and Fully Autonomous AI Systems"
-date: 2026-03-29 03:33:33 -0500
+date: 2026-05-29 03:33:33 -0500
 categories:
   - architecture
   - ai
   - ml
 author: steven
-description: >-
-Part 1 of a series on autonomous AI architecture. Most production AI that
-looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but
-not closed-loop system. Using an annotated architecture diagram, we show
-that it isn't the presence of humans that breaks the loop — it's the data
-curation and model governance gates. Covers HITL signatures, human gates as
-architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
+description: 
+  Part 1 of a series on autonomous AI architecture. Most production AI that looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but not closed-loop system. Using an annotated architecture diagram, we show that it isn't the presence of humans that breaks the loop — it's the data curation and model governance gates. Covers HITL signatures, human gates as architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
 ---
 
 # Part 1: HITL (Human-In-The-Loop)

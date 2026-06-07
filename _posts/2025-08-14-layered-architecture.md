@@ -1,5 +1,5 @@
 ---
-title: "Layered Architecture: Simplicity That Still Works"
+title: "Simplicity That Still Works: Layered Architecture"
 date: 2025-08-14 09:37:00 -0500
 categories:
   - architecture
@@ -8,9 +8,7 @@ categories:
 author: steven
 ---
 
-<h1><span><i class="fas fa-layer-group"></i></span> Layered Architecture: Simplicity That Still Works</h1>
-
-#  Layered Architecture: Simplicity That Still Works
+<h1><span><i class="fas fa-layer-group"></i></span> Layered Architecture</h1>
 
 *Why the oldest architecture pattern still builds the strongest foundations.*
 
@@ -22,19 +20,16 @@ author: steven
 ## 🖼️ Diagram
 ![Layered Architecture Diagram](https://github.com/git-steven/git-steven.github.io/raw/master/assets/images/layered-architecture.png)
 
-> **Diagram Caption:**
-> Five horizontal layers stacked top-to-bottom, with a dark vertical **Cross-Cutting Concerns wedge (▼)** slicing through them — showing utilities like logging, validation, and config that touch every layer but depend on none.
-
 ---
 
 ## 🧭 The Enduring Idea
 
 If you’ve ever built an application — microservice, monolith, or hobby script — you’ve probably already used **Layered Architecture**.
-It’s the *grandparent* of nearly every pattern that followed: Clean, Hexagonal, Onion, and even the emerging **Emergent Layer Architecture (ELA)**.
+It’s the *grandparent* of nearly every pattern that followed: Clean, Hexagonal, Onion, and others such as [Medallion Architecture](https://www.databricks.com/blog/what-is-medallion-architecture) 
 
 Despite its age, the model keeps showing up because it delivers exactly what teams need most at the start of any project:
 
-**clarity, organization, and an easy mental map.**
+**clarity, organization, separation of concerns, and an easy mental map of dependencies.**
 
 ---
 
