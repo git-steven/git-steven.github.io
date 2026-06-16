@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0" type="device">
+  <diagram name="Swamp vs Lake" id="swamp-vs-lake">
+    <mxGraphModel dx="900" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="760" pageHeight="430" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="🐊 Swamp vs 🦴 Lake-With-a-Spine" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontStyle=1;fontColor=#1f2937" vertex="1" parent="1">
+          <mxGeometry x="80" y="18" width="600" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Same water. The difference is whether anything gives it a shape." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontStyle=2;fontColor=#6b7280" vertex="1" parent="1">
+          <mxGeometry x="80" y="44" width="600" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SWAMP PANEL -->
+        <mxCell id="swamp" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef3e6;strokeColor=#6b7c3f;strokeWidth=2;verticalAlign=top;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="30" y="80" width="330" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="swampTitle" value="🐊 The Swamp&#10;raw files, no structure" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;fontColor=#3f5111" vertex="1" parent="1">
+          <mxGeometry x="40" y="92" width="310" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f1" value="final_v2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=-8;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="70" y="155" width="50" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="final_REAL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=6;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="170" width="50" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="copy(3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=-4;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="240" y="150" width="50" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="??.csv" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=10;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="95" y="220" width="50" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="export" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=-7;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="190" y="225" width="50" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="f6" value="dump_final" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdd9b0;strokeColor=#6b7c3f;fontSize=9;rotation=5;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="270" y="218" width="50" height="32" as="geometry" />
+        </mxCell>
+
+        <mxCell id="swampFoot" value="No ACID · no schema · no time travel&#10;“what did Q2 look like?” → silence" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#3f5111" vertex="1" parent="1">
+          <mxGeometry x="40" y="335" width="310" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- LAKE PANEL -->
+        <mxCell id="lake" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f1f8;strokeColor=#2563eb;strokeWidth=2;verticalAlign=top;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="330" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="lakeTitle" value="🦴 Lake With a Spine&#10;same files, given a shape" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;fontColor=#1e3a8a" vertex="1" parent="1">
+          <mxGeometry x="410" y="92" width="310" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lb" value="🪨 Bronze — raw, immutable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fde9c8;strokeColor=#d97706;strokeWidth=1.8;fontSize=12;fontStyle=1;fontColor=#92400e;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="455" y="150" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="ls" value="🪙 Silver — cleaned, contract" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eaee;strokeColor=#6b7280;strokeWidth=1.8;fontSize=12;fontStyle=1;fontColor=#374151;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="455" y="208" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="lg" value="🏆 Gold — business-ready" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdedb8;strokeColor=#ca8a04;strokeWidth=1.8;fontSize=12;fontStyle=1;fontColor=#713f12;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="455" y="266" width="220" height="44" as="geometry" />
+        </mxCell>
+
+        <mxCell id="la1" style="endArrow=classic;html=1;rounded=0;strokeColor=#6b7280;strokeWidth=1.6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="lb" target="ls">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="la2" style="endArrow=classic;html=1;rounded=0;strokeColor=#6b7280;strokeWidth=1.6;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="ls" target="lg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lakeFoot" value="ACID · schema evolution · time travel&#10;“what did Q2 look like?” → one query" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#1e3a8a" vertex="1" parent="1">
+          <mxGeometry x="410" y="335" width="310" height="40" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

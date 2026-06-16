@@ -39,7 +39,9 @@ Layered Architecture is the canonical expression of **separation of concerns**.
 Each layer has a focused responsibility, and code may depend only on the layer directly beneath it.
 That one simple rule creates a predictable hierarchy that’s easy to teach and even easier to debug.
 
-Let’s unpack the standard five-layer structure.
+Let’s unpack the structure. The *canonical* layered pattern is **four sequential layers** — in Mark Richards’ *Software Architecture Patterns* they’re Presentation, Business, Persistence, and Database. We use the same four-step dependency chain, but pull two responsibilities — **Shared/Common** and **Cross-Cutting Concerns** — *out* of that chain. Neither is truly a layer: both are used by *every* layer and depended on by all, so they run **perpendicular** to the stack, as vertical rails rather than horizontal steps.
+
+#### The four layers (top → bottom)
 
 ### 🟨 1. Presentation (API)
 Where requests enter and responses leave.
@@ -56,23 +58,25 @@ It coordinates **use cases** and **workflows**, deciding *what* should happen bu
 
 Define interfaces such as `UserRepository` or `EmailGateway` here — abstractions that the lower layers will implement.
 
-### 🟥 3. Shared / Common
-A neutral zone for **reusable contracts, DTOs, and constants** used across layers.
-It prevents duplication while keeping dependencies clean.
-
-### 🟦 4. Domain
+### 🟦 3. Domain
 Your system’s beating heart — **business logic, entities, and invariants**.
 No HTTP imports, no SQL clients, no frameworks.
 If everything else vanished, the Domain would still define what the business *means*.
 
-### 🟪 5. Infrastructure / Adapters
+### 🟪 4. Infrastructure / Adapters
 Reality meets code: databases, queues, APIs, filesystems.
 This layer implements the contracts defined above — persistence, gateways, integrations.
 It’s where technology decisions live.
 
+#### The two cross-cutting rails
+
+### 🟥 Shared / Common
+A neutral zone for **reusable contracts, DTOs, and constants** used across layers.
+It prevents duplication while keeping dependencies clean — but notice it’s *horizontal*: it isn’t a step in the request’s journey, it’s a shelf every layer reaches for. (Part 2 re-renders it as a side-rail to make that explicit.)
+
 ### ▼ Cross-Cutting Concerns
-Logging, configuration, crypto, validation — the things *every* layer needs but none should depend on.
-Our updated diagram shows them as a **vertical wedge (▼) (in black on left of diagram)** slicing through all layers, making their ubiquity explicit instead of an afterthought.
+Logging, configuration, crypto, validation, exceptions — the things *every* layer needs but none should depend on.
+Our diagram shows them as a **vertical rail (▼, in black on the left)** slicing through all layers, making their ubiquity explicit instead of an afterthought.
 
 ---
 
@@ -181,7 +185,7 @@ Layered is the **Swiss-Army knife**: not the fanciest tool, but the one you actu
 
 Our visual wedge deserves a little spotlight.
 Traditional diagrams leave “utilities” floating around with no home.
-By cutting a **vertical slice (▶)** through all layers, we acknowledge that:
+By cutting a **vertical slice (▼)** through all layers, we acknowledge that:
 
 1. They’re **universally available**.
 2. They create **no upward dependency**.
@@ -201,6 +205,9 @@ Each adjacent pair talks only through a contract (a *port*), implemented by an *
 The result: tighter decoupling, better testability, and teams that can develop layers in parallel without stepping on each other.
 
 You’ll find a full write-up in the companion article **“LPA v5 — The Port Generalization Rule.”**
+
+> **📚 Continued in [Part 2 — Closed Layers, the Sinkhole, and Ports]({% post_url 2026-06-07-layered-architecture-pt2 %}).**
+> Part 2 goes deeper on **open vs. closed** layers, the **Architecture Sinkhole** anti-pattern (and the 80/20 rule for spotting it), the one *honest flaw* in the pattern — its dependency direction — and how **ports & adapters** quietly fix it without abandoning the layered stack you already know.
 
 ---
 

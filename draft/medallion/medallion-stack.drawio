@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Claude" version="24.0.0" type="device">
+  <diagram name="Medallion Stack" id="medallion-stack">
+    <mxGraphModel dx="900" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="760" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="🦴 The Medallion Stack" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontStyle=1;fontColor=#1f2937" vertex="1" parent="1">
+          <mxGeometry x="180" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Three grades of the same underlying data" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;fontSize=12;fontStyle=2;fontColor=#6b7280" vertex="1" parent="1">
+          <mxGeometry x="180" y="48" width="400" height="22" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hintTop" value="raw data in ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#9ca3af" vertex="1" parent="1">
+          <mxGeometry x="280" y="82" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="bronze" value="🪨 BRONZE&#10;Raw · Immutable · Append-only · Iceberg on S3&#10;Partitioned by event_date · idempotent ingest&#10;“The insurance policy — re-derive anything from here”" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fde9c8;strokeColor=#d97706;strokeWidth=2.5;fontSize=12;align=center;verticalAlign=middle;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="115" width="400" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="silver" value="🪙 SILVER&#10;Cleaned · Deduped · Type-cast · Schema-enforced&#10;PII tokenized · Great Expectations gates&#10;“The contract — vendor chaos stops here”" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eaee;strokeColor=#6b7280;strokeWidth=2.5;fontSize=12;align=center;verticalAlign=middle;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="260" width="400" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="gold" value="🏆 GOLD&#10;Business marts · Aggregations · Definitions&#10;Contract-versioned · shaped per consumer&#10;“The product — what BI &amp; ML actually query”" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fdedb8;strokeColor=#ca8a04;strokeWidth=2.5;fontSize=12;align=center;verticalAlign=middle;sketch=1" vertex="1" parent="1">
+          <mxGeometry x="180" y="405" width="400" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="hintBot" value="business value out ↓" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=12;fontColor=#9ca3af" vertex="1" parent="1">
+          <mxGeometry x="280" y="515" width="200" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e1" value="dbt + quality gates" style="endArrow=classic;html=1;rounded=0;strokeColor=#6b7280;strokeWidth=1.8;fontSize=11;fontStyle=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="bronze" target="silver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="dbt + contracts" style="endArrow=classic;html=1;rounded=0;strokeColor=#6b7280;strokeWidth=1.8;fontSize=11;fontStyle=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0" edge="1" parent="1" source="silver" target="gold">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
