@@ -2,9 +2,9 @@
 title: "🧬 Semi and Fully Autonomous AI Systems"
 date: 2026-05-29 03:33:33 -0500
 categories:
-  * architecture
-  * ai
-  * ml
+  - architecture
+  - ai
+  - ml
 author: steven
 description: 
   Part 1 of a series on autonomous AI architecture. Most production AI that looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but not closed-loop system. Using an annotated architecture diagram, we show that it isn't the presence of humans that breaks the loop — it's the data curation and model governance gates. Covers HITL signatures, human gates as architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
@@ -16,7 +16,7 @@ description:
     <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-sm.png" width=600>
 </div>
 
-**Your AI _Looks_ Autonomous. It's _probably_ not. Here's an Architecture Diagram to Prove It. **
+**Your AI _Looks_ autonomous. It's _probably_ not. Here's an Architecture Diagram to Prove It. **
 
 _Most production AI deployments exhibit loop-like behavior, but they stop short of being true `closed-loop systems`. Human feedback, policy enforcement, and operational oversight introduce delays and control boundaries that shape system outputs and maintain accountability, limiting autonomous operation._
 

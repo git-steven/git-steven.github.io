@@ -1,6 +1,6 @@
 ---
 title: "Drain the Data Swamp, Dig the Data Lake Right"
-description: "We'll Add Structure Later" — a Eulogy and a Resurrection
+description: '"We''ll Add Structure Later" — a Eulogy and a Resurrection'
 categories:
   - data-engineering
   - architecture
@@ -36,11 +36,11 @@ _— a Eulogy and a Resurrection_
 
 Three files. No trustworthy timestamps, no record of which job wrote which, no idea whether the schema drifted between them. **The lake your team spent two years filling isn't a lake. It's a swamp.** 🐊
 
-"Data lake" was always a slightly optimistic name. A lake is clear, contained, *swimmable*. A swamp is where things wander in, sink, and are never reliably seen again. And here's the thing — the difference between the two **isn't the water**. It's whether anything gives the water a **shape**.
+"Data lake" was always a slightly optimistic name. A lake is clear, contained, *swimmable*. A swamp is where things wander in, sink, and are never reliably seen again — water left to **stagnate** because nobody can navigate it. And the difference between the two isn't the water; it's whether anyone ever **mapped it**. 🗺️
 
-![A lake and a swamp hold the same water — the difference is the shape]("https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/data-lake-vs-swamp.svg)
+![Both started as data lakes — only the mapped one stayed navigable](./data-lake-vs-swamp.svg)
 
-That shape has a name. But before we drain anything, let's get our terms straight.
+That map has a name. But before we drain anything, let's get our terms straight.
 
 ## 🗂️ A Quick Taxonomy
 
@@ -102,11 +102,11 @@ What turns that pile *into* a table is a **metadata layer** sitting over the fil
 - 🗂️ the **partitioning** scheme
 - 🗑️ what's been **deleted**
 
-That layer is an **open table format** — Apache Iceberg, Delta Lake, or Apache Hudi. It's the spine the lake was always missing — the thing that finally gives the water a shape.
+That layer is an **open table format** — Apache Iceberg, Delta Lake, or Apache Hudi. It's the spine the lake was always missing — the thing that finally **puts the lake on the map**.
 
 As Dijkstra argued, a good abstraction doesn't exist to make things *vaguer* — it creates a level where you can finally be *precise*. A table format does exactly that for a heap of files: it's the level at which "the table" becomes a real, queryable thing instead of a folkloric one.
 
-![Iceberg cross-section: data files above the waterline, the metadata layer below](A lake and a swamp hold the same water — the difference is the shape]("https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/iceberg-cross-section.svg)
+![Iceberg cross-section: data files above the waterline, the metadata layer below](./iceberg-cross-section.svg)
 
 ## ⚙️ The Four Superpowers
 
@@ -127,7 +127,7 @@ Query the table as of any past snapshot or timestamp. Old versions don't vanish 
 ### 🧩 The Mechanics
 *One design choice unlocks all four at once.* Every write appends a new **snapshot** pointing at a set of **manifests**, which list the **data files** for that version. Nothing is ever mutated in place — you only ever *append*. Reads pin to a snapshot, so they stay consistent; writes never stomp on readers.
 
-![Format enforcement: schema checked on write, snapshots appended, readers always consistent](A lake and a swamp hold the same water — the difference is the shape]("https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/table-format-enforcement.svg)
+![Format enforcement: schema checked on write, snapshots appended, readers always consistent](./table-format-enforcement.svg)
 
 ## 📜 Schema-on-Read Was a False Choice
 
@@ -146,7 +146,7 @@ Pick your poison and live with the tradeoff.
 
 ## 🆚 Iceberg vs Delta vs Hudi
 
-*Three formats, same mission, different centers of gravity.*
+*Three formats, same mission, different centers of gravity.* (This is the "inconsistent mapping" problem made concrete: more than one mapper exists — so which do you use?)
 
 | Format | Origin | Strength | Watch out for |
 |---|---|---|---|
