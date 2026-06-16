@@ -2,24 +2,28 @@
 name = "python-git-steven"
 version = "0.1.0"
 description = "Python environment for data visualization and Jupyter notebooks"
-authors = [
-    {name = "Steven Miers", email = "steven.miers@gmail.com"}
-]
-requires-python = ">=3.13.7,<4.0.0"
+authors = [{name = "Steven Miers", email = "steven.miers@gmail.com"}]
+requires-python = ">=3.14.4,<4.0.0"
 license = {text = "MIT"}
 
+[tool.poetry]
+packages = [{include = "terracoil"}]
+
+[tool.poetry.scripts]
+color-mix = "terracoil.cli:ColorMix._main"
 
 [tool.poetry.dependencies]
-python = "3.13.7"
+python = "^3.14.4"
 ipykernel = "^7.2.0"
 jupyterlab = "^4.5.6"
 kaleido = "^1.2.0"
-freyja = "^1.2.4"
 networkx = "^3.6.1"
 matplotlib = "^3.10.8"
 numpy = "^2.4.3"
 pandas = "^3.0.1"
 plotly = "^6.6.0"
+coloraide = "^8.8.1"
+freyja = "^2.0.2"
 
 [dependency-groups]
 test = [
@@ -31,7 +35,6 @@ test = [
 ]
 dev = [
     { include-group = "test" },
-    "freyja (>=1.1.0,<2.0.0)",
     "mypy[reports] (>=1.18.2,<2.0.0)",
     "Pillow (>=11.0.0,<12.0.0)",
     "pre-commit (>=4.3.0,<5.0.0)",
@@ -41,8 +44,9 @@ dev = [
 [tool.pytest.ini_options]
 cache_dir = "tmp/.pytest_cache"
 minversion = "8.0"
-addopts = "-ra -q --strict-markers --cov=python_git_steven --cov-report=term-missing"
+addopts = "-ra -q --strict-markers --cov=terracoil --cov-report=term-missing"
 testpaths = ["tests"]
+pythonpath = ["."]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]

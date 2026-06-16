@@ -1,0 +1,1 @@
+RealNumber = int | float
