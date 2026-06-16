@@ -13,14 +13,15 @@ tags:
   - table-formats
   - lakehouse
   - schema-evolution
-published: false
+published: true
 toc: true
 ---
 
 ## "We'll Add Structure Later" 
 _— a Eulogy and a Resurrection_
 
-![Data Lake turning into Swamp](./data-lake-swamp-header.png)
+
+![Data Lake turning into Swamp](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/data-lake-vs-swamp.png)
 
 > "Data is a precious thing and will last longer than the systems themselves."
 > 
@@ -194,7 +195,7 @@ The spine earns its keep the moment you have **messy input** *or* **more than on
 - 🆚 **Iceberg** for vendor-neutral breadth, **Delta** inside Databricks, **Hudi** for high-frequency upserts/CDC.
 - ⚖️ Skip the spine only when data is clean-on-arrival, read once, by a single consumer.
 
-> 🔜 *Next in the series:* once your lake has a spine, the **medallion pattern** is how you organize *trust* on top of it.
+> 🔜 *Next in the series:* once your lake has a spine, the **🥇Medallion Pattern** is how you organize *trust* on top of it.
 
 ## 📚 References
 

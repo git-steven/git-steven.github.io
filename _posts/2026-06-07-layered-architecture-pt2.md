@@ -6,6 +6,7 @@ categories:
   - layered architecture
   - software engineering
 author: steven
+published: false
 description:
   Part 2 of the Layered Architecture series. We go past the napkin sketch into the mechanics every serious treatment includes but Part 1 skipped: open vs. closed layers and the "layers of isolation" they buy, the Architecture Sinkhole anti-pattern (and the 80/20 rule for spotting it), and the one honest flaw in classic layering — its dependency direction. Then we fix that flaw the cheap way, with ports & adapters wired through dependency injection, using Python and FastAPI.
 ---
