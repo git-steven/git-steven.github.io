@@ -206,7 +206,7 @@ The result: tighter decoupling, better testability, and teams that can develop l
 
 You’ll find a full write-up in the companion article **“LPA v5 — The Port Generalization Rule.”**
 
-> **📚 Continued in [Part 2 — Closed Layers, the Sinkhole, and Ports]({% post_url 2026-06-07-layered-architecture-pt2 %}).**
+> **📚 Continued in Part 2 — Closed Layers, the Sinkhole, and Ports** *(coming soon)*.
 > Part 2 goes deeper on **open vs. closed** layers, the **Architecture Sinkhole** anti-pattern (and the 80/20 rule for spotting it), the one *honest flaw* in the pattern — its dependency direction — and how **ports & adapters** quietly fix it without abandoning the layered stack you already know.
 
 ---
