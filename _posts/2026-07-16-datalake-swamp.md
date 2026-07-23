@@ -121,6 +121,10 @@ For a glorious while, it works exactly as advertised. Then "later" arrives.
 
 ## ⚙️ The Four Superpowers
 
+> "Life itself was a grand chemical improvisation... it grew and collapsed and grew again. Catastrophe was just one part of what always happened. It was a prelude to what came next."
+>
+> _**— James S.A. Corey, Caliban's War (2012)**_
+
 *Add that metadata layer, and four capabilities you thought required a warehouse come flooding back.*
 
 ### ⚛️ ACID Transactions
@@ -223,5 +227,6 @@ The spine earns its keep the moment you have **messy input** *or* **more than on
 - Martin Kleppmann — *Designing Data-Intensive Applications* (2017)
 - Douglas Adams — *The Hitchhiker's Guide to the Galaxy* (1979)
 - Frank Herbert — *Dune* (1965)
+- James S.A. Corey — *Caliban's War* (The Expanse, 2012)
 - Albert Einstein — *Physics and Reality* (1936)
 - Alan Turing — *Computing Machinery and Intelligence* (1950)

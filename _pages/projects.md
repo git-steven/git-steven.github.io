@@ -7,6 +7,27 @@ permalink: /projects/
 
 ## Recent projects (Python)
 
+### [Freyja](https://github.com/terracoil/freyja)
+**_Zero-config CLIs from your Python classes_**
+![](/assets/images/freyja.png)
+
+
+A Python library that builds a complete command-line interface from one or more functions (or typed class methods) using introspection. With zero configuration and no runtime dependencies, Freyja turns type annotations and docstrings into professional CLIs — complete with type-safe argument parsing, automatic help generation, and shell completion for Bash, Zsh, Fish, and PowerShell. Available on [PyPI](https://pypi.org/project/freyja).
+
+### [Idunn](https://github.com/terracoil/idunn)
+**_A tiny constructor-time dependency inversion toolkit_**
+![](/assets/images/idunn.png)
+
+
+A minimal dependency injection / IoC toolkit built around just three decorators — `@Port` (defines a contract), `@Adapter` (binds an implementation), and `@Invert` (injects dependencies). Idunn focuses exclusively on constructor-time injection, with auto-discovery, environment-based implementation selection (dev/test/prod), keyed adapters, and transient or singleton lifecycles. Named for Iðunn, the Norse keeper of the apples of youth — a nod to keeping code fresh through clean, explicit wiring. Available on [PyPI](https://pypi.org/project/idunn).
+
+### [Modgud](https://github.com/terracoil/modgud)
+**_Expression-oriented programming for Python_**
+![](/assets/images/modgud.jpg)
+
+
+Brings expression-oriented programming to Python 3.11+ through guard clause decorators and implicit returns, eliminating defensive-coding clutter while preserving a single-return-point architecture. Declarative guards (`not_none`, `positive`, `in_range`, `type_check`, `matches_pattern`, `not_empty`, plus a custom guard registry) validate inputs before a function runs, so bodies focus on business logic instead of validation boilerplate. Zero runtime dependencies and mypy-friendly. Named for Móðguðr, the Norse bridge guardian who demands identification before passage. Available on [PyPI](https://pypi.org/project/modgud).
+
 ### [CSV Batcher](https://github.com/tangledpath/csv-batcher)
 **_Scaling vertically with CSVs and/or Pandas_**
 ![](</assets/images/csv_batcher_sm.png>)
