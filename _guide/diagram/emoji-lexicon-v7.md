@@ -170,72 +170,343 @@ The single source of truth. Each emoji appears **at most once** here (categories
 
 # 🗂️ Categories
 
-An emoji may appear in more than one category. Format: `emoji name:`meaning``.
+An emoji may appear in more than one category. Each section lists its icons as an **Icon · Name · Meaning** table.
 
 ## 🤖 AI & ML
-🤖 robot:`AI/agent` · 🧠 brain:`reasoning` · ✨ sparkles:`idea/insight` · 🧬 dna:`model training` · 🧮 abacus:`runtime prediction` · 🎓 graduation cap:`learning` · 🔬 microscope:`introspection` · 🧪 test tube:`experiment`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🤖 | robot | AI/agent |
+| 🧠 | brain | reasoning |
+| ✨ | sparkles | idea/insight |
+| 🧬 | dna | model training |
+| 🧮 | abacus | runtime prediction |
+| 🎓 | graduation cap | learning |
+| 🔬 | microscope | introspection |
+| 🧪 | test tube | experiment |
 
 ## 🏛️ Architecture & Buildings
 **All building icons live here.** Use for system shape, modules, institutions, the "built environment".
 
-🏛️ classical building:`architecture/governance` · 🏢 office:`module/service` · 🏦 bank:`monolith/institution` · 🏰 castle:`stronghold/goal` · 🏚️ derelict house:`legacy` · 🏠 house:`app/home` · 🏡 house w/ garden:`hosted app` · 🏘️ houses:`fleet/cluster` · 🏤 post office:`gateway/exchange` · 🏭 factory:`pipeline/processing` · 🏬 department store:`platform` · 🗼 tower:`landmark/registry` · 🏗️ crane:`under construction` · 🧱 brick:`foundation/object` · 🪨 rock:`bedrock` · 🗿 moai:`monument` · ⚓ anchor:`structural anchor`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🏛️ | classical building | architecture/governance |
+| 🏢 | office | module/service |
+| 🏦 | bank | monolith/institution |
+| 🏰 | castle | stronghold/goal |
+| 🏚️ | derelict house | legacy |
+| 🏠 | house | app/home |
+| 🏡 | house w/ garden | hosted app |
+| 🏘️ | houses | fleet/cluster |
+| 🏤 | post office | gateway/exchange |
+| 🏭 | factory | pipeline/processing |
+| 🏬 | department store | platform |
+| 🗼 | tower | landmark/registry |
+| 🏗️ | crane | under construction |
+| 🧱 | brick | foundation/object |
+| 🪨 | rock | bedrock |
+| 🗿 | moai | monument |
+| ⚓ | anchor | structural anchor |
 
 ## 🔧 Construction, Tools & Engineering
-🏗️ crane:`build` · 🧰 toolbox:`tools` · 🛠️ hammer & wrench:`tool` · 🔧 wrench:`fix` · 🔩 nut & bolt:`fastener/config` · 🔨 hammer:`work` · ⚙️ gear:`runtime/inner workings` · 🧲 magnet:`IoC/DI` · 🚧 construction:`WIP` · 🚪 door:`entry/exit` · 🪜 ladder:`elevate`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🏗️ | crane | build |
+| 🧰 | toolbox | tools |
+| 🛠️ | hammer & wrench | tool |
+| 🔧 | wrench | fix |
+| 🔩 | nut & bolt | fastener/config |
+| 🔨 | hammer | work |
+| ⚙️ | gear | runtime/inner workings |
+| 🧲 | magnet | IoC/DI |
+| 🚧 | construction | WIP |
+| 🚪 | door | entry/exit |
+| 🪜 | ladder | elevate |
 
 ## 💻 Computers & Software
-🧑‍💻 technologist:`developer` · 👨‍💻 man tech:`developer` · 👩‍💻 woman tech:`developer` · 💻 laptop:`programming` · 🖥️ desktop:`server` · ⌨️ keyboard:`input/CLI` · 🖱️ mouse:`pointer/UI` · 🗄️ file cabinet:`database` · 📡 satellite antenna:`telemetry/signal`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🧑‍💻 | technologist | developer |
+| 👨‍💻 | man tech | developer |
+| 👩‍💻 | woman tech | developer |
+| 💻 | laptop | programming |
+| 🖥️ | desktop | server |
+| ⌨️ | keyboard | input/CLI |
+| 🖱️ | mouse | pointer/UI |
+| 🗄️ | file cabinet | database |
+| 📡 | satellite antenna | telemetry/signal |
 
 ## 🗺️ Context, Navigation & Routing
-🗺️ world map:`domain map` · 🧭 compass:`direction` · 🌐 globe:`global/network` · 📍 pushpin:`ownership anchor` · 🏷️ label:`tag` · 🛣️ motorway:`path` · 🛤️ railway:`track` · 🚦 traffic light:`gate` · 🌉 bridge:`crossing` · 🔎 magnifying glass:`search` · 🔭 telescope:`explore`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🗺️ | world map | domain map |
+| 🧭 | compass | direction |
+| 🌐 | globe | global/network |
+| 📍 | pushpin | ownership anchor |
+| 🏷️ | label | tag |
+| 🛣️ | motorway | path |
+| 🛤️ | railway | track |
+| 🚦 | traffic light | gate |
+| 🌉 | bridge | crossing |
+| 🔎 | magnifying glass | search |
+| 🔭 | telescope | explore |
 
 ## 📚 Documentation & Knowledge
-📚 books:`TOC/docs hub` · 📖 open book:`reference` · 📙 orange book · 📗 green book · 📘 blue book · 🗒️ notepad:`notes` · 📝 memo:`draft` · 📄 page:`document` · 📃 page w/ curl:`terms` · 📑 bookmark tabs:`sections` · 🧠 brain:`knowledge` · 🎓 graduation cap:`learning` · 🗃️ card file box:`archive` · 🗄️ file cabinet:`store` · 🗂️ dividers:`folder` · 📌 pushpin:`pinned`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 📚 | books | TOC/docs hub |
+| 📖 | open book | reference |
+| 📙 | orange book |  |
+| 📗 | green book |  |
+| 📘 | blue book |  |
+| 🗒️ | notepad | notes |
+| 📝 | memo | draft |
+| 📄 | page | document |
+| 📃 | page w/ curl | terms |
+| 📑 | bookmark tabs | sections |
+| 🧠 | brain | knowledge |
+| 🎓 | graduation cap | learning |
+| 🗃️ | card file box | archive |
+| 🗄️ | file cabinet | store |
+| 🗂️ | dividers | folder |
+| 📌 | pushpin | pinned |
 
 ## 📜 Contracts & Interfaces
-📜 scroll:`contract/spec/policy` · 🧾 receipt:`log/record` · 🔌 plug:`port/API` · 🧬 dna:`schema/data shape` · 📐 triangle ruler:`blueprint` · 🏷️ label:`version` · 🔖 bookmark:`version` · ✅ check mark:`valid` · ☑️ ballot box:`checked` · 🧪 test tube:`validation`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 📜 | scroll | contract/spec/policy |
+| 🧾 | receipt | log/record |
+| 🔌 | plug | port/API |
+| 🧬 | dna | schema/data shape |
+| 📐 | triangle ruler | blueprint |
+| 🏷️ | label | version |
+| 🔖 | bookmark | version |
+| ✅ | check mark | valid |
+| ☑️ | ballot box | checked |
+| 🧪 | test tube | validation |
 
 ## 🧩 Components & Connectors
-🧩 puzzle piece:`component` · 📦 package:`artifact/module` · ➕ plus:`compose` · 🔗 link:`dependency` · ⛓️ chains:`coupling` · ⛓️‍💥 broken chain:`decoupling/boundary` · 🧷 safety pin:`adapter/seam` · 🧲 magnet:`IoC/DI` · 👥 people:`team boundary` · 🤝 handshake:`agreement` · ♻️ recycle:`pattern/reuse`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🧩 | puzzle piece | component |
+| 📦 | package | artifact/module |
+| ➕ | plus | compose |
+| 🔗 | link | dependency |
+| ⛓️ | chains | coupling |
+| ⛓️‍💥 | broken chain | decoupling/boundary |
+| 🧷 | safety pin | adapter/seam |
+| 🧲 | magnet | IoC/DI |
+| 👥 | people | team boundary |
+| 🤝 | handshake | agreement |
+| ♻️ | recycle | pattern/reuse |
 
 ## 🌀 Flow, Lifecycle & Orchestration
-🌀 cyclone:`workflow` · 🌊 wave:`flow (afferent)` · 💦 sweat droplets:`afferent coupling` · 🔄 cycle:`loop/iteration/retry` · ➡️ right arrow:`process step` · 🎛️ control knobs:`orchestration` · 🧵 thread:`stream` · 📣 megaphone:`event` · 📨 envelope:`message` · 🛰️ satellite:`external dep` · 🟢 green:`healthy` · 🟡 yellow:`caution` · 🔴 red:`critical` · ☯ yin yang:`balance`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🌀 | cyclone | workflow |
+| 🌊 | wave | flow (afferent) |
+| 💦 | sweat droplets | afferent coupling |
+| 🔄 | cycle | loop/iteration/retry |
+| ➡️ | right arrow | process step |
+| 🎛️ | control knobs | orchestration |
+| 🧵 | thread | stream |
+| 📣 | megaphone | event |
+| 📨 | envelope | message |
+| 🛰️ | satellite | external dep |
+| 🟢 | green | healthy |
+| 🟡 | yellow | caution |
+| 🔴 | red | critical |
+| ☯ | yin yang | balance |
 
 ## 🌊 Lean Flow & Work Management
-🌊 wave:`flow` · 🚰 tap:`bottleneck` · 🔄 cycle:`iteration` · 📈 chart up:`throughput` · 📊 bar chart:`metrics` · 📋 clipboard:`work items` · 🧾 receipt:`ticket` · 🧟 zombie:`zombie work` · 🪦 headstone:`dead work` · 🧊 ice:`frozen work` · 🤷 shrug:`pointless work` · ⏳ hourglass:`waiting` · 🕰 mantel clock:`stale`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🌊 | wave | flow |
+| 🚰 | tap | bottleneck |
+| 🔄 | cycle | iteration |
+| 📈 | chart up | throughput |
+| 📊 | bar chart | metrics |
+| 📋 | clipboard | work items |
+| 🧾 | receipt | ticket |
+| 🧟 | zombie | zombie work |
+| 🪦 | headstone | dead work |
+| 🧊 | ice | frozen work |
+| 🤷 | shrug | pointless work |
+| ⏳ | hourglass | waiting |
+| 🕰 | mantel clock | stale |
 
 ## 🧪 Quality, Testing & Verification
-🧪 test tube:`test` · 🔬 microscope:`examine inside` · 🔭 telescope:`examine outside` · ✅ check mark:`pass` · ✔️ check:`verified` · ☑️ ballot box:`validated` · 🐞 bug:`defect` · 📏 ruler:`measure` · 📐 triangle ruler:`spec` · 📊 bar chart:`coverage`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🧪 | test tube | test |
+| 🔬 | microscope | examine inside |
+| 🔭 | telescope | examine outside |
+| ✅ | check mark | pass |
+| ✔️ | check | verified |
+| ☑️ | ballot box | validated |
+| 🐞 | bug | defect |
+| 📏 | ruler | measure |
+| 📐 | triangle ruler | spec |
+| 📊 | bar chart | coverage |
 
 ## 📊 Metrics & Analysis
-📊 bar chart:`metrics` · 📈 chart up:`trending up` · 📉 chart down:`trending down` · 🧮 abacus:`calculation/prediction` · ⚖️ balance scale:`tradeoff` · 🔍 magnifying glass:`investigate` · 🔬 microscope:`deep analysis`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 📊 | bar chart | metrics |
+| 📈 | chart up | trending up |
+| 📉 | chart down | trending down |
+| 🧮 | abacus | calculation/prediction |
+| ⚖️ | balance scale | tradeoff |
+| 🔍 | magnifying glass | investigate |
+| 🔬 | microscope | deep analysis |
 
 ## 🛡️ Security, Trust & Threats
-🛡️ shield:`protection` · 🔐 locked w/ key:`secured` · 🔒 locked:`restricted` · 🗝️ old key:`secret` · 🪪 id card:`identity` · 📜 scroll:`policy/compliance` · ⚖️ balance scale:`compliance` · 🐞 bug:`vulnerability` · 🧨 firecracker:`exploit risk` · 🚨 siren:`alert` · ⚠️ warning:`caution` · 🔥 fire:`active threat` · ☢️ radioactive:`toxic zone` · ☣️ biohazard:`contamination`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🛡️ | shield | protection |
+| 🔐 | locked w/ key | secured |
+| 🔒 | locked | restricted |
+| 🗝️ | old key | secret |
+| 🪪 | id card | identity |
+| 📜 | scroll | policy/compliance |
+| ⚖️ | balance scale | compliance |
+| 🐞 | bug | vulnerability |
+| 🧨 | firecracker | exploit risk |
+| 🚨 | siren | alert |
+| ⚠️ | warning | caution |
+| 🔥 | fire | active threat |
+| ☢️ | radioactive | toxic zone |
+| ☣️ | biohazard | contamination |
 
 ## ☁️ Cloud, Containers & Deployment
-☁️ cloud:`cloud/infra` · ⛅ sun behind cloud:`hybrid/partial cloud` · `☁️⚙️` :`cloud runtime` · `☁️📦` :`cloud deploy` · 🐳 whale:`container/Docker` · ☸️ wheel:`orchestration/Kubernetes` · 📦 package:`artifact/image` · ⛴ ferry:`ship/release` · 🚢 ship:`deliver` · 🛳️ passenger ship:`fleet rollout` · 🏁 checkered flag:`milestone` · 🖥️ desktop:`host` · 🗄️ file cabinet:`managed store`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| ☁️ | cloud | cloud/infra |
+| ⛅ | sun behind cloud | hybrid/partial cloud |
+| `☁️⚙️` | cloud + gear | cloud runtime |
+| `☁️📦` | cloud + package | cloud deploy |
+| 🐳 | whale | container/Docker |
+| ☸️ | wheel | orchestration/Kubernetes |
+| 📦 | package | artifact/image |
+| ⛴ | ferry | ship/release |
+| 🚢 | ship | deliver |
+| 🛳️ | passenger ship | fleet rollout |
+| 🏁 | checkered flag | milestone |
+| 🖥️ | desktop | host |
+| 🗄️ | file cabinet | managed store |
 > 🚀 rocket is intentionally **not** used for deploy here — see **DON'T USE**.
 
 ## 👤 People & Personas (users of types)
-👤 silhouette:`generic user/actor` · 👥 people:`team/governance` · 🧑‍💻 technologist:`developer user` · 🧑‍🔬 scientist:`researcher/data scientist` · 🧑‍🏫 teacher:`trainer/admin` · 🧑‍⚖️ judge:`governance/approver` · 🕵️ detective:`auditor/observer` · 🤝 handshake:`partner/agreement` · 🥷 ninja:`power user/automation` · 🧙 mage:`wizard/expert` · 👮 officer:`policy enforcer` · 🦸 superhero:`trusted actor` · 🦹 supervillain:`threat actor` · 🧟 zombie:`stale/bot account` · 👹 ogre:`adversary` · 🤷 shrug:`undecided/unknown actor`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 👤 | silhouette | generic user/actor |
+| 👥 | people | team/governance |
+| 🧑‍💻 | technologist | developer user |
+| 🧑‍🔬 | scientist | researcher/data scientist |
+| 🧑‍🏫 | teacher | trainer/admin |
+| 🧑‍⚖️ | judge | governance/approver |
+| 🕵️ | detective | auditor/observer |
+| 🤝 | handshake | partner/agreement |
+| 🥷 | ninja | power user/automation |
+| 🧙 | mage | wizard/expert |
+| 👮 | officer | policy enforcer |
+| 🦸 | superhero | trusted actor |
+| 🦹 | supervillain | threat actor |
+| 🧟 | zombie | stale/bot account |
+| 👹 | ogre | adversary |
+| 🤷 | shrug | undecided/unknown actor |
 
 ## 💧🔥🌱 Elements & System Dynamics
 The classical elements + system "physics".
 
-🪨 rock / ⛰️ mountain:`earth — hard constraint` · 💧 droplet / 🌊 wave:`water — flow/stability` · 🔥 fire:`fire — risk/heat` · 🌬️ wind face / 💨 dash / 🪁 kite:`air — change/variability/agility` · 🪵 wood:`material/raw resource` · 🧊 ice:`frozen/cooling` · 🫧 bubbles:`smoothing` · ⚡ high voltage:`urgency/energy` · 💥 collision:`breaking change` · 🌱 seedling:`evolution` · 🌿 herb:`growing` · 🌳 tree:`mature` · ♻️ recycle:`renewal`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🪨 ⛰️ | rock / mountain | earth — hard constraint |
+| 💧 🌊 | droplet / wave | water — flow/stability |
+| 🔥 | fire | fire — risk/heat |
+| 🌬️ 💨 🪁 | wind face / dash / kite | air — change/variability/agility |
+| 🪵 | wood | material/raw resource |
+| 🧊 | ice | frozen/cooling |
+| 🫧 | bubbles | smoothing |
+| ⚡ | high voltage | urgency/energy |
+| 💥 | collision | breaking change |
+| 🌱 | seedling | evolution |
+| 🌿 | herb | growing |
+| 🌳 | tree | mature |
+| ♻️ | recycle | renewal |
 
 ## ⚗️ Science & Nature
-⚗️ alembic:`synthesis/experiment` · ⚛️ atom:`physics/core primitive` · 🧪 test tube:`test` · 🧫 petri dish:`incubation/culture` · 🦠 microbe:`organism/contagion` · 🔬 microscope:`examine inside` · 🔭 telescope:`examine outside` · 🧬 dna:`genetics/model` · 🧲 magnet:`magnetism/attraction` · 🌡️ thermometer:`temperature` · ☢️ radioactive:`radiation` · ☣️ biohazard:`biohazard` · 🌱 seedling:`life/growth`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| ⚗️ | alembic | synthesis/experiment |
+| ⚛️ | atom | physics/core primitive |
+| 🧪 | test tube | test |
+| 🧫 | petri dish | incubation/culture |
+| 🦠 | microbe | organism/contagion |
+| 🔬 | microscope | examine inside |
+| 🔭 | telescope | examine outside |
+| 🧬 | dna | genetics/model |
+| 🧲 | magnet | magnetism/attraction |
+| 🌡️ | thermometer | temperature |
+| ☢️ | radioactive | radiation |
+| ☣️ | biohazard | biohazard |
+| 🌱 | seedling | life/growth |
 
 ## 🌌 Cosmos & World
-🌌 milky way:`vast scope/the unknown` · 🪐 planet:`external system/world` · ☄️ comet:`high-impact event` · 🌠 shooting star:`rare event/wish` · 🛸 flying saucer:`anomaly/unknown tech` · 👽 alien:`foreign/3rd-party system` · 🌕 full moon:`peak/full state` · 🌑 new moon:`empty/dark state` · ✨ sparkles:`magic/insight` · 🛰️ satellite:`external dep` · 🌍 globe europe · 🌎 globe americas · 🌏 globe asia · 🏔️ snow mountain:`constraint` · ⛰️ mountain:`obstacle` · 🗻 mount fuji:`landmark` · 🌋 volcano:`eruption/instability` · 🏞️ national park:`landscape` · 🏜️ desert:`barren` · 🏝️ island:`isolated subsystem` · 🏖️ beach:`edge` · 🏕️ camping:`temporary env`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🌌 | milky way | vast scope/the unknown |
+| 🪐 | planet | external system/world |
+| ☄️ | comet | high-impact event |
+| 🌠 | shooting star | rare event/wish |
+| 🛸 | flying saucer | anomaly/unknown tech |
+| 👽 | alien | foreign/3rd-party system |
+| 🌕 | full moon | peak/full state |
+| 🌑 | new moon | empty/dark state |
+| ✨ | sparkles | magic/insight |
+| 🛰️ | satellite | external dep |
+| 🌍 | globe europe |  |
+| 🌎 | globe americas |  |
+| 🌏 | globe asia |  |
+| 🏔️ | snow mountain | constraint |
+| ⛰️ | mountain | obstacle |
+| 🗻 | mount fuji | landmark |
+| 🌋 | volcano | eruption/instability |
+| 🏞️ | national park | landscape |
+| 🏜️ | desert | barren |
+| 🏝️ | island | isolated subsystem |
+| 🏖️ | beach | edge |
+| 🏕️ | camping | temporary env |
 
 ## 🌪️ Weather
-🌪️ tornado:`chaos` · ⛈️ thunderstorm:`crisis` · 🌧️ rain cloud:`downturn` · 🌩️ lightning cloud:`disruption` · ☔ umbrella rain:`protection` · ☀️ sun:`visible/clear` · 🌤️ sun small cloud:`mostly clear` · 🌥️ sun large cloud:`partial` · 🌦️ sun rain cloud:`mixed` · 🌙 crescent moon:`hidden/night ops` · 🌫️ fog:`obscurity` · 🌡️ thermometer:`temperature`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🌪️ | tornado | chaos |
+| ⛈️ | thunderstorm | crisis |
+| 🌧️ | rain cloud | downturn |
+| 🌩️ | lightning cloud | disruption |
+| ☔ | umbrella rain | protection |
+| ☀️ | sun | visible/clear |
+| 🌤️ | sun small cloud | mostly clear |
+| 🌥️ | sun large cloud | partial |
+| 🌦️ | sun rain cloud | mixed |
+| 🌙 | crescent moon | hidden/night ops |
+| 🌫️ | fog | obscurity |
+| 🌡️ | thermometer | temperature |
 
 ## ⏱️ Status & Time
-🟢 green:`healthy` · 🟡 yellow:`caution` · 🔴 red:`critical` · ✅ check:`done` · ⚠️ warning:`caution` · ☯ yin yang:`balance` · ⏱️ stopwatch:`latency` · ⏲ timer:`timing` · ⏳ hourglass:`waiting` · 🕒 clock:`schedule` · 🕰 mantel clock:`legacy/time`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| 🟢 | green | healthy |
+| 🟡 | yellow | caution |
+| 🔴 | red | critical |
+| ✅ | check | done |
+| ⚠️ | warning | caution |
+| ☯ | yin yang | balance |
+| ⏱️ | stopwatch | latency |
+| ⏲ | timer | timing |
+| ⏳ | hourglass | waiting |
+| 🕒 | clock | schedule |
+| 🕰 | mantel clock | legacy/time |
 
 ## ➡️ Arrows & Direction
 
@@ -268,7 +539,20 @@ The classical elements + system "physics".
 | **Math**        | ⋆ star operator · ≛ star equals · ⍣ star diaeresis                                        |
 
 ## ☢️ Hazards & Misc Symbols
-☢️ radioactive · ☣️ biohazard · 👹 ogre:`danger` · 🚨 siren:`alert` · ⚠️ warning · 🚧 construction · `°` degrees:`measure/temperature` · `֎` symbol:`eternity/infinity` · 🔢 input numbers:`integer` · 🔤 input latin:`string` · 😎 sunglasses:`emojicode/logic` · 🖼️ framed picture:`art/visual`
+| Icon | Name | Meaning |
+|:--:|--|--|
+| ☢️ | radioactive |  |
+| ☣️ | biohazard |  |
+| 👹 | ogre | danger |
+| 🚨 | siren | alert |
+| ⚠️ | warning |  |
+| 🚧 | construction |  |
+| `°` | degrees | measure/temperature |
+| `֎` | symbol | eternity/infinity |
+| 🔢 | input numbers | integer |
+| 🔤 | input latin | string |
+| 😎 | sunglasses | emojicode/logic |
+| 🖼️ | framed picture | art/visual |
 
 ---
 
