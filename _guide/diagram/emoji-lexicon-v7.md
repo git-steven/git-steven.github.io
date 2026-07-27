@@ -21,21 +21,6 @@ Designed for: Markdown docs · architecture diagrams · draw.io / diagrams.net �
 
 ---
 
-# 🔀 Migrating from v6
-
-v7 reassigns a few high-traffic icons so model concepts read more naturally. **If you used v6, note these changes:**
-
-| Concept | v6 | **v7 canonical** | Why |
-|---|---|---|---|
-| ML model — **training / evolution** | 🧬 (schema) / 📜 (model) | **🧬 dna** | Training *is* the model's DNA evolving |
-| ML model — **runtime prediction / inference** | — | **🧮 abacus** | The model "doing the math" at run time |
-| **Table of Contents** | 📜 / 📚 | **📚 books** | A stack of books = the index/TOC |
-| **Contract / Spec / Policy** | 📜 (was "Model") | **📜 scroll** | Frees 📜 from "Model"; a scroll is an agreement |
-| **IoC / Dependency Injection** | — | **🧲 magnet** | The container *pulls* dependencies in |
-| **Port / Interface** | 🔌 | **🔌 plug** | Unchanged |
-
----
-
 # ⭐ Canonical Icons
 
 The single source of truth. Each emoji appears **at most once** here (categories below may repeat it). `✅` marks an icon whose meaning is locked.
@@ -613,7 +598,7 @@ Variants:
 
 A staging area you can edit freely. Drop emojis into the buckets below and ask me to **"update the file `emoji-lexicon-v7.md`"** — I'll process each bucket per the **Maintenance Protocol** at the very bottom.
 
-## ### Instructions
+## Instructions
 
 How to use the buckets (for **you**, the human):
 
@@ -626,23 +611,23 @@ How to use the buckets (for **you**, the human):
 
 You can scribble an **inline note** next to any emoji, e.g. `💉 (use this for DI instead of 🧲)`. I'll try to honor inline notes first.
 
-## ### TODO
+## TODO
 
 _(empty — candidates I surface from MORE LIKE THIS land here for your review)_
 
-## ### MORE LIKE THIS
+## MORE LIKE THIS
 _(drop emojis here that you want more options like)_
 ✨⭐🌟
 
-## ### TO BE ORGANIZED
+## TO BE ORGANIZED
 
     _(drop emojis here to be filed under one or more categories)_
 🏚️
-## ### TO BE CANONIZED
+## TO BE CANONIZED
 
 _(drop emojis here — with a note saying "as what" — to add to the Canonical Icons table)_
 
-## ### DON'T USE
+## DON'T USE
 
 - 🚀 rocket — overused; **do not** use for deploy/launch/excitement. Prefer ⛴ / 📦 / 🏁 for delivery.
 - 🎯 target / bullseye — avoid for "objective/goal"; prefer 🏰 (goal/stronghold) or 🏁 (milestone).

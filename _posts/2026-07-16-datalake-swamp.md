@@ -24,11 +24,13 @@ _— a Eulogy and a Resurrection_
 
 ![A data lake: metadata gives the water a shape](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/datalake/data-lake.png)
 
-> "It was on display in the bottom of a locked filing cabinet stuck in a disused lavatory with a sign on the door saying 'Beware of the Leopard.'"
+> "A beginning is the time for taking the most delicate care that the balances are correct."
 >
-> _**— Douglas Adams, The Hitchhiker's Guide to the Galaxy (1979)**_
+> _**— Frank Herbert, Dune (1965)**_
 
-## 🎣 The Lake That Wasn't
+## The Lake That Wasn't
+
+🎣 
 
 *You need a number from the 2019 cohort — something Finance swears got loaded "back when we set up the lake."* Forty minutes and a lot of `aws s3 ls` later, you're spelunking through `raw/2019/`, and here's the haul:
 
@@ -48,7 +50,9 @@ That shape has a name: an **open table format** — Apache Iceberg, Delta Lake, 
 
 So that's the tour: how that layer works, what it hands back to you, and the handful of times you're honestly fine without it.
 
-## 🧊 The Missing Spine: Open Table Formats
+## The Missing Spine: Open Table Formats
+
+🧊 
 
 The whole thing turns on one sentence: *a pile of Parquet files isn't a table.* It's a pile of files that happen to share columns and a vague hope.
 
@@ -67,7 +71,9 @@ Dijkstra said it best in his 1972 Turing Award lecture: the purpose of abstracti
 
 ![Iceberg cross-section: data files above the waterline, the metadata layer below](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/datalake/iceberg-cross-section.png)
 
-## 🗂️ A Quick Taxonomy
+## A Quick Taxonomy
+
+📜
 
 Four terms get used interchangeably in every architecture meeting. They are not interchangeable:
 
@@ -76,11 +82,13 @@ Four terms get used interchangeably in every architecture meeting. They are not 
 - **Data Warehouse** — the governed, transactional thing the lake was rebelling against: schemas enforced on write, fast SQL, correctness baked in. You pay for all of it in money, rigidity, and lock-in.
 - **Table Format / Lakehouse** — the spine above, and the name for a lake that has one. *More on the lakehouse shortly.* 🧊
 
-## 🏛️ Why Not Just Use a Data Warehouse?
+## Why Not Just Use a Data Warehouse?
+
+🏭
 
 *Somebody always asks this right about here, usually the person who signs the invoice.*
 
-A warehouse — Snowflake, BigQuery, Redshift — already hands you schemas, transactions, and fast SQL. If structure is the goal, why build a lake at all?
+A warehouse — Snowflake, BigQuery, Redshift — already hands you: schemas, transactions, and fast SQL. If structure is the goal, why build a lake at all?
 
 Three reasons teams keep reaching *past* the warehouse:
 
@@ -90,23 +98,28 @@ Three reasons teams keep reaching *past* the warehouse:
 
 So no, the lake wasn't a mistake. It exists for genuinely good reasons.
 
-### ⚖️ The Catch
+### The Catch
+
+⚖️
 
 Here's what nobody puts on the slide: **a warehouse was quietly doing four jobs for you** — enforcing schemas, running transactions, tracking what changed when, and keeping one version of the truth. Dump raw files into S3 and all four jobs simply… stop getting done. Nobody sends a notice.
 
 You kept the cheap, open, flexible part. You threw out the part that kept everyone sane.
 
-> Table formats are how you get that part back — **without giving up the lake**. But first: how did we all end up in the swamp?
+Table formats are how you get that part back — **without giving up the lake**. But first: how did we all end up in the swamp?
 
-## 🏞️ The Promise
+## The Promise
+🏞️
 
-> "A beginning is the time for taking the most delicate care that the balances are correct."
+> "It was on display in the bottom of a locked filing cabinet stuck in a disused lavatory with a sign on the door saying _'Beware of the Leopard.'_ "
 >
-> _**— Frank Herbert, Dune (1965)**_
+> _**— Douglas Adams, The Hitchhiker's Guide to the Galaxy (1979)**_
 
 *Rewind to the pitch. It was intoxicating.*
 
-**The Solution**: _"Schema-on-Read"_. Stop arguing about column types in a two-hour planning meeting. Stop sizing clusters. Land the data *now*, in whatever shape it arrives, and defer all that fussy structure until query time. Storage is cheap, flexibility is infinite, and nobody has to model anything up front.
+**The Solution**: _"Schema-on-Read"_. Stop arguing about column types in a two-hour planning meeting. 
+Stop sizing clusters. Land the data *now*, in whatever shape it arrives, and defer all that fussy structure until query time. 
+Storage is cheap, flexibility is infinite, and nobody has to model anything up front.
 
 For a glorious while, it works exactly as advertised. Then "later" arrives.
 
@@ -133,17 +146,17 @@ For a glorious while, it works exactly as advertised. Then "later" arrives.
 
 *Add that metadata layer, and four capabilities you thought required a warehouse come flooding back.*
 
-### ⚛️ ACID Transactions
-Snapshot isolation, finally. Writers stop corrupting each other, and readers *always* see a complete, consistent version of the table — even mid-write. "The report ran during the load" stops being a root cause.
+### ACID Transactions
+⚛️ Snapshot isolation, finally. Writers stop corrupting each other, and readers *always* see a complete, consistent version of the table — even mid-write. "The report ran during the load" stops being a root cause.
 
-### 🔧 Schema Evolution
-Add, drop, or rename columns without rewriting a single data file; old rows return `null` for new columns. **The schema lives in the metadata, not in the bytes** — so evolving it is a bookkeeping change, not a migration you schedule around a long weekend.
+### Schema Evolution
+🔧 Add, drop, or rename columns without rewriting a single data file; old rows return `null` for new columns. **The schema lives in the metadata, not in the bytes** — so evolving it is a bookkeeping change, not a migration you schedule around a long weekend.
 
-### 🔭 Time Travel
-Query the table as of any past snapshot or timestamp. Old versions don't vanish — they're just earlier entries in the log. (This one earns a whole section of its own below.)
+### Time Travel
+🔭 Query the table as of any past snapshot or timestamp. Old versions don't vanish — they're just earlier entries in the log. (This one earns a whole section of its own below.)
 
-### ✏️ Safe Upserts & Deletes
-`MERGE` and `DELETE` that touch only what they must, instead of bulldozing whole partitions. That GDPR request? One statement.
+###  Safe Upserts & Deletes
+✏️ `MERGE` and `DELETE` that touch only what they must, instead of bulldozing whole partitions. That GDPR request? One statement.
 
 ### 🧩 The Mechanics
 *All four fall out of one design choice, and it's almost boringly simple.* Every write appends a new **snapshot** pointing at a set of **manifests**, which list the **data files** for that version. Nothing is ever mutated in place — you only ever *append*. Readers pin to a snapshot and stay consistent; writers never stomp on them. It's `git` for your table: commits, history, and all.
