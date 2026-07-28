@@ -15,7 +15,6 @@ Designed for: Markdown docs · architecture diagrams · draw.io / diagrams.net �
 - Icons are **semantic, not decorative**.
 - Prefer **one canonical meaning per icon** (the **Canonical Icons** table is the source of truth).
 - An icon **may appear in multiple categories** — its canonical meaning still lives in one place.
-- Allow **composability** (e.g. `☁️ + ⚙️ = ☁️⚙️` "runtime in cloud").
 - Separate **Artifact vs Action vs State**.
 - Optimize for diagrams, markdown, and infographics.
 
@@ -84,8 +83,8 @@ The single source of truth. Each emoji appears **at most once** here (categories
 |  ☑️   | ballot box         | Checked / verified                             |   |
 |  ✔️   | check              | Verified                                       |   |
 |  🧪   | test tube          | Test / experiment                              | ✅ |
-|  🧩   | puzzle piece       | Component                                      | ✅ |
-|  📦   | package            | Artifact / deployable                          | ✅ |
+|  🧩   | puzzle piece       | Schema                                         | ✅ |
+|  📦   | package            | Artifact / Component/ deployable               | ✅ |
 |   ➕   | plus               | Compose                                        |   |
 |  🔗   | link               | Dependency / link                              | ✅ |
 |  ⛓️   | chains             | Coupling                                       | ✅ |
@@ -261,7 +260,8 @@ An emoji may appear in more than one category. Each section lists its icons as a
 | 📜 | scroll | contract/spec/policy |
 | 🧾 | receipt | log/record |
 | 🔌 | plug | port/API |
-| 🧬 | dna | schema/data shape |
+| 🧬 | dna | model training| 
+| 🧮 | abacus | runtime prediction |
 | 📐 | triangle ruler | blueprint |
 | 🏷️ | label | version |
 | 🔖 | bookmark | version |
@@ -367,8 +367,6 @@ An emoji may appear in more than one category. Each section lists its icons as a
 |:--:|--|--|
 | ☁️ | cloud | cloud/infra |
 | ⛅ | sun behind cloud | hybrid/partial cloud |
-| `☁️⚙️` | cloud + gear | cloud runtime |
-| `☁️📦` | cloud + package | cloud deploy |
 | 🐳 | whale | container/Docker |
 | ☸️ | wheel | orchestration/Kubernetes |
 | 📦 | package | artifact/image |
@@ -543,21 +541,11 @@ The classical elements + system "physics".
 
 # 🧠 Canonical Patterns & Grammar
 
-## ☁️⚙️ Machine in Cloud
-Represents deployed runtime compute.
-
-Variants:
-- `☁️🧬` = model (training) in cloud
-- `☁️🧮` = inference service in cloud
-- `☁️⚙️` = generic runtime
-- `☁️🐳` = container in cloud
-- `☁️🧠` = learning system
-
 ## 📦 Delivery Flow
 
-`📦 → ⛴ → ☁️⚙️ → 🏁`
+`📦 → ⛴ → ⚙️ → 🏁`
 
-(artifact → ship → cloud runtime → milestone)
+(artifact → ship → runtime → milestone)
 
 ## 🤝 HITL (Human-in-the-Loop) Patterns
 
@@ -565,7 +553,7 @@ Variants:
 |------------------------|-------|
 | Model (training)       | 🧬    |
 | Inference / prediction | 🧮    |
-| Runtime                | ☁️⚙️  |
+| Runtime                | ⚙️    |
 | Feedback Loop          | 🔄    |
 | Governance             | 👥    |
 | Boundary               | ⛓️‍💥 |
@@ -590,7 +578,7 @@ Variants:
 
 ## 🏁 Core Mental Model
 
-📦 Artifact · ⛴ Ship · ☁️⚙️ Runtime · 🧬 Model · 🧮 Inference · 👥 Governance · ⛓️‍💥 Boundary · 🧲 IoC/DI
+📦 Artifact · ⛴ Ship · ⚙️ Runtime · 🧬 Model · 🧮 Inference · 👥 Governance · ⛓️‍💥 Boundary · 🧲 IoC/DI
 
 ---
 
