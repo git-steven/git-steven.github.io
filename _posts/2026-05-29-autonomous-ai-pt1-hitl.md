@@ -10,15 +10,14 @@ description:
   Part 1 of a series on autonomous AI architecture. Most production AI that looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but not closed-loop system. Using an annotated architecture diagram, we show that it isn't the presence of humans that breaks the loop — it's the data curation and model governance gates. Covers HITL signatures, human gates as architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
 ---
 
-# Part 1: HITL (Human-In-The-Loop)
+![HITL Graphic](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-banner-li.png)
 
-<div style="align-self: center">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-sm.png" width=600>
-</div>
+# Part 1: HITL (Human-In-The-Loop)
 
 **Your AI _Looks_ autonomous. It's _probably_ not. Here's an Architecture Diagram to Prove It. **
 
 _Most production AI deployments exhibit loop-like behavior, but they stop short of being true `closed-loop systems`. Human feedback, policy enforcement, and operational oversight introduce delays and control boundaries that shape system outputs and maintain accountability, limiting autonomous operation._
+
 
 ---
 
@@ -27,7 +26,7 @@ _Most production AI deployments exhibit loop-like behavior, but they stop short 
 Your platform performs specialized matching for clients. An ML model scores candidates, ranks them, and serves predictions through an API. The product team calls it "AI-powered." The sales deck says "autonomous matching engine." The investors nod approvingly.
 
 Then you look at the actual architecture and notice:
-* A human reviews every session before feedback enters the training set
+* DEVELOPER:A human reviews every session before feedback enters the training set
 * A governance team approves every model before it touches production
 * The "real-time learning" happens in a batch job that runs Tuesday nights
 
@@ -58,16 +57,14 @@ If your system has *any* of these, it's HITL. If it has *all four*, it's what I'
 ## 🏛️ The Architecture: HITL Loop and Human Gates
 
 _The **infographic** below maps **HITL** architecture as an elliptical loop. The two orange hexagons — `Data Curation` and `Model Governance` — are the **human gates**: humans must approve before the loop can continue past them._
-<a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
+<a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png">
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-infographic.png" alt="🧬HITL Architecture Infographic" width="1000px"/>
 </a>
 ### ⬭ The HITL System
 
 This is the main human-in-the-loop.  Predictions flow to users, users react, reactions get stored.
 
 It is **NOT** a closed loop: two orange hexagonal nodes — <span style="color: #BB7C4B; font-family: monospace;"><strong>Data Curation</strong></span> and <span style="color: #BB7C4B; font-family: monospace;"><strong>Model Governance</strong></span> — sit inline on the loop and require human approval before downstream steps run.
-
-![Infographic Legend](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-redux-legend.png)
 
 * **🧮 MODEL PREDICTION SERVICE:** _real-time results (classification/inference)_
 * **🖼️ PRODUCT INTERFACE:** _Automated predictions combined with actual session info and expert user feedback_
