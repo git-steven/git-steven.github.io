@@ -150,12 +150,10 @@ With nothing tracking the *state* of your data, the bill comes due all at once �
 
 *Add that metadata layer, and four capabilities you thought required a warehouse come flooding back.*
 
-| Superpower | What you get |
-|---|---|
-| ⚛️ **ACID Transactions** | Snapshot isolation, finally. Writers stop corrupting each other, and readers *always* see a complete, consistent version of the table — even mid-write. "The report ran during the load" stops being a root cause. |
-| 🔧 **Schema Evolution** | Add, drop, or rename columns without rewriting a single data file; old rows return `null` for new columns. **The schema lives in the metadata, not in the bytes** — so evolving it is a bookkeeping change, not a migration you schedule around a long weekend. |
-| 🕰️ **Time Travel** | Query the table as of any past snapshot or timestamp. Old versions don't vanish — they're just earlier entries in the log. (This one earns a whole section of its own below.) |
-| ✏️ **Safe Upserts & Deletes** | `MERGE` and `DELETE` that touch only what they must, instead of bulldozing whole partitions. That GDPR request? One statement. |
+- ⚛️ **ACID Transactions** — Snapshot isolation, finally. Writers stop corrupting each other, and readers *always* see a complete, consistent version of the table — even mid-write. "The report ran during the load" stops being a root cause.
+- 🔧 **Schema Evolution** — Add, drop, or rename columns without rewriting a single data file; old rows return `null` for new columns. **The schema lives in the metadata, not in the bytes** — so evolving it is a bookkeeping change, not a migration you schedule around a long weekend.
+- 🕰️ **Time Travel** — Query the table as of any past snapshot or timestamp. Old versions don't vanish — they're just earlier entries in the log. (This one earns a whole section of its own below.)
+- ✏️ **Safe Upserts & Deletes** — `MERGE` and `DELETE` that touch only what they must, instead of bulldozing whole partitions. That GDPR request? One statement.
 
 ### The Mechanics
 
@@ -186,11 +184,15 @@ Pick your poison and live with the tradeoff.
 
 *Three formats, same mission, three very different personalities.*
 
-| Format             | Origin                            | Strength                                                                                                       | Watch out for                                                   |
-|--------------------|-----------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| **Apache Iceberg** | Netflix (2017; open-sourced 2018) | Vendor-neutral; read by Athena, Spark, Trino, Snowflake, BigQuery, DuckDB; strong schema & partition evolution | Some tooling still maturing; metadata needs periodic compaction |
-| **Delta Lake**     | Databricks (open-sourced 2019)    | Mature; superb inside Databricks/Spark; strong ML tooling                                                      | Historically Spark-centric                                      |
-| **Apache Hudi**    | Uber (2016)                       | Built for high-frequency upserts & CDC; record-level indexing                                                  | More operational complexity                                     |
+- **Apache Iceberg** — Netflix (2017; open-sourced 2018)
+  - *Strength:* Vendor-neutral; read by Athena, Spark, Trino, Snowflake, BigQuery, DuckDB; strong schema & partition evolution
+  - *Watch out for:* Some tooling still maturing; metadata needs periodic compaction
+- **Delta Lake** — Databricks (open-sourced 2019)
+  - *Strength:* Mature; superb inside Databricks/Spark; strong ML tooling
+  - *Watch out for:* Historically Spark-centric
+- **Apache Hudi** — Uber (2016)
+  - *Strength:* Built for high-frequency upserts & CDC; record-level indexing
+  - *Watch out for:* More operational complexity
 
 Pick one in thirty seconds:
 

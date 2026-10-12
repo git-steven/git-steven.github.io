@@ -1,18 +1,20 @@
 ---
 title: "🔃 Autonomous and Non-Autonomous AI Systems, Part 2: HOTL (Human-on-the-Loop)"
-date: 2026-04-02 03:33:33 -0500
+date: 2026-08-27 04:44:44 -0500
 categories:
   - architecture
   - ai
   - ml
+  - autonomous-ai
+  - hotl/hitl
 author: steven
 published: false
 version: 1.0
 ---
 
-<a title="HOTL Infographic" href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-infographic.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-infographic.png" alt="🔃 HOTL Architecture Infographic" width="400px"/>
-</a>
+<div style="display: block; margin-left: auto; margin-right: auto;">
+  <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png" alt="🔃 HOTL Architecture Infographic" width="400px" />
+</div>
 
 **_The loop closes. Nobody said it would be pretty._**
 
