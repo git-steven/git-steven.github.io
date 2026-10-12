@@ -1,5 +1,5 @@
 ---
-title: "Simplicity That Still Works: Layered Architecture"
+title: "🗄️Simplicity That Still Works: Layered Architecture"
 date: 2025-08-14 09:37:00 -0500
 categories:
   - architecture
@@ -7,8 +7,8 @@ categories:
   - software engineering
 author: steven
 ---
-
-<h1><span><i class="fas fa-layer-group"></i></span> Layered Architecture</h1>
+<h1>🗄️Simplicity That Still Works: Layered Architecture</h1>
+<h2>Layered Architecture</h2>
 
 *Why the oldest architecture pattern still builds the strongest foundations.*
 

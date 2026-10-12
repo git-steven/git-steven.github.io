@@ -1,5 +1,5 @@
 ---
-title: "🪜 Layered Architecture, Part 2: Closed Layers, the Sinkhole, and Ports"
+title: "🗄️Layered Architecture, Part 2: Closed Layers, the Sinkhole, and Ports"
 date: 2026-06-07 09:00:00 -0500
 categories:
   - architecture
@@ -10,6 +10,11 @@ published: false
 description:
   Part 2 of the Layered Architecture series. We go past the napkin sketch into the mechanics every serious treatment includes but Part 1 skipped: open vs. closed layers and the "layers of isolation" they buy, the Architecture Sinkhole anti-pattern (and the 80/20 rule for spotting it), and the one honest flaw in classic layering — its dependency direction. Then we fix that flaw the cheap way, with ports & adapters wired through dependency injection, using Python and FastAPI.
 ---
+
+# 🗄️Layered Architecture, Part 2: Closed Layers, the Sinkhole, and Ports
+
+## Part 2 of the Layered Architecture series
+_We go past the napkin sketch into the mechanics every serious treatment includes but Part 1 skipped: open vs. closed layers and the "layers of isolation" they buy, the Architecture Sinkhole anti-pattern (and the 80/20 rule for spotting it), and the one honest flaw in classic layering — its dependency direction. Then we fix that flaw the cheap way, with ports & adapters wired through dependency injection, using Python and FastAPI._
 
 <h1><span><i class="fas fa-layer-group"></i></span> Layered Architecture — Part 2</h1>
 
