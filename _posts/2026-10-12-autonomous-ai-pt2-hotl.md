@@ -1,5 +1,5 @@
 ---
-title: "🧬 Semi and Fully Autonomous AI Systems: Part 2 (HOTL)"
+title: "🧬 Semi and Fully Autonomous AI Systems"
 date: 2026-10-12 03:33:33 -0500
 categories:
   - architecture
@@ -10,9 +10,10 @@ description:
   Part 2 of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which.
 ---
 
+# ⭕ Part 2: HOTL (Human-On-The-Loop)
+
 ![HOTL Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png)
 
-# ⭕ Part 2: HOTL (Human-On-The-Loop)
 
 On the morning of August 1, 2012, Knight Capital's order router pushed millions of erroneous orders into the market and lost more than $460 million in about 45 minutes. Before the open, an internal system had sent 97 automated error emails; they weren't designed as alerts, and staff generally didn't read them. There was no procedure to halt the router in response to its own aberrant activity [1].
 
