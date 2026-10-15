@@ -1,7 +1,7 @@
 ---
 title: "🤖 AI-first “engineering”"
 excerpt: "A giant leap forward in the devolution of building software."
-version: "7.03"
+version: "7.05"
 date: 2026-10-14
 author: steven
 header:
@@ -17,7 +17,7 @@ toc: true
 
 ## 📝 Introduction
 
-Steven B Miers · October 14, 2026 · v7.03
+Steven B Miers · October 14, 2026 · v7.05
 
 Last month I handed a frontier model a real task — a service with state, concurrency, and a database that already had a schema and full referential integrity. I gave it pages of house rules — explicit, consistent, none in conflict with another — and a crew of differently defined agents working together and checking each other's work. The rules used words like "Always" and "Never." At least a third of them were ignored. What came back compiled, passed its own tests, *and needed a total rewrite*. The software equivalent of an AI image with three arms.
 
@@ -29,9 +29,9 @@ The industry is laying off the engineers who can see the third arm, and hiring f
 
 This is not a bash on AI. I use it every day — for research, for learning, for keeping my old Land Rover running, even for code, and for running nebulous designs past it before I inflict them on humans.
 
-So you know which kind of skeptic you are reading: I have trained and shipped production neural networks since 2007 — a patented behavioral-prediction platform, CNN and RNN models, NLP pipelines with custom-trained language models for named-entity recognition and list/series detection, and a human-in-the-loop curation system that fed corrections back into training. More recently, LLM- and GPT-based systems and the agents built on them.
+So you know which kind of skeptic you are reading: I have trained and shipped production neural networks since 2007 — a patented behavioral-prediction platform, CNN and RNN models, NLP pipelines with custom-trained language models for named-entity recognition and list/series detection, and a human-in-the-loop curation system that fed corrections back into training. More recently, generative AI: LLM-based systems and the agents built on them.
 
-I understand how neural networks and GPTs work — as math I have implemented, not as a slogan. Interviewers find that "interesting." Not a qualification; they want AI *users*, not people who can build the models. Hold that thought.
+I understand how neural networks and LLMs work — as math I have implemented, not as a slogan. Interviewers find that "interesting." Not a qualification; they want AI *users*, not people who can build the models. Hold that thought.
 
 ![Fig. 1](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-fig-1-devolution.png)
 
@@ -154,11 +154,11 @@ None of this argues for less AI. It argues for AI with people who understand it 
 
 Human-in-the-loop where judgment is load-bearing; human-on-the-loop where supervision is enough; fully autonomous only where the evidence has earned it. Every human override is labeled training data from your own experts — keep it.
 
-### 🧯 Don't overuse the GPT
+### 🧯 Don't overuse the LLM
 
 **In the software**
 
-- **Reach for the algorithm first.** If a problem can be solved algorithmically — or with a homegrown, public, or purchased ML model — a GPT is overkill. You get deterministic results, better performance, and a smaller bill, including the [hidden costs](#the-bill-nobody-itemizes) the vendors never itemize. *Do* use a GPT when you actually need one: generative work, or a chat interface over a customer knowledge base.
+- **Reach for the algorithm first.** If a problem can be solved algorithmically — or with a homegrown, public, or purchased ML model — an LLM is overkill. You get deterministic results, better performance, and a smaller bill, including the [hidden costs](#the-bill-nobody-itemizes) the vendors never itemize. *Do* use an LLM when you actually need one: generative work, or a chat interface over a customer knowledge base.
 - **Right-size the model, and consider on-prem.** Most business work doesn't need a genius in a hyperscale data center — it needs a clerk who doesn't make things up. A small model on a box you own keeps the data home, keeps the bill flat, and sips power instead of guzzling it.
 
 **When writing code**
@@ -212,4 +212,4 @@ Software engineers are expensive for a reason, and the reason has not changed. W
 - Southern Environmental Law Center / NAACP, Clean Air Act notice of intent to sue xAI, June 2025. https://www.selc.org/news/xai-built-an-illegal-power-plant-to-power-its-data-center/
 
 ---
-Version 7.03 · October 2026
+Version 7.05 · October 2026

@@ -1,5 +1,6 @@
 ---
-title: "🧬 Semi and Fully Autonomous AI Systems"
+title: "⭕ Semi and Fully Autonomous AI Systems"
+tagline: "Part 2: HOTL (Human-On-The-Loop)"
 date: 2026-10-12 03:33:33 -0500
 categories:
   - architecture
@@ -8,13 +9,14 @@ categories:
 author: steven
 description: 
   Part 2 of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which.
+published: true
 ---
 
-# ⭕ Part 2: HOTL (Human-On-The-Loop)
+## 👥 Part 2: HOTL (Human-On-The-Loop)
 
 ![HOTL Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png)
 
-
+### Introduction
 On the morning of August 1, 2012, Knight Capital's order router pushed millions of erroneous orders into the market and lost more than $460 million in about 45 minutes. Before the open, an internal system had sent 97 automated error emails; they weren't designed as alerts, and staff generally didn't read them. There was no procedure to halt the router in response to its own aberrant activity [1].
 
 **Knight had people watching. What it lacked was a way to stop.**
@@ -23,7 +25,7 @@ _This is the sequel to [Part 1: HITL (Human-In-The-Loop)](https://git-steven.git
 
 ---
 
-## 🕵️ You fired the gatekeepers. So who's watching the loop?
+### 🕵️ You fired the gatekeepers. So who's watching the loop?
 
 In [Part 1](https://git-steven.github.io/architecture/ai/ml/autonomous-ai-pt1-hitl/), it was the *gatekeepers* — not the users — who kept a HITL loop from closing. Two human gates made the system trustworthy and slow, and we called the bill **Autonomy Debt**.
 
@@ -44,7 +46,7 @@ A gatekeeper who dozes off stops the line. A watchdog who dozes off is just a do
 
 ---
 
-## 👥 People design it, people watch it, nobody approves it
+### 👥 People design it, people watch it, nobody approves it
 
 The term has receipts. The EU's High-Level Expert Group on AI defines HITL as human intervention "in every decision cycle of the system" — which, it adds, "in many cases is neither possible nor desirable" — and HOTL as intervention "during the design cycle of the system and monitoring the system's operation" [2].
 
@@ -60,7 +62,7 @@ HOTL is the first half of that sentence, done on purpose. The rest of this artic
 
 ---
 
-## 🔍 Ranking: millions of decisions, zero reviewers
+### 🔍 Ranking: millions of decisions, zero reviewers
 
 **Recommendation** finds candidate items a user is likely to value. **Ranking** scores those candidates and decides their order — the classic two-stage design behind large industrial recommenders [3]. Picture a platform with ten million technical articles, and a user searching for clustering algorithms.
 
@@ -72,7 +74,7 @@ This is HOTL's home turf: Part 1's matching problem with the stakes turned down.
 
 ---
 
-## ⚖️ You're not removing risk, you're moving it
+### ⚖️ You're not removing risk, you're moving it
 
 <a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-tradeoffs.png">
     <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-tradeoffs.png" alt="Table comparing HITL and HOTL: human role, default state, loop speed, scaling, bad input, failure style, accountability, signature cost" width="1000px"/>
@@ -94,7 +96,7 @@ This isn't hypothetical. In 2012, YouTube re-pointed its recommendations from vi
 
 ---
 
-## 🏛️ Where the gates went
+### 🏛️ Where the gates went
 
 <a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-infographic.png">
     <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-infographic.png" alt="🧬HOTL Architecture Infographic" width="1000px"/>
@@ -108,7 +110,7 @@ Each station, and its job on a results page:
 
 ---
 
-## 🛡️ Seven ways to watch that basket
+### 🛡️ Seven ways to watch that basket
 
 Asimov gave his robots three laws, then spent decades writing about the gaps and conflicts between them. Here are seven, distilled from the references. Set expectations accordingly.
 
@@ -122,7 +124,7 @@ Asimov gave his robots three laws, then spent decades writing about the gaps and
 
 ---
 
-## 🧑‍⚖️ HITL or HOTL? Ask per gate, not per system
+### 🧑‍⚖️ HITL or HOTL? Ask per gate, not per system
 
 <a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-decision.png">
     <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-decision.png" alt="Decision table: six questions for choosing between keeping a human gate (HITL) and automating it (HOTL)" width="1000px"/>
@@ -132,7 +134,7 @@ Automate data validation but keep human sign-off on model promotion, and you hav
 
 ---
 
-## 🗝️ The questions Part 1 left hanging
+### 🗝️ The questions Part 1 left hanging
 
 * **Will it cause the AI uprising?** No. The realistic HOTL failure is duller: a ranker that quietly learns clickbait pays, faster than anyone notices.
 * **Will it make everybody's lives better?** It can — fresher models, faster learning, experts freed from rubber-stamping. But it's only as good as its breakers.
@@ -143,7 +145,7 @@ _This is **Part 2** of a series; [Part 1](https://git-steven.github.io/architect
 
 ---
 
-## 📖 References
+### 📖 References
 
 1. U.S. Securities and Exchange Commission. *In the Matter of Knight Capital Americas LLC*, Release No. 34-70694, 16 October 2013.
 
