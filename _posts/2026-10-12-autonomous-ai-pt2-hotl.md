@@ -10,6 +10,7 @@ author: steven
 description: 
   Part 2 of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which.
 published: true
+toc: true
 ---
 
 ## 👥 Part 2: HOTL (Human-On-The-Loop)

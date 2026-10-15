@@ -2,14 +2,14 @@
 title: "🤖 AI-first “engineering”"
 excerpt: "A giant leap forward in the devolution of building software."
 version: "7.05"
-date: 2026-10-14
+date: 2026-10-13
 author: steven
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-banner.jpg
 categories: [architecture, ai]
 tags: [ai, llm, software-engineering, hitl, data-centers]
 toc: true
-published: false
+published: true
 ---
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-banner.jpg" alt="Engineering First">
