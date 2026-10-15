@@ -9,6 +9,7 @@ header:
 categories: [architecture, ai]
 tags: [ai, llm, software-engineering, hitl, data-centers]
 toc: true
+published: false
 ---
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-banner.jpg" alt="Engineering First">
@@ -23,7 +24,7 @@ Last month I handed a frontier model a real task — a service with state, concu
 
 The industry is laying off the engineers who can see the third arm, and hiring for people who can't. That is not efficiency. That is the first wave of the AI plague — people getting dumber, and then dumber-er — and software is only where it shows up first.
 
-## 🧭 Where I'm standing
+## 🧭 Where the author stands
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-portrait.jpg" width="350px" alt="Steven B Miers"/>
 
