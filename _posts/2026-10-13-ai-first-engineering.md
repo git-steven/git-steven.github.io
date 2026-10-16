@@ -9,7 +9,7 @@ header:
 categories: [architecture, ai]
 tags: [ai, llm, software-engineering, hitl, data-centers]
 toc: true
-published: true
+published: false
 ---
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/ai-1st-eng-banner.jpg" alt="Engineering First">
