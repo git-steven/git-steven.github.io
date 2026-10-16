@@ -105,7 +105,5 @@ Duplication, churn, coupling, stability, review load. If AI is helping your code
 
 Software engineers are expensive for a reason, and the reason has not changed. What changed is that we built a machine that produces plausible software faster than anyone can check it. The fix is not less of the machine. It is keeping the checkers, and putting them in charge of how far it runs.
 
-The full essay — with the figures, the six promises, and the receipts — is at [git-steven.github.io](https://git-steven.github.io/architecture/ai/ai-first-engineering/).
-
 ---
 Version 1.00 · October 2026
