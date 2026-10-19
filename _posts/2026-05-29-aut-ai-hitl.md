@@ -7,9 +7,12 @@ categories:
   - ai
   - ml
 author: steven
+tags: [ai, ml, llm, software-engineering, hitl, hotl]
 description: 
   Part 1 of a series on autonomous AI architecture. Most production AI that looks autonomous is actually Human-in-the-Loop (HITL): a loop-shaped but not closed-loop system. Using an annotated architecture diagram, we show that it isn't the presence of humans that breaks the loop — it's the data curation and model governance gates. Covers HITL signatures, human gates as architectural control surfaces, semi-supervised learning, and "Autonomy Debt."
 toc: true
+redirect_from:
+  - /architecture/ai/ml/autonomous-ai-pt1-hitl/
 ---
 
 ![HITL Graphic](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-banner-li.png)
@@ -20,6 +23,10 @@ toc: true
 
 _Most production AI deployments exhibit loop-like behavior, but they stop short of being true `closed-loop systems`. Human feedback, policy enforcement, and operational oversight introduce delays and control boundaries that shape system outputs and maintain accountability, limiting autonomous operation._
 
+
+### See also
+* [⭕ Semi and Fully Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/architecture/ai/ml/aut-ai-hotl/)
+* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/architecture/ai/ml/aut-ai-hootl/)
 
 ---
 

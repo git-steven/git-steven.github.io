@@ -11,6 +11,8 @@ description:
   Part 2 of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which.
 published: true
 toc: true
+redirect_from:
+  - /architecture/ai/ml/autonomous-ai-pt2-hotl/
 ---
 
 ## 👥 Part 2: HOTL (Human-On-The-Loop)
@@ -22,13 +24,17 @@ On the morning of August 1, 2012, Knight Capital's order router pushed millions 
 
 **Knight had people watching. What it lacked was a way to stop.**
 
-_This is the sequel to [Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/architecture/ai/ml/autonomous-ai-pt1-hitl/). Human-in-the-loop systems fail by starvation: the gatekeepers who make them safe also make them slow. Human-on-the-loop systems fail by poisoning: fast, quiet, and at scale. The test for which one you have: if every human went home for a long weekend, would the loop keep learning? In HITL, no. In HOTL, yes — and that is both the feature and the risk._
+_This is the sequel to [Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/architecture/ai/ml/aut-ai-hitl/). Human-in-the-loop systems fail by starvation: the gatekeepers who make them safe also make them slow. Human-on-the-loop systems fail by poisoning: fast, quiet, and at scale. The test for which one you have: if every human went home for a long weekend, would the loop keep learning? In HITL, no. In HOTL, yes — and that is both the feature and the risk._
+
+### See also
+* [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/architecture/ai/ml/aut-ai-hitl/)
+* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/architecture/ai/ml/aut-ai-hootl/)
 
 ---
 
 ### 🕵️ You fired the gatekeepers. So who's watching the loop?
 
-In [Part 1](https://git-steven.github.io/architecture/ai/ml/autonomous-ai-pt1-hitl/), it was the *gatekeepers* — not the users — who kept a HITL loop from closing. Two human gates made the system trustworthy and slow, and we called the bill **Autonomy Debt**.
+In [Part 1](https://git-steven.github.io/architecture/ai/ml/aut-ai-hitl/), it was the *gatekeepers* — not the users — who kept a HITL loop from closing. Two human gates made the system trustworthy and slow, and we called the bill **Autonomy Debt**.
 
 HOTL pays it down the obvious way: it takes the humans out of the path.
 * Feedback is validated by code, not a curation team
@@ -40,7 +46,7 @@ The humans don't leave. They *move*.
 There's an old automation joke — author unknown, in print in *Datamation* by 1978, and [later popularized by Warren Bennis](https://quoteinvestigator.com/2022/01/30/future-factory/): the factory of the future will have two employees, a human and a dog. The human feeds the dog. The dog keeps the human from touching the equipment.
 
 <a href="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-oversight-spectrum.png">
-    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-oversight-spectrum.png" alt="The same learning loop three ways: HITL with human gates on the loop, HOTL with humans observing from outside, and fully autonomous with nobody watching" width="1000px"/>
+    <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-oversight-spectrum.png" alt="The same learning loop three ways: HITL with human gates on the loop, HOTL with humans observing from outside, and HOOTL, where the loop runs on its own where it has earned it and a person owns the rules and audits the record" width="1000px"/>
 </a>
 
 A gatekeeper who dozes off stops the line. A watchdog who dozes off is just a dog.
@@ -142,7 +148,7 @@ Automate data validation but keep human sign-off on model promotion, and you hav
 
 **HOTL closes the loop and keeps one hand on the brake.** The gatekeepers are gone; the watchdog is you.
 
-_This is **Part 2** of a series; [Part 1](https://git-steven.github.io/architecture/ai/ml/autonomous-ai-pt1-hitl/) covered HITL. In **Part 3**, we take the watchdog away too. Then who watches the basket?_
+_This is **Part 2** of a series; [Part 1](https://git-steven.github.io/architecture/ai/ml/aut-ai-hitl/) covered HITL. In **Part 3**, we take the watchdog away too. Then who watches the basket?_
 
 ---
 
