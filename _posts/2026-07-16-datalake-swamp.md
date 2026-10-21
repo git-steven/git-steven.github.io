@@ -18,7 +18,7 @@ published: true
 toc: true
 ---
 
-## 🐊 "We'll Add Structure Later"
+## 🏛️ "We'll Add Structure Later"
 _— a Eulogy and a Resurrection_
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/datalake/data-lake-article-md.png" alt="Data Lake" width=400 />

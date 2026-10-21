@@ -92,7 +92,7 @@ There are three rungs.
 *On the loop*, the model acts and a person watches the aggregate, stepping in when needed.
 *Autonomous*, the model acts alone and a person audits now and then.
 Here, the loop is the work itself: each task you hand a model.
-(The same words describe how ML systems learn; that's [a series of its own](https://git-steven.github.io/architecture/ai/ml/aut-ai-hitl/).)
+(The same words describe how ML systems learn; that's [a series of its own](https://git-steven.github.io/ai/aut-ai-hitl/).)
 
 That's also why hiring matters.
 "Uses AI" describes everyone.
@@ -112,6 +112,8 @@ Run that opening team's request handler through them and the answer is obvious: 
 ![Fig. 3](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/autonomy-spectrum-fig-3-leash.jpg)
 
 __Fig. 3: The leash.__ Three rungs of autonomy, and what moves a task between them. Where a task sits is a finding, not a preference.
+
+_Each rung gets its own deep dive: [🧬 Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/), [⭕ Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/) and [🪜 Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)._
 
 It runs both ways, too. If a task has a bad month, move it back left. That's not failure, that's a Tuesday.
 
