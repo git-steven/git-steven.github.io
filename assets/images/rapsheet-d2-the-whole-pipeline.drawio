@@ -1,0 +1,141 @@
+<mxfile host="drawiokit" type="device">
+  <diagram name="D2 — The whole pipeline" id="DnlRe0IkACd1k6F74Xvh-1">
+    <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1240" pageHeight="900" math="0" shadow="0" background="#FCF5E5" adaptiveColors="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" value="" parent="0" style="locked=0;" />
+        <mxCell id="title" value="&lt;div style=&quot;line-height: 120%;&quot;&gt;&lt;font style=&quot;font-size: 28px;&quot;&gt;The whole pipeline&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Copperplate&quot; style=&quot;font-size: 14px;&quot;&gt;pull · refuse · split · baselines · encoder · calibrate · abstain&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;i&gt;by Steven Miers&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=1;arcSize=38;glass=1;fillColor=#F5F5F5;gradientColor=#AFA99A;strokeColor=#666666;opacity=15;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=32;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="320" y="12" width="600" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_data" value="" vertex="1" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=35;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="30" y="140" width="1180" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-2" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 15px;&quot;&gt;🛰️ DATA — reproducible, refused, frozen&lt;/font&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+          <mxGeometry x="40" y="144" width="700" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="portal" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🛰️ Open-data portal&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;SODA API&lt;/li&gt;&lt;li&gt;1,080,014 rows&lt;/li&gt;&lt;li&gt;public domain&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#1F3A5C;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="50" y="175" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="client" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🎣 SodaClient&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;paged SoQL, $order=:id&lt;/li&gt;&lt;li&gt;app token&lt;/li&gt;&lt;li&gt;parquet + manifest&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#1F3A5C;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="270" y="175" width="200" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dataset" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🛡️ DispositionsDataset&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;refuse protected columns&lt;/li&gt;&lt;li&gt;primary, latest version&lt;/li&gt;&lt;li&gt;set aside PROMIS&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#1F3A5C;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="510" y="175" width="220" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="splits" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;⛓️‍💥 DatasetSplits&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;grouped by case&lt;/li&gt;&lt;li&gt;temporal 2023+&lt;/li&gt;&lt;li&gt;(rare, folded)&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#1F3A5C;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="770" y="175" width="190" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="snapshot" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🗃️ HubSnapshot&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;no identifiers&lt;/li&gt;&lt;li&gt;dataset card&lt;/li&gt;&lt;li&gt;Hugging Face&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1000" y="175" width="190" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-3" value="query" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="portal" target="client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-4" value="parquet" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="client" target="dataset">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-5" value="clean rows" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="dataset" target="splits">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-6" value="splits" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="splits" target="snapshot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_models" value="" vertex="1" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=35;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="30" y="360" width="1180" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-7" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 15px;&quot;&gt;🧪 MODELS — one protocol, one scoring function&lt;/font&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+          <mxGeometry x="40" y="364" width="700" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-8" value="&lt;font face=&quot;JetBrains Mono&quot;&gt;&lt;b&gt;Classifier: name · fit(train) · predict_proba(rows)&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;arcSize=20;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#DAE8FC;gradientColor=#7EA6E0;gradientDirection=south;strokeColor=#556B98;strokeWidth=1;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;fontSize=13;fontStyle=1;fontColor=#32465D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="50" y="536" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="majority" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;📊 Majority&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;always Narcotics&lt;/li&gt;&lt;li&gt;the floor&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="50" y="410" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="lookup" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;📖 Title lookup&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;the dictionary&lt;/li&gt;&lt;li&gt;prior if unseen&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="235" y="410" width="160" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="rules" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;📜 Statute rules&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;chapter/act/section&lt;/li&gt;&lt;li&gt;backs off&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#4A2C14;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="420" y="410" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tfidf" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🧮 TF-IDF + LR&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;word + char n-grams&lt;/li&gt;&lt;li&gt;weighted pairs&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="615" y="410" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="encoder" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🧬 Encoder&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;legal-bert-small&lt;/li&gt;&lt;li&gt;title [SEP] citation&lt;/li&gt;&lt;li&gt;best epoch by val NLL&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#DAE8FC;gradientColor=#7EA6E0;gradientDirection=south;strokeColor=#556B98;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#32465D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="810" y="400" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;📏 HeadlineMetrics&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;accuracy · macro-F1&lt;/li&gt;&lt;li&gt;rare-class recall&lt;/li&gt;&lt;li&gt;rare-title accuracy&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1040" y="400" width="150" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-9" value="train · val · test · temporal, to every model" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.7;entryY=0;dashed=1;" edge="1" parent="1" source="splits" target="lane_models">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-10" value="probabilities" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="encoder" target="metrics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-11" value="&lt;i&gt;every model, baseline or transformer, is scored the same way&lt;/i&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+          <mxGeometry x="550" y="538" width="430" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="lane_decide" value="" vertex="1" parent="1" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=35;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="30" y="600" width="1180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-12" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 15px;&quot;&gt;🚦 DECIDE — honest confidence, earned autonomy&lt;/font&gt;" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+          <mxGeometry x="40" y="604" width="700" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="logits" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🧾 LogitStore&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;val · test · temporal&lt;/li&gt;&lt;li&gt;PROMIS probe&lt;/li&gt;&lt;li&gt;raw logits&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#DAE8FC;gradientColor=#7EA6E0;gradientDirection=south;strokeColor=#556B98;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#32465D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="50" y="635" width="190" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="calib" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🌡️ TemperatureCalibrator&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;one scalar T on val&lt;/li&gt;&lt;li&gt;ECE before / after&lt;/li&gt;&lt;li&gt;F1 reliability diagram&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#FFF2CC;gradientColor=#FFD966;gradientDirection=south;strokeColor=#B58900;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#6B5200;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="290" y="635" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="select" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;🚦 SelectiveEvaluator&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;risk–coverage, AURC&lt;/li&gt;&lt;li&gt;per-class τ at 0.5% error&lt;/li&gt;&lt;li&gt;F2 · F4 · autonomy table&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#E1C6F9;gradientColor=#B593B6;gradientDirection=south;strokeColor=#7E5A8C;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#3F2A4A;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="570" y="635" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="policy" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 17px;&quot;&gt;📜 Policy engine&lt;/font&gt;&lt;ul style=&quot;margin: 2px 0 0 0; padding-left: 16px;&quot;&gt;&lt;li&gt;disposition_map v1&lt;/li&gt;&lt;li&gt;report / do_not_report&lt;/li&gt;&lt;li&gt;needs_review → humans&lt;/li&gt;&lt;/ul&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#4A2C14;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="900" y="635" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-13" value="logits" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.25;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="encoder" target="logits">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="580" />
+              <mxPoint x="145" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-14" value="÷ T" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="logits" target="calib">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-15" value="calibrated p" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="calib" target="select">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-16" value="decide or ask (D1)" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5B3;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="1" source="select" target="policy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="receipts" value="&lt;i&gt;📍 RunManifest — query, counts, timestamps, seeds, git SHA, hardware, every table above. If a number is in the article, it is in here first.&lt;/i&gt;" vertex="1" parent="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=10;fillColor=#F5F5F5;gradientColor=#D9D5CC;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=1;fontFamily=Georgia;fontSize=16;fontColor=#4D4D4D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="30" y="800" width="1180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-17" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 14px;&quot;&gt;Legend&lt;/font&gt;" vertex="1" parent="1" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=4;container=1;pointerEvents=0;collapsible=0;opacity=70;fillColor=#F7F3EA;gradientColor=#E8E1D2;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=28;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1000" y="30" width="200" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-18" value="" vertex="1" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1012" y="84" width="16" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-19" value="data" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=11;fontColor=#4D4D4D;">
+          <mxGeometry x="1030" y="79" width="50" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-20" value="" vertex="1" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#DAE8FC;gradientColor=#7EA6E0;gradientDirection=south;strokeColor=#556B98;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1076" y="84" width="16" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-21" value="model" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=11;fontColor=#4D4D4D;">
+          <mxGeometry x="1094" y="79" width="50" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-22" value="" vertex="1" parent="1" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1140" y="84" width="16" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="DnlRe0IkACd1k6F74Xvh-23" value="policy" vertex="1" parent="1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;spacing=4;fontFamily=Georgia;fontSize=11;fontColor=#4D4D4D;">
+          <mxGeometry x="1158" y="79" width="50" height="22" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
