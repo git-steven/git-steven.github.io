@@ -5,7 +5,7 @@ excerpt: "Part 3: HOOTL (Human-Out-Of-The-Loop)."
 author: steven
 categories:
   - ai
-date: 2026-10-18 09:00:00 -0500
+date: 2026-10-15 09:00:00 -0500
 description:
   Earning autonomy; a model earns it one decision class at a time — and loses it the same way.
 published: true
@@ -21,6 +21,11 @@ lay out seven rules for watching the loop, and decide when to use which.
 
 
 ![Part 3 Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hootl-banner-li.png)
+
+### See also
+* [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
+* [🧬 Semi and Fully Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
+* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
 
 **Earning autonomy: a model earns it one [decision class](#lexicon) at a time — and loses it the same way.**
 

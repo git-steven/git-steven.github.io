@@ -18,7 +18,7 @@ from pathlib import Path
 
 BLOG = Path(__file__).resolve().parent.parent
 SOURCE = Path.home() / 'src' / 'rapsheet' / 'docs' / 'rapsheet.md'
-POST = BLOG / '_posts' / '2026-10-20-reading-the-rap-sheet.md'
+POST = BLOG / '_posts' / '2026-10-21-reading-the-rap-sheet.md'
 ASSETS = BLOG / 'assets' / 'images'
 RAW = 'https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/'
 

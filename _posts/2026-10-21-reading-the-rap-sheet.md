@@ -2,7 +2,7 @@
 title: "🧾 Reading the Rap Sheet"
 tagline: "Teaching a small model to read charge text — and knowing when it shouldn't decide"
 excerpt: "A small model reads the charge. A versioned lookup reads the outcome. A threshold decides who gets to decide."
-date: 2026-10-14 09:00:00 -0500
+date: 2026-10-21 09:00:00 -0500
 categories:
   - architecture
   - ai

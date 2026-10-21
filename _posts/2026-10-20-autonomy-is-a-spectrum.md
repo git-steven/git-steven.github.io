@@ -2,7 +2,7 @@
 title: "🌈 Autonomy is a spectrum, not a switch"
 excerpt: "Right-size the model, right-size the autonomy, and keep the people who can tell the difference."
 version: "1.06"
-date: 2026-10-15
+date: 2026-10-20
 author: steven
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/autonomy-spectrum-banner.jpg
@@ -28,7 +28,7 @@ The request handler reached into everything around it, and as the team tried to 
 Fix one thing and something broke in a seemingly unrelated area.
 
 > It's a simple complex system. That's the technical name for it. Because it's simple, it's prone to cascades, and because it's complex, you can't predict what's going to fail. Or how. It's computationally impossible."
-> — James S.A. Corey, Caliban's War, Chapter 17_
+> — **James S.A. Corey**, _Caliban's War, Chapter 17_
 
 It was plausible, it passed, and it was welded together so tightly that nothing could move.
 
