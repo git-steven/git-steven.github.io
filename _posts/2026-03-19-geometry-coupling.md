@@ -1,6 +1,10 @@
 ---
 title: "📐 The Hidden Geometry of Software Coupling"
 date: 2026-03-19 11:11:11 -0500
+tagline: "Afferent and Efferent Coupling, Instability, Distance From Main Sequence"
+excerpt: "Afferent and Efferent Coupling, Instability, Distance From Main Sequence"
+header:
+  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png
 categories:
   - sdlc
   - architecture
@@ -9,10 +13,8 @@ categories:
 author: steven
 ---
 
-![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png)
-
-
 ## 📃 Introduction
+![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png)
 
 Software engineers love to talk about architecture in qualitative terms.
 

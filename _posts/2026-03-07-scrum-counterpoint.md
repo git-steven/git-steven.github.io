@@ -1,14 +1,18 @@
 ---
 title: "🦠 Scrum: Points and Counterpoint"
 date: 2026-03-7 11:37:00 -0500
+author: steven
 categories:
   - architecture
   - sdlc
   - softwareengineering
   - agile
   - kanban
-  - scrum  
-author: steven
+  - scrum
+header:
+  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counterpoints.png 
+tagline: "A modest examination of Scrum"
+excerpt: "A modest examination of Scrum"
 ---
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/scrum-counterpoints.png" width=600/>
 

@@ -6,10 +6,9 @@ categories:
   - ai
 date: 2026-10-12 03:33:33 -0500
 excerpt: 'Part 2: HOTL (Human-On-The-Loop) of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which.'
+header:
+  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png
 published: true
-redirect_from:
-  - /architecture/ai/ml/aut-ai-hotl/
-  - /architecture/ai/ml/autonomous-ai-pt2-hotl/
 tags: [ai, ml, hitl, hotl, calibration, selective-classification, governance, software-architecture]
 toc: true
 ---

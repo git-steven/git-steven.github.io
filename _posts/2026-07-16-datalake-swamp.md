@@ -2,9 +2,12 @@
 title: "🐊 Drain the Data Swamp, Dig the Data Lake Right"
 author: steven
 description: '"We''ll Add Structure Later" — a Eulogy and a Resurrection'
+excerpt: '"We''ll Add Structure Later" — a Eulogy and a Resurrection'
 categories:
   - data-engineering
   - architecture
+header:
+  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/datalake/data-lake-article-md.png" alt="Data Lake  
 tags:
   - data-lake
   - data-swamp

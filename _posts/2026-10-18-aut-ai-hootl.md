@@ -1,7 +1,7 @@
 ---
 title: "🪜Semi and Fully Autonomous AI Systems"
 tagline: "Part 3: HOOTL (Human-Out-Of-The-Loop)"
-excerpt: "Part 3: HOOTL (Human-Out-Of-The-Loop).  Earning autonomy: a model earns it one decision class at a time — and loses it the same way."
+excerpt: "Part 3: HOOTL (Human-Out-Of-The-Loop)."
 author: steven
 categories:
   - ai
@@ -11,10 +11,11 @@ description:
 published: true
 tags: [ai, ml, hitl, hotl, calibration, selective-classification, governance, software-architecture]
 toc: true
+
 ---
 
-## 👥 Introduction
-**Part 2** of a series on autonomous AI architecture, and the sequel to [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/) and [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/). 
+## 👥 Part 3 Introduction
+**Part 3** of a series on autonomous AI architecture, and the sequel to [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/) and [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/). 
 Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," 
 lay out seven rules for watching the loop, and decide when to use which.
 
@@ -35,7 +36,10 @@ That system was a matching rule. Put a model in its place and the stakes don't c
 
 If the answer is a shrug, the system was never autonomous. It was unsupervised.
 
-_This is Part 3 of a series. [Part 1](https://git-steven.github.io/ai/aut-ai-hitl/) put a human in the loop as gatekeeper ([HITL](#lexicon)); [Part 2](https://git-steven.github.io/ai/aut-ai-hotl/) moved the human onto the loop as watchdog ([HOTL](#lexicon)), and promised to take the watchdog away too [8]. This part keeps the promise: [HOOTL](#lexicon), human out of the loop, one decision class at a time._
+_This is Part 3 of a series. 
+* [Part 1](https://git-steven.github.io/ai/aut-ai-hitl/) put a human in the loop as gatekeeper 
+* ([HITL](#lexicon)); [Part 2](https://git-steven.github.io/ai/aut-ai-hotl/) moved the human onto the loop as watchdog ([HOTL](#lexicon)), and promised to take the watchdog away too [8]. 
+* This part keeps the promise: [HOOTL](#lexicon), human out of the loop, one decision class at a time._
 
 ### See also
 * [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
