@@ -1,8 +1,8 @@
 ---
 title: "📐 The Hidden Geometry of Software Coupling"
 date: 2026-03-19 11:11:11 -0500
-tagline: "Afferent and Efferent Coupling, Instability, Distance From Main Sequence"
-excerpt: "Afferent and Efferent Coupling, Instability, Distance From Main Sequence"
+tagline: "Afferent and Efferent Coupling, Instability, Abstractedness, Distance From Main Sequence"
+excerpt: "Afferent and Efferent Coupling, Instability, Abstractedness, Distance From Main Sequence"
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png
 categories:
@@ -46,7 +46,7 @@ _Then the real symptoms appeared:_
 * ⛓️ Bug fixes triggered unrelated failures.
 * 🐞🐞🐞 A "small refactor" broke three features nobody expected to be connected.
 * 🔥 Every change started to feel dangerous.
-* 🛤️ We suspected **Rails** 
+* 🛤️ We suspected **Rails**
 
 ## ⛓️ Architecture and Coupling
 
@@ -180,7 +180,7 @@ A = Na / Nc
 ```
 
 ### 📏 Variables
-* `Na` = number of abstract classes and other items like interfaces/protocols/ABCs, etc. 
+* `Na` = number of abstract classes and other items like interfaces/protocols/ABCs, etc.
 * `Nc` = Total number of classes and other items
 * `A` = Abstractedness Index
 
@@ -297,7 +297,7 @@ The shape of the system changes. The math does not.
 * Software systems obey structural forces 🧲.
 
 ⛓️ **Coupling** is one of them, and like magnetism and gravity, it cannot be ignored.
-      
+
 ## 📚 References
 
 - Constantine, L. L. & Yourdon, E. (1979). *Structured Design: Fundamentals of a Discipline of Computer Program and Systems Design.* Prentice-Hall.

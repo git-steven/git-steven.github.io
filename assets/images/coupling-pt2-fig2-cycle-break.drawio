@@ -1,0 +1,81 @@
+<mxfile host="drawiokit" type="device">
+  <diagram name="Cycles" id="tFk0iXM2vwkd09DX220q-1">
+    <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="820" math="0" shadow="0" background="#FCF5E5" adaptiveColors="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" value="bg" parent="0" style="locked=0;" />
+        <mxCell id="layer-diagram" value="Diagram" parent="0" style="locked=0;" />
+        <mxCell id="layer-labels" value="labels" parent="0" style="locked=0;" />
+        <mxCell id="tFk0iXM2vwkd09DX220q-2" value="&lt;div style=&quot;line-height: 120%;&quot;&gt;&lt;font style=&quot;font-size: 32px;&quot;&gt;Breaking a Dependency Cycle&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Copperplate&quot; style=&quot;font-size: 16px;&quot;&gt;Acyclic Dependencies Principle&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;i&gt;by Steven Miers&lt;/i&gt;&lt;/font&gt;&lt;/div&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=1;arcSize=38;glass=1;fillColor=#F5F5F5;gradientColor=#AFA99A;strokeColor=#666666;opacity=15;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=32;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="450" y="20" width="600" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-3" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 20px;&quot;&gt;🔁 BEFORE: one big package in disguise&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=30;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=#991B1B;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="40" y="180" width="680" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-4" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 orders&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;places orders&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="70" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-5" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 billing&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;charges cards&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="290" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-6" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 notifications&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;emails receipts&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="510" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-7" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-4" target="tFk0iXM2vwkd09DX220q-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-8" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-5" target="tFk0iXM2vwkd09DX220q-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-9" value="&lt;i&gt;needs order details&lt;/i&gt;" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;html=1;strokeColor=#B85450;strokeWidth=2;dashed=1;dashPattern=4 4;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontStyle=2;fontColor=#991B1B;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-6" target="tFk0iXM2vwkd09DX220q-4">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="420" />
+              <mxPoint x="160" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-10" value="Strongly connected component of size 3.&lt;br&gt;Change one, retest and release all three.&lt;br&gt;Instability means nothing inside the loop." vertex="1" parent="layer-diagram" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;opacity=80;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=none;fontFamily=Georgia;fontSize=15;fontStyle=2;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="90" y="480" width="580" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-11" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 20px;&quot;&gt;🧲 AFTER: invert the back edge&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=30;fillColor=#D5E8D4;gradientColor=#97D077;gradientDirection=south;strokeColor=#166534;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#1F4D2B;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="780" y="180" width="680" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-12" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 orders&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;implements OrderLookup&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="810" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-13" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 billing&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;charges cards&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1030" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-14" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 notifications&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;emails receipts&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="1250" y="270" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-15" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 17px;&quot;&gt;&lt;b&gt;📦 order_ports&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;i&gt;«protocol» OrderLookup&lt;/i&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=6;fillColor=#DAE8FC;gradientColor=#7EA6E0;gradientDirection=south;strokeColor=#556B98;strokeWidth=2;fontFamily=Georgia;fontSize=13;fontColor=#32465D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;dashed=1;">
+          <mxGeometry x="1250" y="410" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-16" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-12" target="tFk0iXM2vwkd09DX220q-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-17" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-13" target="tFk0iXM2vwkd09DX220q-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-18" value="&lt;i&gt;uses&lt;/i&gt;" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-14" target="tFk0iXM2vwkd09DX220q-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-19" value="&lt;i&gt;implements&lt;/i&gt;" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0;entryY=0.5;dashed=1;" edge="1" parent="layer-diagram" source="tFk0iXM2vwkd09DX220q-12" target="tFk0iXM2vwkd09DX220q-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="900" y="445" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-20" value="Every arrow points right or down.&lt;br&gt;Build order: order_ports → notifications → billing → orders.&lt;br&gt;Each package can be tested and released on its own." vertex="1" parent="layer-diagram" style="rounded=1;arcSize=50;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;opacity=80;fillColor=#D5E8D4;gradientColor=#97D077;gradientDirection=south;strokeColor=none;fontFamily=Georgia;fontSize=15;fontStyle=2;fontColor=#1F4D2B;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="830" y="500" width="580" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tFk0iXM2vwkd09DX220q-21" value="&lt;i&gt;Figure 2&lt;/i&gt;: A cycle welds packages into one unit. Inverting one dependency turns the loop back into a ladder." vertex="1" parent="layer-labels" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=10;fillColor=#F5F5F5;gradientColor=#D9D5CC;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=1;fontFamily=Georgia;fontSize=17;fontColor=#4D4D4D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="250" y="680" width="1000" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
