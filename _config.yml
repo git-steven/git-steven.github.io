@@ -62,8 +62,8 @@ plugins:
 
 author:
   name   : "Steven Miers"
-  avatar : "/assets/images/miers-headshot.png"
-  bio    : "An innovative technology leader with more than 20 years of experience."
+  avatar : "/assets/images/miers-toon.png"
+  bio    : "An innovative software engineering leader, architect and AI enthusiast, with more than 25 years of experience."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

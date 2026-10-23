@@ -41,10 +41,10 @@ That system was a matching rule. Put a model in its place and the stakes don't c
 
 If the answer is a shrug, the system was never autonomous. It was unsupervised.
 
-_This is Part 3 of a series. 
-* [Part 1](https://git-steven.github.io/ai/aut-ai-hitl/) put a human in the loop as gatekeeper 
-* ([HITL](#lexicon)); [Part 2](https://git-steven.github.io/ai/aut-ai-hotl/) moved the human onto the loop as watchdog ([HOTL](#lexicon)), and promised to take the watchdog away too [8]. 
-* This part keeps the promise: [HOOTL](#lexicon), human out of the loop, one decision class at a time._
+_This is `Part 3` of a series._ 
+* [Part 1 -- HITL](https://git-steven.github.io/ai/aut-ai-hitl/) put a human in the loop as gatekeeper.
+* [Part 2 -- HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) moved the human onto the loop as watchdog ([HOTL](#lexicon)), and promises to soon take the watchdog away. 
+* [Part 3 -- HOOTL: this article](#lexicon) This part keeps the promise: _human out of the loop, one decision class at a time._
 
 ### See also
 * [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)

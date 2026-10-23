@@ -34,25 +34,6 @@ Part 2 opens the box. We zoom in four times, from the package graph down to a si
 
 ![Fig. 1: Four zoom levels](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig1-zoom-levels.png)
 
-### 🧭 What made the cut (and what didn't)
-
-There are dozens of structural metrics. Four of them earn a full section here, and two get a sidebar.
-
-| Metric                          | Zoom level    | Verdict     | Why                                                                                      |
-|---------------------------------|---------------|-------------|------------------------------------------------------------------------------------------|
-| Package cycles (ADP)            | Package graph | **Feature** | The missing third of Martin's package principles. Part 1's metrics need it to be true.    |
-| CBO                             | Class graph   | **Feature** | Part 1's `𝐶ₐ` and `𝐶ₑ`, one level down. The most consistently useful class metric.        |
-| LCOM4                           | Class         | **Feature** | One of the few metrics whose value is also a refactoring instruction.                     |
-| Cyclomatic + Cognitive          | Method        | **Feature** | Already in your linter. Worth knowing what it really measures.                           |
-| WMC                             | Class         | Sidebar     | No fixed definition, and it mostly re-measures class size.                               |
-| DIT                             | Class graph   | Sidebar     | Weak, contradictory evidence. One useful idea survives.                                  |
-
-The test for each was simple:
-* Does it connect to Part 1's `𝐶ₐ`, `𝐶ₑ` and `I`?
-* When it fires, does it tell you **what to do**?
-* Does the research hold up?
-* Can you run it on Python code today?
-
 ---
 
 ## 🔁 Package Graph: Dependency Cycles
@@ -80,6 +61,35 @@ Those three packages now form a **strongly connected component** (SCC): every me
 * Change one, and you retest and release all three 🔥
 * You can't unit test one in isolation from the other two
 * Everything that depends on _any_ of them now depends on _all_ of them
+
+### 📏 Measuring cycles: from yes/no to "how bad"
+
+A simple yes/no is the right **gate**. For a codebase that already has cycles, you need a sense of **severity**:
+
+| Measure                           | Question it answers                         |
+|-----------------------------------|---------------------------------------------|
+| Is it a DAG?                      | Do we have any cycles at all?                |
+| Number of non-trivial SCCs        | How many tangles?                            |
+| Size of the largest SCC           | How much of the system is welded together?   |
+| Minimum feedback set              | How many edges would we have to cut?         |
+
+Sonargraph's **Relative Cyclicity** shows why size matters more than count. Fifty files caught in one 50-file cycle score **100%**, the worst possible. The same fifty files arranged as twenty-five 2-file cycles score **20%**. Every file is in a cycle either way, but one big tangle is far worse than many small ones.
+
+Skip counting individual cycles. Inside one SCC the number of distinct loops explodes combinatorially, which is why ArchUnit caps its detector at 100 by default.
+
+### 📖 Reading cycle results
+
+**Measures:** whether you can follow import arrows out of a package and end up back where you started, and if so, how much of the system is caught in the loop.
+
+| Result              | Rating          | Meaning                                                      | Change Strategy                                  |
+|---------------------|-----------------|--------------------------------------------------------------|--------------------------------------------------|
+| No cycles (a DAG)   | Healthy         | Every package can be built, tested and released on its own   | _Gate it in CI so it stays that way_             |
+| A few small tangles | Local tangle    | A handful of packages that are really one package            | _Invert one import, or merge them_               |
+| One large SCC       | Big ball of mud | A big slice of the system has to change, test and ship together | _Cut the cheapest edges first; shrink the largest SCC_ |
+
+**Threshold:** **zero** cycles. This one is structural, not statistical: it follows from the ADP itself. The Go compiler enforces it, and NDepend's default rule warns at any count above 0.
+
+**In human terms:** a cycle says _"you can't safely change one of these without the others."_ The largest SCC is the biggest piece of the system someone has to keep in their head, and retest, for a change anywhere inside it.
 
 ### 🧮 The bridge to Part 1: SDP can't hold inside a cycle
 
@@ -115,21 +125,6 @@ Put the interface in the implementer's package, and the cycle survives. Put it i
 
 ![Fig. 2: Breaking a dependency cycle](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig2-cycle-break.png)
 
-### 📏 Measuring cycles: from yes/no to "how bad"
-
-A simple yes/no is the right **gate**. For a codebase that already has cycles, you need a sense of **severity**:
-
-| Measure                           | Question it answers                         |
-|-----------------------------------|---------------------------------------------|
-| Is it a DAG?                      | Do we have any cycles at all?                |
-| Number of non-trivial SCCs        | How many tangles?                            |
-| Size of the largest SCC           | How much of the system is welded together?   |
-| Minimum feedback set              | How many edges would we have to cut?         |
-
-Sonargraph's **Relative Cyclicity** shows why size matters more than count. Fifty files caught in one 50-file cycle score **100%**, the worst possible. The same fifty files arranged as twenty-five 2-file cycles score **20%**. Every file is in a cycle either way, but one big tangle is far worse than many small ones.
-
-Skip counting individual cycles. Inside one SCC the number of distinct loops explodes combinatorially, which is why ArchUnit caps its detector at 100 by default.
-
 ### 🔬 What the research says
 
 The evidence is real, but correlational and mostly from Java:
@@ -139,7 +134,7 @@ The evidence is real, but correlational and mostly from Java:
 
 The counterpoint comes from the same field. Al-Mutawa et al. found that most package cycles in Java are **"package local"** (tangles between siblings under one parent), which may not be critical. Nobody has shown that _breaking_ cycles causes fewer defects.
 
-The honest summary: **cycles are a risk marker, and bigger tangles are worse.**
+In short: **cycles are a risk marker, and bigger tangles are worse.**
 
 ### 🛠️ Enforcing it
 
@@ -217,13 +212,22 @@ Two lessons hide in that table:
 * **CBO tells you how entangled a class is.** `I` tells you **which way** the entanglement points, which is exactly what CBO throws away.
 * The `Invoice ↔ Ledger` overlap that CBO quietly de-duplicates is itself a **cycle**, just at class level. 🔁
 
-### 🔬 What the research says
+### 📖 Reading CBO
 
-CBO has the best track record of the classic class metrics:
-* Basili, Briand and Melo found it significant for fault-proneness (p = 0.0000 for UI classes).
-* In a 2013 review of 106 studies, Radjenović et al. concluded that "the best metrics from the CK metrics suite are CBO, WMC and RFC."
+**Measures:** how many other classes this class is tied to, in either direction.
 
-There is a catch that applies to **every** class metric in this article. El Emam et al. found that once you control for class size, "all of these associations disappear." Big classes have more of everything, including bugs. Keep that in mind before treating any single number as a verdict.
+| CBO     | Rating   | Meaning                                                   | Change Strategy                                   |
+|---------|----------|-----------------------------------------------------------|---------------------------------------------------|
+| `0`     | Isolated | Uses nothing, and nothing uses it: a standalone value type, or dead code | _Check that it's actually used_     |
+| `1–9`   | Typical  | Under the empirical line                                  | _Normal dev pace_                                 |
+| `10–14` | Elevated | Past the empirical line, under the expert one             | _Monitor; check `I` to see which way it leans_    |
+| `> 14`  | High     | Past both published lines; changes here ripple widely     | _Look for a missing abstraction, or a split_      |
+
+**Threshold:** **9** comes from Shatnawi (2010), fitted on Eclipse (empirical, but one system). **14** comes from Sahraoui et al. (2000), and is expert opinion. The "NASA" values that circulate in slide decks conflict with each other. Linda Rosenberg's own NASA paper says there is "insufficient statistical data" to set good or bad values, and recommends reviewing outliers instead.
+
+**In human terms:** CBO is the number of other classes you may have to open, understand or retest when you change this one.
+
+These bands assume CK's original, both-directions CBO. Many tools count something else, which is the next problem.
 
 ### ⚠️ "CBO" isn't one number
 
@@ -233,26 +237,60 @@ Tools disagree on what to count:
 * **NDepend** skips CBO entirely and reports `TypeCa` and `TypeCe`.
 * **Python** has no mainstream CK tool. Module-level `𝐶ₐ`/`𝐶ₑ` from an import graph (grimp, pydeps) is the practical stand-in.
 
-A threshold tuned on one tool's CBO means nothing on another's.
+A threshold tuned on one tool's CBO means nothing on another's. Outgoing-only counts run lower for heavily used classes, so recalibrate before borrowing anyone's numbers.
 
-### 📏 Where the thresholds come from
+### 🔬 What the research says
 
-| Threshold   | Source                                           | Kind                         |
-|-------------|--------------------------------------------------|------------------------------|
-| CBO > 14    | Sahraoui et al. (2000)                            | Expert opinion               |
-| CBO > 9     | Shatnawi (2010), fitted on Eclipse                | Empirical, one system        |
-| "NASA" values | Conflicting secondary citations                 | Folklore                     |
+CBO has the best track record of the classic class metrics:
+* Basili, Briand and Melo found it significant for fault-proneness (p = 0.0000 for UI classes).
+* In a 2013 review of 106 studies, Radjenović et al. concluded that "the best metrics from the CK metrics suite are CBO, WMC and RFC."
 
-That last row deserves a footnote. Linda Rosenberg's own NASA paper says there is "insufficient statistical data" to set good or bad values, and recommends reviewing outliers instead. Good advice that never made it into the slide decks.
+There is a catch that applies to **every** class metric in this article. El Emam et al. found that once you control for class size, "all of these associations disappear." Big classes have more of everything, including bugs. Keep that in mind before treating any single number as a verdict.
 
-### 🌳 Sidebar: Depth of Inheritance Tree (DIT)
+---
 
-DIT counts the steps from a class up to the root of its inheritance tree. It is easy to compute and hard to interpret:
-* Tools disagree on whether the root counts (DIT 0 or 1 for the same class).
-* The research contradicts itself. One study found deeper classes more fault-prone, another found the opposite, and a third found the worst classes in the **middle** of the hierarchy.
-* The "≤ 5" or "≤ 6" thresholds are vendor guidance, not findings.
+## 🌳 Class Graph: Depth of Inheritance Tree (DIT)
 
-One idea survives, and it connects straight back to Part 1: **inheritance is the strongest efferent dependency there is.** A subclass depends on its parent's _implementation_, not just its interface. Inheriting from a concrete class deep in a tree is a dependency on something concrete and stable, which is Part 1's Zone of Pain.
+### 🪜 Counting the steps
+
+DIT is the other half of the class graph: not who you **use**, but who you **are**.
+
+```text
+DIT(c) = length of the longest path from c up to the root of its hierarchy
+```
+
+```python
+class Model: ...         # DIT 0 (1 if your tool counts `object`)
+class User(Model): ...   # DIT 1
+class Admin(User): ...   # DIT 2
+```
+
+It is easy to compute and hard to interpret:
+* Tools disagree on whether the root counts, so the same class can be DIT 0 or DIT 1.
+* Under multiple inheritance the hierarchy is a graph, not a tree. Some tools report the longest path, others the number of ancestors.
+
+### 📖 Reading DIT
+
+**Measures:** how many layers of inherited behavior sit above a class.
+
+| DIT   | Rating    | Meaning                                                | Change Strategy                                          |
+|-------|-----------|--------------------------------------------------------|----------------------------------------------------------|
+| `0–1` | Flat      | Stands alone, or extends a single base                 | _Normal dev pace_                                        |
+| `2–4` | Layered   | Behavior is spread across a few classes                | _Check that each level earns its place_                  |
+| `5–6` | Deep      | At the Visual Studio (5) and NDepend (6) guidance      | _Add new behavior by composition, not another subclass_ |
+| `7+`  | Very deep | Reading one method can mean reading the whole chain    | _Flatten, or replace inheritance with delegation_       |
+
+**Threshold:** **5** (Visual Studio) or **6** (NDepend: "might be hard to maintain," though "this isn't a strict rule"). Both are vendor guidance, not research findings. Frameworks inflate the number before you write a line: NDepend notes that classes deriving from WinForms `Control` average a DIT of 5.3.
+
+**In human terms:** DIT is roughly how many class definitions you may have to read to find out what one method call on this class really does.
+
+### 🔬 What the research says
+
+It contradicts itself. One study found deeper classes more fault-prone, another found the opposite, and a third found the worst classes in the **middle** of the hierarchy. Later reviews rank DIT well below CBO and WMC as a predictor.
+
+### 🧲 The idea that survives
+
+One idea does hold up, and it connects straight back to Part 1: **inheritance is the strongest efferent dependency there is.** A subclass depends on its parent's _implementation_, not just its interface. Inheriting from a concrete class deep in a tree is a dependency on something concrete and stable, which is Part 1's Zone of Pain.
 
 In Python, mixins make depth misleading. `len(cls.__mro__) - 1` counts total ancestors, and pylint's `too-many-ancestors` (R0901) flags classes past 7 by default.
 
@@ -271,15 +309,24 @@ Hitz and Montazeri's **LCOM4** builds a small graph for each class:
 * Connect two methods if they **share a field**, or if one **calls** the other
 * `LCOM4` = the number of **connected components** ("islands")
 
-```text
-LCOM4 = 1   → cohesive
-LCOM4 = N   → N classes sharing one name; split along the islands
-LCOM4 = 0   → no methods
-```
-
 ![Fig. 3: LCOM4 islands](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig3-lcom4-islands.png)
 
 The `User` class above has two islands: one about credentials, one about billing. Nothing connects them except the class name. That's two classes, and LCOM4 says so.
+
+### 📖 Reading LCOM4
+
+**Measures:** how many unrelated groups of methods live in one class.
+
+| LCOM4 | Rating       | Meaning                                                              | Change Strategy                              |
+|-------|--------------|----------------------------------------------------------------------|----------------------------------------------|
+| `0`   | Nothing to measure | No methods besides `__init__` and static methods: a plain record | _Skip it_                                    |
+| `1`   | Cohesive     | Every method connects to every other, through fields or calls        | _Leave it alone_                             |
+| `2`   | Two jobs     | Two groups of methods that never touch each other's data             | _Split along the islands_                    |
+| `3+`  | Several jobs | Several classes sharing one name                                     | _Split, starting with the largest island_    |
+
+**Threshold:** **1**. This one is structural: by definition, a class with more than one island can be split without cutting any connection. The exception is abstract classes, interfaces and protocols, which score high by design (more on that below).
+
+**In human terms:** LCOM4 is the number of separate jobs a class is doing. Each extra island is a class waiting to be extracted.
 
 ### 🐞 Why not plain "LCOM"?
 
@@ -373,9 +420,9 @@ None of those should be split. LCOM4 assumes a class is **state plus behavior**.
 
 ### 🔬 What the research says
 
-Honestly? Cohesion metrics have a weaker predictive record than coupling metrics. SonarQube once computed LCOM4, along with RFC, DIT and NOC, then dropped them because, in their words, "very few people knew what to do with them."
+Cohesion metrics have a weaker predictive record than coupling metrics. SonarQube once computed LCOM4, along with RFC, DIT and NOC, then dropped them because, in their words, "very few people knew what to do with them."
 
-LCOM4 earns its place for a different reason: when it fires on a concrete class, it hands you the refactoring. Split along the islands, and each new class usually depends on **fewer** things, so `𝐶ₑ` drops too.
+LCOM4 is still worth running for a different reason: when it fires on a concrete class, it hands you the refactoring. Split along the islands, and each new class usually depends on **fewer** things, so `𝐶ₑ` drops too.
 
 ---
 
@@ -394,12 +441,29 @@ Every `if`, `for`, `while`, `case`, `except`, and each `and`/`or` adds one.
 
 `V(G)` is the number of **independent paths** through the method, which is the size of a basis set of tests. That's what it measures accurately: **how many tests you need**.
 
+### 📖 Reading cyclomatic complexity
+
+**Measures:** how many independent paths run through a function. The bands below are radon's ranks, with radon's own descriptions.
+
+| V(G)    | Rank | Rating                                         | Change Strategy                          |
+|---------|------|------------------------------------------------|------------------------------------------|
+| `1–5`   | A    | Low risk: simple block                         | _Normal dev pace_                        |
+| `6–10`  | B    | Low risk: well structured and stable           | _Fine; still within McCabe's 10_         |
+| `11–20` | C    | Moderate risk: slightly complex                | _Review it; split it if it keeps growing_ |
+| `21–30` | D    | More than moderate risk: more complex          | _Refactor before adding to it_           |
+| `31–40` | E    | High risk: complex, alarming                   | _Add tests first, then refactor_         |
+| `41+`   | F    | Very high risk: error-prone, unstable          | _Add tests first, then refactor_         |
+
+**Threshold:** **10**, McCabe's own judgment (more on that next). Tool defaults vary: ruff and mccabe use 10 once you turn the rule on, lizard uses 15, and ESLint uses 20.
+
+**In human terms:** `V(G)` is the minimum number of test cases it takes to exercise every independent path. A function scoring 12 needs at least 12 tests before all of its basis paths are covered.
+
 ### 📏 The "not magical" 10
 
 The famous limit came from McCabe himself:
 > The particular upper bound that has been used for cyclomatic complexity is 10 which seems like a reasonable, but not magical, upper limit. -- _Thomas McCabe, "A Complexity Measure" (1976)_
 
-He also exempted large `case` statements. "Not magical" is the most ignored phrase in software metrics.
+He also exempted large `case` statements. Twenty years later, NIST SP 500-235 (co-written by McCabe) kept 10 as the default and allowed up to 15 only for teams with "experienced staff, formal design… code walkthroughs, and a comprehensive test plan." "Not magical" is the most ignored phrase in software metrics.
 
 ### 📊 Complexity lives in the tail
 
@@ -460,6 +524,20 @@ Same function, four different answers. **"Complexity 8" means nothing without th
 
 The `switch` debate in miniature: a 3-case `match` and the equivalent `if/elif/elif` chain both have CC 4. Cognitive Complexity scores the `match` 1 and the chain 3.
 
+### 📖 Reading cognitive complexity
+
+**Measures:** how hard a function is to follow when you read it top to bottom.
+
+| Score    | Rating         | Meaning                                      | Change Strategy                                              |
+|----------|----------------|----------------------------------------------|--------------------------------------------------------------|
+| `0`      | Linear         | No breaks in flow; it reads straight through | _Nothing to do_                                              |
+| `1–15`   | Within default | Under SonarQube's and PMD's default limit    | _Normal dev pace_                                            |
+| `> 15`   | Flagged        | SonarQube rule S3776 fires                   | _Flatten the nesting: extract the inner loop, invert conditions_ |
+
+**Threshold:** **15** (SonarQube uses 25 for C, C++ and Objective-C). It was tuned to cut noise, not derived from data; the next section has the details.
+
+**In human terms:** Cognitive Complexity estimates how much a reader has to hold in their head to follow the function, and each extra level of nesting costs more than the last.
+
 ### 📏 Where *its* threshold comes from
 
 Cognitive Complexity's default limit is 15. Campbell was refreshingly candid about where that came from: they started with McCabe's 10, found it "noisy," and raised it until the results felt right.
@@ -467,15 +545,36 @@ Cognitive Complexity's default limit is 15. Campbell was refreshingly candid abo
 
 It has some validation. A 2020 meta-analysis of ~24,000 human evaluations found a moderate correlation (r = 0.54) between Cognitive Complexity and how long people took to understand code. That's real, and it's also not a defect predictor.
 
-### ⚖️ Sidebar: Weighted Methods per Class (WMC)
+---
+
+## ⚖️ Class: Weighted Methods per Class (WMC)
+
+### ➕ Summing the methods
+
+WMC climbs back up from the method to the class:
 
 ```text
 WMC = Σ complexity(method)   over all methods in a class
 ```
 
-Chidamber and Kemerer deliberately left "complexity" undefined, so tools fill it in differently. Some count methods; others sum cyclomatic complexity. Two "WMC" numbers from two tools are two different metrics.
+Chidamber and Kemerer deliberately left "complexity" undefined, so tools fill it in differently. Some count methods (every method weighs 1); others sum cyclomatic complexity. Two "WMC" numbers from two tools are two different metrics.
 
-It also mostly measures size. El Emam et al. found WMC correlated with lines of code at ρ = 0.88, and its link to faults vanished once size was controlled. Radjenović's review put it bluntly: WMC "is not really an OO metric."
+### 📖 Reading WMC
+
+**Measures:** how much logic lives in one class.
+
+| WMC    | Rating  | Meaning                                              | Change Strategy                              |
+|--------|---------|------------------------------------------------------|----------------------------------------------|
+| `≤ 20` | Typical | Under Shatnawi's Eclipse-fitted line                 | _Normal dev pace_                            |
+| `> 20` | Heavy   | A lot of logic in one place; usually a big class     | _Check LCOM4 and CBO before acting on it_    |
+
+**Threshold:** **20**, from Shatnawi (2010) on Eclipse: empirical, but one system. Other published values (40, 50, 100) are inconsistent, and none has a primary derivation. Always state the weighting: 20 methods and a total complexity of 20 describe very different classes.
+
+**In human terms:** WMC is how much logic lives in the class. In practice, that is mostly how big it is.
+
+### 🔬 What the research says
+
+WMC mostly measures size. El Emam et al. found WMC correlated with lines of code at ρ = 0.88, and its link to faults vanished once size was controlled. Radjenović's review put it bluntly: WMC "is not really an OO metric."
 
 WMC is most useful **in combination**. PMD's `GodClass` rule fires only when high WMC meets low cohesion and heavy use of other classes' data. That combination is the next chart.
 
@@ -548,8 +647,10 @@ The cycle check is a **gate**. The other two are **reports**: they tell you wher
 * Every metric here is **counting on a graph** 🕸️: loops in the package graph, neighbors in the class graph, islands inside a class, paths inside a method.
 * **Cycles come first.** Inside a loop, Part 1's `I` and `D` stop describing anything real 🔁.
 * **CBO** is `𝐶ₐ` plus `𝐶ₑ` with the arrows erased. Use `I` to get the direction back 🧭.
+* **DIT** is shaky as a predictor, but every level of inheritance is a dependency on someone else's implementation 🌳.
 * **LCOM4** is the rare metric that hands you the refactoring. Split along the islands ✂️.
 * **Cyclomatic complexity** counts tests. **Cognitive complexity** counts confusion 🧠.
+* **WMC** is mostly class size. Read it next to CBO and LCOM4, never alone ⚖️.
 * Most thresholds are **somebody's judgment**. The structural ones (zero cycles, one island) are the ones to enforce 📏.
 
 The shape of the system changes. The math still doesn't.
@@ -579,4 +680,5 @@ The shape of the system changes. The math still doesn't.
 - Campbell, G. A. (2023). *Cognitive Complexity: A new way of measuring understandability.* SonarSource. [PDF](https://www.sonarsource.com/docs/CognitiveComplexity.pdf)
 - Muñoz Barón, M., Wyrich, M., & Wagner, S. (2020). "An Empirical Validation of Cognitive Complexity as a Measure of Source Code Understandability." *ESEM.* [arXiv:2007.12520](https://arxiv.org/abs/2007.12520)
 - Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software.* Addison-Wesley.
+- NDepend. "Code Metrics." [Docs](https://www.ndepend.com/docs/code-metrics)
 - Tools: [import-linter](https://import-linter.readthedocs.io/en/stable/contract_types/), [grimp](https://github.com/python-grimp/grimp), [radon](https://radon.readthedocs.io/), [ruff C901](https://docs.astral.sh/ruff/rules/complex-structure/), [ArchUnit](https://www.archunit.org/userguide/html/000_Index.html), [dependency-cruiser](https://github.com/sverweij/dependency-cruiser)
