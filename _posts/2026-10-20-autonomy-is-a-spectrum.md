@@ -9,6 +9,7 @@ header:
 categories: [architecture, ai]
 tags: [ai, ml, llm, software-engineering, hitl, hotl, software-architecture]
 toc: true
+published: false
 ---
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/autonomy-spectrum-banner.jpg" alt="An ordered grid unraveling into noise">
