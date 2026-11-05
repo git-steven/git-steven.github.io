@@ -4,26 +4,21 @@ date: 2026-10-21 11:11:11 -0500
 tagline: "Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity"
 excerpt: "Part 2 of The Hidden Geometry of Software. Part 1 measured packages from the outside. Part 2 opens the box: dependency cycles, class coupling, cohesion and complexity, with honest notes on where the thresholds come from."
 header:
-  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig1-zoom-levels.png
+  teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-banner.png
 categories:
-  - sdlc
   - architecture
-  - coupling
-  - metrics
 tags: [architecture, metrics, coupling, cohesion, complexity, python, static-analysis]
 author: steven
-toc: true
 published: false
+toc: true
 ---
-## Part 2
-_Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity_
-
-![Coupling Metrics]({{"/assets/images/coupling-metrics-md.png" | relative_url}})
-<!-- 🚀 banner: Part 1 opens with an illustrated banner (coupling-metrics-md.png). Add coupling-pt2-banner.png here. -->
 
 ## 📃 Introduction
+![📐 The Hidden Geometry of Software, Part 2]({{"/assets/images/coupling-pt2-banner.png" | relative_url}})
 
-In [Part 1: The Hidden Geometry of Software Coupling](https://git-steven.github.io/sdlc/architecture/coupling/metrics/geometry-coupling/), we measured packages from the **outside**:
+_Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity_
+
+In [Part 1: The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/), we measured packages from the **outside**:
 * `𝐶ₐ` and `𝐶ₑ`: who depends on you, and who you depend on
 * `I`: which way the dependencies point
 * `A` and `D`: how far a package has drifted from the Main Sequence
@@ -34,6 +29,8 @@ That was the satellite photo. It told us **where** the pain was. It didn't tell 
 * Is this method hard to test, or just hard to read? 🔬
 
 So Part 2 is the home inspection: the person who opens every cabinet, taps on the walls, and says "hmm" a lot. We zoom in from the package graph all the way down to a single method. The good news hasn't changed since Part 1: every metric below is still just **counting things on a graph**. No machine learning. No consultants. Barely any division.
+
+Why bother measuring at all? Because architecture rarely collapses in one commit. It drifts, one reasonable-looking change at a time, until it has quietly morphed into chaos. (Part 1's Rails app didn't fall apart in a day either.) These numbers let you see the drift early and stop it. They also make a natural guardrail for AI coding assistants: paired with tests and linting, they turn "it works" into "it works, and the architecture still holds." More on that near the end.
 
 ![Fig. 1: Four zoom levels](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig1-zoom-levels.png)
 
@@ -100,7 +97,7 @@ Don't bother counting individual cycles. Inside one SCC the number of distinct l
 
 #### 🧮 The bridge to Part 1: the SDP can't survive a cycle
 
-Here's the best reason to care, and it takes exactly one line of algebra. I promise it's a short line.
+Here's the best reason to care, and it takes exactly one line of algebra. A short one.
 
 The Stable Dependencies Principle says `I` should **decrease** along every dependency arrow. Walk around the cycle:
 
@@ -128,7 +125,7 @@ Martin offered two cures, and both have aged better than most 1996 advice:
 The detail that makes inversion work is **who owns the interface**:
 > Interfaces are very often included in the package that uses them, rather than in the package that implements them. -- _Robert C. Martin, "Design Principles and Design Patterns" (2000)_
 
-Put the interface in the implementer's package, and congratulations, you've added a file and kept the cycle. Put it in its own `order_ports` package (a port, in ports-and-adapters terms) and the loop becomes a ladder:
+Put the interface in the implementer's package, and congratulations, you've added a file and kept the cycle. Put it in `notifications`, the package that uses it, and the cycle breaks, exactly as Martin says. Give it a package of its own, `order_ports` (a port, in ports-and-adapters terms), and you get the same break with a bonus straight out of Part 1: a package that is all interface (`A = 1`) and depended on by both sides (`I = 0`) sits right on the Main Sequence. The loop becomes a ladder:
 
 ![Fig. 2: Breaking a dependency cycle](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt2-fig2-cycle-break.png)
 
@@ -139,14 +136,14 @@ The evidence is real, but correlational and mostly from Java:
 * Components that **move into** cycles between releases become more defect-prone.
 * Cycles also raise the change-proneness of the classes around them. Bad neighborhoods lower property values.
 
-The counterpoint comes from the same field. Al-Mutawa et al. found that most package cycles in Java are **"package local"** (tangles between siblings under one parent), which may not be critical. And nobody has shown that _breaking_ cycles causes fewer defects.
+The counterpoint comes from the same field. Al-Mutawa et al. found that most package cycles in Java are **"package local"** (tangles between siblings under one parent), which may not be critical. A year later, an overlapping team (Oyetoyan, Falleri, Dietrich and Ježek) found that where a cycle sits in the package tree doesn't tell harmless cycles from critical ones, so "package local" isn't a free pass either. And none of these studies shows that _breaking_ cycles causes fewer defects; the authors list causality as future work.
 
 The short version: **cycles are a risk marker, and bigger tangles are worse.** That's less exciting than "cycles cause bugs," but it has the advantage of being true.
 
 #### 🛠️ Enforcing it
 
 **Go** doesn't negotiate. It makes the ADP a compile error:
-> It is illegal for a package to import itself, directly or indirectly. -- _The Go Programming Language Specification_
+> It is illegal for a package to import itself, directly or indirectly… -- _The Go Programming Language Specification_
 
 **Python** is more of a "we'll see" language. It tolerates circular imports right up until one blows up with `ImportError: cannot import name ... from partially initialized module`. A `TYPE_CHECKING` import or a function-level import makes the error go away, but the **design** dependency is still there. You've unplugged the smoke detector, not put out the fire.
 
@@ -252,7 +249,7 @@ Ask four tools for CBO and you'll get four answers, each delivered with total co
 * **NDepend** skips CBO entirely and reports `TypeCa` and `TypeCe`.
 * **Python** has no mainstream CK tool at all. Module-level `𝐶ₐ`/`𝐶ₑ` from an import graph (grimp, pydeps) is the practical stand-in.
 
-A threshold tuned on one tool's CBO means nothing on another's. Outgoing-only counts run lower for heavily used classes, so recalibrate before you borrow anyone's numbers. Including mine.
+A threshold tuned on one tool's CBO means nothing on another's. Outgoing-only counts run lower for heavily used classes, so recalibrate before you borrow anyone's numbers, including the ones in this article.
 
 #### 🔬 What the research says
 
@@ -349,7 +346,7 @@ P = 3, Q = 3   →   LCOM = 0   ("perfectly cohesive")
 LCOM4 = 2                     (the 4th method and y are a separate class)
 ```
 
-A metric that calls an obviously split class "perfectly cohesive" is a smoke detector that only goes off when you open the window. Basili's team found the original LCOM "insignificant in all cases." The naming hasn't helped either: different papers and tools number the variants differently, so "LCOM3" in one tool is somebody else's "LCOM2." **Always define cohesion metrics by formula, not by name.**
+A metric that calls an obviously split class "perfectly cohesive" is a fuel gauge stuck on full. Basili's team found the original LCOM "insignificant in all cases." The naming hasn't helped either: different papers and tools number the variants differently, so "LCOM3" in one tool is somebody else's "LCOM2." **Always define cohesion metrics by formula, not by name.**
 
 #### ☎️ One call changes the answer
 
@@ -359,7 +356,7 @@ Now `send_receipt` prints the order total by calling `self.total()`. The islands
 
 #### 🐍 LCOM4 for Python, in 40 lines
 
-No maintained Python tool computes LCOM4 (radon does no class metrics), so here's one using only the standard library:
+No maintained Python tool computes LCOM4. The `lcom` package on PyPI had one release, back in 2017, and radon has no cohesion or coupling metrics at all. So here's one using only the standard library:
 
 ```python
 from __future__ import annotations
@@ -457,7 +454,7 @@ Here's the catch: Chidamber and Kemerer deliberately left "complexity" undefined
 | `≤ 20` | Typical | Under Shatnawi's Eclipse-fitted line                 | _Normal dev pace_                            |
 | `> 20` | Heavy   | A lot of logic in one place; usually a big class     | _Check LCOM4 and CBO before acting on it_    |
 
-**Threshold:** **20**, from Shatnawi (2010) on Eclipse: empirical, but one system. Other published values (40, 50, 100) are all over the map, and none of them has a primary derivation I could find. Always state the weighting: 20 methods and a total complexity of 20 describe very different classes.
+**Threshold:** **20**, from Shatnawi (2010) on Eclipse: empirical, but one system. Other published values (40, 50, 100) are all over the map, and none of them has a derivation anyone seems able to find. Always state the weighting: 20 methods and a total complexity of 20 describe very different classes.
 
 **In human terms:** WMC is how much logic lives in the class. In practice, that's mostly how big it is.
 
@@ -503,7 +500,7 @@ You don't need the graph theory. Start at 1, then add one for every `if`, `for`,
 
 (Radon's word for E is "alarming." Respect a tool that doesn't sugarcoat.)
 
-**Threshold:** **10**, McCabe's own judgment (more on that next). Tool defaults wander: ruff and mccabe use 10 once you turn the rule on, lizard uses 15, and ESLint uses 20, for reasons nobody seems to have written down.
+**Threshold:** **10**, McCabe's own judgment (more on that next). Tool defaults wander: ruff uses 10 once you turn the rule on, mccabe makes you pick (its README suggests 10), lizard uses 15, and ESLint uses 20, for reasons nobody seems to have written down.
 
 **In human terms:** `V(G)` is the minimum number of test cases it takes to exercise every independent path. A function scoring 12 needs at least 12 tests before all its basis paths are covered. If that function has 2 tests, you now know exactly how much you owe.
 
@@ -529,7 +526,7 @@ You don't need to fix the whole codebase. You need to go look at the tail, where
 
 Two long-standing criticisms, both fair:
 * **It's mostly size.** Shepperd (1988) called it "no more than a proxy for, and in many cases is outperformed by, lines of code." Across roughly 1.2 million source files, Jay et al. (2009) found that lines of code explained about 90% of its variation. Ouch.
-* **It's blind to nesting.** A flat 10-way `match` and three loops nested inside each other can score the same. Nobody who has read both believes they're the same.
+* **It's blind to nesting.** Three `if` statements in a row and three loops nested inside each other both score 4. Nobody who has read both believes they're the same.
 
 Cyclomatic complexity counts **tests**, not **confusion**. For confusion, we need a different tool.
 
@@ -537,7 +534,7 @@ Cyclomatic complexity counts **tests**, not **confusion**. For confusion, we nee
 
 #### 🌀 Charging for nesting
 
-SonarSource's **Cognitive Complexity** (G. Ann Campbell) skips the graph math and scores **reading effort** instead. Roughly: how many browser tabs your brain has open at the deepest point of the function.
+SonarSource's **Cognitive Complexity** (G. Ann Campbell) skips the graph math and scores **reading effort** instead. Think of it as a bar tab for your brain: every break in the flow adds a round, and the deeper you're nested when you order, the more that round costs.
 * +1 for each break in linear flow (`if`, loops, `except`, ternaries)
 * **+1 more for each level of nesting** it sits inside
 * A whole `switch`/`match` costs +1, not +1 per case
@@ -573,7 +570,7 @@ def shipping_cost(order: Order | None, rates: RateCard) -> float:
 
 Same function, four different answers, zero tools admitting doubt. **"Complexity 8" means nothing without the tool's name.**
 
-The `switch` debate in miniature: a 3-case `match` and the equivalent `if/elif/elif` chain both have CC 4. Cognitive Complexity scores the `match` 1 and the chain 3. People have argued about this on the internet for years, so I'll just leave it here and back away slowly.
+The `switch` debate in miniature: a 3-case `match` and the equivalent `if/elif/elif` chain both have CC 4 (unless you ask mccabe, which doesn't see `match` at all and scores it 1). Cognitive Complexity scores the `match` 1 and the chain 3. People have argued about this on the internet for years, and the thread is still open. Best to leave it there and back away slowly.
 
 #### 📖 Reading cognitive complexity
 
@@ -594,9 +591,9 @@ The `switch` debate in miniature: a 3-case `match` and the equivalent `if/elif/e
 The default limit is 15. Campbell was refreshingly candid about where that came from: they started with McCabe's 10, found it "noisy," and nudged it up until the results felt right.
 > I guess you're hoping for some scientific formula. I can't give you one. -- _G. Ann Campbell, SonarSource Community (2024)_
 
-I love this quote. It's the most honest sentence ever written about a software metric threshold, and it applies to most of the others too.
+It may be the most honest sentence ever written about a software metric threshold, and it applies to most of the others too.
 
-It does have some validation. A 2020 meta-analysis of ~24,000 human evaluations found a moderate correlation (r = 0.54) between Cognitive Complexity and how long people took to understand code. That's real. It's also not a defect predictor, so don't sell it as one.
+It does have some validation. A 2020 meta-analysis of ~24,000 human evaluations found a correlation of r = 0.54 between Cognitive Complexity and how long people took to understand code, which the authors rate as large. That's real. But the study measured understanding, not bugs, so don't sell it as a defect predictor.
 
 ---
 
@@ -634,9 +631,9 @@ Put every threshold in this article side by side, and a pattern jumps out:
 
 Most of these numbers were chosen the way you choose a thermostat setting: somebody tried a few, and one felt right. The numbers that hold up best aren't statistical at all. **Zero cycles** and **one island** follow from what the graph means, not from a regression.
 
-Two findings should keep us all humble (me very much included):
+Two findings should keep every metrics enthusiast humble:
 * After controlling for class size, El Emam et al. found that "none of the metrics we studied were associated with fault-proneness anymore."
-* Radjenović's review found that **process metrics** (churn, who touched what, how often) predict post-release faults better than any static code metric. Your git log knows more about your bugs than your linter does.
+* Radjenović's review found that **process metrics** (churn, who touched what, how often) seem to predict post-release faults better than any static code metric. Your git log knows more about your bugs than your linter does.
 
 So use these numbers as a **flashlight**, not a **verdict**:
 * Name the tool alongside the number
@@ -662,6 +659,33 @@ python lcom4.py src/app/models.py # cohesion check on concrete classes
 
 The cycle check is a **gate**. The other two are **reports**: they tell you where to look, and a human decides what to do. Metrics are great at pointing. They're terrible at deciding.
 
+## 🤖 Gates and Goals for AI-Generated Code
+
+An AI coding assistant's idea of "done" is whatever we tell it "done" means. Tell it "the tests pass," and that's exactly what you'll get: working code. Nothing in that definition stops it from adding the one import that closes a loop, or growing a function to complexity 30 because that was the shortest path to green.
+
+It's not malice, it's incentives. Hit `ImportError: cannot import name ... from partially initialized module`, and the quickest fix is the one any of us might reach for at 5 p.m.: a function-level import. The error goes away. The cycle stays. A tired reviewer might miss it. `lint-imports` doesn't get tired, and it flags the cycle even when the import is tucked inside a function.
+
+So give the assistant the same definition of done you'd give a senior engineer, split the same way this article splits the metrics:
+* **Gates** (the change isn't finished until they pass): tests, linting (which, with the C901 setting above, includes McCabe's 10), and zero package cycles
+* **Goals** (aim for them, and say so when a change makes one worse): LCOM4 = 1 on concrete classes, no new functions in the complexity tail, CBO and WMC no worse than the baseline, and dependencies pointing toward stability (Part 1's `I`)
+
+Put the gates in CI, so they hold no matter who (or what) wrote the code. Then put both lists in the instructions file your assistant reads (`AGENTS.md`, `CLAUDE.md`, or whatever your tool calls it):
+
+```markdown
+## Definition of done
+Gates (all must pass before a change is finished):
+- `pytest`
+- `ruff check .` (C901 is on, max complexity 10)
+- `lint-imports` (no package cycles)
+
+Goals (don't make these worse; call it out if you have to):
+- `radon cc -s -n C src/`: no new functions at grade C or worse
+- `python lcom4.py <file>`: concrete classes you touch stay at LCOM4 = 1
+- Interfaces live with the code that uses them, not the code that implements them
+```
+
+The assistant can run every one of those commands itself, so it can check its own work before a human ever sees it. Working code is the floor. These metrics are how you ask for architecture, too.
+
 ## 🗝 Key Takeaways
 
 * Every metric here is **counting on a graph** 🕸️: loops in the package graph, neighbors in the class graph, islands inside a class, paths inside a method.
@@ -672,6 +696,7 @@ The cycle check is a **gate**. The other two are **reports**: they tell you wher
 * **WMC** is mostly class size. Read it next to CBO and LCOM4, never alone ⚖️.
 * **Cyclomatic complexity** counts tests. **Cognitive complexity** counts confusion 🧠.
 * Most thresholds are **somebody's educated guess**. The structural ones (zero cycles, one island) are the ones to enforce 📏.
+* Paired with tests and linting, these metrics give AI coding assistants a real **definition of done**: gates for what must hold, goals for what should improve, so you get robust architecture and not just working code 🤖.
 
 The shape of the system changes. The math still doesn't. And the math, thankfully, is still mostly counting.
 
@@ -683,8 +708,11 @@ The shape of the system changes. The math still doesn't. And the math, thankfull
 - Lakos, J. (1996). *Large-Scale C++ Software Design.* Addison-Wesley.
 - Tarjan, R. (1972). "Depth-First Search and Linear Graph Algorithms." *SIAM Journal on Computing*, 1(2). [doi:10.1137/0201010](https://doi.org/10.1137/0201010)
 - Oyetoyan, T. D., Cruzes, D. S., & Conradi, R. (2013). "A study of cyclic dependencies on defect profile of software components." *Journal of Systems and Software.* [doi:10.1016/j.jss.2013.07.039](https://doi.org/10.1016/j.jss.2013.07.039)
+- Oyetoyan, T. D., Cruzes, D. S., & Conradi, R. (2014). "Transition and defect patterns of components in dependency cycles during software evolution." *CSMR-WCRE.* [doi:10.1109/csmr-wcre.2014.6747180](https://doi.org/10.1109/csmr-wcre.2014.6747180)
+- Oyetoyan, T. D., Falleri, J.-R., Dietrich, J., & Ježek, K. (2015). "Circular dependencies and change-proneness: An empirical study." *SANER.* [doi:10.1109/saner.2015.7081834](https://doi.org/10.1109/saner.2015.7081834)
 - Al-Mutawa, H. A., Dietrich, J., Marsland, S., & McCartin, C. (2014). "On the Shape of Circular Dependencies in Java Programs." *ASWEC.* [doi:10.1109/aswec.2014.15](https://doi.org/10.1109/aswec.2014.15)
 - hello2morrow (2025). "Designing a metric to detect big balls of mud." [Blog](https://blog.hello2morrow.com/2025/06/designing-a-metric-to-detect-big-balls-of-mud/)
+- *The Go Programming Language Specification*, "Import declarations." [Spec](https://go.dev/ref/spec#Import_declarations)
 - Chidamber, S. R. & Kemerer, C. F. (1994). "A Metrics Suite for Object Oriented Design." *IEEE TSE*, 20(6). [doi:10.1109/32.295895](https://doi.org/10.1109/32.295895)
 - Basili, V. R., Briand, L. C., & Melo, W. L. (1996). "A Validation of Object-Oriented Design Metrics as Quality Indicators." *IEEE TSE*, 22(10). [doi:10.1109/32.544352](https://doi.org/10.1109/32.544352)
 - Briand, L. C., Daly, J. W., & Wüst, J. K. (1998). "A Unified Framework for Cohesion Measurement in Object-Oriented Systems." *Empirical Software Engineering*, 3(1).
@@ -693,12 +721,15 @@ The shape of the system changes. The math still doesn't. And the math, thankfull
 - Radjenović, D., Heričko, M., Torkar, R., & Živkovič, A. (2013). "Software fault prediction metrics: A systematic literature review." *Information and Software Technology*, 55(8). [doi:10.1016/j.infsof.2013.02.009](https://doi.org/10.1016/j.infsof.2013.02.009)
 - Shatnawi, R. (2010). "A Quantitative Investigation of the Acceptable Risk Levels of Object-Oriented Metrics in Open-Source Systems." *IEEE TSE*, 36(2).
 - Rosenberg, L. H. (1998). "Applying and Interpreting Object Oriented Metrics." NASA SATC. [Summary](https://www.cs.purdue.edu/homes/apm/courses/BITSC461-fall03_SoftwareEngineering/metrics-slides/nasa-rosenberg-study.html)
+- Aivosto. "Chidamber & Kemerer object-oriented metrics suite." Project Analyzer help. [Docs](https://www.aivosto.com/project/help/pm-oo-ck.html) (source for the Sahraoui et al. CBO > 14 and Visual Studio DIT 5 values)
+- SonarSource Community. "How to measure class coupling metric with SonarQube." [Thread](https://community.sonarsource.com/t/how-to-measure-class-coupling-metric-with-sonarqube/2801)
 - McCabe, T. J. (1976). "A Complexity Measure." *IEEE TSE*, SE-2(4). [PDF](http://www.literateprogramming.com/mccabe.pdf)
 - Watson, A. H. & McCabe, T. J. (1996). *Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric.* NIST SP 500-235. [PDF](https://www.mccabe.com/pdf/mccabe-nist235r.pdf)
 - Shepperd, M. (1988). "A critique of cyclomatic complexity as a software metric." *Software Engineering Journal*, 3(2). [doi:10.1049/sej.1988.0003](https://doi.org/10.1049/sej.1988.0003)
 - Jay, G., Hale, J. E., Smith, R. K., Hale, D., Kraft, N. A., & Ward, C. (2009). "Cyclomatic Complexity and Lines of Code: Empirical Evidence of a Stable Linear Relationship." *JSEA*, 2(3). [doi:10.4236/jsea.2009.23020](https://doi.org/10.4236/jsea.2009.23020)
 - Campbell, G. A. (2023). *Cognitive Complexity: A new way of measuring understandability.* SonarSource. [PDF](https://www.sonarsource.com/docs/CognitiveComplexity.pdf)
+- Campbell, G. A. (2024). Answer on the S3776 default threshold. SonarSource Community. [Thread](https://community.sonarsource.com/t/s3776-reason-for-the-current-default-value-of-15/127103)
 - Muñoz Barón, M., Wyrich, M., & Wagner, S. (2020). "An Empirical Validation of Cognitive Complexity as a Measure of Source Code Understandability." *ESEM.* [arXiv:2007.12520](https://arxiv.org/abs/2007.12520)
 - Gamma, E., Helm, R., Johnson, R., & Vlissides, J. (1994). *Design Patterns: Elements of Reusable Object-Oriented Software.* Addison-Wesley.
 - NDepend. "Code Metrics." [Docs](https://www.ndepend.com/docs/code-metrics)
-- Tools: [import-linter](https://import-linter.readthedocs.io/en/stable/contract_types/), [grimp](https://github.com/python-grimp/grimp), [radon](https://radon.readthedocs.io/), [ruff C901](https://docs.astral.sh/ruff/rules/complex-structure/), [ArchUnit](https://www.archunit.org/userguide/html/000_Index.html), [dependency-cruiser](https://github.com/sverweij/dependency-cruiser)
+- Tools: [import-linter](https://import-linter.readthedocs.io/en/stable/contract_types/), [grimp](https://github.com/python-grimp/grimp), [radon](https://radon.readthedocs.io/), [mccabe](https://github.com/PyCQA/mccabe), [lcom](https://pypi.org/project/lcom/), [ruff C901](https://docs.astral.sh/ruff/rules/complex-structure/), [ArchUnit](https://www.archunit.org/userguide/html/000_Index.html), [dependency-cruiser](https://github.com/sverweij/dependency-cruiser)

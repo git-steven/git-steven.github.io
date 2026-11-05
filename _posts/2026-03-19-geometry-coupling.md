@@ -6,15 +6,16 @@ excerpt: "Afferent and Efferent Coupling, Instability, Abstractedness, Distance 
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png
 categories:
-  - sdlc
   - architecture
-  - coupling
-  - metrics
 author: steven
+redirect_from:
+  - /sdlc/architecture/coupling/metrics/geometry-coupling/
 ---
 
 ## 📃 Introduction
 ![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png)
+
+_This is Part 1 of The Hidden Geometry of Software. [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) zooms in on dependency cycles, cohesion and complexity._
 
 Software engineers love to talk about architecture in qualitative terms.
 
@@ -297,6 +298,10 @@ The shape of the system changes. The math does not.
 * Software systems obey structural forces 🧲.
 
 ⛓️ **Coupling** is one of them, and like magnetism and gravity, it cannot be ignored.
+
+## ➡️ Next: Part 2
+
+[Part 2: Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) zooms in from packages to classes and methods: dependency cycles, CBO, DIT, LCOM4, WMC, and cyclomatic and cognitive complexity.
 
 ## 📚 References
 

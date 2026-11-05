@@ -1,7 +1,7 @@
 ---
 title: "🌈 Autonomy is a spectrum, not a switch"
 excerpt: "Right-size the model, right-size the autonomy, and keep the people who can tell the difference."
-version: "1.06"
+version: "1.07"
 date: 2026-10-20
 author: steven
 header:
@@ -16,7 +16,7 @@ published: false
 
 **Right-size the model, right-size the autonomy, and keep the people who can tell the difference.**
 
-*Steven B Miers · October 15, 2026 · v1.06*
+*Steven B Miers · October 20, 2026 · v1.07*
 
 ## 📝 Introduction
 
@@ -50,7 +50,7 @@ Which is why one current habit worries me: reach for the biggest LLM for every p
 
 The measurements don't back the habit.
 [METR's 2025 randomized trial](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found experienced developers took **19% longer** with AI on their own codebases, and afterward believed they'd been 20% faster.
-[Stack Overflow's 2025 survey](https://survey.stackoverflow.co/2025/ai) put trust in AI accuracy at **29%**, and 66% of developers named answers that are almost right as their top frustration.
+[Stack Overflow's 2025 survey](https://survey.stackoverflow.co/2025/ai) found more developers actively distrust the accuracy of AI tools (**46%**) than trust it (33%), and 66% named answers that are almost right as their top frustration.
 In [Anthropic's own trial](https://www.anthropic.com/research/AI-assistance-coding-skills), developers who learned a new library with AI scored **50% versus 67%** on a comprehension quiz taken without it.
 I wouldn't hang a policy on any single study, but they all point the same way, and that's what bothers me.
 
@@ -120,15 +120,17 @@ It runs both ways, too. If a task has a bad month, move it back left. That's not
 
 A task moves right only when it has earned it.
 "Earned" means measured, over time, on your own work, not on the vendor's benchmark.
-Track the numbers vendors don't publish: duplication, churn, coupling and instability (see [📐 The Hidden Geometry of Software Coupling](https://git-steven.github.io/sdlc/architecture/coupling/metrics/geometry-coupling/)), review load.
+Track the numbers vendors don't publish: duplication, churn, coupling and instability (see [📐 The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/)), review load.
 If AI is helping your codebase, those will say so first, well before the incident report does.
+(The concrete promote-and-demote rules I'd use are in [🔁 Autonomy on a Leash](https://git-steven.github.io/architecture/ai/gated-loop-ai-code/#-earning-the-next-rung).)
 And every human override is labeled training data from your own experts.
 Keep it.
 It's the most valuable data you own, and it only exists while those experts are still in the room.
 
 ## 🛠️ Build better systems with AI
 
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/autonomy-spectrum-build-better-systems.jpg" width="450px" alt="Build better systems"/>
+This is the practical side: which model, what to keep in your own head, and how to work with agents.
+The full mechanism, with the gates, a fence around the tests and the places a person still signs, is in [🔁 Autonomy on a Leash: A Gated Loop for AI-Generated Code](https://git-steven.github.io/architecture/ai/gated-loop-ai-code/).
 
 ### 🧯 Right-size the model
 
@@ -177,6 +179,7 @@ What's held up since:
   The ones that hold are short, specific ("one class per file, one return point," not "write clean code"), stated once where every agent reads them, and checked by something that isn't the model: a linter, a dependency rule, an architecture test, a coverage gate.
   Don't ask an agent to honor DRY; give it the duplication detector that fails when it doesn't.
   And put a human on the cases where "most of the time" isn't good enough.
+  (The loop that enforces all of this is in [Autonomy on a Leash](https://git-steven.github.io/architecture/ai/gated-loop-ai-code/).)
 - **Small tasks, short loops.** One task, one change, reviewed before the next. Drift compounds with context length, and nothing in Fig. 2 happens in a two-hundred-line pull request.
 
 ## 🏁 Conclusion
@@ -187,4 +190,4 @@ What was missing was someone standing at the right spot on the spectrum, with en
 We built a machine that produces plausible software faster than anyone can check it, so I'd keep the checkers, and let them decide how long the leash is.
 
 ---
-Version 1.06 · October 2026
+Version 1.07 · October 2026
