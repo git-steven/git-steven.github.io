@@ -1,5 +1,5 @@
 ---
-title: "📐 The Hidden Geometry of Software Coupling"
+title: "📐 The Hidden Geometry of Software Architecture: Coupling"
 date: 2026-03-19 11:11:11 -0500
 tagline: "Afferent and Efferent Coupling, Instability, Abstractedness, Distance From Main Sequence"
 excerpt: "Afferent and Efferent Coupling, Instability, Abstractedness, Distance From Main Sequence"
@@ -19,9 +19,9 @@ _This is Part 1 of The Hidden Geometry of Software. [Part 2](https://git-steven.
 
 Software engineers love to talk about architecture in qualitative terms.
 
-* "This module **_feels_** tightly coupled"
-  * "That dependency* **_seems_** risky"
-* "This design **_appears_** flexible"
+| "This module **_feels_** tightly coupled"
+| "That dependency* **_seems_** risky"
+| "This design **_appears_** flexible"
 
 But beneath those instincts lies something far more concrete
 * 🏗 The structure of software systems **_can be measured_**
@@ -279,6 +279,36 @@ That lets us see not just *where* a module sits, but *how far off-balance* it is
 Some modules live outside the danger zones and are still worth watching. A service layer, API gateway, or shared utility package may not be pathological, but a non-zero distance still suggests the design is drifting away from the ideal balance.
 
 ![Distance From Main](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-distance-main.png)
+
+### 🧭 Reading the Distance
+
+`D` tells us *how far* a module is from the main sequence, but the absolute value throws away *which way*. Keeping the sign gives us a second, more useful number:
+
+```text
+d = A + I − 1
+D = |d|
+```
+
+* `d < 0` → concrete and stable → heading for the **Zone of Pain**
+* `d > 0` → abstract and unstable → heading for the **Zone of Uselessness**
+
+Martin draws the two zones but does not grade the space between them. The bands below do. A boundary value always belongs to the band nearer zero, so the bands cover `-1` to `1` with no gaps or overlaps.
+
+### Signed distance ranges from `-1` to `1`
+
+| d Range             | Zone                                       | Meaning                                                 | Strategy                                                   |
+|---------------------|--------------------------------------------|---------------------------------------------------------|------------------------------------------------------------|
+| `-1.00 ≤ d < -0.85` | Severe Pain                                | Concrete and heavily depended on; every change cascades | _Extract interfaces now_                                   |
+| `-0.85 ≤ d < -0.65` | Moderate Pain                              | Concrete and widely used; changes are expensive         | _Plan an abstraction layer_                                |
+| `-0.65 ≤ d < -0.50` | Approaching Pain                           | Too concrete for how stable it is                       | _Add abstractions for the hot paths_                       |
+| `-0.50 ≤ d < -0.35` | Balanced -- heavily leaning to Pain        | Workable, but trending concrete                         | _Watch across releases_                                    |
+| `-0.35 ≤ d < -0.20` | Balanced -- leaning to Pain                | Slightly more concrete than its dependents warrant      | _Normal dev pace_                                          |
+| `-0.20 ≤ d ≤  0.20` | Balanced                                   | On or near the main sequence                            | _Nothing_                                                  |
+| ` 0.20 < d ≤  0.35` | Balanced -- leaning to Uselessness         | Slightly more abstract than its users warrant           | _Normal dev pace_                                          |
+| ` 0.35 < d ≤  0.50` | Balanced -- heavily leaning to Uselessness | Workable, but trending speculative                      | _Watch across releases_                                    |
+| ` 0.50 < d ≤  0.65` | Approaching Uselessness                    | Too abstract for how little depends on it               | _Review every abstract type_                               |
+| ` 0.65 < d ≤  0.85` | Moderate Uselessness                       | Mostly abstractions that few modules use                | _Prune; collapse interfaces into their implementations_    |
+| ` 0.85 < d ≤  1.00` | Severe Uselessness                         | Abstract and depended on by almost nothing              | _Delete it or find it consumers_                           |
 
 ## 🗺️ Where These Metrics Apply
 
