@@ -29,9 +29,9 @@ lay out seven rules for watching the loop, and decide when to use which.
 
 **Earning autonomy: a model earns it one [decision class](#lexicon) at a time — and loses it the same way.**
 
-> *On Optimum Recognition Error and Reject Tradeoff.*
+> *The future is already here. It's just not evenly distributed.*
 >
-> — C. K. Chow, the title of a 1970 paper [1]
+> — William Gibson
 
 ## 🧾 The letter
 

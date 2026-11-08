@@ -20,8 +20,8 @@ published: false
 
 ## 📝 Introduction
 
-> A process cannot be understood by stopping it. Understanding must move with the flow of the process, must join it and flow with it.
-> — **Frank Herbert**, _Dune_
+> Any fool can write code that a computer can understand. Good programmers write code that humans can understand.
+> — **Martin Fowler**, _Refactoring: Improving the Design of Existing Code_ (1999)
 
 Recently I watched a team ship a project they'd generated end to end with an AI assistant.
 It worked on day one and was welded shut by week two: one request handler reaching into everything around it, and every fix tightening the coupling a little more.

@@ -12,7 +12,7 @@ toc: true
 published: true
 ---
 
-<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/eop-banner.png" alt="There Is No Return: the word return struck through in red chalk, beside a sketched railway of ok stations with sidings to an else platform, every track ending in a value">
+<img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/eop-banner.jpg" alt="There Is No Return: the word return struck through in red chalk, beside a sketched railway of ok stations with sidings to an else platform, every track ending in a value">
 
 **What a language learns when it loses the escape hatch.**
 
@@ -20,7 +20,10 @@ published: true
 
 ## 📝 Introduction
 
-Elixir has no `return` keyword. Not deprecated, not frowned on in a style guide — absent. Type one anyway and the compiler, having no idea what you mean, goes looking for a function named `return` and reports, a little sadly, that there isn't one. Erlang never had one either. Rust, Scala and Ruby technically do, and the advice in each is some flavor of "don't" — most Ruby shops, including most of the ones the author has run, ban it in the style guide, so Ruby keeps `return` mainly to give the linter a hobby. Java, meanwhile, spent 2017 to 2020 and three JEPs teaching `switch` to hand back a value at all [1].
+> Doors and corners, kid. That's where they get you.
+> — **Detective Miller**, in James S. A. Corey's _Leviathan Wakes_ (2011)
+
+Elixir has no `return` keyword. Not deprecated, not frowned on in a style guide — absent. Type one anyway and the compiler, having no idea what you mean, goes looking for a function named `return` and reports, a little sadly, that there isn't one. Erlang never had one either. Rust, Scala and Ruby technically do, and the advice in each is some flavor of "don't" — many Ruby shops, including all of the ones the author has led, ban it in the style guide, so Ruby keeps `return` mainly to give the linter a hobby. Java, meanwhile, spent 2017 to 2020 and three JEPs teaching `switch` to hand back a value at all [1].
 
 **In an expression-oriented language, the value is the exit.** There is no door marked `return` because every hallway already ends in a room.
 
@@ -112,11 +115,31 @@ def ship(order):
 
 Guard clauses. Early returns. Martin Fowler's catalog calls the move "Replace Nested Conditional with Guard Clauses," and the entry lists the prerequisites, the mechanics, and not a single drawback [6] — the one refactoring in the catalog with no downside, which ought to make a person suspicious. The author has shipped that `return None` on line three more times than he would admit under oath.
 
-So where are the receipts? Thin. The famous rule — never nest past three levels, few humans can follow more — traces to a software-quality indicator page that cites style guides from 1976 to 1987 and no studies at all [7]. (The same page lists Noam Chomsky as co-author of a Yourdon software book, which is the kind of citation one does not try to verify.) The nesting objection to expression-oriented code and the case for guard clauses stand on the same unmeasured ground. Neither side gets to bring data to this fight, so both sides bring volume.
+So where are the receipts? Thin. The famous rule — never nest past three levels, few humans can follow more — traces to a software-quality indicator page that cites style guides from 1976 to 1987 and no studies at all [7].  The nesting objection to expression-oriented code and the case for guard clauses stand on the same unmeasured ground. Neither side gets to bring data to this fight, so both sides bring volume.
 
 ![Fig. 2](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/eop-fig-2-pyramid.png)
 
 __Fig. 2: The pyramid, the guard, the head.__ Guard clauses flatten the pyramid by adding doors. The third panel flattens it by removing the body the doors were in — that's the next section.
+
+**🐍 Python with a twist: a bonus fourth way.** Python can't put the guards in the function head, but a decorator can put them just above it. [`modgud`](https://pypi.org/project/modgud/) runs each guard before the body — a guard is any callable that answers `True` or a message — and makes the last expression of each branch the function's value, so the body has no `return` at all. The same `ship`, doors up top, one value out the back:
+
+```python
+# Python 3.11+ · modgud 2.0
+from modgud import Guards, guarded_expression
+
+@guarded_expression(
+    Guards.not_none("order"),
+    lambda order, *_, **__: bool(order.items) or "no items",
+    lambda order, *_, **__: order.paid or "unpaid",
+)
+def ship(order):
+    if order.express:
+        courier(order)
+    else:
+        post(order)
+```
+
+A failed guard raises `GuardClauseError` with the message; the body never starts. More on how it does this, and what it borrows from Elixir, in [What replaced the door](#️-what-replaced-the-door).
 
 ---
 
@@ -164,11 +187,12 @@ __Fig. 3: The `with` railway.__ Three stations on the main line, each with a sid
 
 **The typed escape hatch.** Rust kept `return` and then built two better ones. The `?` operator is an early return with a type-directed trigger — it leaves the function only when the `Result` says so. And `let … else`, stable since Rust 1.65, is a guard clause with pattern matching. The RFC that introduced it concedes, in its own motivation, that `if let` "can force rightward drift," and cites a refactor "showing the value of early-returns" [9]. The people who built the expression language bolted a statement-shaped hatch back onto it — on purpose, in writing.
 
-**The decorator.** Python is a statement language and intends to stay one. PEP 635 rejected an expression form of `match` because the result would be "unusually long and complex" [10] — and the Zen of Python was there first: "Readability counts" [11]. The author, lacking the standing to argue with Guido, wrote a package instead, which is how engineers argue. `modgud` wraps a function in guard clauses that run first — a failed guard raises `GuardClauseError` and the body never starts — plus an implicit return that makes the last expression of each branch the value [12]. A guard is any callable that answers `True` or a message. Here is the `ship` function from the pyramid, with its three doors moved above the body:
+**The decorator.** Python is a statement language and intends to stay one. PEP 635 rejected an expression form of `match` because the result would be "unusually long and complex" [10] — and the Zen of Python was there first: "Readability counts" [11]. 
+The author, lacking the standing to argue with Guido, wrote a package instead, which is how engineers converse. `modgud` wraps a function in guard clauses that run first — a failed guard raises `GuardClauseError` and the body never starts — plus an implicit return that makes the last expression of each branch the value [12]. A guard is any callable that answers `True` or a message. Here is the `ship` function from the pyramid, with its three doors moved above the body:
 
 ```python
 # Python 3.11+ · modgud 2.0
-from modgud import CommonGuards, guarded_expression
+from modgud import Guards, guarded_expression
 
 def has_items(order, *_, **__):
     return bool(order.items) or "no items"
@@ -176,7 +200,8 @@ def has_items(order, *_, **__):
 def is_paid(order, *_, **__):
     return order.paid or "unpaid"
 
-@guarded_expression(CommonGuards.not_none("order"), has_items, is_paid)
+# @implicit_return is implicit with use of @guarded_expression, and can be disabled
+@guarded_expression(Guards.not_none("order"), has_items, is_paid)
 def ship(order):
     if order.express:
         courier(order)
@@ -196,7 +221,7 @@ def sign(x):
 ```
 
 It's named for Móðguðr, who guards the bridge to Hel in the Norse stories. The resemblance to "mod-good" is not an accident, and neither is the fact that it works by rewriting the AST, which is the polite term for a trick. Python will keep being Python. But the shape — guards up front, one value out the back — is the shape Elixir enforces and Rust types.
-
+~[Móðguðr]((https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/modgud-sm.png))
 ---
 
 ## ⚠️ Beware!
