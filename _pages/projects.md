@@ -23,7 +23,7 @@ A minimal dependency injection / IoC toolkit built around just three decorators 
 
 ### [Modgud](https://github.com/terracoil/modgud)
 **_Expression-oriented programming for Python_**
-![](/assets/images/modgud_sm.jpg)
+![](/assets/images/modgud-sm.jpg)
 
 
 Brings expression-oriented programming to Python 3.11+ through guard clause decorators and implicit returns, eliminating defensive-coding clutter while preserving a single-return-point architecture. Declarative guards (`not_none`, `positive`, `in_range`, `type_check`, `matches_pattern`, `not_empty`, plus a custom guard registry) validate inputs before a function runs, so bodies focus on business logic instead of validation boilerplate. Zero runtime dependencies and mypy-friendly. Named for Móðguðr, the Norse bridge guardian who demands identification before passage. Available on [PyPI](https://pypi.org/project/modgud).

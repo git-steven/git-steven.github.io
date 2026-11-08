@@ -59,6 +59,7 @@ A **block expression** is worth its last line. Rust spells it out [5]:
 // Rust
 let x = { (); 0u8 };   // 0
 let y = { 0u8; };      // ()  — the semicolon threw the value away
+let z = { 0u8 };       // 0   — no semicolon, so the value walks out
 ```
 
 Ruby, Elixir and Scala agree, which is why none of them need `return` to say what a function produces.
@@ -87,6 +88,8 @@ def two():
 And a **case expression** is worth whatever the winning arm is worth:
 
 ```elixir
+# If no arm wins, Elixir raises `CaseClauseError` rather than quietly handing back `nil` [4].
+
 # Elixir
 label = case fetch(id) do
   {:ok, user}      -> user.name
@@ -94,8 +97,20 @@ label = case fetch(id) do
 end
 ```
 
-If no arm wins, Elixir raises `CaseClauseError` rather than quietly handing back `nil` [4].
+Python's `match` is a statement, so it can't stand on the right of an `=`. Inside a modgud-decorated function, `eop_case` can; the only concession is that `default=` is mandatory, because Python has no `CaseClauseError` to fall back on:
 
+```python
+# Python 3.11+ · modgud 2.0
+from modgud import eop_case, eop_clause, eop_var, implicit_return
+
+@implicit_return()
+def fetch_username(id):
+    eop_case(
+        fetch(id),
+        eop_clause(("ok", eop_var.user), eop_var.user.name),
+        eop_clause(("error", eop_var.reason), f"unknown ({eop_var.reason})"), default="unknown"
+    )   
+```
 ---
 
 ## 🧱 Guard clauses: the orthodoxy with no receipts
@@ -131,6 +146,7 @@ from modgud import Guards, guarded_expression
     Guards.not_none("order"),
     lambda order, *_, **__: bool(order.items) or "no items",
     lambda order, *_, **__: order.paid or "unpaid",
+    implicit_return=True # This is the default
 )
 def ship(order):
     if order.express:
@@ -221,7 +237,9 @@ def sign(x):
 ```
 
 It's named for Móðguðr, who guards the bridge to Hel in the Norse stories. The resemblance to "mod-good" is not an accident, and neither is the fact that it works by rewriting the AST, which is the polite term for a trick. Python will keep being Python. But the shape — guards up front, one value out the back — is the shape Elixir enforces and Rust types.
-~[Móðguðr]((https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/modgud-sm.png))
+
+![Móðguðr](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/modgud-sm.png)
+
 ---
 
 ## ⚠️ Beware!
@@ -230,31 +248,57 @@ It's named for Móðguðr, who guards the bridge to Hel in the Norse stories. Th
 
 The best critique comes from the most honest place: Elixir's own documentation, under a heading literally titled **Beware!** Every failure in a `with` lands in the same `else` block, so "it's difficult to know from which clause the error value came," and the official anti-patterns guide names "complex else clauses in `with`" as a smell [4][13]. The fix the docs offer — normalize each step's errors in its own private function — points where every remedy in this style points: more, smaller functions. People who live in it report that *that* is the real cost. Not nesting. Navigation.
 
----
+Here is the railway from Fig. 3 with the smell on it. Three stations, three different failure shapes, one `else` to sort them out:
 
-## 🧭 Monday morning, in any language
-
-*Concepts: switch expressions · the late-initialized temporary · exhaustiveness*
-
-Two linters in two ecosystems enforce the same rule. Google's Error Prone flags a variable declared, then assigned in every arm of a switch statement, and offers to fold the three into one [14]:
-
-```java
-// Java 14+ (switch expressions, JEP 361)
-int score;                                   // before
-switch (suit) {
-    case HEARTS: case DIAMONDS: score = -1; break;
-    case SPADES: score = 2; break;
-    case CLUBS:  score = 3; break;
-}
-
-int score = switch (suit) {                  // after
-    case HEARTS, DIAMONDS -> -1;
-    case SPADES -> 2;
-    case CLUBS  -> 3;
-};
+```elixir
+# Elixir — the smell: one else for three stations
+with {:ok, user}    <- fetch(id),
+     {:ok, order}   <- validate(user, params),
+     {:ok, receipt} <- charge(order) do
+  {:ok, receipt}
+else
+  nil                 -> {:error, :no_such_user}     # fetch/1 returns nil…
+  {:error, changeset} -> {:error, :invalid_order}    # …validate/2 a changeset…
+  {:error, :declined} -> {:error, :payment_declined} # …charge/1 an atom…
+  :timeout            -> {:error, :gateway_timeout}  # …and this one? Go read charge/1.
+end
 ```
 
-Rust's Clippy flags the same shape in a `match`, under the name `needless_late_init` [15]. The tell is a mutable temporary that every branch assigns — and the expression form is the one the compiler checks for a missing arm. You can run that check by eye, in Java, before going anywhere near a language that has no `return` at all.
+Reading the `else` means reconstructing what each step can return — exactly the complaint in the docs. The fix they prescribe, applied here, normalizes every station to `{:ok, _} | {:error, reason}` in a private function of its own, and the `else` disappears [13]:
+
+```elixir
+# Elixir — the fix: every station speaks the same shape
+with {:ok, user}    <- fetch_user(id),
+     {:ok, order}   <- validate_order(user, params),
+     {:ok, receipt} <- charge_order(order) do
+  {:ok, receipt}
+end
+
+defp fetch_user(id) do
+  case fetch(id) do
+    nil  -> {:error, :no_such_user}
+    user -> {:ok, user}
+  end
+end
+
+defp validate_order(user, params) do
+  case validate(user, params) do
+    {:ok, order}  -> {:ok, order}
+    {:error, _cs} -> {:error, :invalid_order}
+  end
+end
+
+defp charge_order(order) do
+  case charge(order) do
+    {:ok, receipt}      -> {:ok, receipt}
+    {:error, :declined} -> {:error, :payment_declined}
+    :timeout            -> {:error, :gateway_timeout}
+  end
+end
+```
+
+Every failure now names its station, and the `with` reads as the happy path it was meant to be. The bill is on the page too: five lines became twenty-five, and the reason a declined card comes back as `:payment_declined` now lives in a function two screens below the chain that produced it. That's the navigation cost, itemized.
+
 
 ---
 
