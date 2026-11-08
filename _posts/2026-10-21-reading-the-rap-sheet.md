@@ -31,7 +31,7 @@ Two fields, two problems, and the mistake most AI-for-records products make is s
 
 Everything is public: the [package and notebook](https://github.com/terracoil/rapsheet), the [data snapshot](https://huggingface.co/datasets/terracoil/rapsheet-charge-titles), the [model](https://huggingface.co/terracoil/rapsheet-legal-bert-small), and every number below, each traced to a run manifest. It's a reference implementation of a methodology, not a screening tool, and nothing in it tries to work out who a record belongs to.
 
-_This is the worked example for [Part 3](https://git-steven.github.io/ai/aut-ai-hootl/) of *Semi and Fully Autonomous AI Systems*: a model earning autonomy one decision class at a time, with real data and real numbers._
+_This is the worked example for [Part 3](https://git-steven.github.io/ai/aut-ai-hootl/) of *Autonomous AI Systems*: a model earning autonomy one decision class at a time, with real data and real numbers._
 
 ## 🧠 Part 1: Concepts
 
@@ -213,7 +213,7 @@ One county. Every records system spells charges its own way, and the next county
 6. Wilson, Edwin B. "Probable Inference, the Law of Succession, and Statistical Inference." *Journal of the American Statistical Association* 22(158), 1927.
 7. Menon, Aditya Krishna, et al. "Long-tail learning via logit adjustment." *ICLR 2021*.
 8. Fair Credit Reporting Act, 15 U.S.C. § 1681c(a) (FCRA § 605(a)): reporting-period limits on adverse information (the look-back window in D1).
-9. Miers, Steven. *Semi and Fully Autonomous AI Systems*, [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/), 2026.
+9. Miers, Steven. *Autonomous AI Systems*, [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/), 2026.
 10. Miers, Steven. [`rapsheet`](https://github.com/terracoil/rapsheet): package and [notebook](https://github.com/terracoil/rapsheet/blob/HEAD/notebooks/reading_the_rap_sheet.ipynb), 2026. Model: [`terracoil/rapsheet-legal-bert-small`](https://huggingface.co/terracoil/rapsheet-legal-bert-small).
 
 ---

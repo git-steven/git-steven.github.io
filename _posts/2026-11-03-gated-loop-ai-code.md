@@ -1,5 +1,5 @@
 ---
-title: "🔁 Autonomy on a Leash: A Gated Loop for AI-Generated Code"
+title: "🔄 Autonomy on a Leash: A Gated Loop for AI-Generated Code"
 excerpt: "Put the agent on the loop, keep people at the one-way doors, and let the gates do the arguing."
 version: "1.01"
 date: 2026-11-03
@@ -23,27 +23,31 @@ published: false
 > A process cannot be understood by stopping it. Understanding must move with the flow of the process, must join it and flow with it.
 > — **Frank Herbert**, _Dune_
 
-In [🌈 Autonomy is a spectrum, not a switch](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/) I described a team whose AI-generated project worked on day one and was welded shut by week two: one request handler reaching into everything around it, and every fix tightening it a little more.
+Recently I watched a team ship a project they'd generated end to end with an AI assistant.
+It worked on day one and was welded shut by week two: one request handler reaching into everything around it, and every fix tightening the coupling a little more.
 The spec said what the code should do.
 Nobody said how it should be put together, and nothing checked.
-That post was about who should decide, and it ended on a point I didn't press hard enough: from across the room the result looked finished, and only someone holding the spec, [checking node by node](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#-coding-was-never-the-hard-part), could see what was wrong.
+From across the room the result looked finished, and only someone holding the spec, checking node by node, could see what was wrong.
 
 Checking node by node is a job for a machine.
 A person should hold the spec.
 A gate should do the counting.
 
-This article is the second half.
-It's the loop I'd build today, with the gates in it, and the research that says where the people belong.
+This article is the loop I'd build today, with the gates in it, and the research that says where the people belong.
 
 ## 🧭 Human > AI (still)
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/autonomy-spectrum-build-better-systems.jpg" width="350px" alt="Build better systems"/>
 
 This is not an anti-AI article.
-I like writing AI systems rather than using them, and I use them daily all the same.
+I like writing AI systems rather than using them, and I use them daily all the same.  I research different technologies and methodologies for solving problems.  I even use it to keep my old Land Rover running!
 So this is no bash on AI.
 It's a bash on running it unsupervised and calling the result engineering.
-The productivity and trust numbers ([METR](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/), [Stack Overflow](https://survey.stackoverflow.co/2025/ai), [Anthropic](https://www.anthropic.com/research/AI-assistance-coding-skills)) are in the spectrum piece.
+The productivity and trust numbers are already in.
+[METR's 2025 randomized trial](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/) found experienced developers took **19% longer** with AI on their own codebases, and afterward believed they'd been 20% faster.
+[Stack Overflow's 2025 survey](https://survey.stackoverflow.co/2025/ai) found more developers actively distrust the accuracy of AI tools (**46%**) than trust it (33%).
+In [Anthropic's own trial](https://www.anthropic.com/research/AI-assistance-coding-skills), developers who learned a new library with AI scored **50% versus 67%** on a comprehension quiz taken without it.
+Those are about people.
 Here I care about what happens to structure.
 
 ## 📉 What an unattended loop does to structure
@@ -77,12 +81,12 @@ In fairness, the honest counter-evidence is real.
 The best-designed experiment, a preregistered trial with 151 participants, found **no significant difference** in maintainability when other developers later evolved AI-assisted code ([arXiv 2507.00788](https://arxiv.org/abs/2507.00788v3)).
 I read the two results as the same finding at different scales.
 One task, one capable model, a person nearby: the code is about as good as ours.
-A whole repo, months of unattended volume: the metrics from [📐 The Hidden Geometry of Software](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) all go the wrong way.
+A whole repo, months of unattended volume: the metrics from [📐 The Hidden Geometry of Software: Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) all go the wrong way.
 The loop below is for the second regime.
 
 ## 🚦 Per decision, not per system
 
-Quick vocabulary, from the [spectrum piece](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#-autonomy-is-a-spectrum-not-a-switch) and the [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/) series: *in the loop* means a person approves each output, *on the loop* means a person watches the trend and steps in, and *autonomous* means a person audits after the fact.
+Quick vocabulary, from the [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/) series: *in the loop* means a person approves each output, *on the loop* means a person watches the trend and steps in, and *autonomous* means a person audits after the fact.
 The rungs haven't changed.
 What changed is the unit I'd apply them to.
 In the [HOTL article](https://git-steven.github.io/ai/aut-ai-hotl/) I argued you should ask *per gate, not per system*.
@@ -98,7 +102,7 @@ Nobody with a 200-line-per-hour review budget ([SmartBear](https://smartbear.com
 And nobody should be asked to; people who only watch lose the skill to intervene, which Bainbridge called the irony of automation in 1983 ([Bainbridge](https://doi.org/10.1016/0005-1098(83)90046-8)) and Perry et al. measured in 2023, when developers with an AI assistant wrote less secure code *and* were more confident it was secure ([arXiv 2211.03622](https://arxiv.org/abs/2211.03622)).
 So ration the human attention to the places it buys the most.
 
-## 🔁 The gated loop
+## 🔄 The gated loop
 
 Herbert's line at the top is the case against reviewing an agent's output after the fact, and for putting the checks inside the loop where the work happens.
 
@@ -200,7 +204,7 @@ These block, and the agent sees each failure as feedback.
 * **Mutation score on changed code** (mutmut, cosmic-ray; PIT; Stryker). Coverage is not a quality target: across 31,000 generated suites, coverage correlated only weakly with fault detection once suite size was controlled ([Inozemtseva and Holmes](https://cs.ubc.ca/~rtholmes/papers/icse_2014_inozemtseva.pdf)). Mutation score is the honest version. Alert first, ratchet once a baseline exists.
 * **Martin's I, A and D, CBO, LCOM4.** Alert and trend. No validated threshold exists for any of them, Python has no maintained CI gate for Distance, and inside a strongly connected component the numbers are meaningless anyway, so compute them on the condensation graph *after* the cycle gate has passed, exactly as [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) recommends.
 * **Semantic duplication.** Experimental tooling; LLMs are weakest at exactly the Type-4 clones they tend to produce.
-* **A fresh-context reviewer agent**, read-only, told to check the diff against the spec and to skip style. A reviewer "asked to find problems will always find *something*", and fixing every finding produces "extra abstraction layers and tests for cases that can't happen" ([Claude Code docs](https://code.claude.com/docs/en/best-practices)). [A pre-filter, never the review](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#-working-with-agents).
+* **A fresh-context reviewer agent**, read-only, told to check the diff against the spec and to skip style. A reviewer "asked to find problems will always find *something*", and fixing every finding produces "extra abstraction layers and tests for cases that can't happen" ([Claude Code docs](https://code.claude.com/docs/en/best-practices)). A pre-filter, never the review: it catches the mechanical stuff, not a wrong boundary.
 
 **Tier 5: a person (hours).** The merge gate, for one-way doors.
 
@@ -260,8 +264,8 @@ None of these are bugs; they're the reasons the gates run twice.
 
 Keep the enforced set small.
 The docs put it well: if you find yourself at forty enforced rules, "most are probably preferences".
-In the [spectrum article](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#-working-with-agents) I said the rules that held were short, specific and checked by something that isn't the model.
-That's still the whole trick.
+The rules that hold are short, specific ("one class per file, one return point," not "write clean code") and checked by something that isn't the model.
+That's the whole trick.
 
 ## 🔂 Why the loop converges, and when to stop it
 
@@ -325,8 +329,8 @@ One-way-door classes never leave the loop at the decision stage, no matter how g
 * **Nobody has tested the whole loop.** Every gate above has evidence behind it. The stack as a whole, as a cure for the Cursor curve, does not. Someone should run that experiment; until then this is a reasoned design.
 * **Correctness is outside the sensors' remit.** Böckeler's line: *"Correctness is outside any sensor's remit if the human didn't clearly specify what they wanted in the first place"* ([martinfowler.com](https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html)). On SWE-bench Verified, 29.6% of patches that pass the tests behave differently from the real fix ([arXiv 2503.15223](https://arxiv.org/abs/2503.15223)). Passing is not the same as right. That's why the ADR gate is first and why the hidden tests are a human's.
 * **Thresholds are folklore.** Part 2 said it and it's still true. Block on structure, alert on numbers, and expect to retune.
-* **Right-size the model, still.** Covered in the [spectrum piece](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#-right-size-the-model): if a plain algorithm or a small model on a box you own can do the job, the gated loop is overkill and so is the LLM.
-* **Don't forget how to code.** The gates catch what you told them to catch. [Someone has to know what to tell them](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/#️-when-writing-code), and that someone learned it by doing the work.
+* **Right-size the model.** If a plain algorithm or a small model on a box you own can do the job, the gated loop is overkill and so is the LLM.
+* **Don't forget how to code.** The gates catch what you told them to catch. Someone has to know what to tell them, and that someone learned it by doing the work.
 
 ## 🏁 Conclusion
 
@@ -334,7 +338,7 @@ Back to that team.
 Their code passed, and their tool did what it was told.
 What they lacked was a loop with a person at the two ends who could say "not like that", and a set of gates in the middle that could say it a thousand times a day without getting tired.
 
-I ended the spectrum piece by saying we'd built a machine that produces plausible software faster than anyone can check it.
+We've built a machine that produces plausible software faster than anyone can check it.
 So stop checking it by hand.
 Decide the shape, write the shape down as contracts, fence the contracts, and let the agent argue with the gates until it loses or learns.
 Keep the checkers for the doors that only open one way.
@@ -367,7 +371,7 @@ Keep the checkers for the doors that only open one way.
 * import-linter. [Contract types](https://import-linter.readthedocs.io/en/stable/contract_types/).
 * Inozemtseva, L. and Holmes, R. [Coverage is not strongly correlated with test suite effectiveness](https://cs.ubc.ca/~rtholmes/papers/icse_2014_inozemtseva.pdf), ICSE 2014.
 * METR. [Measuring the impact of early-2025 AI on experienced open-source developer productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/); [Recent frontier models are reward hacking](https://metr.org/blog/2025-06-05-recent-reward-hacking/).
-* Miers, S. [The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) and [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/); [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/); [Autonomy is a spectrum, not a switch](https://git-steven.github.io/architecture/ai/autonomy-is-a-spectrum/).
+* Miers, S. [The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) and [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/); [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/).
 * NIST. [Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric](https://www.mccabe.com/pdf/mccabe-nist235r.pdf), SP 500-235, 1996.
 * Nygard, M. [Documenting architecture decisions](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), 2011.
 * Olausson et al. [Is Self-Repair a Silver Bullet for Code Generation?](https://arxiv.org/abs/2306.09896), ICLR 2024.

@@ -1,0 +1,75 @@
+<mxfile host="drawiokit" type="device">
+  <diagram name="Two timelines" id="sH56ajnDJXCHvkhqjYUY-1">
+    <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="620" math="0" shadow="0" background="#FCF5E5" adaptiveColors="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" value="bg" parent="0" style="locked=1;" />
+        <mxCell id="layer-diagram" value="Diagram" parent="0" style="locked=0;" />
+        <mxCell id="layer-labels" value="labels" parent="0" style="locked=0;" />
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-2" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCF5E5;gradientColor=#EFE3C8;gradientDirection=radial;strokeColor=none;opacity=60;movable=0;resizable=0;rotatable=0;deletable=0;connectable=0;">
+          <mxGeometry x="0" y="0" width="1100" height="620" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-3" value="&lt;div style=&quot;line-height: 120%;&quot;&gt;&lt;font style=&quot;font-size: 28px;&quot;&gt;Two timelines&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Copperplate&quot; style=&quot;font-size: 15px;&quot;&gt;when it happened · when we learned it&lt;/font&gt;&lt;/div&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;rounded=1;arcSize=38;glass=1;fillColor=#F5F5F5;gradientColor=#AFA99A;strokeColor=#666666;opacity=15;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=32;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="270" y="16" width="560" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-4" value="" style="endArrow=classic;endFill=1;html=1;strokeColor=#504D47;strokeWidth=3;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="layer-diagram">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="180" as="sourcePoint" />
+            <mxPoint x="760" y="180" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-5" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:16px;&quot; color=&quot;#3F6CA8&quot;&gt;effective time — when it was true&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="80" y="136" width="420" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-6" value="" style="endArrow=classic;endFill=1;html=1;strokeColor=#504D47;strokeWidth=3;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;" edge="1" parent="layer-diagram">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="80" y="380" as="sourcePoint" />
+            <mxPoint x="760" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-7" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:16px;&quot; color=&quot;#9A5B2B&quot;&gt;recorded time — when we knew it&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="80" y="336" width="420" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-8" value="" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;shape=ellipse;">
+          <mxGeometry x="411" y="171" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-9" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:15px;&quot; color=&quot;#3F6CA8&quot;&gt;Mar 1&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size:12px;&quot; color=&quot;#605D55&quot;&gt;provider outage, 60 min&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="310" y="122" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-10" value="" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;shape=ellipse;">
+          <mxGeometry x="411" y="371" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-11" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:15px;&quot; color=&quot;#9A5B2B&quot;&gt;Mar 1&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size:12px;&quot; color=&quot;#605D55&quot;&gt;ticket closed · breach recorded&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="310" y="394" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-12" value="" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=1;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;shape=ellipse;">
+          <mxGeometry x="671" y="371" width="18" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-13" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:15px;&quot; color=&quot;#9A5B2B&quot;&gt;Apr 10&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;Georgia&quot; style=&quot;font-size:12px;&quot; color=&quot;#605D55&quot;&gt;SLA credit recorded: outage Mar 1&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="570" y="394" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-14" value="" style="rounded=0;html=1;strokeColor=#8C857A;strokeWidth=2;dashed=1;dashPattern=2 4;endArrow=open;endFill=0;fontFamily=Georgia;fontSize=12;fontStyle=2;fontColor=#1F3A5C;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="layer-diagram" source="sH56ajnDJXCHvkhqjYUY-8" target="sH56ajnDJXCHvkhqjYUY-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-15" value="" style="rounded=0;html=1;strokeColor=#8C857A;strokeWidth=2;dashed=1;dashPattern=2 4;endArrow=open;endFill=0;fontFamily=Georgia;fontSize=12;fontStyle=2;fontColor=#1F3A5C;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="layer-diagram" source="sH56ajnDJXCHvkhqjYUY-8" target="sH56ajnDJXCHvkhqjYUY-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-16" value="&lt;font face=&quot;Georgia&quot; style=&quot;font-size:12px;&quot; color=&quot;#8C857A&quot;&gt;&lt;i&gt;one fact, two records&lt;/i&gt;&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="470" y="262" width="200" height="22" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-17" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:15px;&quot; color=&quot;#504D47&quot;&gt;“Did it breach in March?”&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;JetBrains Mono&quot; style=&quot;font-size:14px;&quot; color=&quot;#166534&quot;&gt;&lt;b&gt;→ no&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt;&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:15px;&quot; color=&quot;#504D47&quot;&gt;“What did the March report say?”&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;JetBrains Mono&quot; style=&quot;font-size:14px;&quot; color=&quot;#991B1B&quot;&gt;&lt;b&gt;→ breached&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=6;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=14;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;spacingLeft=10;">
+          <mxGeometry x="800" y="150" width="270" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-18" value="&lt;font face=&quot;JetBrains Mono&quot; style=&quot;font-size:13px;&quot; color=&quot;#9A5B2B&quot;&gt;&lt;b&gt;recorded_at: Apr 10&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font face=&quot;JetBrains Mono&quot; style=&quot;font-size:13px;&quot; color=&quot;#3F6CA8&quot;&gt;&lt;b&gt;effective_at: Mar 1&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FCFCD6;gradientColor=#E1D7B4;gradientDirection=south;strokeColor=#A69A6E;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#4B4635;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="800" y="360" width="270" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-19" value="&lt;font face=&quot;Georgia&quot; style=&quot;font-size:12px;&quot; color=&quot;#8C857A&quot;&gt;&lt;i&gt;two fields on the event — that is the whole mechanism&lt;/i&gt;&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="800" y="428" width="270" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="sH56ajnDJXCHvkhqjYUY-20" value="&lt;font face=&quot;Georgia&quot; style=&quot;font-size:15px;&quot; color=&quot;#4D4D4D&quot;&gt;Both questions have correct answers, and they differ. A single timestamp can answer only one of them.&lt;/font&gt;" vertex="1" parent="layer-labels" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=10;fillColor=#F5F5F5;gradientColor=#D9D5CC;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=1;fontFamily=Georgia;fontSize=16;fontColor=#4D4D4D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="40" y="540" width="1020" height="46" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,51 @@
+<mxfile host="drawiokit" type="device">
+  <diagram name="Banner" id="EXYIFQq4YXm09ziCsBsZ-1">
+    <mxGraphModel dx="1100" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="640" math="0" shadow="0" background="#FCF5E5" adaptiveColors="none">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" value="bg" parent="0" style="locked=1;" />
+        <mxCell id="layer-diagram" value="Diagram" parent="0" style="locked=0;" />
+        <mxCell id="layer-labels" value="labels" parent="0" style="locked=0;" />
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-2" value="" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FCF5E5;gradientColor=#EFE3C8;gradientDirection=radial;strokeColor=none;opacity=60;movable=0;resizable=0;rotatable=0;deletable=0;connectable=0;">
+          <mxGeometry x="0" y="0" width="1600" height="640" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-3" value="" vertex="1" parent="layer-diagram" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#C5DFFA;gradientColor=#6096D4;gradientDirection=south;strokeColor=#3F6CA8;strokeWidth=3;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#1F3A5C;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
+          <mxGeometry x="120" y="110" width="440" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-4" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:26px;&quot; color=&quot;#32465D&quot;&gt;tickets_db&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="200" y="180" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-5" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;ticket 8842:&lt;br&gt;closed??&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFF2CC;gradientColor=#FFD966;gradientDirection=south;strokeColor=#B58900;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#6B5200;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=-7;">
+          <mxGeometry x="90" y="250" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-6" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;who paused it?&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=#991B1B;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=5;">
+          <mxGeometry x="330" y="240" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-7" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;why 80 min?!&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#E8F5B0;gradientColor=#C5E063;gradientDirection=south;strokeColor=#65A30D;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#3F6212;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=4;">
+          <mxGeometry x="150" y="390" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-8" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;did we credit&lt;br&gt;them?&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F5C283;gradientColor=#C48653;gradientDirection=south;strokeColor=#9A5B2B;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#4A2C14;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=-5;">
+          <mxGeometry x="350" y="380" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-9" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;ask Dave&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFF2CC;gradientColor=#FFD966;gradientDirection=south;strokeColor=#B58900;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#6B5200;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=9;">
+          <mxGeometry x="470" y="160" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-10" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:17px;&quot;&gt;Dave left&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=2;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=#991B1B;strokeWidth=1;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=16;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;rotation=-8;">
+          <mxGeometry x="480" y="470" width="150" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-11" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:64px;&quot; color=&quot;#32465D&quot;&gt;Curing your&lt;br&gt;database&amp;#39;s amnesia&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="640" y="120" width="900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-12" value="&lt;font face=&quot;Copperplate&quot; style=&quot;font-size:22px;&quot; color=&quot;#605D55&quot;&gt;COMMAND QUERY RESPONSIBILITY SEGREGATION (CQRS) AND EVENT SOURCING&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="640" y="330" width="900" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-13" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:22px;&quot; color=&quot;#8C857A&quot;&gt;&lt;i&gt;Sticky notes are a coping mechanism. This article is about the cure.&lt;/i&gt;&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="640" y="420" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="EXYIFQq4YXm09ziCsBsZ-14" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size:16px;&quot; color=&quot;#8C857A&quot;&gt;Steven Miers · git-steven.github.io&lt;/font&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontFamily=Georgia;">
+          <mxGeometry x="640" y="560" width="500" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

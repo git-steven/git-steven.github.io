@@ -1,5 +1,5 @@
 ---
-title: "🪜Semi and Fully Autonomous AI Systems"
+title: "🪜Autonomous AI Systems: HOOTL"
 tagline: "Part 3: HOOTL (Human-Out-Of-The-Loop)"
 excerpt: "Part 3: HOOTL (Human-Out-Of-The-Loop)."
 author: steven
@@ -14,18 +14,18 @@ toc: true
 
 ---
 
+![Part 3 Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hootl-banner-li.png)
+
 ## 👥 Part 3 Introduction
 **Part 3** of a series on autonomous AI architecture, and the sequel to [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/) and [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/). 
 Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," 
 lay out seven rules for watching the loop, and decide when to use which.
 
 
-![Part 3 Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hootl-banner-li.png)
-
 ### See also
-* [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
-* [🧬 Semi and Fully Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
-* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
+* [🧬 Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
+* [⭕ Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
+* [🪜 Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
 
 **Earning autonomy: a model earns it one [decision class](#lexicon) at a time — and loses it the same way.**
 
@@ -47,8 +47,8 @@ _This is `Part 3` of a series._
 * [Part 3 -- HOOTL: this article](#lexicon) This part keeps the promise: _human out of the loop, one decision class at a time._
 
 ### See also
-* [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
-* [⭕ Semi and Fully Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
+* [🧬 Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
+* [⭕ Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
 
 ## 📖 Lexicon
 
@@ -177,7 +177,8 @@ So the alarm is two-sided: coverage leaving its band at a fixed τ, *and* the in
 
 ## 🌐 Same shape, other domains
 
-[Prior authorization](#lexicon), benefits, content moderation: the ladder, the rules layer and the audit record carry over; only the taxonomy and the budget change. A [Medicare Advantage](#lexicon) insurer is defending a suit alleging its coverage algorithm's denials were reversed about 90% of the time on appeal; the contract claims survived because the insurer's own documents say clinicians decide [13]. The Dutch government fell in January 2021 over a benefits-fraud model whose "use, workings and effect" were hidden from the public [14]: the shrug, at national scale. Meta's Oversight Board, reviewing a handful of the hundreds of thousands of appeals it receives, overturned the company 90% of the time in 2023 [15]. Every one of those is the letter by another name.
+[Prior authorization](#lexicon), benefits, content moderation: the ladder, the rules layer and the audit record carry over; only the taxonomy and the budget change. 
+A [Medicare Advantage](#lexicon) insurer is defending a suit alleging its coverage algorithm's denials were reversed about `90%` of the time on appeal; the contract claims survived because the insurer's own documents say clinicians decide [13]. The Dutch government fell in January 2021 over a benefits-fraud model whose "use, workings and effect" were hidden from the public [14]: the shrug, at national scale. Meta's Oversight Board, reviewing a handful of the hundreds of thousands of appeals it receives, overturned the company `90%` of the time in 2023 [15]. Every one of those is the letter by another name.
 
 ---
 
@@ -195,10 +196,10 @@ _This is **Part 3** of a series: [Part 1: HITL](https://git-steven.github.io/ai/
 
 ## 📊 Data behind the figures
 
-* **Reliability:** bin shapes are schematic; the ECE figures are Guo et al., ICML 2017, Table 1 (ResNet-110 on CIFAR-100, 16.53% → 1.26%).
+* **Reliability:** bin shapes are schematic; the ECE figures are Guo et al., ICML 2017, Table 1 (ResNet-110 on CIFAR-100, `16.53%` → `1.26%`).
 * **Risk–coverage and coverage at budget:** test risk and coverage from Geifman & El-Yaniv, NeurIPS 2017, Tables 1, 2, 5 and 6.
 * **Drift alarm:** Desai & Durrett, EMNLP 2020, Tables 2 and 4 (BERT, out of the box).
-* **Ladder and banner:** illustrative placements; rung thresholds (≥50% → HOTL, ≥95% → HOOTL at a 1% budget) are the article's proposal.
+* **Ladder and banner:** illustrative placements; rung thresholds (`≥50%` → HOTL, `≥95%` → HOOTL at a `1%` budget) are the article's proposal.
 * **Where the model sits and the infographic:** schematic; no data.
 
 ---
@@ -219,7 +220,7 @@ _This is **Part 3** of a series: [Part 1: HITL](https://git-steven.github.io/ai/
 
 7. Consumer Financial Protection Bureau. "Interpretive Rules, Policy Statements, and Advisory Opinions; Withdrawal." 90 Fed. Reg. 20084, 12 May 2025.
 
-8. Miers, Steven. *Semi and Fully Autonomous AI Systems*, [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/), 2026.
+8. Miers, Steven. *Autonomous AI Systems*, [Part 1: HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [Part 2: HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [Part 3: HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/), 2026.
 
 9. Centers for Medicare & Medicaid Services. *Frequently Asked Questions related to Coverage Criteria and Utilization Management Requirements in CMS Final Rule (CMS-4201-F)*, 6 February 2024.
 
@@ -229,7 +230,7 @@ _This is **Part 3** of a series: [Part 1: HITL](https://git-steven.github.io/ai/
 
 12. Kamath, Amita, Robin Jia, and Percy Liang. "Selective Question Answering under Domain Shift." *ACL 2020*. Section 5.3.
 
-13. *Estate of Lokken v. UnitedHealth Group*, No. 0:23-cv-03514 (D. Minn.): complaint filed 14 November 2023 (the 90% figure is the plaintiffs' allegation); order on the motion to dismiss, 13 February 2025.
+13. *Estate of Lokken v. UnitedHealth Group*, No. 0:23-cv-03514 (D. Minn.): complaint filed 14 November 2023 (the `90%` figure is the plaintiffs' allegation); order on the motion to dismiss, 13 February 2025.
 
 14. Amnesty International. *Xenophobic Machines: Discrimination through Unregulated Use of Algorithms in the Dutch Childcare Benefits Scandal*, EUR 35/4686/2021, 25 October 2021.
 

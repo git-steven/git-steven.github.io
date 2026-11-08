@@ -1,5 +1,5 @@
 ---
-title: "🧬 Semi and Fully Autonomous AI Systems"
+title: "🧬 Autonomous AI Systems: HITL"
 tagline: "Part 1: HITL (Human-In-The-Loop)"
 excerpt: "Part 1: HITL (Human-In-The-Loop)"
 author: steven
@@ -15,16 +15,18 @@ toc: true
 
 ---
 
-# Part 1: HITL (Human-In-The-Loop)
-**Your AI _Looks_ autonomous. It's _probably_ not. Here's an Architecture Diagram to Prove It. **
 ![HITL Graphic](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hitl-banner-li.png)
+
+# Part 1: HITL (Human-In-The-Loop)
+**Your AI _Looks_ autonomous. It's _probably_ not. Above is an Architecture Diagram to Prove It. **
+
 
 _Most production AI deployments exhibit loop-like behavior, but they stop short of being true `closed-loop systems`. Human feedback, policy enforcement, and operational oversight introduce delays and control boundaries that shape system outputs and maintain accountability, limiting autonomous operation._
 
 
 ### See also
-* [⭕ Semi and Fully Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
-* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
+* [⭕ Autonomous AI Systems — Part 2: HOTL (Human-On-The-Loop)](https://git-steven.github.io/ai/aut-ai-hotl/)
+* [🪜 Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
 
 ---
 

@@ -1,7 +1,8 @@
 ---
-title: "⭕ Semi and Fully Autonomous AI Systems"
+title: "⭕ Autonomous AI Systems: HOTL"
 tagline: "Part 2: HOTL (Human-On-The-Loop)"
 author: steven
+banner_image: "https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png"
 categories:
   - ai
 date: 2026-10-12 03:33:33 -0500
@@ -11,11 +12,13 @@ header:
 published: true
 tags: [ai, ml, hitl, hotl, calibration, selective-classification, governance, software-architecture]
 toc: true
+
 ---
+
+![HOTL Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png)
 
 ## 👥 Introduction
 _Part 2 of a series on autonomous AI architecture, and the sequel to Part 1 (HITL). Human-on-the-Loop (HOTL) systems take the human gates out of the learning loop and replace them with automated validation, automated promotion, circuit breakers, and asynchronous human oversight. HITL systems fail by starvation; HOTL systems fail by poisoning. Using search ranking and recommendation as the problem domain, we compare the two, name "Alignment Risk," lay out seven rules for watching the loop, and decide when to use which._
-![HOTL Banner](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/hotl-banner-li.png)
 
 ### Introduction
 On the morning of August 1, 2012, Knight Capital's order router pushed millions of erroneous orders into the market and lost more than $460 million in about 45 minutes. Before the open, an internal system had sent 97 automated error emails; they weren't designed as alerts, and staff generally didn't read them. There was no procedure to halt the router in response to its own aberrant activity [1].
@@ -25,8 +28,8 @@ On the morning of August 1, 2012, Knight Capital's order router pushed millions 
 _This is the sequel to [Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/). Human-in-the-loop systems fail by starvation: the gatekeepers who make them safe also make them slow. Human-on-the-loop systems fail by poisoning: fast, quiet, and at scale. The test for which one you have: if every human went home for a long weekend, would the loop keep learning? In HITL, no. In HOTL, yes — and that is both the feature and the risk._
 
 ### See also
-* [🧬 Semi and Fully Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
-* [🪜 Semi and Fully Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
+* [🧬 Autonomous AI Systems — Part 1: HITL (Human-In-The-Loop)](https://git-steven.github.io/ai/aut-ai-hitl/)
+* [🪜 Autonomous AI Systems — Part 3: HOOTL (Human-Out-Of-The-Loop)](https://git-steven.github.io/ai/aut-ai-hootl/)
 
 ---
 
