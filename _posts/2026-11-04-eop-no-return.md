@@ -2,7 +2,7 @@
 title: "🚪 There Is No Return"
 excerpt: "What a language learns when it loses the escape hatch."
 version: "1.06"
-date: 2026-11-05
+date: 2026-11-04
 author: steven
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/eop-banner.png

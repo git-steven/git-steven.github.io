@@ -2,7 +2,7 @@
 title: "🧠 Curing your database's amnesia"
 excerpt: "Command Query Responsibility Segregation (CQRS) and Event Sourcing, for engineers who haven't shipped either."
 version: "1.02"
-date: 2026-11-05
+date: 2026-11-10
 author: steven
 header:
   teaser: https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/cqrs-banner.png

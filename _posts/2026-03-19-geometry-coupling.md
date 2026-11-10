@@ -292,25 +292,12 @@ D = |d|
 * `d < 0` → concrete and stable → heading for the **Zone of Pain**
 * `d > 0` → abstract and unstable → heading for the **Zone of Uselessness**
 
-Martin draws the two zones but does not grade the space between them. The bands below do. A boundary value always belongs to the band nearer zero, so the bands cover `-1` to `1` with no gaps or overlaps.
-                                      
+Martin draws the two zones but does not grade the space between them. The bands below do. A boundary value always belongs to the band nearer zero, so the bands cover `-1` to `1` with no gaps or overlaps to put qualitative names and descriptions for each range.
+
+### Signed distance ranges from `-1` to `1` 
 ![Signed Distance](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-signed-distance.jpg)
 
-### Signed distance ranges from `-1` to `1`
-
-| d Range           | Zone                                       | Meaning                                                 | Strategy                                              |
-|-------------------|--------------------------------------------|---------------------------------------------------------|-------------------------------------------------------|
-| -1.00 ≤ d < -0.85 | Severe Pain                                | Concrete and heavily depended on; every change cascades | Extract interfaces now                                |
-| -0.85 ≤ d < -0.65 | Moderate Pain                              | Concrete and widely used; changes are expensive         | Plan an abstraction layer                             |
-| -0.65 ≤ d < -0.50 | Approaching Pain                           | Too concrete for how stable it is                       | Add abstractions for the hot paths                    |
-| -0.50 ≤ d < -0.35 | Balanced -- heavily leaning to Pain        | Workable, but trending concrete                         | Watch across releases                                 |
-| -0.35 ≤ d < -0.20 | Balanced -- leaning to Pain                | Slightly more concrete than its dependents warrant      | Normal dev pace                                       |
-| -0.20 ≤ d ≤  0.20 | Balanced                                   | On or near the main sequence                            | Nothing                                               |
-|  0.20 < d ≤  0.35 | Balanced -- leaning to Uselessness         | Slightly more abstract than its users warrant           | Normal dev pace                                       |
-|  0.35 < d ≤  0.50 | Balanced -- heavily leaning to Uselessness | Workable, but trending speculative                      | Watch across releases                                 |
-|  0.50 < d ≤  0.65 | Approaching Uselessness                    | Too abstract for how little depends on it               | Review every abstract type                            |
-|  0.65 < d ≤  0.85 | Moderate Uselessness                       | Mostly abstractions that few modules use                | Prune; collapse interfaces into their implementations |
-|  0.85 < d ≤  1.00 | Severe Uselessness                         | Abstract and depended on by almost nothing              | Delete it or find it consumers                        |
+                    |
 
 ## 🗺️ Where These Metrics Apply
 
