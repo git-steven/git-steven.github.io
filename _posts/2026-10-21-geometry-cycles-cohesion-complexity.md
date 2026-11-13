@@ -9,7 +9,7 @@ categories:
   - architecture
 tags: [architecture, metrics, coupling, cohesion, complexity, python, static-analysis]
 author: steven
-published: false
+published: true
 toc: true
 ---
 

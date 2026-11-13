@@ -1,7 +1,7 @@
 ---
 title: "🐊 The Polyglot and the Crocodile"
 excerpt: "Elixir looks like three languages you already know. Then it bites."
-version: "1.14"
+version: "1.15"
 date: 2026-11-05
 author: steven
 header:
@@ -9,14 +9,14 @@ header:
 categories: [architecture, languages]
 tags: [elixir, erlang, beam, otp, pattern-matching, concurrency, ruby, python, java, polyglot]
 toc: true
-published: false
+published: true
 ---
 
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/croc-banner.png" alt="The Polyglot and the Crocodile: a chalk-sketched crocodile lying in the water like a log, beside two lines of Elixir — x = 1 labelled assignment, and {:ok, x} = fetch() labelled oh.">
 
 **Elixir looks like three languages you already know. Then it bites.**
 
-*Steven B Miers · November 5, 2026 · v1.14*
+*Steven B Miers · November 5, 2026 · v1.15*
 
 ## 📝 Introduction
 
@@ -80,15 +80,28 @@ The constructs you'll type before lunch on day one, all in one place. Every one 
 
 ### `=` is a question, not a statement
 
-In Ruby, Python and Java, `=` means *put this there*. In Elixir [it means *does this fit?*](https://hexdocs.pm/elixir/pattern-matching.html) Most of the time the answer is yes, and it looks exactly like assignment, because it is:
+In Ruby, Python and Java, `=` means *put this there*. In Elixir [it means *does this fit?*](https://hexdocs.pm/elixir/pattern-matching.html) Most of the time the answer is yes, and it looks exactly like binding, because it is:
 
 ```elixir
-x = 1    # a bare name fits anything, so x is now 1. Assignment, as advertised
+x = 1    # a bare name fits anything, so x is now 1. Binding, as advertised
 1 = x    # also legal: does x fit 1? It does, so nothing happens
 2 = x    # MatchError: x is 1, and the answer is no
 x = 2    # a bare name always fits, so this rebinds x. The 1 itself never changed
 ^x = 3   # the pin makes x a wall: compare with the current x. MatchError
 ```
+
+> **Binding vs. assignment, and why the word matters**
+>
+> This article says *binding* where the Ruby, Python and Java manuals say *assignment*, and it isn't pedantry; the two words make different promises. In those three languages a variable is a slot. `x = 2` puts something new in the slot, and any code that reads the slot afterwards, including a closure created earlier, sees the new value. That's *assignment*. In Elixir, a variable is a label stuck on a value, and the label never moves. `x = 2` doesn't touch the old `x`; it makes a new `x` that hides the old one from that line on. That's *binding*, and doing it again to the same name is *rebinding*. A closure shows the difference:
+>
+> ```elixir
+> x = 1
+> get_x = fn -> x end
+> x = 2
+> get_x.()   # 1: the closure still holds the x it saw
+> ```
+>
+> The same lines in Python or Ruby give you `2`, because the lambda reads the slot when it runs. (Java refuses to compile them: a lambda can only capture a local that's effectively final.) Erlang, underneath Elixir, doesn't allow rebinding at all: `X = 2` after `X = 1` is just a failed match. Elixir lets you reuse the name for convenience, and the compiler gives each rebinding its own fresh variable underneath. The payoff is that no other code can change what your `x` means behind your back.
 
 The question gets interesting when the left side has a shape. Here's a `fetch/1` that answers the way most Elixir functions do, with `{:ok, value}` or `{:error, reason}`:
 
@@ -227,7 +240,7 @@ Enum.map(["Ada", "Grace"], &Greet.hello/1)   # & captures a function by name/ari
 
 ### Conditionals: everything returns something
 
-[`if`](https://hexdocs.pm/elixir/case-cond-and-if.html) exists, and it's an expression. It returns a value, so you assign its result instead of assigning inside it:
+[`if`](https://hexdocs.pm/elixir/case-cond-and-if.html) exists, and it's an expression. It returns a value, so you bind its result to a name instead of binding inside it:
 
 ```elixir
 mood = if gus.hungry?, do: "stand back", else: "probably fine"   # if returns a value
@@ -417,4 +430,4 @@ _Not a telecom engineer, though a very interested one. This is **Part 1** of two
 
 ---
 
-Version 1.14 · November 2026
+Version 1.15 · November 2026

@@ -11,7 +11,7 @@ tags: [expression-oriented-programming, elixir, rust, ruby, python, scala, java,
 toc: true
 published: true
 ---
-
+    
 <img src="https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/eop-banner.jpg" alt="There Is No Return: the word return struck through in red chalk, beside a sketched railway of ok stations with sidings to an else platform, every track ending in a value">
 
 **What a language learns when it loses the escape hatch.**
@@ -155,7 +155,7 @@ def ship(order):
         post(order)
 ```
 
-A failed guard raises `GuardClauseError` with the message; the body never starts. More on how it does this, and what it borrows from Elixir, in [What replaced the door](#️-what-replaced-the-door).
+By default a failed guard raises `GuardClauseError` with its message, and the body never starts. That's only the default, though. Pass the decorator a `strategy` and an `on_failure` and a failure can raise an exception class you choose, hand that exception back instead of raising it, return a fallback value such as `None` or `False`, or call a handler that gets the error messages plus the original arguments and returns whatever it builds, a 400 response for instance. Add `continuance=N` and it keeps checking past the first failure, so the caller hears every complaint at once instead of one per round trip (bundled into an `ExceptionGroup` when it raises). Between the built-in `Guards` and plain lambdas, the checks can test just about anything, and a failure can do or return just about anything you can dream up. More on how it does this, and what it borrows from Elixir, in [What replaced the door](#️-what-replaced-the-door).
 
 ---
 
