@@ -12,17 +12,17 @@
         <mxCell id="x1gavpuhTeHUu8HzGcR5-3" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 20px;&quot;&gt;📦 Three package graphs&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=35;fillColor=#EFEAE0;gradientColor=#CFC7B8;gradientDirection=south;strokeColor=#8C857A;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#4B4741;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
           <mxGeometry x="40" y="170" width="640" height="510" as="geometry" />
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-4" value="&lt;b&gt;No cycle&lt;/b&gt; · largest SCC = 1 · RC = 0%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-4" value="&lt;b&gt;No cycle&lt;/b&gt; · 7 packages · largest SCC = 1 · RC = 0%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
           <mxGeometry x="80" y="220" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-5" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;orders&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="80" y="256" width="160" height="40" as="geometry" />
+          <mxGeometry x="80" y="256" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-6" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;billing&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="270" y="256" width="160" height="40" as="geometry" />
+          <mxGeometry x="230" y="256" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-7" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;notifications&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="460" y="256" width="160" height="40" as="geometry" />
+          <mxGeometry x="380" y="256" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-8" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-5" target="x1gavpuhTeHUu8HzGcR5-6">
           <mxGeometry relative="1" as="geometry" />
@@ -30,17 +30,17 @@
         <mxCell id="x1gavpuhTeHUu8HzGcR5-9" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-6" target="x1gavpuhTeHUu8HzGcR5-7">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-10" value="&lt;b&gt;A pair&lt;/b&gt; · largest SCC = 2 · RC = 67%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-10" value="&lt;b&gt;A pair&lt;/b&gt; · 7 packages · largest SCC = 2 · RC = 29%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
           <mxGeometry x="80" y="350" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-11" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;orders&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="80" y="386" width="160" height="40" as="geometry" />
+          <mxGeometry x="80" y="386" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-12" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;billing&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="270" y="386" width="160" height="40" as="geometry" />
+          <mxGeometry x="230" y="386" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-13" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;notifications&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="460" y="386" width="160" height="40" as="geometry" />
+          <mxGeometry x="380" y="386" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-14" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-11" target="x1gavpuhTeHUu8HzGcR5-12">
           <mxGeometry relative="1" as="geometry" />
@@ -51,22 +51,22 @@
         <mxCell id="x1gavpuhTeHUu8HzGcR5-16" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;html=1;strokeColor=#B85450;strokeWidth=2;dashed=1;dashPattern=4 4;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontStyle=2;fontColor=#991B1B;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-12" target="x1gavpuhTeHUu8HzGcR5-11">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="350" y="468" />
-              <mxPoint x="160" y="468" />
+              <mxPoint x="295" y="468" />
+              <mxPoint x="145" y="468" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-17" value="&lt;b&gt;A tangle&lt;/b&gt; · largest SCC = 3 · RC = 100%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-17" value="&lt;b&gt;A tangle&lt;/b&gt; · 7 packages · largest SCC = 3 · RC = 43%" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=15;fontColor=#4D4D4D;">
           <mxGeometry x="80" y="500" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-18" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;orders&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="80" y="536" width="160" height="40" as="geometry" />
+          <mxGeometry x="80" y="536" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-19" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;billing&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="270" y="536" width="160" height="40" as="geometry" />
+          <mxGeometry x="230" y="536" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-20" value="&lt;font face=&quot;Courier New&quot; style=&quot;font-size: 14px;&quot;&gt;&lt;b&gt;notifications&lt;/b&gt;&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Courier New;fontSize=15;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
-          <mxGeometry x="460" y="536" width="160" height="40" as="geometry" />
+          <mxGeometry x="380" y="536" width="130" height="40" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-21" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontColor=#4D4D4D;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-18" target="x1gavpuhTeHUu8HzGcR5-19">
           <mxGeometry relative="1" as="geometry" />
@@ -77,12 +77,12 @@
         <mxCell id="x1gavpuhTeHUu8HzGcR5-23" value="" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;html=1;strokeColor=#B85450;strokeWidth=2;dashed=1;dashPattern=4 4;endArrow=classic;endFill=1;fontFamily=Georgia;fontSize=12;fontStyle=2;fontColor=#991B1B;labelBackgroundColor=#FCF5E5;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;exitX=0.5;exitY=1;entryX=0.5;entryY=1;" edge="1" parent="layer-diagram" source="x1gavpuhTeHUu8HzGcR5-20" target="x1gavpuhTeHUu8HzGcR5-18">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="540" y="618" />
-              <mxPoint x="160" y="618" />
+              <mxPoint x="445" y="618" />
+              <mxPoint x="145" y="618" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-24" value="&lt;i&gt;Dashed: the back edge that closes the loop.&lt;/i&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-24" value="&lt;i&gt;Dashed: the back edge that closes the loop. “+ 4 more”: packages in no cycle.&lt;/i&gt;" vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
           <mxGeometry x="80" y="640" width="560" height="28" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-25" value="&lt;font face=&quot;Architects Daughter&quot; style=&quot;font-size: 24px;&quot;&gt;Largest SCC&lt;/font&gt;" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=4;whiteSpace=wrap;html=1;align=center;verticalAlign=top;spacingTop=6;opacity=90;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fontSize=18;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
@@ -118,17 +118,26 @@
         <mxCell id="x1gavpuhTeHUu8HzGcR5-35" value="A group that has to change and ship together. Cut the cheapest edge first." vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
           <mxGeometry x="756" y="528" width="568" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-36" value="&amp;gt; half" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=#991B1B;strokeWidth=2;fontFamily=Courier New;fontSize=16;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-36" value="3+ and &amp;gt; half" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#F8CECC;gradientColor=#EA6B66;gradientDirection=south;strokeColor=#991B1B;strokeWidth=2;fontFamily=Courier New;fontSize=16;fontColor=#7F1D1D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
           <mxGeometry x="750" y="579" width="170" height="34" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-37" value="Ball of mud" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=30;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#4A4A4A;gradientColor=#1E1E1E;gradientDirection=south;strokeColor=#1E1E1E;strokeWidth=2;fontFamily=Georgia;fontSize=15;fontColor=#FFFFFF;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=1;">
           <mxGeometry x="920" y="579" width="410" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="x1gavpuhTeHUu8HzGcR5-38" value="Most of the system is one unit. Shrink the largest SCC, release by release." vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
+        <mxCell id="x1gavpuhTeHUu8HzGcR5-38" value="A tangle that is most of the system. Shrink the largest SCC, release by release." vertex="1" parent="layer-labels" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;spacing=4;fontFamily=Georgia;fontSize=14;fontColor=#4D4D4D;">
           <mxGeometry x="756" y="616" width="568" height="42" as="geometry" />
         </mxCell>
         <mxCell id="x1gavpuhTeHUu8HzGcR5-39" value="&lt;i&gt;Dependency cycles&lt;/i&gt;: find the strongly connected components, then watch the biggest one." vertex="1" parent="layer-labels" style="rounded=1;arcSize=8;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;spacing=10;fillColor=#F5F5F5;gradientColor=#D9D5CC;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=1;fontFamily=Georgia;fontSize=17;fontColor=#4D4D4D;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;">
           <mxGeometry x="200" y="710" width="1000" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="etV5BsU1CkAKjrS1amBl-1" value="+ 4 more" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=14;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=2;dashed=1;dashPattern=4 4;">
+          <mxGeometry x="540" y="256" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="etV5BsU1CkAKjrS1amBl-2" value="+ 4 more" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=14;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=2;dashed=1;dashPattern=4 4;">
+          <mxGeometry x="540" y="386" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="etV5BsU1CkAKjrS1amBl-3" value="+ 4 more" vertex="1" parent="layer-diagram" style="rounded=1;arcSize=12;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#FFFFFF;gradientColor=#E4E4E4;gradientDirection=south;strokeColor=#B1ACA2;strokeWidth=2;fontFamily=Georgia;fontSize=14;fontColor=#504D47;sketch=1;sketchStyle=comic;jiggle=1;curveFitting=1;shadow=1;shadowOpacity=75;shadowOffsetX=6;shadowOffsetY=5;shadowBlur=4;fontStyle=2;dashed=1;dashPattern=4 4;">
+          <mxGeometry x="540" y="536" width="100" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

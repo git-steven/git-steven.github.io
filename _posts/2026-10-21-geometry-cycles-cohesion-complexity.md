@@ -18,7 +18,7 @@ toc: true
 
 **_Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity_**
 
-In [Part 1: The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/), we measured packages from the **outside**:
+In [Part 1: The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/geometry-coupling/), we measured packages from the **outside**:
 * `𝐶ₐ` and `𝐶ₑ`: who depends on you, and who you depend on
 * `I`: which way the dependencies point
 * `A` and `D`: how far a package has drifted from the Main Sequence
@@ -82,10 +82,11 @@ for each SCC in tarjan(package_graph):    # one linear pass over the imports
 | `1`                | Acyclic     | Every package can be built, tested and released on its own  | _Gate it in CI so it stays that way_         |
 | `2`                | Pair        | Two packages that are really one package                    | _Merge them, or invert one import_           |
 | `3+`               | Tangle      | A group that has to change, test and ship together          | _Cut the cheapest edge first_                |
-| `> half` the graph | Ball of mud | Most of the system is one unit                              | _Shrink the largest SCC, release by release_ |
+| `3+` and `> half` the graph | Ball of mud | A tangle that has swallowed most of the system      | _Shrink the largest SCC, release by release_ |
 
 * **Threshold:** a largest SCC of `1`, which is to say **zero cycles**. This one isn't statistical. It's structural: it falls straight out of the principle.
 * **In human terms:** the largest SCC is the biggest chunk of the system somebody has to keep in their head, and retest, for any change inside it.
+* **On small graphs:** a pair is always a pair, even when it's two packages out of three. Ball of mud takes both conditions: a tangle of `3+` packages that is also more than half the graph.
 
 ### ⛓️ Why cycles come first
 
@@ -454,7 +455,7 @@ Part 1 plotted packages on `A` vs `I`. At class level, the useful picture is **s
 | Hub           | Small, but leans on many       | Check `I`: is it pointing toward stability?          |
 | God class     | Big **and** entangled          | Split along the LCOM4 islands first                  |
 
-The lines are CBO `9` and WMC `20`. Treat them as a starting point. Your own codebase's baseline is a better line than anything fitted on Eclipse in 2010.
+The lines are CBO `9` and WMC `20`: past both, it's a god class. Past CBO `14` and WMC `80` as well, it's a severe one. Treat the lines as a starting point. Your own codebase's baseline is a better line than anything fitted on Eclipse in 2010.
 
 ---
 
