@@ -120,7 +120,7 @@ It runs both ways, too. If a task has a bad month, move it back left. That's not
 
 A task moves right only when it has earned it.
 "Earned" means measured, over time, on your own work, not on the vendor's benchmark.
-Track the numbers vendors don't publish: duplication, churn, coupling and instability (see [📐 The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/)), review load.
+Track the numbers vendors don't publish: duplication, churn, coupling and instability (see [📐 The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/geometry-coupling/)), review load.
 If AI is helping your codebase, those will say so first, well before the incident report does.
 (The concrete promote-and-demote rules I'd use are in [🔁 Autonomy on a Leash](https://git-steven.github.io/architecture/ai/gated-loop-ai-code/#-earning-the-next-rung).)
 And every human override is labeled training data from your own experts.

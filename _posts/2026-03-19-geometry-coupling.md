@@ -13,9 +13,10 @@ redirect_from:
 ---
 
 ## 📃 Introduction
-![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-metrics-md.png)
 
-_This is Part 1 of The Hidden Geometry of Software. [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) zooms in on dependency cycles, cohesion and complexity._
+![📐 The Hidden Geometry of Software Coupling](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-metrics.png)
+
+_This is Part 1 of The Hidden Geometry of Software. [Part 2](https://git-steven.github.io/architecture/geometry-cycles-cohesion-complexity/) zooms in on dependency cycles, cohesion and complexity._
 
 Software engineers love to talk about architecture in qualitative terms.
 
@@ -51,9 +52,9 @@ _Then the real symptoms appeared:_
 
 ## ⛓️ Architecture and Coupling
 
->  It's a simple complex system. Because it's simple, it's prone to cascades, and because it's complex, you can't predict what's going to fail. Or how. -- _Prax, "Caliban's War" (The Expanse)_
+> It's a simple complex system. Because it's simple, it's prone to cascades, and because it's complex, you can't predict what's going to fail. Or how. -- _Prax, "Caliban's War" (The Expanse)_
 
-We started digging. We and studied up on _quantitative_ software metrics.  We ran static analysis tools against the codebase, traced dependency graphs, counted the connections between modules. The picture that emerged was not pretty.
+We started digging. We studied up on _quantitative_ software metrics.  We ran static analysis tools against the codebase, traced dependency graphs, counted the connections between modules. The picture that emerged was not pretty.
 
 Our problem _wasn't_ **Rails**. Our problem was **coupling**; specifically; **_tight_ coupling**
 
@@ -126,7 +127,7 @@ These metrics behave like a financial balance sheet.
 ---
 
 ## 💦 The Instability Index (I)
-![💦 Instability (fig. 1)](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/metrics-instability-fig1-overview.png)
+![💦 Instability (fig. 1)](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-overview.jpg)
 
 From `𝐶ₐ` and `𝐶ₑ` we derive a powerful ratio:
 ```text
@@ -144,7 +145,7 @@ From `𝐶ₐ` and `𝐶ₑ` we derive a powerful ratio:
 
 ## 📈 Instability Curves
 
-![Instability Curves: I vs Ce for various Ca values](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-instability-curves.png)
+![Instability Curves: I vs Ce for various Ca values](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-instability-curves.png)
 
 The chart above shows how `Instability` changes as `𝐶ₑ` grows for several fixed values of `𝐶ₐ`.
 
@@ -216,7 +217,7 @@ The conceptual graph below shows the terrain first:
 
 The key idea is simple: modules do not have to sit exactly on the main sequence, but the farther they drift from it, the more likely they are to be structurally imbalanced.
 
-![Main Sequence](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-main-seq.png)
+![Main Sequence](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-main-seq.jpg)
 
 ## 🪨 Architectural Danger Zones
 
@@ -278,7 +279,7 @@ That lets us see not just *where* a module sits, but *how far off-balance* it is
 
 Some modules live outside the danger zones and are still worth watching. A service layer, API gateway, or shared utility package may not be pathological, but a non-zero distance still suggests the design is drifting away from the ideal balance.
 
-![Distance From Main](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-article-part1-distance-main.png)
+![Distance From Main](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-main-sequence.png)
 
 ### 🧭 Reading the Distance
 
@@ -295,9 +296,7 @@ D = |d|
 Martin draws the two zones but does not grade the space between them. The bands below do. A boundary value always belongs to the band nearer zero, so the bands cover `-1` to `1` with no gaps or overlaps to put qualitative names and descriptions for each range.
 
 ### Signed distance ranges from `-1` to `1` 
-![Signed Distance](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-signed-distance.jpg)
-
-                    |
+![Signed Distance](https://raw.githubusercontent.com/git-steven/git-steven.github.io/master/assets/images/coupling-pt1-signed-distance.jpg)
 
 ## 🗺️ Where These Metrics Apply
 
@@ -320,7 +319,7 @@ The shape of the system changes. The math does not.
 
 ## ➡️ Next: Part 2
 
-[Part 2: Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) zooms in from packages to classes and methods: dependency cycles, CBO, DIT, LCOM4, WMC, and cyclomatic and cognitive complexity.
+[Part 2: Dependency Cycles, Coupling Between Objects, Cohesion, Cyclomatic and Cognitive Complexity](https://git-steven.github.io/architecture/geometry-cycles-cohesion-complexity/) zooms in from packages to classes and methods: dependency cycles, CBO, DIT, LCOM4, WMC, and cyclomatic and cognitive complexity.
 
 ## 📚 References
 

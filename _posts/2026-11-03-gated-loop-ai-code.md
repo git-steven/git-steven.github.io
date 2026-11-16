@@ -81,7 +81,7 @@ In fairness, the honest counter-evidence is real.
 The best-designed experiment, a preregistered trial with 151 participants, found **no significant difference** in maintainability when other developers later evolved AI-assisted code ([arXiv 2507.00788](https://arxiv.org/abs/2507.00788v3)).
 I read the two results as the same finding at different scales.
 One task, one capable model, a person nearby: the code is about as good as ours.
-A whole repo, months of unattended volume: the metrics from [📐 The Hidden Geometry of Software: Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) all go the wrong way.
+A whole repo, months of unattended volume: the metrics from [📐 The Hidden Geometry of Software: Coupling](https://git-steven.github.io/architecture/geometry-coupling/) all go the wrong way.
 The loop below is for the second regime.
 
 ## 🚦 Per decision, not per system
@@ -185,7 +185,7 @@ These block, and the agent sees each failure as feedback.
 
 * **Lint and format** on every edit (ruff; ESLint). SWE-agent's edit-time linter, which refuses syntactically broken edits, was worth three points of SWE-bench Lite on its own ([arXiv 2405.15793](https://arxiv.org/abs/2405.15793)).
 * **Type check** (mypy or pyright; `tsc --noEmit`). Binary, cheap, and Anthropic's own Stop-hook example.
-* **Complexity per function** (ruff `C901` and `PLR09xx`, xenon; Checkstyle, ESLint `complexity`). The thresholds are [McCabe's "reasonable, but not magical" 10](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) and Sonar's cognitive 15; folklore, but useful folklore, and paired with the module-size and cohesion alerts below so the agent can't satisfy it by splitting one function into nine helpers.
+* **Complexity per function** (ruff `C901` and `PLR09xx`, xenon; Checkstyle, ESLint `complexity`). The thresholds are [McCabe's "reasonable, but not magical" 10](https://git-steven.github.io/architecture/geometry-cycles-cohesion-complexity/) and Sonar's cognitive 15; folklore, but useful folklore, and paired with the module-size and cohesion alerts below so the agent can't satisfy it by splitting one function into nine helpers.
 * **Import contracts** (import-linter `layers`, `forbidden`, `independence`; tach; ArchUnit; dependency-cruiser; Nx boundaries). These *are* the ADR, in executable form. import-linter lets you put remediation text in the contract itself ([`broken_contract_guidance`](https://import-linter.readthedocs.io/en/stable/contract_types/)), which turns a failure into an instruction the agent can act on.
 * **Package cycles** (import-linter `acyclic_siblings`; tach `forbid_circular_dependencies`; ArchUnit `slices().should().beFreeOfCycles()`; `madge --circular`). Zero is a structural threshold, not a preference; the Acyclic Dependencies Principle says so and so does Part 2. Cycle checks need the whole graph, so they live here and in CI, never in a per-file linter.
 * **Dependency hygiene** (deptry; knip, depcheck). Missing, unused and transitive dependencies, as binary rules.
@@ -202,7 +202,7 @@ These block, and the agent sees each failure as feedback.
 **Tier 4: slow, and mostly alerts.**
 
 * **Mutation score on changed code** (mutmut, cosmic-ray; PIT; Stryker). Coverage is not a quality target: across 31,000 generated suites, coverage correlated only weakly with fault detection once suite size was controlled ([Inozemtseva and Holmes](https://cs.ubc.ca/~rtholmes/papers/icse_2014_inozemtseva.pdf)). Mutation score is the honest version. Alert first, ratchet once a baseline exists.
-* **Martin's I, A and D, CBO, LCOM4.** Alert and trend. No validated threshold exists for any of them, Python has no maintained CI gate for Distance, and inside a strongly connected component the numbers are meaningless anyway, so compute them on the condensation graph *after* the cycle gate has passed, exactly as [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/) recommends.
+* **Martin's I, A and D, CBO, LCOM4.** Alert and trend. No validated threshold exists for any of them, Python has no maintained CI gate for Distance, and inside a strongly connected component the numbers are meaningless anyway, so compute them on the condensation graph *after* the cycle gate has passed, exactly as [Part 2](https://git-steven.github.io/architecture/geometry-cycles-cohesion-complexity/) recommends.
 * **Semantic duplication.** Experimental tooling; LLMs are weakest at exactly the Type-4 clones they tend to produce.
 * **A fresh-context reviewer agent**, read-only, told to check the diff against the spec and to skip style. A reviewer "asked to find problems will always find *something*", and fixing every finding produces "extra abstraction layers and tests for cases that can't happen" ([Claude Code docs](https://code.claude.com/docs/en/best-practices)). A pre-filter, never the review: it catches the mechanical stuff, not a wrong boundary.
 
@@ -371,7 +371,7 @@ Keep the checkers for the doors that only open one way.
 * import-linter. [Contract types](https://import-linter.readthedocs.io/en/stable/contract_types/).
 * Inozemtseva, L. and Holmes, R. [Coverage is not strongly correlated with test suite effectiveness](https://cs.ubc.ca/~rtholmes/papers/icse_2014_inozemtseva.pdf), ICSE 2014.
 * METR. [Measuring the impact of early-2025 AI on experienced open-source developer productivity](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/); [Recent frontier models are reward hacking](https://metr.org/blog/2025-06-05-recent-reward-hacking/).
-* Miers, S. [The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/coupling/metrics/geometry-coupling/) and [Part 2](https://git-steven.github.io/architecture/coupling/metrics/geometry-cycles-cohesion-complexity/); [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/).
+* Miers, S. [The Hidden Geometry of Software Coupling](https://git-steven.github.io/architecture/geometry-coupling/) and [Part 2](https://git-steven.github.io/architecture/geometry-cycles-cohesion-complexity/); [HITL](https://git-steven.github.io/ai/aut-ai-hitl/), [HOTL](https://git-steven.github.io/ai/aut-ai-hotl/) and [HOOTL](https://git-steven.github.io/ai/aut-ai-hootl/).
 * NIST. [Structured Testing: A Testing Methodology Using the Cyclomatic Complexity Metric](https://www.mccabe.com/pdf/mccabe-nist235r.pdf), SP 500-235, 1996.
 * Nygard, M. [Documenting architecture decisions](https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions), 2011.
 * Olausson et al. [Is Self-Repair a Silver Bullet for Code Generation?](https://arxiv.org/abs/2306.09896), ICLR 2024.
